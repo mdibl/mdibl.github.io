@@ -1,14 +1,18 @@
 site_name: MDIBL CGDS Education
 nav:
   - Home: index.md
+  - Bioinformatics Bits: 
+    - bits/index.md
+    - Bit 1: bits/bit1.md
+    - Bit 2: bits/bit2.md
 theme:
   name: material
   icon:
     logo: simple/mediapipe       
   features: 
+    - navigation.indexes
     - navigation.tabs
     - navigation.sections
-    - toc.integrate
     - navigation.top
     - navigation.footer
     - search.suggest
