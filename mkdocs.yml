@@ -1,7 +1,7 @@
 site_name: MDIBL CGDS Education
 nav:
-  - Home: 
-    - index.md
+  - Home: index.md
+  - About:
     - Team: home/team.md
     - Contact: home/contact.md
   - Bioinformatics Bits: 
