@@ -8,3 +8,4 @@ Browse our growing collection of Bits below and demystify the world of bioinform
 
 # Table of Contents
 [Bit 1: Sample Naming Best Practices](./bit1.md)
+

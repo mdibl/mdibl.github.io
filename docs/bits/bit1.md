@@ -42,10 +42,10 @@ sample_10
 Good Examples:
 
 ```
-WT_Rep01_D00
-KO_Rep02_D07
-treated_Rep01_02h
-control_Rep02_24h
+WT_rep01_D00
+KO_rep02_D07
+treated_rep01_02h
+control_rep02_24h
 ```
 Bad Examples:
 ```
@@ -57,8 +57,8 @@ WT_Rep1_D0               # Missing zero padding
 ```
 ## **Pro Tips**
 
-- Document your naming convention in your project README
-- Keep names under 50 characters
+- Document your naming convention in your project README (or similar metadata file)
+- Keep names concise and short
 - Include critical metadata but don't overload
 - Consider future sorting when structuring names
 - Use lowercase to avoid case-sensitivity issues

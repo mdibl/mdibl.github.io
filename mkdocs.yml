@@ -1,10 +1,26 @@
 site_name: MDIBL CGDS Education
 nav:
-  - Home: index.md
+  - Home: 
+    - home/index.md
+    - Team: home/team.md
+    - Contact: home/contact.md
   - Bioinformatics Bits: 
     - bits/index.md
     - Bit 1: bits/bit1.md
     - Bit 2: bits/bit2.md
+  - Intro to Cloud Pipelines Course:
+    - introToCloudCourse/index.md
+  - Course Archives:
+    - courseArchives/index.md
+    - ScRNAseq in the Cloud:
+      - courseArchives/scrnaseq2024/index.md 
+      - Insctructor: courseArchives/scrnaseq2024/instructors.md
+      - Learning Resources: courseArchives/scrnaseq2024/learning_resources.md
+      - Arrival: courseArchives/scrnaseq2024/arrival.md
+      - Launch: courseArchives/scrnaseq2024/launch.md
+      - Debug: courseArchives/scrnaseq2024/debug.md
+      - Output: courseArchives/scrnaseq2024/output.md
+      - Loupe Browser: courseArchives/scrnaseq2024/loupe.md
 theme:
   name: material
   icon:
