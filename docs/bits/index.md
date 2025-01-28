@@ -6,6 +6,7 @@ Whether you're curious about data normalization methods, looking to improve your
 
 Browse our growing collection of Bits below and demystify the world of bioinformatics, one concept at a time.
 
-# Table of Contents
+## List of Bits
 [Bit 1: Sample Naming Best Practices](./bit1.md)
 
+[Bit 2: Command Line Fundamentals](./bit2.md)
