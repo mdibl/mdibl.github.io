@@ -52,11 +52,9 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 | **2:00-2:30** | Questions/Issues/Discussion                              |  |
 | **2:30-3:30** | Pipeline Outputs Exploration                             |  |
 | **3:30-4:30** | Discussion of Various Individual Use Cases               |  |
-| **4:30-5:00** | Resources for Further Interest (                         |  |
+| **4:30-5:00** | Moving Forward                                           |  |
 
 <!--
-Here's the schedule with standard (12-hour) times:
-
 | Time | Activity | Presenter |
 |------|-----------|-----------|
 | **9:00-9:15 AM** | Welcome and Introduction | Joel |
