@@ -1,3 +1,6 @@
+!!! warning "Archived Course"
+    This course concluded in October 2024. The website is preserved for educational reference. Please contact our educational office if you are interested in a re-run of this course.
+
 # ScRNAseq in the Cloud: Pipelines to Insights 2024
 
 This two-and-a-half day workshop will focus on using cloud infrastructure to carry single-cell RNASeq data from raw sequence files through count matrices to initial clustering of cell types, with a focus on workflows that emphasize best practices in rigorous and reproducible analysis.
@@ -9,10 +12,12 @@ This two-and-a-half day workshop will focus on using cloud infrastructure to car
  [:fontawesome-solid-map-location: MDI Biological Laboratory](https://maps.app.goo.gl/z3GV9i9G1UCauYPt5)
 </div>
 
+<!-- Hidden
 [Apply Now](https://labcentral.mdibl.org/programs/view/660){ .md-button .md-button--primary }
 [Contact Our Education Office](https://mdibl.org/education/contact-education/){ .md-button }
+-->
 
-!!! warning "Application Deadline: 10/15/2024"
+[Contact Our Education Office](https://mdibl.org/education/contact-education/){ .md-button }
 
 ---
 

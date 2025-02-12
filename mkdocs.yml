@@ -21,6 +21,8 @@ nav:
       - Debug: courseArchives/scrnaseq2024/debug.md
       - Output: courseArchives/scrnaseq2024/output.md
       - Loupe Browser: courseArchives/scrnaseq2024/loupe.md
+    - Intro to Cloud Pipelines: 
+      - courseArchives/introCloud2024/index.md
 theme:
   name: material
   icon:
