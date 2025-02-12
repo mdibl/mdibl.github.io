@@ -1,7 +1,5 @@
 # MDIBL Comparative Genomics and Data Science Core
 
-!!! warning "Site is under development"
-
 ## Welcome
 
 The MDI Biological Laboratory's Comparative Genomics and Data Science Core is focused on collaboration, analysis, and education in the computational analysis of genome-scale data. Their efforts are distributed between the linked goals of:

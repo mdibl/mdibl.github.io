@@ -1,5 +1,5 @@
 !!! warning "Archived Course"
-    This course concluded in October 2024. The website is preserved for educational reference. Please contact our educational office if you are interested in a re-run of this course.
+    This course concluded in April 2024. The website is preserved for educational reference. Please contact our educational office if you are interested in a re-run of this course.
 
 # Workflows in the Cloud 2024
 
