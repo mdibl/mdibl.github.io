@@ -81,13 +81,4 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 
 ## Partners
 
-<div style="display: flex; justify-content: space-around;">
-  <img src="https://mdibl.org/wp-content/uploads/2024/02/2560px-Amazon_Web_Services_Logo.svg_.png" alt="AWS Logo" style="height: 100px" loading="lazy"/>
-  <img src="https://mdibl.org/wp-content/uploads/2021/08/INBRE_logo.jpg" alt="Maine INBRE Logo" style="height: 80px" loading="lazy"/>
-  <img src="https://mdibl.org/wp-content/uploads/2024/02/MemVerge-Logo-03052023.png" alt="Memverge Logo" style="height: 80px" loading="lazy"/>
-</div>
-
-<div style="display: flex; justify-content: space-around;">
-  <img src="https://mdibl.org/wp-content/uploads/2024/02/nextflow-logo-bg-light.png" alt="Nextflow Logo" style="height: 70px" loading="lazy"/>
-  <img src="https://mdibl.org/wp-content/uploads/2024/02/nf-core-logo.png" alt="nf-core Logo" style="height: 70px" loading="lazy"/>
-</div>
+![Partners](images/Partners.png)

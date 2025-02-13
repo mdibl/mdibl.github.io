@@ -45,8 +45,8 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 |-------------|--------------------------------------------------------|-------------------|
 | **9:00-9:15** | Welcome and Introduction                               |  |
 | **9:15-9:30** | Overview/Agenda                                        |  |
-| **9:30-10:15** | Workflow/Pipelines                                     | [:fontawesome-solid-file-pdf:](presentations/AWS.pdf)  |
-| **10:15-11:00** | Amazon Web Services                                    | [:fontawesome-solid-file-pdf:](presentations/WorkflowPipelines.pdf)  |
+| **9:30-10:15** | Workflow/Pipelines                                     | [:fontawesome-solid-file-pdf:](presentations/WorkflowPipelines.pdf)  |
+| **10:15-11:00** | Amazon Web Services                                    | [:fontawesome-solid-file-pdf:](presentations/AWS.pdf)  |
 | **11:00-12:00** | Memverge/Nextflow                                     |  |
 | **12:00-1:00** | NF-Core RNAseq Pipeline Setup & Launch                |  |
 | **1:00-2:00** | Lunch                                                 |  |
