@@ -20,7 +20,7 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 
 ---
 
-## Workshop focus: 
+## Workshop Focus
 - nf-core/rnaseq
 - workflow standardization
 - computing access

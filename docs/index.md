@@ -1,3 +1,9 @@
+???+ info "Upcoming Course"
+
+    Join us for a one-day **Intro to Cloud Pipelines** course on May 2nd, 2025.
+    
+    [Course Page :octicons-link-external-16:](introToCloudCourse/index.md){ .md-button .md-button--primary }
+
 # MDIBL Comparative Genomics and Data Science Core
 
 ## Welcome
