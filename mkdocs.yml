@@ -23,6 +23,10 @@ nav:
       - Loupe Browser: courseArchives/scrnaseq2024/loupe.md
     - Intro to Cloud Pipelines: 
       - courseArchives/introCloud2024/index.md
+      - Instructors: courseArchives/introCloud2024/instructors.md
+      - Learning Resources: courseArchives/introCloud2024/learningResources.md
+      - Arrival: courseArchives/introCloud2024/arrival.md
+      - Sequin: courseArchives/introCloud2024/sequin.md
 theme:
   name: material
   icon:

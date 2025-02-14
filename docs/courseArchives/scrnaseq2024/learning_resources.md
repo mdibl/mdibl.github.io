@@ -1,4 +1,4 @@
-# Leaning Resources
+# Learning Resources
 
 ### Bioinformatics Tutorials: 
 
