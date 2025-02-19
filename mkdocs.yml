@@ -10,11 +10,15 @@ nav:
     - Bit 2: bits/bit2.md
   - Intro to Cloud Pipelines Course:
     - introToCloudCourse/index.md
+    - Instructors: introToCloudCourse/instructors.md
+    - Learning Resources: introToCloudCourse/learningResources.md
+    - Arrival: introToCloudCourse/arrival.md
+    - Sequin: introToCloudCourse/sequin.md
   - Course Archives:
     - courseArchives/index.md
     - ScRNAseq in the Cloud:
       - courseArchives/scrnaseq2024/index.md 
-      - Insctructor: courseArchives/scrnaseq2024/instructors.md
+      - Insctructors: courseArchives/scrnaseq2024/instructors.md
       - Learning Resources: courseArchives/scrnaseq2024/learning_resources.md
       - Arrival: courseArchives/scrnaseq2024/arrival.md
       - Launch: courseArchives/scrnaseq2024/launch.md
