@@ -10,7 +10,7 @@ The course will be held on the second floor of the **Maine Center for Biomedical
 ## MCBI 
 ![MCBI](images/MCBI.jpeg)
 
-## Step-By-Step Guide: 
+## Step-By-Step Guide
 
 !!! success ""
 
