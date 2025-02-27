@@ -37,7 +37,7 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 ---
 ## *Tentative* Schedule 
 
-#### **April 25**
+#### **May 2**
 
 | Time        | Activity                                                   |  |
 |-------------|------------------------------------------------------------|--|
