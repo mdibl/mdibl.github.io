@@ -1,6 +1,6 @@
 !!! warning "course in development"
 
-# Intro to Cloud Pipelines: Processing to Analysis 2025
+# Introduction to Workflows in the Cloud 2025
 
 This one-day course aims to introduce the knowledge, resources, and methods necessary to run high-performace bioinformatics workflows at the level of the individual researcher; be they scientific faculty, educators, or motivated students. 
 

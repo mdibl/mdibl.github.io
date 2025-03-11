@@ -8,7 +8,7 @@ nav:
     - bits/index.md
     - Bit 1: bits/bit1.md
     - Bit 2: bits/bit2.md
-  - Intro to Cloud Pipelines Course:
+  - Introduction to Workflows in the Cloud Course:
     - introToCloudCourse/index.md
     - Instructors: introToCloudCourse/instructors.md
     - Learning Resources: introToCloudCourse/learningResources.md
@@ -25,7 +25,7 @@ nav:
       - Debug: courseArchives/scrnaseq2024/debug.md
       - Output: courseArchives/scrnaseq2024/output.md
       - Loupe Browser: courseArchives/scrnaseq2024/loupe.md
-    - Intro to Cloud Pipelines: 
+    - Introduction to Workflows in the Cloud: 
       - courseArchives/introCloud2024/index.md
       - Instructors: courseArchives/introCloud2024/instructors.md
       - Learning Resources: courseArchives/introCloud2024/learningResources.md

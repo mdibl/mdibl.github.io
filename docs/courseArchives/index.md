@@ -6,4 +6,4 @@ Welcome to the CGDS Core Course Archives. Here you'll find materials and resourc
 
 [ScRNAseq in the Cloud: Pipelines to Insights](./scrnaseq2024/index.md)
 
-[Workflows in the Cloud](./introCloud2024/index.md)
+[Introduction to Workflows in the Cloud](./introCloud2024/index.md)

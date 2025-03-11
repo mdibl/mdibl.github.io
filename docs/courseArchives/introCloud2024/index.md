@@ -1,7 +1,7 @@
 !!! warning "Archived Course"
     This course concluded in April 2024. The website is preserved for educational reference. Please contact our educational office if you are interested in a re-run of this course.
 
-# Workflows in the Cloud 2024
+# Introduction to Workflows in the Cloud 2024
 
 This one-day course aims to introduce the knowledge, resources, and methods necessary to run high-performace bioinformatics workflows at the level of the individual researcher; be they scientific faculty, educators, or motivated students. 
 
