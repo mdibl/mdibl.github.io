@@ -11,11 +11,8 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
  [:fontawesome-solid-map-location: MDI Biological Laboratory](https://maps.app.goo.gl/z3GV9i9G1UCauYPt5)
 </div>
 
-<!-- Hidden
-[Apply Now](https://labcentral.mdibl.org/programs/view/660){ .md-button .md-button--primary }
-[Contact Our Education Office](https://mdibl.org/education/contact-education/){ .md-button }
--->
 
+[Apply Now](https://labcentral.mdibl.org/programs/view/693){ .md-button .md-button--primary }
 [Contact Our Education Office](https://mdibl.org/education/contact-education/){ .md-button }
 
 ---
