@@ -56,16 +56,16 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 |------|-----------|-----------|
 | **9:00-9:15 AM** | Welcome and Introduction | Joel |
 | **9:15-9:30 AM** | Overview/Agenda | Joel |
-| **9:30-10:15 AM** | Workflow/Pipelines | Heath |
-| **10:15-10:45 AM** | Amazon Web Services | Ryan |
-| **10:45-11:30 AM** | Memverge (OpCenter) | Sateesh? |
-| **11:30 AM-12:00 PM** | NF-Core/Nextflow | Riley |
-| **12:00-12:10 PM** | Experiment Overview | Heath |
+| **9:30-10:15 AM** | Workflow/Pipelines | Joel |
+| **12:00-12:10 PM** | Experiment Overview | Joel | SAMPLE NAMING NOTE
 | **12:10-1:00 PM** | NF-Core RNAseq Pipeline Setup & Launch | Ryan |
+| **10:15-10:45 AM** | Amazon Web Services | Ryan |
+| **10:45-11:30 AM** | Memverge (OpCenter) | Saba |
+| **11:30 AM-12:00 PM** | NF-Core/Nextflow | Riley |
 | **1:00-2:00 PM** | Lunch | - |
-| **2:00-2:30 PM** | Questions/Issues/Discussion | Heath |
-| **2:30-3:30 PM** | Pipeline Outputs Exploration | Heath |
-| **3:30-4:30 PM** | Discussion of Various Individual Use Cases | TBD |
+| **2:00-2:30 PM** | Questions/Issues/Discussion | Riley |
+| **2:30-3:30 PM** | Pipeline Outputs Exploration | Joel | PUT THIS STUFF ON SEQUIN
+| **3:30-4:30 PM** | Discussion of Various Individual Use Cases/ Other Pieplines Output Prebake | TBD |
 | **4:30-5:00 PM** | Resources for Further Interest/Deeper Detail (How we can help as INBRE hub) | TBD |
 -->
 
