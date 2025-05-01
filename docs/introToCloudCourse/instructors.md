@@ -27,6 +27,6 @@
 
 <br>
 
->*Saba Nafees Ph.D.*
+>Saba Nafees, Ph.D.
 >
 >Memverge

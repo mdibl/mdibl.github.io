@@ -40,8 +40,8 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 | **9:15-9:30 AM**      | Overview/Agenda                                                            |  |
 | **9:30-10:15 AM**     | Workflow/Pipelines                                                         |  |
 | **10:15-10:30 PM**    | Experiment Overview                                                        |  | 
-| **10:30-10:45 PM**    | NF-Core RNAseq Pipeline Setup & Launch                                     |  |
-| **10:45 AM-11:15 PM** | NF-Core/Nextflow                                                           |  |
+| **10:30-10:45 PM**    | nf-core RNAseq Pipeline Setup & Launch                                     |  |
+| **10:45 AM-11:15 PM** | nf-core & Nextflow                                                         |  |
 | **11:15-11:45 AM**    | Amazon Web Services                                                        |  |
 | **11:45-12:30 AM**    | Memverge (OpCenter)                                                        |  |
 | **12:30-1:30 PM**     | Lunch                                                                      |  |
