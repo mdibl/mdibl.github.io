@@ -9,12 +9,6 @@
 
 ## Course Faculty
 
->Heath Fuqua, B.A.
->
->MDI Biological Laboratory
-
-<br>
-
 >Riley Grindle, B.Sc.
 >
 >MDI Biological Laboratory

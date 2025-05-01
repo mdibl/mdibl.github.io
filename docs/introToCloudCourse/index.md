@@ -41,9 +41,9 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 | **9:30-10:15 AM**     | Workflow/Pipelines                                                         |  |
 | **10:15-10:30 PM**    | Experiment Overview                                                        |  | 
 | **10:30-10:45 PM**    | nf-core RNAseq Pipeline Setup & Launch                                     |  |
-| **10:45 AM-11:15 PM** | nf-core & Nextflow                                                         |  |
-| **11:15-11:45 AM**    | Amazon Web Services                                                        |  |
-| **11:45-12:30 AM**    | Memverge (OpCenter)                                                        |  |
+| **10:45 AM-11:15 PM** | nf-core & Nextflow                                                         | [:fontawesome-solid-file-pdf:](presentations/RSeaman_IntroAWS.pdf) [:material-google-drive:](https://docs.google.com/presentation/d/1snmrYc-1p-QLnXuoKLGWlSPYg67aKnaWc9SnozmU8uI/edit?usp=sharing) |
+| **11:15-11:45 AM**    | Amazon Web Services                                                        | [:fontawesome-solid-file-pdf:](presentations/RSeaman_IntroAWS.pdf) [:material-google-drive:](https://docs.google.com/presentation/d/155eGmkRz4Zu14BPptGgyqeL74ng49YMF/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true) |
+| **11:45-12:30 AM**    | Memverge (OpCenter)                                                        | [:fontawesome-solid-file-pdf:](presentations/snafees_05-02-2025_MMC_MDIBL_workshop.pdf) [:material-google-drive:](https://docs.google.com/presentation/d/1qspIPLfpf0H29OiPRCvqUAulFK01KIAa/edit?usp=sharing&rtpof=true&sd=true) |
 | **12:30-1:30 PM**     | Lunch                                                                      |  |
 | **1:30-2:00 PM**      | Questions/Issues/Discussion                                                |  |
 | **2:00-3:00 PM**      | Pipeline Outputs Exploration                                               |  | 
@@ -65,6 +65,9 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 | **2:00-3:00 PM** | Pipeline Outputs Exploration | Joel | PUT THIS STUFF ON SEQUIN
 | **3:00-4:00 PM** | Discussion of Various Individual Use Cases/ Other Pieplines Output Prebake | TBD |
 | **4:00-4:30 PM** | Resources for Further Interest/Deeper Detail (How we can help as INBRE hub) | TBD |
+
+
+[:fontawesome-solid-file-pdf:](presentations/intro_to_single_cell_jhg_oct_2024.pdf)
 -->
 
 ---
