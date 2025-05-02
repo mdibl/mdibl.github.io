@@ -34,8 +34,6 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 
 #### **May 2**
 
-https://docs.google.com/presentation/d/17L_m7FCNNpf3oHADH1KmG3JKe0GoL2cV/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true
-
 | Time                  | Activity                                                                   |  |
 |:--------------------- |:-------------------------------------------------------------------------- |:--:|
 | **9:00-9:15 AM**      | Welcome and Introduction                                                   |  |
