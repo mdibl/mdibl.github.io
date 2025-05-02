@@ -34,12 +34,14 @@ This one-day course aims to introduce the knowledge, resources, and methods nece
 
 #### **May 2**
 
+https://docs.google.com/presentation/d/17L_m7FCNNpf3oHADH1KmG3JKe0GoL2cV/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true
+
 | Time                  | Activity                                                                   |  |
 |:--------------------- |:-------------------------------------------------------------------------- |:--:|
 | **9:00-9:15 AM**      | Welcome and Introduction                                                   |  |
 | **9:15-9:30 AM**      | Overview/Agenda                                                            |  |
-| **9:30-10:15 AM**     | Workflow/Pipelines                                                         |  |
-| **10:15-10:30 PM**    | Experiment Overview                                                        |  | 
+| **9:30-10:15 AM**     | Workflow/Pipelines                                                         | [:fontawesome-solid-file-pdf:](presentations/WorkflowPipelines_2025.pptx.pdf)  [:material-google-drive:](https://docs.google.com/presentation/d/1wcPAZtXrfxhNjgZ3ybf8HpalxwXA0hiA/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true) |
+| **10:15-10:30 PM**    | Experiment Overview                                                        | [:fontawesome-solid-file-pdf:](presentations/ExperimentOverview.pdf)  [:material-google-drive:](https://docs.google.com/presentation/d/17L_m7FCNNpf3oHADH1KmG3JKe0GoL2cV/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true)  | 
 | **10:30-10:45 PM**    | nf-core RNAseq Pipeline Setup & Launch                                     |  |
 | **10:45 AM-11:15 PM** | nf-core & Nextflow                                                         | [:fontawesome-solid-file-pdf:](presentations/Nextflow%20Intro%20ScRNAseq%20Course%20.pdf)  [:material-google-drive:](https://docs.google.com/presentation/d/1snmrYc-1p-QLnXuoKLGWlSPYg67aKnaWc9SnozmU8uI/edit?usp=sharing) |
 | **11:15-11:45 AM**    | Amazon Web Services                                                        | [:fontawesome-solid-file-pdf:](presentations/RSeaman_IntroAWS.pdf)  [:material-google-drive:](https://docs.google.com/presentation/d/155eGmkRz4Zu14BPptGgyqeL74ng49YMF/edit?usp=sharing&ouid=114088147174479208933&rtpof=true&sd=true) |
