@@ -83,7 +83,7 @@ Each cell contains exactly one value. No units attached to numbers, no notes emb
 
 ---
 
-??? question "Exercise — What is the problem with this data format?"
+???+ question "Exercise — What is the problem with this data format?"
     A field technician recorded the following survey data. Look at the columns carefully before reading on.
 
     | Date Collected | Plot | Species_Sex | Weight (g) |
@@ -93,9 +93,13 @@ Each cell contains exactly one value. No units attached to numbers, no notes emb
     | 7/18/2013 | 7 | DMM | 33 |
     | 8/19/2013 | 8 | DOF | 52 |
 
-    The `Species_Sex` column combines the species code and sex code into a single value: `DMM` means species `DM`, sex `M` (male); `DOF` means species `DO`, sex `F` (female). Which cardinal rule does this violate, and how would you fix it?
-
-    ??? success "Solution"
+    ??? success "Solution - part 1"
+        
+        The `Species_Sex` column combines the species code and sex code into a single value: `DMM` means species `DM`, sex `M` (male); `DOF` means species `DO`, sex `F` (female). 
+        **Which cardinal rule does this violate, and how would you fix it?**
+        
+    ??? success "Solution - part 2"
+    
         The `Species_Sex` column violates **Cells = Data** — one cell should hold exactly one value. By merging species and sex, you lose the ability to filter, sort, or analyze either variable on its own without writing a fragile parsing formula.
 
         The fix is to split the column into two, one variable each:
@@ -119,8 +123,36 @@ You will work with one file to start:
 
 [:fontawesome-solid-file-excel: Download Messy Data](survey_data_messy.xlsx){ .md-button .md-button--primary }
 
-!!! tip "Keep the raw file closed"
-    Once you download `survey_data_messy.xlsx`, **do not open it yet**. Step 1 of the workshop covers what to do before you touch any data.
+### Protect Your Raw Data
+
+Before you touch the data, there is one non-negotiable rule: **never edit your original file.**
+
+Duplicate `survey_data_messy.xlsx` and rename the copy `survey_data_clean.xlsx`. All of your work happens in the copy — the original stays closed.
+
+```
+survey_data_messy.xlsx    ← original; close it, never open it again
+survey_data_clean.xlsx    ← working copy; all edits happen here
+```
+
+!!! tip "Name your working copy clearly"
+    Use a suffix like `_clean`, `_working`, or today's date. Avoid `_final`, `_final2`, `_FINAL_v3` — those names always lie.
+
+**Keeping track of your changes:** Document every cleaning step like a lab procedure. Keep a plain-text file (e.g., `cleaning_notes.txt`) in the same folder as your data and write down what you changed and why. This makes your work reproducible and helps any future collaborator understand what happened to the original file.
+
+```
+# cleaning_notes.txt
+2024-11-01
+- Made working copy: survey_data_clean.xlsx
+- Removed blank rows separating tables in 2013 tab
+- Renamed column M/F → Sex
+...
+```
+
+!!! success "Key Points"
+    - Never edit your original data file.
+    - Work only on a named copy.
+    - Keep a plain-text log of every change you make.
+
 
 ### Reference Files
 
@@ -156,182 +188,163 @@ The dataset uses two-letter shorthand codes for species and integer IDs for plot
 
 ---
 
-## Workshop Roadmap
+## Your Task
 
-As you scroll, the table of contents on the right tracks where you are in the lesson.
+!!! abstract ":material-timer-outline: 10–15 minutes — Give it a try before scrolling further"
+    Open `survey_data_clean.xlsx` and **clean and combine the two tabs into one consistent, analysis-ready dataset.**
+
+    The file has two tabs — **2013** and **2014** — each recorded by a different field assistant. Your goal is a single flat table where every row is one observation and every column holds one variable.
+
+    Keep the reference files (species codes, plot types) open alongside your spreadsheet as you work.
+
+    **Don't aim for perfection on the first pass.** The goal is to notice problems and think through how you might fix them. We will work through each one together below.
+
+---
+
+## Cleaning Steps — Walkthrough
+
+*After your initial attempt, the steps below explain each problem you likely encountered and the reasoning behind every fix. If you are working through this independently, follow along step by step.*
 
 | Section | Topic | Theme |
 |---------|-------|-------|
-| [Steps 1–2](#step-1-protect-your-raw-data) | Setup and table structure | Formatting Data Tables |
-| [Steps 3–5](#step-3-one-piece-of-information-per-cell) | Cell and column hygiene | Common Spreadsheet Errors |
-| [Steps 6–7](#step-6-never-encode-data-in-formatting) | Formatting and comments | Common Spreadsheet Errors |
-| [Steps 8–9](#step-8-represent-missing-data-consistently) | Missing values and dates | Common Spreadsheet Errors |
-| [Step 10](#step-10-quality-control) | Checking for errors | Quality Control |
+| [Step 1](#step-1-one-table-per-sheet) | One table per sheet | Formatting Data Tables |
+| [Steps 2–4](#step-2-one-piece-of-information-per-cell) | Cell and column hygiene | Common Spreadsheet Errors |
+| [Steps 5–6](#step-5-never-encode-data-in-formatting) | Formatting and comments | Common Spreadsheet Errors |
+| [Steps 7–8](#step-7-represent-missing-data-consistently) | Missing values and dates | Common Spreadsheet Errors |
+| [Step 9](#step-9-quality-control) | Checking for errors | Quality Control |
 | [Metadata](#metadata) | Documenting your data | Metadata |
 | [Export](#exporting-your-data) | Saving in open formats | Exporting Data |
 
 ---
 
-## Step 1 — Protect Your Raw Data
+## Step 1: One Table Per Sheet
 
-**The problem:** You receive a spreadsheet from a colleague and immediately start fixing things in place. Two hours later you realize you deleted a column, accidentally overwrote several values, and can no longer tell what the original data looked like. Raw data is the ground truth. Once it is gone, it is gone.
+**The problem:** Open the **2013** tab. Instead of one flat table, you will find **three sub-tables laid out side by side across the columns**, with blank columns separating them. Look at the first three rows:
 
-**The fix:** Before touching anything, duplicate the file and rename the copy.
-
-```
-survey_data_messy.xlsx    ← original; close it, never open it again
-survey_data_clean.xlsx    ← working copy; all edits happen here
-```
-
-!!! tip "Name your working copy clearly"
-    Use a suffix like `_clean`, `_working`, or today's date. Avoid `_final`, `_final2`, `_FINAL_v3` — those names always lie.
-
-**Keeping track of your changes:** Document every cleaning step just like you would record a lab procedure. Create a plain-text file (e.g., `cleaning_notes.txt`) in the same folder as your data and write down what you changed and why. This makes your work reproducible and helps collaborators (or future-you) understand what happened to the raw data.
+- Row 1: A title — "2013 Field Season"
+- Row 2: Sub-table labels — **"Species: DM"**, **"Species: DO"**, **"Species: DS"**
+- Row 3: Each sub-table's own header row — Date Collected, Plot, M/F (or Sex), Weight
 
 ```
-# cleaning_notes.txt
-2024-11-01
-- Made working copy: survey_data_clean.xlsx
-- Removed blank rows separating tables in 2013 tab
-- Renamed column M/F → Sex
-...
+        | Species: DM                      |   | Species: DO                   |   | Species: DS
+Row 3:  | Date Collected | Plot | M/F | Wt |   | Date Collected | Plot | Sex | Wt |   | Date Collected | Plot | Sex    | Wt
+Row 4:  | 7/16/2013      |  2   |  F  |  0 |   | 8/19/2013      |  8   |  F  | 52 |   | 11/12/2013     |  9   | Female | 117
+Row 5:  | 7/16/2013      |  7   |  M  | 33g|   | 10/17/2013     |  3   |  F  | 33 |   | 11/12/2013     |  1   | Female | 121
 ```
 
-!!! warning "Everything from here forward happens in survey_data_clean.xlsx"
-    The messy file stays closed for the rest of the workshop.
+Crucially, **none of the three sub-tables has a Species column** — the species identity lives only in the row 2 label above the table. The same side-by-side layout applies to the **2014** tab, which has sub-tables labeled Plot 1, Plot 2, and Plot 3 across the top — none with a Plot column — and a separate Plot 4 section below with entirely different column names (`species_sex`, `wgt`).
 
-??? question "Exercise 1.1 — Make your working copy"
-    1. Right-click `survey_data_messy.xlsx` → **Duplicate** (Mac) or **Copy → Paste** (Windows).
-    2. Rename the copy `survey_data_clean.xlsx`.
-    3. Open `survey_data_clean.xlsx`. You are ready to begin.
+**Why this breaks things:** When software imports the spreadsheet row by row, it reads each row as one observation. Row 4 above contains data from two different animals in two different sub-tables — the software has no way to distinguish them, and they become one garbled record. Worse, because the species identity only exists in a label cell above the data and not in any column, it is permanently lost on import. The computer cannot read the label and infer what species each row belongs to.
 
-    ??? success "Check"
-        Two files should now exist side by side:
+**The fix:** For each sub-table, add a column for the variable that differentiates it, then stack all sub-tables vertically into one flat table.
 
-        - `survey_data_messy.xlsx` — closed, untouched
-        - `survey_data_clean.xlsx` — open in Excel
+- **2013:** Add a `Species` column to each sub-table and fill every row with the appropriate code (DM, DO, or DS from the label above). Then copy the rows from the DO and DS sub-tables and paste them below the DM rows to create one combined table.
+- **2014:** Add a `Plot` column to each sub-table and fill it with the plot number (1, 2, 3, or 4). Then stack all four. *(Plot 4's different column names are addressed in the next steps.)*
 
-!!! success "Key Points"
-    - Never edit your original data file.
-    - Work only on a named copy.
-    - Keep a plain-text log of every change you make.
-
----
-
-## Step 2 — One Table Per Sheet
-
-**The problem:** Open the **2013** tab. The data is not one continuous table — there are multiple sub-tables stacked in the same sheet, separated by blank rows and repeated header rows:
-
-```
-Date Collected | Plot | M/F | Weight | Species
-7/16/2013      |  1   |  M  |   0    | DM
-7/16/2013      |  2   |  F  |   0    | DM
-               |      |     |        |          ← blank row
-Date Collected | Plot | M/F | Weight | Species  ← repeated header
-8/19/2013      |  8   |  F  |  52    | DO
-```
-
-In 2013 the tables are split by **species**. In 2014 they are split by **plot**.
-
-**Why this breaks things:** Analysis tools (R, Python, Excel pivot tables) expect a single rectangular table with exactly one header row. Blank rows and repeated headers cause silent import errors — your software will either crash or silently discard half the data. There is also no way to filter or sort across both sub-tables at once.
-
-**The fix:** The species and plot information is already recorded in every row as column values — so the sub-table breaks are redundant. Delete the blank rows and repeated header rows so everything becomes one continuous table.
-
-=== "Before (messy)"
+=== "Before (2013 — side by side)"
 
     ```
-    Date Collected | Plot | M/F | Weight | Species
-    7/16/2013      |  1   |  M  |   0    | DM
-    7/16/2013      |  2   |  F  |   0    | DM
-                   |      |     |        |          ← blank row
-    Date Collected | Plot | M/F | Weight | Species  ← repeated header
-    8/19/2013      |  8   |  F  |  52    | DO
+              Species: DM                  |   | Species: DO                  |   | Species: DS
+    Date       | Plot | M/F | Weight       |   | Date       | Plot | Sex | Wt  |   | Date       | Plot | Sex    | Weight
+    7/16/2013  |  2   |  F  |  0           |   | 8/19/2013  |  8   |  F  | 52  |   | 11/12/2013 |  9   | Female |  117
+    7/16/2013  |  7   |  M  | 33g          |   | 10/17/2013 |  3   |  F  | 33  |   | 11/12/2013 |  1   | Female |  121
     ```
 
-=== "After (clean)"
+=== "After (stacked, Species column added)"
 
     ```
-    Date Collected | Plot | M/F | Weight | Species
-    7/16/2013      |  1   |  M  |   0    | DM
-    7/16/2013      |  2   |  F  |   0    | DM
-    8/19/2013      |  8   |  F  |  52    | DO
+    Date_Collected | Plot | Sex | Weight | Species
+    7/16/2013      |  2   |  F  |        | DM
+    7/16/2013      |  7   |  M  | 33     | DM
+    8/19/2013      |  8   |  F  | 52     | DO
+    11/12/2013     |  9   |  F  | 117    | DS
     ```
+    *Units, zeros, and "Female" vs. "F" are cleaned in later steps.*
 
 !!! tip "Freeze the header row"
-    After flattening the table, freeze the top row so column names stay visible as you scroll: **View → Freeze Top Row**. This avoids needing to repeat the header.
+    After combining into one table, freeze the top row so column names stay visible as you scroll: **View → Freeze Top Row**.
 
-??? question "Exercise 2.1 — Flatten the 2013 tab"
-    1. Scroll through the **2013** tab and find all blank rows and repeated header rows.
-    2. Delete each one.
-    3. The result should be one continuous table with exactly one header row at the top.
-
-    **Hint:** Press **Ctrl+End** (Mac: **Cmd+End**) to jump to the last cell and see how far the data extends.
-
-    ??? success "Solution"
-        There are two blank-row / repeated-header dividers in the 2013 data. After removing them, the tab should have one header row followed by continuous data with no gaps.
-
-??? question "Exercise 2.2 — Flatten the 2014 tab"
-    Repeat the same process for the **2014** tab. Here the sub-tables are divided by plot number rather than species.
+??? question "Exercise 1.1 — Add a Species column and stack the 2013 sub-tables"
+    1. In the **2013** tab, identify which columns belong to the DM sub-table, which to DO, and which to DS.
+    2. In each sub-table, insert a new column labeled `Species` and fill every data row with the appropriate code (DM, DO, or DS).
+    3. Copy all data rows from the DO and DS sub-tables.
+    4. Paste them below the DM data rows, aligning columns so the same type of information sits in the same column.
+    5. Delete the original side-by-side layout once all rows are stacked.
 
     ??? success "Solution"
-        Remove all blank rows and repeated header rows in the 2014 tab. The result is one uninterrupted table.
+        After this step the 2013 tab should have one flat table with columns: Date Collected, Plot, M/F (or Sex), Weight, Species. Each row should have a species code. There should be no side-by-side sections remaining.
+
+??? question "Exercise 1.2 — Add a Plot column and stack the 2014 sub-tables"
+    Repeat the same process for the **2014** tab. Plots 1–3 are side by side at the top; Plot 4 is in a separate section below. Add a `Plot` column to each sub-table and stack all four.
+
+    **Note:** Plot 4 uses different column names (`species_sex`, `wgt`) — add the Plot column and stack, but fix the column names in the next steps.
+
+    ??? success "Solution"
+        After this step the 2014 tab should have one flat table with a `Plot` column and all four plots' data stacked vertically under one header row.
 
 ??? question "Check Your Understanding"
-    Why is it safe to delete the sub-table dividers rather than keeping separate tables per species or plot?
+    Why can't you just copy and paste the sub-tables together without first adding a Species or Plot column?
 
     ??? success "Answer"
-        Because the species and plot values are already recorded as column entries in every row. The blank rows and repeated headers conveyed no additional information — they were visual separators that happen to break every analysis tool.
+        Because the species or plot identity exists only in the label above each sub-table, not as a column value in the data. Once you stack the rows, there is no way to tell which species or plot each row came from — that information would be permanently lost. You must add the column first to preserve it.
 
 !!! success "Key Points"
-    - Each sheet contains exactly one table with exactly one header row.
-    - Never use blank rows or repeated headers to separate groups within a dataset.
-    - If you need to distinguish groups, add a column that encodes the group as a value.
+    - Side-by-side sub-tables are just as problematic as stacked ones — both break every analysis tool.
+    - When a variable (species, plot, year) separates sub-tables, add it as a column in each sub-table before combining.
+    - After stacking, verify that the same type of data sits in the same column across all rows.
 
 ---
 
-## Step 3 — One Piece of Information Per Cell
+## Step 2: One Piece of Information Per Cell
 
-**The problem:** In the **2014** tab, the data for **Plot 4** has species and sex merged into a single cell:
+**The problem:** After stacking the 2014 sub-tables in Step 1, Plot 4's data has a column named `species_sex` that combines the species code and sex code into one value:
 
-| Date Collected | Plot | Species_Sex | Weight |
-|---------------|------|-------------|--------|
-| 1/8/2014 | 4 | F_DM | 37 |
-| 1/8/2014 | 4 | M_DM | 45 |
-| 1/8/2014 | 4 | F_DS | 128 |
+| Date collected | Plot | species_sex | wgt |
+|---------------|------|-------------|-----|
+| 1/8/1978 | 4 | DM_F | 37 |
+| 1/8/1978 | 4 | DM_F | 42 |
+| 1/8/1978 | 4 | DM_M | 37 |
+| 1/8/1978 | 4 | DS_F | 128 |
 
-**Why this breaks things:** You cannot filter by species alone or by sex alone. Extracting either value requires a parsing formula — fragile, invisible to collaborators, and broken by any inconsistency. In the actual data, the order sometimes appears as `F_DM` and sometimes as `DM_F`, so even parsing fails silently.
+*(The 1978 dates are also wrong — that is a date problem addressed in Step 8. The column name `wgt` is a field-naming problem addressed in Step 3.)*
 
-**The fix:** Split the combined column into separate `Species` and `Sex` columns using **Data → Text to Columns → Delimited → `_`**.
+`DM_F` means species DM, sex F (female). `DM_M` means species DM, sex M (male).
+
+**Why this breaks things:** You cannot filter by species alone or by sex alone. Extracting either value requires a parsing formula — fragile, invisible to collaborators, and impossible to apply consistently if the format ever varies.
+
+**The fix:** Split the `species_sex` column into two separate columns — `Species` and `Sex` — using **Data → Text to Columns → Delimited → `_`**. The species code always comes first.
 
 === "Before (messy)"
 
-    | Date Collected | Plot | Species_Sex | Weight |
-    |---------------|------|-------------|--------|
-    | 1/8/2014 | 4 | F_DM | 37 |
-    | 1/8/2014 | 4 | M_DM | 45 |
-    | 1/8/2014 | 4 | F_DS | 128 |
+    | Date collected | Plot | species_sex | wgt |
+    |---------------|------|-------------|-----|
+    | 1/8/1978 | 4 | DM_F | 37 |
+    | 1/8/1978 | 4 | DM_M | 37 |
+    | 1/8/1978 | 4 | DS_F | 128 |
 
 === "After (clean)"
 
-    | Date Collected | Plot | Species | Sex | Weight |
+    | Date_Collected | Plot | Species | Sex | Weight |
     |---------------|------|---------|-----|--------|
     | 1/8/2014 | 4 | DM | F | 37 |
-    | 1/8/2014 | 4 | DM | M | 45 |
+    | 1/8/2014 | 4 | DM | M | 37 |
     | 1/8/2014 | 4 | DS | F | 128 |
+
+    *The column renames (`wgt` → `Weight`, `Date collected` → `Date_Collected`) and the date correction (1978 → 2014) are handled in Steps 3 and 8.*
 
 !!! tip "One variable, one column — always"
     If you find yourself putting a separator character (`_`, `/`, `;`) inside a cell to pack two things together, that is a sign you need another column.
 
-??? question "Exercise 3.1 — Split Species_Sex"
-    1. In the **2014** tab, find the `Species_Sex` column.
+??? question "Exercise 2.1 — Split species_sex"
+    1. In the **2014** tab, find the `species_sex` column in the Plot 4 rows.
     2. Insert two new blank columns to its right: `Species` and `Sex`.
-    3. Use **Data → Text to Columns** (delimited by `_`) to split the values.
-    4. Verify the split, then delete the original `Species_Sex` column.
+    3. Use **Data → Text to Columns** (delimited by `_`) to split the values — species code lands in the first column, sex code in the second.
+    4. Verify the split, then delete the original `species_sex` column.
 
-    **Note:** After merging tabs in Step 5, these two columns must sit in the same positions as the 2013 data.
+    **Note:** After merging tabs in Step 4, these two columns must sit in the same positions as the 2013 data.
 
     ??? success "Solution"
-        Each row that had `F_DM` should now have `DM` in Species and `F` in Sex. Check for reversed-order entries like `DM_F` — these need to be corrected manually so Species always contains the code and Sex always contains `M` or `F`.
+        Each row that had `DM_F` should now have `DM` in the Species column and `F` in the Sex column. Check every row to confirm the split is consistent — species is always a two-letter code, sex is always `M` or `F`.
 
 ??? question "Check Your Understanding"
     A student records GPS coordinates as `"44.3N, 68.2W"` in one cell. What should they do instead?
@@ -346,47 +359,47 @@ In 2013 the tables are split by **species**. In 2014 they are split by **plot**.
 
 ---
 
-## Step 4 — Write Clean Field Names
+## Step 3: Write Clean Field Names
 
-**The problem:** Two column names in the 2013 header row cause problems immediately:
+**The problem:** After combining the sub-tables, the dataset has several field-name problems — and they are not all in the same places. Each sub-table was entered by a different person, so inconsistencies crept in:
 
-- **`M/F`** — contains a special character and is ambiguous about what the values mean
-- **`Date Collected`** — contains a space
+- **2013 DM sub-table:** uses `M/F` for the sex column (special character; ambiguous)
+- **2013 DO and DS sub-tables:** use `Sex` — different from the DM sub-table in the same tab
+- **All sub-tables:** use `Date Collected` or `Date collected` (space; inconsistent capitalization across tabs)
+- **2014 Plot 4:** uses `wgt` instead of `Weight` (abbreviation; doesn't match other sub-tables)
 
-The same issues appear in the 2014 tab.
+This means the same piece of information has three different names across the combined dataset — `M/F`, `Sex`, and (implicitly after splitting) `Sex` from Plot 4. Before stacking any rows, all column names must match exactly.
 
-**Why this breaks things:** Spaces in column names must be quoted in every programming language (`df["Date Collected"]` vs. `df$Date_Collected`). Forgetting the quotes is a common error. Special characters (`/`, `%`, `#`, `(`, `)`) are operators or reserved symbols in most tools and cause syntax errors on import. `M/F` also doesn't tell you what the values are.
+**Why this breaks things:** Spaces in column names must be quoted in every programming language. Special characters cause syntax errors. Inconsistent naming (`M/F` vs `Sex`) means software treats them as different columns, splitting data that belongs together.
 
 **The rules for good field names:**
 
 | Rule | Bad | Good |
 |------|-----|------|
 | No spaces | `Date Collected` | `Date_Collected` |
-| No special characters | `M/F`, `Weight(g)` | `Sex`, `Weight` |
-| Descriptive | `x`, `col1` | `plot_id`, `weight_g` |
+| No special characters | `M/F` | `Sex` |
+| Descriptive | `wgt`, `col1` | `Weight` |
 | No leading numbers | `2023_count` | `count_2023` |
 | Consistent style | `PlotID`, `sex`, `WEIGHT` | `plot_id`, `sex`, `weight` |
 
 !!! note "Underscores vs. CamelCase"
     Both `date_collected` and `DateCollected` are acceptable — pick one style and apply it everywhere in the file.
 
-!!! tip "Abbreviations in field names"
-    Abbreviations like `sp` or `wt` save space but can confuse collaborators. If you use them, document their meaning in your data dictionary (covered in the [Metadata](#metadata) section below).
-
 **The fix for this dataset:**
 
-| Old Name | New Name | Reason |
-|----------|----------|--------|
-| `M/F` | `Sex` | Descriptive; no special character |
-| `Date Collected` | `Date_Collected` | No space (we will break this into Y/M/D in Step 9) |
+| Old Name | Where | New Name | Reason |
+|----------|-------|----------|--------|
+| `M/F` | 2013 DM sub-table | `Sex` | Matches the other sub-tables; no special character |
+| `Date Collected` / `Date collected` | All sub-tables | `Date_Collected` | No space; consistent casing across all tables |
+| `wgt` | 2014 Plot 4 | `Weight` | Descriptive; matches every other sub-table |
 
-??? question "Exercise 4.1 — Fix the field names"
-    1. In both the **2013** and **2014** tabs, rename `M/F` → `Sex`.
-    2. Rename `Date Collected` → `Date_Collected`.
-    3. Scan all remaining headers for any other spaces or special characters.
+??? question "Exercise 3.1 — Fix the field names"
+    1. In the stacked **2013** data, rename `M/F` → `Sex` and `Date Collected` → `Date_Collected`.
+    2. In the stacked **2014** data, rename `Date collected` → `Date_Collected` and `wgt` → `Weight`.
+    3. Scan every header in both tabs for any remaining spaces, special characters, or abbreviations.
 
     ??? success "Solution"
-        After this step, both tabs should have clean headers: `Date_Collected | Plot | Sex | Weight | Species`. No spaces, no symbols anywhere.
+        After this step, both tabs should have identical headers: `Date_Collected | Plot | Sex | Weight | Species`. Confirm there are no remaining spaces or symbols in any column name.
 
 ??? question "Check Your Understanding"
     Which of these column names are problematic?
@@ -410,7 +423,7 @@ The same issues appear in the 2014 tab.
 
 ---
 
-## Step 5 — Consolidate Data Across Tabs
+## Step 4: Consolidate Data Across Tabs
 
 **The problem:** Your working file has two tabs: **2013** and **2014**. Splitting records across tabs by year (or batch, or site) is common — and it creates chronic headaches downstream.
 
@@ -460,27 +473,32 @@ The same issues appear in the 2014 tab.
 
 ---
 
-## Step 6 — Never Encode Data in Formatting
+## Step 5: Never Encode Data in Formatting
 
-**The problem:** In the original messy file, some cells in the `Weight` column are **highlighted red**. The field team used this color to mark samples where the scale had not yet been zeroed — meaning those weight readings may be inaccurate. This is real, scientifically important information — but it lives only in a color.
+**The problem:** In the messy file, calibration status is communicated in two different ways by two different field assistants — and neither is stored as a real data value:
 
-**Why this breaks things:** Cell color is completely invisible to every analysis tool. When you import the spreadsheet into Python, R, or any database, the color disappears and so does the information. Colors are also lost when copying and pasting, cannot be filtered or counted, and their meaning is undocumented and subjective.
+1. **2013 DS sub-table:** Calibration notes are embedded as text inside the weight cells themselves: `"132 (scale not calibrated)"`, `"113 (scale not callibtrated)"` *(note the typo — another reason free-text in cells is fragile)*.
+2. **2014 (Plots 1–3):** A note reads *"gray cell means my measurement device wasn't calibrated correctly"* — the uncalibrated records are marked only by cell shading.
+
+Both are real, scientifically important pieces of information. Neither can be read by any analysis tool.
+
+**Why this breaks things:** Cell color is invisible on import and is lost when copying. Text embedded in a numeric cell turns that cell into a string, breaking every sum and average. The meaning of either convention is undocumented unless you happen to notice the note or the coloring — a new collaborator would have no idea. And because the two field assistants used *different* conventions, you must hunt through the whole dataset to find all uncalibrated records.
 
 Other common formatting traps:
 
 - **Bold** text to flag outliers
-- **Italic** text to indicate estimated values
+- **Italic** to indicate estimated values
 - **Merged cells** spanning a group label
-- **Blank rows** used as visual separators (handled in Step 2)
 
-**The fix:** Add a real column. Here, add a `Calibrated` column with values `Y` (scale was zeroed) or `N` (not zeroed). Use the coloring as a guide to fill in the values, then strip all cell colors.
+**The fix:** Add a `Calibrated` column with values `Y` (scale was zeroed) or `N` (not zeroed). Use the notes and the cell shading as a guide, then remove both — the text notes are cleaned as part of Step 6, and the cell colors are cleared here.
 
 === "Before (messy)"
 
-    | Date_Collected | Plot | Sex | Weight | Species |
+    | Date Collected | Plot | Sex | Weight | Species |
     |---------------|------|-----|--------|---------|
-    | 11/13/2013 | 14 | F | 113 | DS | ← *red fill* |
-    | 11/13/2013 | 17 | M | 132 | DS | ← *red fill* |
+    | 11/13/2013 | 14 | Female | `113 (scale not callibtrated)` | DS | ← *note in cell* |
+    | 11/13/2013 | 17 | Male | `132 (scale not calibrated)` | DS | ← *note in cell* |
+    | 1/8/2014 | 2 | M | 157 | DS | ← *gray fill* |
 
 === "After (clean)"
 
@@ -488,18 +506,20 @@ Other common formatting traps:
     |---------------|------|-----|--------|---------|-----------|
     | 11/13/2013 | 14 | F | 113 | DS | N |
     | 11/13/2013 | 17 | M | 132 | DS | N |
-    | 7/16/2013 | 1 | M | | DM | Y |
+    | 1/8/2014 | 2 | M | 157 | DS | N |
+    | 7/16/2013 | 2 | F | | DM | Y |
 
-??? question "Exercise 6.1 — Add the Calibrated column"
+??? question "Exercise 5.1 — Add the Calibrated column"
     1. Add a new column called `Calibrated` to the right of `Weight`.
-    2. For each row highlighted red in the original file, enter `N`.
-    3. For every other row, enter `Y`.
-    4. Clear all cell colors: select all cells → **Home → Fill Color → No Fill**.
+    2. For every row where weight has a calibration note embedded in the cell, enter `N`.
+    3. For every row with gray cell shading indicating a calibration issue, enter `N`.
+    4. For every other row, enter `Y`.
+    5. Clear all cell colors: select all cells → **Home → Fill Color → No Fill**. (Leave the note text in the weight cells for now — that is cleaned in Step 6.)
 
     **Reference:** The final cleaned dataset has exactly **4 rows** with `N` in `Calibrated`.
 
     ??? success "Solution"
-        Filter `Calibrated` for `N` — you should see exactly 4 rows. All 4 are `DS` records. Remove all remaining cell coloring from the sheet.
+        Filter `Calibrated` for `N` — you should see exactly 4 rows, all `DS` records. Verify that the weight cells for these 4 rows still contain their embedded text (you will clean that in Step 6). Remove all remaining cell coloring from the sheet.
 
 ??? question "Check Your Understanding"
     A researcher uses **bold font** in a species count spreadsheet to flag "species of special concern." Is this acceptable?
@@ -513,51 +533,58 @@ Other common formatting traps:
 
 ---
 
-## Step 7 — Keep Cells Free of Comments and Units
+## Step 6: Keep Cells Free of Comments and Units
 
-**The problem:** Two issues remain:
+**The problem:** Two issues remain in the `Weight` column, both from the **2013** data:
 
-1. Some `Weight` cells contain the value plus the unit: `33g`, `52g`
-2. Some cells contain a text annotation typed directly into the cell, e.g., `"needs recalibration"`
+1. **Units embedded in cells (2013 DM sub-table):** Weights were entered with a `g` suffix — `33g`, `40g`, `48g`, etc. This makes every value a text string.
+2. **Calibration notes embedded in cells (2013 DS sub-table):** Two weight cells contain the value plus a parenthetical note — `"132 (scale not calibrated)"`, `"113 (scale not callibtrated)"`. These are also text strings, not numbers.
 
-**Why this breaks things:** `33g` is a text string, not a number. Excel will not sum it, and R/Python will import it as missing. A text comment in a numeric cell makes the entire column a mixed type — once you mix text and numbers in a column, that column is broken for any calculation.
+The calibration status is now tracked in the `Calibrated` column from Step 5. The notes in the weight cells are redundant and need to be removed so the column is purely numeric.
+
+**Why this breaks things:** `33g` is a text string, not a number. Excel will not sum it, and R/Python will import it as missing. Once any cell in a column is text, software may treat the entire column as text — silently discarding it from any numerical analysis.
 
 **The fix:**
 
-1. **Units:** Strip the unit suffix from all cell values. Record the unit once in the column header (`weight_g`) or in the data dictionary.
-2. **Comments:** The calibration issue is already handled by the `Calibrated` column from Step 6. Remove any remaining embedded text from numeric cells.
+1. **Strip the `g` suffix** from all weight cells (2013 DM data).
+2. **Remove the calibration notes** from weight cells (2013 DS data), leaving only the numeric value.
 
 === "Before (messy)"
 
     ```
-    Weight
-    33g
-    52g
-    needs recalibration
-    41g
+    Weight (2013 DM rows)       Weight (2013 DS rows)
+    33g                         117
+    40g                         121
+    48g                         132 (scale not calibrated)
+    29g                         113 (scale not callibtrated)
     ```
 
 === "After (clean)"
 
     ```
-    Weight
+    Weight (all rows)
     33
-    52
-
-    41
+    40
+    48
+    29
+    117
+    121
+    132
+    113
     ```
 
 !!! tip "Where to record units"
     Include units in the column header (`weight_g`, `length_mm`, `temp_celsius`) or document them in a data dictionary (covered in the [Metadata](#metadata) section). Never put units in individual cells.
 
-??? question "Exercise 7.1 — Clean the Weight column"
+??? question "Exercise 6.1 — Clean the Weight column"
     1. Select the `Weight` column only.
-    2. Use **Ctrl+H** (Find & Replace): find `g`, replace with nothing.
-    3. Find any cells with text comments and delete them. Confirm those rows have `N` in `Calibrated`.
-    4. Verify the entire column contains only numbers or empty cells.
+    2. Use **Ctrl+H** (Find & Replace): find ` g` (space + g) and replace with nothing to strip the unit suffix from the DM rows.
+    3. For the DS rows with embedded calibration notes, delete everything after the number — leave only the integer value.
+    4. Confirm those rows already have `N` in the `Calibrated` column.
+    5. Verify the entire `Weight` column contains only numbers or empty cells — no text.
 
     ??? success "Solution"
-        Selecting the column before Find & Replace is critical — a sheet-wide replacement of `g` would also strip the `g` from species codes like `DM` and `DO`.
+        Selecting the column before Find & Replace is critical — a sheet-wide replacement would also strip `g` from species codes like `DM` and `DO`. For the calibration notes, it may be easier to edit those 2–4 cells manually since the note text is not identical across cells (one has a typo: "callibtrated").
 
 ??? question "Check Your Understanding"
     A form records temperature as `"37.2C"`, time as `"10 min"`, and pH as `"7.4"`. Which need fixing?
@@ -572,7 +599,7 @@ Other common formatting traps:
 
 ---
 
-## Step 8 — Represent Missing Data Consistently
+## Step 7: Represent Missing Data Consistently
 
 **The problem:** Three different representations of "no data recorded" appear across the dataset:
 
@@ -644,11 +671,16 @@ Other common formatting traps:
 
 ---
 
-## Step 9 — Store Dates Safely
+## Step 8: Store Dates Safely
 
 **The problem:** Dates are the single most dangerous data type in spreadsheets. Excel's automatic date interpretation causes more invisible data corruption than almost anything else.
 
-Open the `Date_Collected` column. Some 2014 entries are missing the year — the data entry person wrote `1/8` instead of `1/8/2014`. Excel silently interpreted these as the **current year** and auto-filled them as **2025** (or whatever year was current when the file was saved). Records from 2014 now appear to be from 2025.
+Open the `Date_Collected` column. Several 2014 entries are missing the year — the data entry person wrote `1/8` or `3/11` instead of `1/8/2014` or `3/11/2014`. Excel filled the missing year in two different ways depending on context:
+
+- **Plot 3 rows:** dates show **2025** — Excel assumed the current year when the year was omitted.
+- **Plot 4 rows:** dates show **1978** — an older or differently-configured Excel version interpreted the partial date differently, landing on a nonsensical year.
+
+Both are wrong, but they fail in different ways, which is exactly why date problems are so dangerous: they do not always produce an obvious error. A 2025 date might be noticed; a 1978 date in an ecology dataset about 2014 fieldwork is harder to catch.
 
 Additionally, Excel stores all dates internally as serial integers and renders them based on regional settings. `7/16/2013` on your computer may display as `16/7/2013` on a European colleague's, or as the raw integer `41471` if the cell format accidentally changes.
 
@@ -692,7 +724,7 @@ This is the safest and most portable representation: no regional ambiguity, immu
     5. Delete the original `Date_Collected` column.
 
     ??? success "Solution"
-        After splitting, `Year` should contain only `2013` and `2014`. Any `2025` values are the rows where the year was missing at entry. Correct each to `2014`.
+        After splitting, `Year` should contain only `2013` and `2014`. Both `2025` values (Plot 3 rows) and `1978` values (Plot 4 rows) are errors where the year was missing at entry. Correct all of them to `2014`.
 
 ??? question "Exercise 9.2 — Verify no empty date fields"
     Filter each of the three date columns for blanks. All three should be fully populated.
@@ -713,7 +745,7 @@ This is the safest and most portable representation: no regional ambiguity, immu
 
 ---
 
-## Step 10 — Quality Control
+## Step 9: Quality Control
 
 **The problem:** Even after fixing all structural issues, individual values may still be wrong. QC is the final check: verifying that every value in every column falls within its expected range or set of valid values.
 
@@ -723,15 +755,15 @@ This is the safest and most portable representation: no regional ambiguity, immu
 
     **Expected:** `M`, `F`, or blank
 
-    **Look for:** `Male`, `Female`, `m`, `f`, trailing spaces like `M ` (invisible but breaks matching)
+    **What's actually in the data:** The 2013 DS sub-table used `Female` and `Male` instead of `F` and `M`.
 
-    Fix with Find & Replace.
+    Fix with Find & Replace: `Female` → `F`, `Male` → `M`.
 
 === "Plot"
 
     **Expected:** integers 1–24
 
-    **Look for:** values outside 1–24, decimals, blanks
+    **What's actually in the data:** The 2013 DO sub-table has a value of **32** — which does not correspond to any real plot. This is a data entry error (possibly a transposition of `23`). Flag it and check the original field notes.
 
     Sort ascending — values outside range appear at the ends.
 
@@ -739,7 +771,7 @@ This is the safest and most portable representation: no regional ambiguity, immu
 
     **Expected:** `2013`, `2014`
 
-    **Look for:** `2025` (auto-filled by Excel in Step 9), two-digit years, blanks
+    **What's actually in the data:** `2025` (Plot 3 rows) and `1978` (Plot 4 rows), both corrected in Step 8. Verify none remain.
 
 === "Species"
 
