@@ -1,31 +1,37 @@
-site_name: MDIBL Comparative Genomics and Data Science Core
+site_name: Introduction to Data Science
 nav:
   - Home: index.md
   - About:
     - Team: home/team.md
     - Contact: home/contact.md
-  - Bioinformatics Bits: 
+  - Introduction to Data Science:
+    - introDataScience/index.md
+    - Data Organization in Spreadsheets: dataOrganization/index.md
+    - Managing Data & Projects for Genomics: genomics/index.md
+    - Introduction to R & RStudio: introR/index.md
+    - Introduction to Data Visualization in R: dataViz/index.md
+  - Bioinformatics Bits:
     - bits/index.md
     - Bit 1: bits/bit1.md
     - Bit 2: bits/bit2.md
-  - Introduction to Workflows in the Cloud Course:
-    - introToCloudCourse/index.md
-    - Instructors: introToCloudCourse/instructors.md
-    - Learning Resources: introToCloudCourse/learningResources.md
-    - Arrival: introToCloudCourse/arrival.md
-    - Sequin: introToCloudCourse/sequin.md
   - Course Archives:
     - courseArchives/index.md
+    - Introduction to Workflows in the Cloud 2025:
+      - introToCloudCourse/index.md
+      - Instructors: introToCloudCourse/instructors.md
+      - Learning Resources: introToCloudCourse/learningResources.md
+      - Arrival: introToCloudCourse/arrival.md
+      - Sequin: introToCloudCourse/sequin.md
     - ScRNAseq in the Cloud:
-      - courseArchives/scrnaseq2024/index.md 
-      - Insctructors: courseArchives/scrnaseq2024/instructors.md
+      - courseArchives/scrnaseq2024/index.md
+      - Instructors: courseArchives/scrnaseq2024/instructors.md
       - Learning Resources: courseArchives/scrnaseq2024/learning_resources.md
       - Arrival: courseArchives/scrnaseq2024/arrival.md
       - Launch: courseArchives/scrnaseq2024/launch.md
       - Debug: courseArchives/scrnaseq2024/debug.md
       - Output: courseArchives/scrnaseq2024/output.md
       - Loupe Browser: courseArchives/scrnaseq2024/loupe.md
-    - Introduction to Workflows in the Cloud: 
+    - Introduction to Workflows in the Cloud:
       - courseArchives/introCloud2024/index.md
       - Instructors: courseArchives/introCloud2024/instructors.md
       - Learning Resources: courseArchives/introCloud2024/learningResources.md
@@ -34,13 +40,14 @@ nav:
 theme:
   name: material
   icon:
-    logo: simple/mediapipe       
-  features: 
+    logo: simple/mediapipe
+  features:
     - navigation.indexes
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.footer
+    - toc.follow
     - search.suggest
     - search.highlight
     - content.tabs.link
@@ -49,13 +56,13 @@ theme:
   language: en
   palette:
     - scheme: default
-      toggle: 
+      toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to Dark Mode
       primary: custom
       accent: custom
     - scheme: slate
-      toggle: 
+      toggle:
         icon: material/toggle-switch
         name: Switch to Light Mode
       primary: custom
@@ -74,3 +81,5 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      toc_depth: 3

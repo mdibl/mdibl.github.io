@@ -1,8 +1,15 @@
-???+ info "Upcoming Course"
+???+ info "Upcoming Workshops — Introduction to Data Science Series"
 
-    Join us for a one-day **Introduction to Workflows in the Cloud** course on May 2nd, 2025.
-    
-    [Course Page :octicons-link-external-16:](introToCloudCourse/index.md){ .md-button .md-button--primary }
+    Join us this June for Wednesday workshops, **3:30 - 5 PM in the Davis Classroom**, at MDI Biological Laboratory.
+
+    | Date | Workshop |
+    |------|----------|
+    | June 3, 2026 | [Data Organization in Spreadsheets](dataOrganization/index.md) |
+    | June 10, 2026 | [Managing Data & Projects for Genomics](genomics/index.md) |
+    | June 17, 2026 | [Introduction to R & RStudio](introR/index.md) |
+    | June 24, 2026 | [Introduction to Data Visualization in R](dataViz/index.md) |
+
+    [Learn More :octicons-arrow-right-24:](introDataScience/index.md){ .md-button .md-button--primary }
 
 # MDIBL Comparative Genomics and Data Science Core
 
