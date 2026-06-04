@@ -1,9 +1,0 @@
-Column,Description,Notes
-Year,"date collected, year",
-Month,"date collected, month",
-Day,"date collected, day",
-Plot,plot ID,see file plots.csv for descriptions
-Sex,"M = male, F = female",
-Weight,in grams,
-Calibrated,"Y = yes, N = no",Only 4 samples were not calibrated
-Species,species ID,See species.csv for descriptions
