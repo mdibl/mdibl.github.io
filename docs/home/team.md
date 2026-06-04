@@ -39,7 +39,7 @@
 </div>
 
 <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
-  <img src="../images/markus.heic" alt="Markus Sujansky" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; flex-shrink: 0;">
+  <img src="../images/markus.png" alt="Markus Sujansky" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; flex-shrink: 0;">
   <div>
     <strong style="font-size: 1.1rem;">Markus Sujansky</strong><br>
     Bioinformatician I
