@@ -4,8 +4,8 @@
 
     | Date | Workshop |
     |------|----------|
-    | June 3, 2026 | [Data Organization in Spreadsheets](dataOrganization/index.md) |
-    | June 10, 2026 | [Managing Data & Projects for Genomics](genomics/index.md) |
+    | <s>June 3, 2026</s>  | [Data Organization in Spreadsheets](dataOrganization/index.md) |
+    | **June 10, 2026** | **[Managing Data & Projects for Genomics](genomics/index.md)** |
     | June 17, 2026 | [Introduction to R & RStudio](introR/index.md) |
     | June 24, 2026 | [Introduction to Data Visualization in R](dataViz/index.md) |
 
@@ -13,7 +13,7 @@
 
 # MDIBL Comparative Genomics and Data Science Core
 
-## Welcome
+## Welcome 
 
 The MDI Biological Laboratory's Comparative Genomics and Data Science Core is focused on collaboration, analysis, and education in the computational analysis of genome-scale data. Their efforts are distributed between the linked goals of:
 

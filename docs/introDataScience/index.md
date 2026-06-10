@@ -22,9 +22,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Apply data tidiness principles to the scale and complexity of genomics research. Learn how to organize files and directories for reproducible work, plan NGS projects, and track data through bioinformatics pipelines.
 
-    **Coming soon**
+    **~90 minutes &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Preview](../genomics/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../genomics/index.md){ .md-button .md-button--primary }
 
 -   :material-language-r:{ .lg .middle } **Introduction to R & RStudio**
 
