@@ -1,0 +1,32 @@
+:root {
+    --md-primary-fg-color:        #007299;
+    --md-accent-fg-color:        #799c4b;
+}
+
+/* ── Print / Save as PDF ───────────────────────────────────────────────── */
+@media print {
+    /* Hide site chrome */
+    .md-header,
+    .md-footer,
+    .md-sidebar,
+    .md-tabs,
+    .print-controls,
+    .md-source,
+    [data-md-toggle] { display: none !important; }
+
+    /* Expand content to full width */
+    .md-content,
+    .md-grid,
+    .md-main__inner { max-width: 100% !important; margin: 0 !important; }
+
+    /* Keep code blocks readable */
+    pre, code { font-size: 0.78rem; }
+
+    /* Avoid page breaks inside tables and code blocks */
+    table, pre, blockquote { page-break-inside: avoid; }
+
+    /* Add a small footer on each printed page */
+    @page {
+        margin: 1.8cm 1.5cm;
+    }
+}
