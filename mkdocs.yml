@@ -8,7 +8,6 @@ nav:
     - introDataScience/index.md
     - Data Organization in Spreadsheets: dataOrganization/index.md
     - Managing Data & Projects for Genomics: genomics/index.md
-    - Quick Reference: genomics/cheatsheet.md
     - Introduction to R & RStudio: introR/index.md
     - Introduction to Data Visualization in R: dataViz/index.md
   - Bioinformatics Bits:

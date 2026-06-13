@@ -50,13 +50,9 @@ The word "data" often conjures up images of spreadsheets and measurement tables.
 
 
 ???+ question "Exercise — Brainstorm: What are all the data types in your current project?"
-    Take 3 minutes. For a genomics project you are working on (or have worked on), list every type of data involved. Then consider:
+    Take 3 minutes. For a genomics project you are working on (or have worked on), list every type of data involved. 
 
-    - How many of these are not currently documented anywhere?
-    - How many are kept in separate places or by separate people?
-    - Which one would be the biggest disaster if it got lost?
-
-    ??? success "Discussion: Common data types in genomics projects"
+    ??? success "Solution"
 
         Data in a genomics project includes far more than gene expression tables:
 
@@ -71,13 +67,14 @@ The word "data" often conjures up images of spreadsheets and measurement tables.
         | **Documentation** | README files, data dictionaries, lab notebooks, protocols |
         | **Results** | Published figures, supplementary tables, manuscript drafts |
 
-        All of these are data. All of them should be tracked, documented, and locatable — even the ones stored on a remote server. 
-        
-        Figures and analyses count as data too — track how they were made and preserve the numerical data behind them.
-        
-???+ question "Who is responsible for keeping track of your data?"
+???+ question "Exercise - How do you find your data? Who keeps track of it?"
 
-	When your data is spread across lab-owned servers, cloud based storage, collaborators, etc., who is responsible for knowing where the data lives and how it's managed? 
+	Now that we know what counts as data for your project, consider:
+
+	- How many of these pieces of data are not currently documented anywhere?
+	- How many are kept in separate places or by separate people?
+	- Which one would be the biggest disaster if it got lost?
+	- **Who is responsible for knowing where the data lives and how it's managed?**
 
 	??? success "Solution"
 	
@@ -93,9 +90,10 @@ The word "data" often conjures up images of spreadsheets and measurement tables.
 
 ## Part 1: FAIR Data Principles
 
-<div style="text-align: center; margin: 1rem 0 1.5rem;">
-  <img src="images/slide29_img00.png" alt="FAIR: Findable, Accessible, Interoperable, Reusable" style="max-width: 520px; border-radius: 6px;">
-</div>
+<figure markdown="span">
+	![FAIR: Findable, Accessible, Interoperable, Reusable](images/slide29_img00.png){ style="width:520px; border-radius:6px;" }
+</figure>
+
 
 The **FAIR Guiding Principles** (published in *Scientific Data*, 2016) define best practices for data management and stewardship. Originally aimed at published datasets, they are equally valuable for everyday project management.
 
@@ -114,7 +112,7 @@ For published resources, this means using persistent identifiers: DOIs, PubMed I
 - **Logical folder structure** — related files grouped together, with clear hierarchy
 - **Searchable metadata** — a record that describes the dataset's location, contents, and context
 
-> If future-you or a collaborator can't find it, it's not FAIR.
+**If future-you or a collaborator can't find it, it's not FAIR.**
 
 ### Accessible
 
@@ -137,7 +135,105 @@ In practice:
 - Store **numeric data as numbers** — never as PDFs or images of tables
 - Always provide the **underlying numerical data** used to generate figures
 
-#### A Special Note on Gene IDs
+### Reusable
+
+Data should be **ready for replication and reuse in new contexts**. This requires:
+
+- **Detailed, structured metadata** — biological sample details, experimental design, analysis tools, data locations
+- **A README file** describing project organization and processing steps
+- **Tidy data structure** — one variable per column, one observation per row, one value per cell
+- **Clear, descriptive column headers** — `weight_g` rather than `wt`
+
+---
+
+### What Happens When Data Aren't FAIR?
+
+The following three scenarios are adapted from real situations researchers encounter.
+
+???+ question "Exercise 1.1 — Uninterpretable file names"
+
+    You receive a dataset from a collaborator:
+
+    ```
+    /shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
+    ├── A1.fastq.gz
+    ├── A2.fastq.gz
+    ├── ...
+    └── H12.fastq.gz
+    ```
+
+    1. Which biological samples are `A1.fastq.gz` and `H12.fastq.gz`?
+    2. Is there a control group? How many replicates?
+    3. Can you re-analyze this data in 6 months without emailing your collaborator?
+
+    ??? success "Solution"
+
+        You cannot answer any of these questions from the file names or directory alone.
+
+        - `A1`–`H12` are plate-well positions. Without a sample sheet there is no way to know which biological sample occupies each well.
+        - There are no metadata files in the directory.
+        - Folder names like `Misc_Stuff`, `new/old/backup2` give zero information about the project, organism, or date.
+
+        **FAIR principles violated:** Findable (no consistent naming), Accessible (not interpretable), Reusable (no metadata).
+
+        **What would fix it:** Rename files with a convention that encodes biological information; add a `samplesheet.csv` that maps file name → sample → condition → replicate; add a README.
+
+???+ question "Exercise 1.2 — Mismatched gene identifiers"
+
+    You compile a gene list from three papers:
+
+    ```
+    TP53
+    Actb
+    MYC
+    pax6
+    Gapdh
+    ```
+
+    You try to look these up in your RNA-seq results, and only 2 out of 5 match.
+
+    1. Why might these names fail to match?
+    2. What should you have used instead?
+
+    ??? success "Solution"
+
+        | Gene | Problem |
+        |------|---------|
+        | `TP53` | Human HGNC symbol — mouse equivalent is `Trp53` |
+        | `Actb` | Mouse mixed-case — analysis pipeline may expect `ACTB` or Ensembl ID |
+        | `MYC` | Human symbol — correct species? |
+        | `pax6` | Lowercase — annotation likely uses `Pax6` |
+        | `Gapdh` | Mouse mixed-case — some annotations use `GAPDH` |
+
+        **The fix:** Use Ensembl gene IDs as primary identifiers. Include the human-readable name as a convenience column but join by ID. Always document the organism, annotation version, and ID source.
+
+???+ question "Exercise 1.3 — Undocumented analysis file"
+
+    You receive `DEGs_table.csv` with 847 rows and columns:
+
+    ```
+    gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
+    ```
+
+    List everything you would need to correctly interpret, share, or reproduce this analysis.
+
+    ??? success "Solution"
+
+        At minimum you need:
+
+        - **What tool was used** — DESeq2? edgeR? Each calculates `log2FC` differently
+        - **What the comparison is** — which condition is treatment vs. control?
+        - **What filtering was applied** — count threshold? Minimum CPM?
+        - **What normalization was used** — default DESeq2 median-of-ratios? Something custom?
+        - **What reference was used** — genome build, annotation version, organism
+        - **What statistical cutoffs** — is `padj` Benjamini-Hochberg? What threshold?
+        - **Who ran it and when** — author, date, software version
+
+        A file named `DEGs_table.csv` with no accompanying README is **not reusable**. The more information provided, the better.
+
+### A Special Note on Gene IDs
+
+Gene IDs can cause your data to violate the FAIR principles. Use this guidance to maintain FAIR data.
 
 !!! warning "Gene names are not unique identifiers"
     Human-readable gene names like `TP53`, `ACTB`, or `Gapdh` are not safe to use as primary identifiers in analysis:
@@ -156,102 +252,6 @@ In practice:
 
     Always document the **organism, annotation release, and annotation source** alongside any gene list. It is fine to include human-readable names as a convenience column — just never use them as the join key in an analysis.
 
-### Reusable
-
-Data should be **ready for replication and reuse in new contexts**. This requires:
-
-- **Detailed, structured metadata** — biological sample details, experimental design, analysis tools, data locations
-- **A README file** describing project organization and processing steps
-- **Tidy data structure** — one variable per column, one observation per row, one value per cell
-- **Clear, descriptive column headers** — `weight_g` rather than `wt`
-
----
-
-## What Happens When Data Aren't FAIR?
-
-The following three scenarios are adapted from real situations researchers encounter.
-
-???+ question "Scenario 1 — Uninterpretable file names"
-
-    You receive a dataset from a collaborator:
-
-    ```
-    /shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
-    ├── A1.fastq.gz
-    ├── A2.fastq.gz
-    ├── ...
-    └── H12.fastq.gz
-    ```
-
-    1. Which biological samples are `A1.fastq.gz` and `H12.fastq.gz`?
-    2. Is there a control group? How many replicates?
-    3. Can you re-analyze this data in 6 months without emailing your collaborator?
-
-    ??? success "Discussion"
-
-        You cannot answer any of these questions from the file names or directory alone.
-
-        - `A1`–`H12` are plate-well positions. Without a sample sheet there is no way to know which biological sample occupies each well.
-        - There are no metadata files in the directory.
-        - Folder names like `Misc_Stuff`, `new/old/backup2` give zero information about the project, organism, or date.
-
-        **FAIR principles violated:** Findable (no consistent naming), Accessible (not interpretable), Reusable (no metadata).
-
-        **What would fix it:** Rename files with a convention that encodes biological information; add a `samplesheet.csv` that maps file name → sample → condition → replicate; add a README.
-
-???+ question "Scenario 2 — Mismatched gene identifiers"
-
-    You compile a gene list from three papers:
-
-    ```
-    TP53
-    Actb
-    MYC
-    pax6
-    Gapdh
-    ```
-
-    You try to look these up in your RNA-seq results, and only 2 out of 5 match.
-
-    1. Why might these names fail to match?
-    2. What should you have used instead?
-
-    ??? success "Discussion"
-
-        | Gene | Problem |
-        |------|---------|
-        | `TP53` | Human HGNC symbol — mouse equivalent is `Trp53` |
-        | `Actb` | Mouse mixed-case — analysis pipeline may expect `ACTB` or Ensembl ID |
-        | `MYC` | Human symbol — correct species? |
-        | `pax6` | Lowercase — annotation likely uses `Pax6` |
-        | `Gapdh` | Mouse mixed-case — some annotations use `GAPDH` |
-
-        **The fix:** Use Ensembl gene IDs as primary identifiers. Include the human-readable name as a convenience column but join by ID. Always document the organism, annotation version, and ID source.
-
-???+ question "Scenario 3 — Undocumented analysis file"
-
-    You receive `DEGs_table.csv` with 847 rows and columns:
-
-    ```
-    gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
-    ```
-
-    List everything you would need to correctly interpret, share, or reproduce this analysis.
-
-    ??? success "Discussion"
-
-        At minimum you need:
-
-        - **What tool was used** — DESeq2? edgeR? Each calculates `log2FC` differently
-        - **What the comparison is** — which condition is treatment vs. control?
-        - **What filtering was applied** — count threshold? Minimum CPM?
-        - **What normalization was used** — default DESeq2 median-of-ratios? Something custom?
-        - **What reference was used** — genome build, annotation version, organism
-        - **What statistical cutoffs** — is `padj` Benjamini-Hochberg? What threshold?
-        - **Who ran it and when** — author, date, software version
-
-        A file named `DEGs_table.csv` with no accompanying README is **not reusable**. The more information provided, the better.
-
 !!! success "Key Points"
     - FAIR data is Findable, Accessible, Interoperable, and Reusable.
     - These principles apply to everyday project data, not just published datasets.
@@ -265,7 +265,15 @@ The following three scenarios are adapted from real situations researchers encou
 
 Metadata is **data about your data** — information that describes what the data are and how they were generated. Without it, a file is often uninterpretable.
 
-A FASTQ file named `A1.fastq.gz` means nothing on its own. Add a sample sheet that maps `A1` → *Mock_DMSO replicate 1A, mouse J774A.1 macrophage cells, polyA-selected RNA-seq, 150bp PE* — now the file is interpretable, reusable, and reproducible.
+A FASTQ file named `A1.fastq.gz` means nothing on its own. Add a **sample sheet** that maps this file to all the information about that sample. Each column of a sample sheet should contain a different field of information about the samples, such as:
+
+- *FASTQ file:* `A1.fastq.gz`
+- *Condition:* Mock DMSO
+- *Replicate*: 1A
+- *Cell type:* mouse J774A.1 macrophage cells
+- *Data type:* polyA-selected RNA-seq
+
+With this additional metadata, now the data files are more FAIR.
 
 In genomics, metadata connects **samples → sequencing → analysis → results**. Without it, you cannot:
 
@@ -282,7 +290,7 @@ In genomics, metadata connects **samples → sequencing → analysis → results
 | **Administrative** | Who owns and manages it — PI, funder, data license, project dates |
 | **Structural** | How the data is organized — sample sheet, column definitions, naming conventions, file formats |
 
-Structural metadata is the most important for maintaining FAIR principles, and the most commonly missing.
+**Structural metadata is the most important for maintaining FAIR principles, and the most commonly missing.**
 
 ### What to Track in a Genomics Metadata File
 
@@ -297,18 +305,26 @@ Structural metadata is the most important for maintaining FAIR principles, and t
 !!! abstract "Before reading on..."
     Look at the figure below — a multi-panel summary figure from a published genomics experiment.
 
-    **What can you tell about this experiment from the figure alone?** What organism is it? What tissue or cell type? What do the sample labels 6-BA, ABA, IAA, JA mean? What was the experimental question? How confident are you?
+    - **What can you tell about this experiment from the figure alone?** 
+    - What organism is it? What tissue or cell type? 
+    - What do the sample labels 6-BA, ABA, IAA, JA mean? 
+    - What was the experimental question? How confident are you?
 
-<figure markdown="span">
-	![Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA](images/slide24_sub3_0.png){ style="width:540px; border-radius:6px;" }
-</figure>
+	<figure markdown="span">
+		![Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA](images/slide24_sub3_0.png){ style="width:540px; border-radius:6px;" }
+	</figure>
 
-!!! warning "A figure without metadata is incomplete data"
-    Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. The sample codes (6-BA = 6-benzylaminopurine, ABA = abscisic acid, IAA = indole-3-acetic acid, JA = jasmonic acid) are plant hormones — but only a plant biologist would know that, and only with a README would anyone know the organism, concentration, timepoints, or experimental context. Figures always represent numerical data behind them. That underlying data — and the metadata that describes it — must be preserved alongside every figure.
+### A figure without metadata is incomplete data
 
-???+ question "Exercise M.1 — What does a good sample sheet look like?"
+Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. 
 
-    Below is the sample sheet from the RNA-seq project shown in the PCA above. Read through it and answer the questions.
+- The sample codes (6-BA = 6-benzylaminopurine, ABA = abscisic acid, IAA = indole-3-acetic acid, JA = jasmonic acid) are plant hormones —**but only a plant biologist would know that**, 
+- Without any metadata (samplesheet, README, etc.) we also don't know the organism, concentration, timepoints, or experimental context. 
+- Figures always represent numerical data. That underlying data and the metadata that describes it must always be preserved alongside every figure.
+
+???+ question "Exercise 2.1 — What does a good sample sheet look like?"
+
+    Below is a sample sheet from an the RNA-seq project. Read through it and answer the questions.
 
     | sample | fastq_1 | fastq_2 |
     |--------|---------|---------|
@@ -330,36 +346,51 @@ Structural metadata is the most important for maintaining FAIR principles, and t
     1. From the sample names alone, what experimental factors can you identify?
     2. What information is missing that you would want for a complete metadata record?
     3. Below is the PCA generated from this dataset. Without the sample sheet, the sample IDs (`1A`, `2B`, etc.) are uninterpretable. With it, what can you now say about the biology?
+	
+	<figure markdown="span">
+		![PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed](images/PCA_example.png){ style="width:480px; border-radius:6px;" }
+	</figure>
 
-    <div style="text-align: center; margin: 0.5rem 0 0.5rem;">
-      <img src="images/PCA_example.png" alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" style="max-width: 480px; border-radius: 6px;">
-    </div>
+    ??? success "Solution"
 
-    ??? success "Discussion"
+        **1. What the sample names encode:** 
+        
+        - Each name follows `{agonist}_{inhibitor}_{groupReplicate}`, encoding two treatment factors and replicate identity directly in the file name. 
+        
+        - The four conditions are:
 
-        **1. What the sample names encode:** Each name follows `{agonist}_{inhibitor}_{groupReplicate}`, encoding two treatment factors and replicate identity directly in the file name. The four conditions are:
+			| Agonist | Inhibitor | Condition | Interpretation |
+			|---------|-----------|-----------|----------------|
+			| Mock | DMSO | Mock_DMSO (group 1) | Baseline — no treatment |
+			| poly_IC | DMSO | poly_IC_DMSO (group 2) | Inflammation induced |
+			| Mock | 4u8C | Mock_4u8C (group 3) | Inhibitor only |
+			| poly_IC | 4u8C | poly_IC_4u8C (group 4) | Inflammation + inhibition |
 
-        | Agonist | Inhibitor | Condition | Interpretation |
-        |---------|-----------|-----------|----------------|
-        | Mock | DMSO | Mock_DMSO (group 1) | Baseline — no treatment |
-        | poly_IC | DMSO | poly_IC_DMSO (group 2) | Inflammation induced |
-        | Mock | 4u8C | Mock_4u8C (group 3) | Inhibitor only |
-        | poly_IC | 4u8C | poly_IC_4u8C (group 4) | Inflammation + inhibition |
+        **2. What's missing:** 
+        
+        - The sample sheet links file names to biological samples, but complete metadata (e.g. README.txt) also needs:
+        	- organism (mouse J774A.1 macrophage-like cells)
+        	- library type (polyA-selected RNA-seq)
+        	- read length (150bp paired-end)
+        	- sequencing platform
+        	- genome build/annotation version used for alignment.
+        - More information about the biological samples as well can be found in a companion **design file** (`design.tsv`) which structured analysis-level metadata that the R code can read directly:
 
-        **2. What's missing:** The sample sheet links file names to biological samples, but complete metadata also needs: organism (mouse J774A.1 macrophage-like cells), library type (polyA-selected RNA-seq), read length (150bp paired-end), sequencing platform, and genome build/annotation version used for alignment.
+			| sample | condition | agonist | inhibitor | rep |
+			|--------|-----------|---------|-----------|-----|
+			| Mock_DMSO_1A | Mock_DMSO | Mock | DMSO | 1A |
+			| poly_IC_DMSO_2A | poly_IC_DMSO | poly_IC | DMSO | 2A |
+			| Mock_4u8C_3A | Mock_4u8C | Mock | 4u8C | 3A |
+			| poly_IC_4u8C_4A | poly_IC_4u8C | poly_IC | 4u8C | 4A |
+			| ... | ... | ... | ... | ... |
 
-        A companion **design file** (`design.tsv`) provides structured analysis-level metadata that the R code can read directly:
+        - **Note that `sample` names are *identical* between `samplesheet.csv` and `design.tsv` — this is intentional. The shared column allows the two tables to be joined in analysis without ambiguity.**
 
-        | sample | condition | agonist | inhibitor | rep |
-        |--------|-----------|---------|-----------|-----|
-        | Mock_DMSO_1A | Mock_DMSO | Mock | DMSO | 1A |
-        | poly_IC_DMSO_2A | poly_IC_DMSO | poly_IC | DMSO | 2A |
-        | Mock_4u8C_3A | Mock_4u8C | Mock | 4u8C | 3A |
-        | poly_IC_4u8C_4A | poly_IC_4u8C | poly_IC | 4u8C | 4A |
-
-        Note that `sample` names are **identical** between `samplesheet.csv` and `design.tsv` — this is intentional. The shared column allows the two tables to be joined in analysis without ambiguity.
-
-        **3. PCA interpretation:** With the sample sheet in hand, groups 1 (Mock_DMSO, pink circles) and 3 (Mock_4u8C, pink triangles) cluster tightly on the left — the agonist treatment, not the inhibitor, drives most of the variation (PC1: 94.8%). Groups 2 and 4 (poly_IC, teal) are far to the right. The inhibitor adds a small PC2 separation within the agonist groups. Without the sample sheet, `1A–4D` are meaningless labels; with it, the biology is immediately readable.
+        **3. PCA interpretation:** 
+        
+        - With the sample sheet in hand, groups 1 and 3 (Mock, red) cluster tightly on the left and groups 2 and 4 (poly_IC, teal) are far to the right, so now we can conclude that the agonist treatment, not the inhibitor, drives most of the variation (PC1: 94.8%). 
+        - Now we also know that groups 1 and 2 (DMSO, circles) cluster near the top, and groups 3 and 4 (4u8c, triangles) are near the bottom. Now we can conclude that the inhibitor adds a small PC2 separation within the agonist groups. 
+        - Without the sample sheet, `1A–4D` are meaningless labels; with it, we can map the metadata onto the PCA and the biology is immediately readable.
 
 ### README Files
 
@@ -376,10 +407,11 @@ A sample sheet records per-file metadata. A **README file** gives any reader the
 | **Data descriptions** | Sample sheet location, reference files, file formats |
 | **Analysis info** | Tools used, pipeline version, key parameters, scripts |
 | **Version info** | Genome build, annotation release, software versions |
+| **Other important information** | Anything pertinent to your project |
 
-???+ question "Exercise M.2 — Evaluate a real README"
+???+ question "Exercise 2.2 — Evaluate a real README"
 
-    The tabs below show the same README file two ways: as the raw plain-text `.txt` file a researcher would open in any text editor, and as a formatted preview. Read through it and answer the questions.
+    Below is a README file as raw plain-text. Read through it and answer the questions.
 
     === "Raw text (README.txt)"
 
@@ -536,140 +568,237 @@ The intended naming convention encodes:
 - **Date**: `YYYY-MM-DD`
 - **Data type**: `.raw` or `.norm`
 
-!!! abstract "Before reading on..."
-    Look at the messy file list below. Before reading any of the exercises, see how many distinct problems you can identify on your own.
+---
 
-=== "Messy Files"
+???+ question "Exercise 3.1 — Messy Fie Names"
+	Look at the messy file list above. Before reading the analysis, write down every problem you can spot. 
+	
+	=== "Messy Files"
+	
+		```
+		2020-07-14_s12_phyB_on_SD_t04.raw.txt
+		2020-07-14_s1_phyA_on_LD_t05.raw.txt
+		2020-07-14_s2_phyB_on_SD_t11.raw.txt
+		2020-08-12_s03_phyA_on_LD_t03.raw.txt
+		2020-08-12_s12_phyB_on_LD_t01.raw.txt
+		2020-08-13_s01_phyB_on_SD_t02.raw.txt
+		2020-7-12_s2_phyB_on_SD_t01.raw.txt
+		AUG-13_phyB_on_LD_s1_t11.raw.txt
+		JUL-31_phyB_on_LD_s1_t03.raw.txt
+		LD_phyA_off_t04_2020-08-12.norm.txt
+		LD_phyA_on_t04_2020-07-14.norm.txt
+		LD_phyB_off_t04_2020-08-12.norm.txt
+		LD_phyB_on_t04_2020-07-14.norm.txt
+		SD_phyB_off_t04_2020-08-13.norm.txt
+		SD_phyB_on_t04_2020-07-12.norm.txt
+		SD_phya_off_t04_2020-08-13.norm.txt
+		SD_phya_ons_t04_2020-07-12.norm.txt
+		ld_phyA_ons_t04_2020-08-12.norm.txt
+		```
+
+    **Step through each problem:**
+
+    1. What happens when the date is placed at the beginning of the name?
+    2. What date formats are used across the 18 files, and why does inconsistency matter?
+    3. Which sample numbers are not zero-padded, and why does that break sorting?
+    4. Find all capitalization inconsistencies. What goes wrong in a script?
+    5. Spot the typo in the media field. Why is it particularly dangerous?
+    6. How many distinct naming conventions are in use across the 18 files?
+
+    ??? success "Step-by-step analysis"
+
+        === "Problem 1: Date placed first"
+
+            Files prefixed with a date (`2020-07-14_...`, `AUG-13_...`) sort by **date of collection**, not by **experimental condition**. All `2020-07-14` files appear together — regardless of light condition, genotype, or media. Finding all `LD phyA on` samples requires scanning the entire folder.
+
+            When experimental variables come first (as in the clean list), all `LD_phyA_on` files group together when sorted alphabetically. Related samples are adjacent, missing files are obvious, and scripts that glob by condition work without extra logic.
+
+            **The fix:** Put the most biologically meaningful variables first. Date goes at the end as a tie-breaker.
+
+        === "Problem 2: Inconsistent date formats"
+
+            | File | Format used | Problem |
+            |------|-------------|---------|
+            | `2020-07-14_s12_...` | `YYYY-MM-DD` | ✓ Correct |
+            | `2020-7-12_s2_...` | `YYYY-M-DD` | Missing leading zero on month |
+            | `AUG-13_phyB_...` | `MON-DD` | Month name only — no year, won't sort chronologically |
+            | `JUL-31_phyB_...` | `MON-DD` | Month name only — no year at all |
+
+            `YYYY-7-12` and `YYYY-07-12` sort differently: single-digit months appear out of order. `AUG` and `JUL` sort alphabetically (August before July), not chronologically. Dates missing the year are meaningless once a project runs past 12 months.
+
+            **The fix:** Always use `YYYY-MM-DD` with zero-padded month and day.
+
+        === "Problem 3: Missing zero-padding"
+
+            Files with unpadded sample numbers:
+
+            - `2020-07-14_s1_phyA_on_LD_t05.raw.txt` — `s1` instead of `s01`
+            - `2020-07-14_s2_phyB_on_SD_t11.raw.txt` — `s2` instead of `s02`
+            - `2020-7-12_s2_phyB_on_SD_t01.raw.txt` — `s2` instead of `s02`
+
+            Alphabetical sort of `s1, s2, s12` → **`s1, s12, s2`** (wrong)
+
+            Alphabetical sort of `s01, s02, s12` → **`s01, s02, s12`** (correct)
+
+            `s12` slides between `s1` and `s2` because computers sort character by character: `1` < `12`... no — `1` comes before `2` at position 2. So `s12` comes right after `s1`. This silently reorders your files every time you list them.
+
+            **The fix:** Zero-pad to a consistent width: `s01` through `s99` for up to 99 samples.
+
+        === "Problem 4: Case inconsistencies"
+
+            | Variable | Values found |
+            |----------|--------------|
+            | Light condition | `LD` (correct) · `ld` in `ld_phyA_ons_...` |
+            | Genotype | `phyA`, `phyB` (correct) · `phya` in `SD_phya_off_...` and `SD_phya_ons_...` |
+
+            In a shell script, `ls LD_*` silently skips `ld_phyA_ons_t04_2020-08-12.norm.txt`. In R, `group_by(light)` creates separate groups for `"LD"` and `"ld"` with no warning — your summary statistics for `LD` are missing two samples and you will never know.
+
+            **The fix:** Standardize case for every variable value and enforce it consistently across all files.
+
+        === "Problem 5: Typo in field value"
+
+            Two files use `ons` instead of `on` in the media field:
+
+            - `SD_phya_ons_t04_2020-07-12.norm.txt`
+            - `ld_phyA_ons_t04_2020-08-12.norm.txt`
+
+            A script filtering by `media == "on"` **silently excludes** these two files. The analysis completes without error — but the `on` group has 2 fewer samples than it should. The results are wrong with no indication anything went wrong. This is the worst kind of error.
+
+            **The fix:** After creating a batch of files, list all unique values for each field position and verify them against your expected vocabulary before running any analysis.
+
+        === "Problem 6: Multiple conventions"
+
+            At least **three distinct conventions** are present across the 18 files:
+
+            | Convention | Example |
+            |------------|---------|
+            | `YYYY-MM-DD_sXX_geno_media_light_tXX.type.txt` | `2020-07-14_s12_phyB_on_SD_t04.raw.txt` |
+            | `light_geno_media_tXX_YYYY-MM-DD.type.txt` | `LD_phyA_on_t04_2020-07-14.norm.txt` |
+            | `MON-DD_geno_media_light_sX_tXX.type.txt` | `AUG-13_phyB_on_LD_s1_t11.raw.txt` |
+
+            Mixed conventions cannot be parsed by a single script. A glob for `LD_*` misses the date-first raw files entirely. A parser that reads field 1 as the light condition works for convention 2 but breaks on conventions 1 and 3.
+
+	??? success "Cleaned file names"
+	
+		After stepping through each problem and each fix, the cleaned files should be names as follows: 
+		
+		=== "Clean Files"
+		
+			``` 
+			LD_phyA_off_t04_2020-08-12.norm.txt
+			LD_phyA_on_t04_2020-07-14.norm.txt
+			LD_phyA_on_t04_2020-08-12.norm.txt
+			LD_phyA_on_t03_s03_2020-08-12.raw.txt
+			LD_phyA_on_t05_s01_2020-07-14.raw.txt
+			LD_phyB_off_t04_2020-08-12.norm.txt
+			LD_phyB_on_t04_2020-07-14.norm.txt
+			LD_phyB_on_t01_s12_2020-08-12.raw.txt
+			LD_phyB_on_t03_s01_2020-07-31.raw.txt
+			LD_phyB_on_t11_s01_2020-08-13.raw.txt
+			SD_phyA_off_t04_2020-08-13.norm.txt
+			SD_phyA_on_t04_2020-07-12.norm.txt
+			SD_phyB_off_t04_2020-08-13.norm.txt
+			SD_phyB_on_t04_2020-07-12.norm.txt
+			SD_phyB_on_t01_s02_2020-07-12.raw.txt
+			SD_phyB_on_t02_s01_2020-08-13.raw.txt
+			SD_phyB_on_t04_s12_2020-07-14.raw.txt
+			SD_phyB_on_t11_s02_2020-07-14.raw.txt
+			```
+???+ question "Exercise 3.2 — Organize by Datatype"
+
+	Now that the names are consistent, the next step is to separate files by type into subfolders. All 18 cleaned files are one of two datatypes: `raw` (unprocessed) or `norm` (normalized). Organizing them into `raw/` and `norm/` subdirectories serves several purposes:
+	
+	- Raw data stays clearly separated from processed outputs — easier to treat as read-only
+	- The subfolder conveys the datatype without needing it parsed from the filename
+	- Scripts can target all normalized files with a simple `norm/*.txt` glob
+	
+	??? success "Datatype subfolders" 
+		
+		```
+		phytochrome_light_response/
+		├── raw/
+		│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
+		│   ├── LD_phyA_on_t05_s01_2020-07-14.raw.txt
+		│   ├── LD_phyB_on_t01_s12_2020-08-12.raw.txt
+		│   ├── LD_phyB_on_t03_s01_2020-07-31.raw.txt
+		│   ├── LD_phyB_on_t11_s01_2020-08-13.raw.txt
+		│   ├── SD_phyB_on_t01_s02_2020-07-12.raw.txt
+		│   ├── SD_phyB_on_t02_s01_2020-08-13.raw.txt
+		│   ├── SD_phyB_on_t04_s12_2020-07-14.raw.txt
+		│   └── SD_phyB_on_t11_s02_2020-07-14.raw.txt
+		└── norm/
+			├── LD_phyA_off_t04_2020-08-12.norm.txt
+			├── LD_phyA_on_t04_2020-07-14.norm.txt
+			├── LD_phyA_on_t04_2020-08-12.norm.txt
+			├── LD_phyB_off_t04_2020-08-12.norm.txt
+			├── LD_phyB_on_t04_2020-07-14.norm.txt
+			├── SD_phyA_off_t04_2020-08-13.norm.txt
+			├── SD_phyA_on_t04_2020-07-12.norm.txt
+			├── SD_phyB_off_t04_2020-08-13.norm.txt
+			└── SD_phyB_on_t04_2020-07-12.norm.txt
+		```
+
+???+ question "Exercise 3.3 — Create a samplesheet for the phytochrome data"
+
+    A samplesheet is a structured table that records the metadata for every file in a dataset — the same information as the filename, but in a form that analysis code can query, filter, and join directly.
+
+    Given the 9 normalized phytochrome files in `norm/`, design a samplesheet that fully describes each sample.
+
+    **Files in `norm/`:**
 
     ```
-    2020-07-14_s12_phyB_on_SD_t04.raw.txt
-    2020-07-14_s1_phyA_on_LD_t05.raw.txt
-    2020-07-14_s2_phyB_on_SD_t11.raw.txt
-    2020-08-12_s03_phyA_on_LD_t03.raw.txt
-    2020-08-12_s12_phyB_on_LD_t01.raw.txt
-    2020-08-13_s01_phyB_on_SD_t02.raw.txt
-    2020-7-12_s2_phyB_on_SD_t01.raw.txt
-    AUG-13_phyB_on_LD_s1_t11.raw.txt
-    JUL-31_phyB_on_LD_s1_t03.raw.txt
     LD_phyA_off_t04_2020-08-12.norm.txt
     LD_phyA_on_t04_2020-07-14.norm.txt
+    LD_phyA_on_t04_2020-08-12.norm.txt
     LD_phyB_off_t04_2020-08-12.norm.txt
     LD_phyB_on_t04_2020-07-14.norm.txt
+    SD_phyA_off_t04_2020-08-13.norm.txt
+    SD_phyA_on_t04_2020-07-12.norm.txt
     SD_phyB_off_t04_2020-08-13.norm.txt
     SD_phyB_on_t04_2020-07-12.norm.txt
-    SD_phya_off_t04_2020-08-13.norm.txt
-    SD_phya_ons_t04_2020-07-12.norm.txt
-    ld_phyA_ons_t04_2020-08-12.norm.txt
     ```
 
----
+    **Questions:**
 
-???+ question "Exercise N.1 — What problem arises when the date is placed first?"
+    1. What columns should the samplesheet include?
+    2. Two files share the same experimental condition (`LD`, `phyA`, `on`, `t04`) but have different dates. What does that tell you, and how should the samplesheet handle it?
+    3. What format should the samplesheet be saved as, and where should it live?
 
-    Look at the first 9 files in the messy list. All of them start with a date (`2020-07-14_...`, `AUG-13_...`).
+    ??? success "Samplesheet"
 
-    If you sort this folder alphabetically, what order do the files appear in? Is it easier or harder to find all `LD phyA on` samples compared to the clean list?
+        | filename | light | genotype | media | timepoint | date | datatype |
+        |----------|-------|----------|-------|-----------|------|---------|
+        | LD_phyA_off_t04_2020-08-12.norm.txt | LD | phyA | off | t04 | 2020-08-12 | norm |
+        | LD_phyA_on_t04_2020-07-14.norm.txt | LD | phyA | on | t04 | 2020-07-14 | norm |
+        | LD_phyA_on_t04_2020-08-12.norm.txt | LD | phyA | on | t04 | 2020-08-12 | norm |
+        | LD_phyB_off_t04_2020-08-12.norm.txt | LD | phyB | off | t04 | 2020-08-12 | norm |
+        | LD_phyB_on_t04_2020-07-14.norm.txt | LD | phyB | on | t04 | 2020-07-14 | norm |
+        | SD_phyA_off_t04_2020-08-13.norm.txt | SD | phyA | off | t04 | 2020-08-13 | norm |
+        | SD_phyA_on_t04_2020-07-12.norm.txt | SD | phyA | on | t04 | 2020-07-12 | norm |
+        | SD_phyB_off_t04_2020-08-13.norm.txt | SD | phyB | off | t04 | 2020-08-13 | norm |
+        | SD_phyB_on_t04_2020-07-12.norm.txt | SD | phyB | on | t04 | 2020-07-12 | norm |
 
-    ??? success "Solution"
+        *Saved as `samplesheet.txt` (tab-separated) or `samplesheet.csv` (comma-separated) in the project root alongside `README.txt`.*
 
-        When dates come first, files sort by **date of collection**, not by **experimental condition**. All `2020-07-14` files appear together, then all `2020-08-12` files — regardless of whether they are from `LD`, `SD`, `phyA`, or `phyB`.
+        **Key Points:**
 
-        When the experimental variables come first (as in the clean list), all `LD_phyA_on` files appear together when sorted. This makes it faster to find related samples, verify you have all expected files, and notice if something is missing.
+        1. **Columns:** 
+        	- `filename` as the primary key, then one column per experimental variable: `light`, `genotype`, `media`, `timepoint`, `date`, `datatype`. 
+        	- Add any additional details not in the filename (organism, tissue, instrument, library prep, etc.) as extra columns.
 
-        **The fix:** Put the most biologically meaningful variables first. Reserve the date for the end, where it serves as a tie-breaker without dominating the sort order.
+        2. **Two files, same condition, different dates:** 
+        	- These represent two separate measurements — perhaps collected on different runs or from different plants. The `date` column distinguishes them. 
+        	- This is also a signal that if you ever want to simplify the filename (by dropping the date), you would first need to add a replicate or run identifier to maintain uniqueness.
 
-???+ question "Exercise N.2 — What date formats are used and why does it matter?"
+        3. **Format and location:** 
+        	- Save as `samplesheet.txt` (tab-separated) or `samplesheet.csv` (comma-separated) — plain text, readable by any tool without proprietary software. 
+        	- Place it in the project root alongside `README.txt` (next step), so anyone opening the directory sees it immediately.
 
-    Find every different date format used across the 18 messy files. List them.
+???+ question "Exercise 3.4 — Write the README for the clean project"
 
-    ??? success "Solution"
+    The project now has consistently named files, organized into `raw/` and `norm/` subfolders, and a `samplesheet.txt`. Write the key sections of a README that completes the documentation. Think about what a new lab member would need to understand and use this dataset.
 
-        | File | Date format | Problem |
-        |------|-------------|---------|
-        | `2020-07-14_s12_...` | `YYYY-MM-DD` | ✓ Correct |
-        | `2020-7-12_s2_...` | `YYYY-M-DD` | Missing leading zero on month |
-        | `AUG-13_phyB_...` | `MON-DD` | Month name abbreviation, no year |
-        | `JUL-31_phyB_...` | `MON-DD` | Month name abbreviation, no year |
-
-        `YYYY-7-12` and `YYYY-07-12` sort differently — single-digit months appear after `YYYY-09` and before `YYYY-1`. Files from `AUG` and `JUL` sort by the text of the month name, not chronologically. And dates with no year are meaningless once a project runs past 12 months.
-
-        **The fix:** Always use `YYYY-MM-DD` with zero-padding for month and day.
-
-???+ question "Exercise N.3 — Find the missing zero-padding and explain why it breaks sorting"
-
-    Find the files where sample numbers (`s1`, `s2`) are not zero-padded.
-
-    Sort these three sample IDs alphabetically: `s1`, `s2`, `s12`. Then sort `s01`, `s02`, `s12`. What do you notice?
-
-    ??? success "Solution"
-
-        Messy files with missing zero-padding:
-
-        - `2020-07-14_s1_phyA_on_LD_t05.raw.txt` — `s1` instead of `s01`
-        - `2020-07-14_s2_phyB_on_SD_t11.raw.txt` — `s2` instead of `s02`
-        - `2020-7-12_s2_phyB_on_SD_t01.raw.txt` — `s2` instead of `s02`
-
-        Alphabetical sort of `s1, s2, s12` → `s1, s12, s2` (wrong — `s12` sorts between `s1` and `s2`)
-
-        Alphabetical sort of `s01, s02, s12` → `s01, s02, s12` (correct)
-
-        **The fix:** Zero-pad to a consistent width. If you have up to 99 samples, always use two digits: `s01` through `s99`.
-
-???+ question "Exercise N.4 — Find all capitalization inconsistencies"
-
-    How many different capitalizations of the same variable value can you find in the messy list? What goes wrong in a script?
-
-    ??? success "Solution"
-
-        | Variable | Inconsistent values found |
-        |----------|--------------------------|
-        | Light condition | `LD` (correct), `ld` (in `ld_phyA_ons_...`) |
-        | Genotype | `phyA`, `phyB` (correct), `phya` (in `SD_phya_off_...`, `SD_phya_ons_...`) |
-
-        In a shell script, `ls LD_*` will not return `ld_phyA_ons_t04_2020-08-12.norm.txt` — the lowercase file is silently excluded. In R or Python, string grouping (`group_by(light)`) will create separate groups for `"LD"` and `"ld"` with no error or warning.
-
-        **The fix:** Pick a case convention and enforce it for every variable. Never mix cases for the same value.
-
-???+ question "Exercise N.5 — Spot the typo"
-
-    Find the files that have a typo in the media field. What is the typo, and why is it dangerous?
-
-    ??? success "Solution"
-
-        Two files use `ons` instead of `on` in the media field:
-
-        - `SD_phya_ons_t04_2020-07-12.norm.txt`
-        - `ld_phyA_ons_t04_2020-08-12.norm.txt`
-
-        A script that groups by `media == "on"` will **silently exclude** these two files. The analysis runs to completion with no error — but the `on` group has 2 fewer samples than it should. The results are wrong without any indication that anything went wrong.
-
-        **The fix:** Enforce a controlled vocabulary for each variable field. Better yet: after creating a batch of files, generate a list of all unique values for each position in the name and verify them against the expected vocabulary.
-
-???+ question "Exercise N.6 — How many naming conventions are in use?"
-
-    Group the 18 messy files by their naming convention (the pattern of fields and separators). How many distinct conventions are there?
-
-    ??? success "Solution"
-
-        At least **three different conventions** are used across 18 files:
-
-        | Convention | Example | Issues |
-        |------------|---------|--------|
-        | `YYYY-MM-DD_sXX_geno_media_light_tXX.type.txt` | `2020-07-14_s12_phyB_on_SD_t04.raw.txt` | Date first; no date in name for norm files |
-        | `light_geno_media_tXX_YYYY-MM-DD.type.txt` | `LD_phyA_on_t04_2020-07-14.norm.txt` | No sample ID field |
-        | `MON-DD_geno_media_light_sX_tXX.type.txt` | `AUG-13_phyB_on_LD_s1_t11.raw.txt` | Non-ISO date, no year, mixed field order |
-
-        Mixed conventions are the hardest to fix programmatically — you cannot write a single parser that handles all three. A script that extracts the light condition from position 1 works for convention 2 but fails for conventions 1 and 3.
-
----
-
-???+ question "Exercise N.7 — Write the README for the clean files"
-
-    The clean naming convention is `{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt`.
-
-    Write the key sections of a README that should accompany these data files. Think about what a new lab member would need to use them.
-
-    ??? success "Reference README"
+    ??? success "README"
 
         === "Raw text (README.txt)"
 
@@ -692,9 +821,9 @@ The intended naming convention encodes:
               genotype:  phyA or phyB
               media:     on (sucrose) or off (no sucrose)
               timepoint: tXX — two-digit zero-padded timepoint number
-              sample:    sXX — two-digit zero-padded replicate ID (s00 = unspecified)
+              sample:    sXX — two-digit zero-padded replicate ID (omitted when unspecified)
               date:      YYYY-MM-DD — collection or processing date
-              datatype:  raw or norm
+              datatype:  raw or norm (also indicated by subfolder)
 
             Directory Structure
             -------------------
@@ -704,59 +833,18 @@ The intended naming convention encodes:
             ├── README.txt
             └── samplesheet.txt
 
+            Samplesheet
+            -----------
+            samplesheet.txt (tab-separated) contains one row per normalized file.
+            Columns: filename, light, genotype, media, timepoint, date, datatype.
+            See samplesheet.txt for sample-level details.
+
             Notes
             -----
             Raw and normalized files should remain unmodified.
-            See samplesheet.txt for sample ID → date mapping and biological details.
             ```
 
-        === "Formatted preview"
-
-            <div markdown>
-
-            **README — Phytochrome Light Response Data**
-
-            **Project:** Light-dependent expression measurements in *phyA* and *phyB* genotypes under LD and SD conditions. Multiple timepoints; on/off sucrose media.
-
-            **File naming:** `{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt`
-
-            | Field | Values | Meaning |
-            |-------|--------|---------|
-            | `light` | `LD`, `SD` | Long Day, Short Day |
-            | `genotype` | `phyA`, `phyB` | Plant genotype |
-            | `media` | `on`, `off` | On or off sucrose |
-            | `timepoint` | `tXX` | Zero-padded timepoint |
-            | `sample` | `sXX` | Zero-padded replicate ID (`s00` = unspecified) |
-            | `date` | `YYYY-MM-DD` | Collection or processing date |
-            | `datatype` | `raw`, `norm` | Raw or normalized data |
-
-            **Directory:** `raw/` unprocessed · `norm/` normalized · `README.txt` · `samplesheet.txt`
-
-            </div>
-
 ---
-
-After the exercises, the final clean result separates raw and normalized files into subfolders and adds a README and samplesheet — so the date can be tracked in the samplesheet rather than embedded in every file name:
-
-```
-.
-├── norm/
-│   ├── LD_phyA_off_t04.norm.txt
-│   ├── LD_phyA_on_t04.norm.txt
-│   ├── LD_phyB_off_t04.norm.txt
-│   ├── LD_phyB_on_t04.norm.txt
-│   ├── SD_phyA_off_t04.norm.txt
-│   ├── SD_phyA_on_t04.norm.txt
-│   ├── SD_phyB_off_t04.norm.txt
-│   └── SD_phyB_on_t04.norm.txt
-├── raw/
-│   ├── LD_phyA_on_t03.raw.txt
-│   ├── LD_phyA_on_t05.raw.txt
-│   ├── LD_phyB_on_t01.raw.txt
-│   └── ...
-├── README.txt
-└── samplesheet.txt
-```
 
 !!! success "Key Points"
     - Establish a naming convention before you start collecting data.
@@ -794,13 +882,10 @@ project_name/
 !!! tip "Name files by content, not by position"
     Avoid naming files by their position in a manuscript (`fig_3_a.png`) or by sequential number (`result1.csv`, `result2.csv`). Both will change as the project evolves. Use descriptive names: `PCA_all_samples.png`, `DEGs_agonist_vs_control.csv`.
 
-???+ question "Exercise D.1 — Reorganize a messy project"
+???+ question "Exercise 3.5 — Reorganize a messy project"
 
-    !!! abstract "Before reading on..."
-        Look at the directory structure below. Before reading the problem analysis, write down every issue you can identify. Then think about what the improved structure would look like.
-
-    A collaborator shares the following project directory with you:
-
+    Look at the directory structure below. Write down every issue you can identify. Then think about what the improved structure would look like.
+    
     ```
     smith_lab_rna/
     ├── final analysis.R
@@ -920,9 +1005,9 @@ project_name/
 
 ## Workshop Summary — Quick Reference
 
-Use this as a cheat sheet for your own projects. A print-friendly version is available as a standalone page:
+Use this as a cheat sheet for your own projects. A one-page visual reference is available to download and print:
 
-[:material-printer: Open printable quick reference](cheatsheet.md){ .md-button .md-button--primary }
+<a href="quickref.pdf" download class="md-button md-button--primary">:material-download: Download Quick Reference (PDF)</a>
 
 ### FAIR Data Principles
 
