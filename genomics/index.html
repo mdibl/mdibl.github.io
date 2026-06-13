@@ -12,7 +12,7 @@
         <link rel="prev" href="../dataOrganization/">
       
       
-        <link rel="next" href="cheatsheet/">
+        <link rel="next" href="../introR/">
       
       
         
@@ -542,8 +542,6 @@
       
         
       
-        
-      
     
     
     
@@ -773,12 +771,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#what-happens-when-data-arent-fair" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -786,6 +779,22 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-special-note-on-gene-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Special Note on Gene IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -828,6 +837,17 @@
     <span class="md-ellipsis">
       
         What to Track in a Genomics Metadata File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-figure-without-metadata-is-incomplete-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A figure without metadata is incomplete data
       
     </span>
   </a>
@@ -976,34 +996,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cheatsheet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quick Reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2065,12 +2057,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#what-happens-when-data-arent-fair" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2078,6 +2065,22 @@
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-special-note-on-gene-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Special Note on Gene IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2120,6 +2123,17 @@
     <span class="md-ellipsis">
       
         What to Track in a Genomics Metadata File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-figure-without-metadata-is-incomplete-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A figure without metadata is incomplete data
       
     </span>
   </a>
@@ -2328,14 +2342,9 @@
 <p>The word "data" often conjures up images of spreadsheets and measurement tables. In genomics, the reality is far broader.</p>
 <details class="question" open="open">
 <summary>Exercise — Brainstorm: What are all the data types in your current project?</summary>
-<p>Take 3 minutes. For a genomics project you are working on (or have worked on), list every type of data involved. Then consider:</p>
-<ul>
-<li>How many of these are not currently documented anywhere?</li>
-<li>How many are kept in separate places or by separate people?</li>
-<li>Which one would be the biggest disaster if it got lost?</li>
-</ul>
+<p>Take 3 minutes. For a genomics project you are working on (or have worked on), list every type of data involved. </p>
 <details class="success">
-<summary>Discussion: Common data types in genomics projects</summary>
+<summary>Solution</summary>
 <p>Data in a genomics project includes far more than gene expression tables:</p>
 <table>
 <thead>
@@ -2379,13 +2388,17 @@
 </tr>
 </tbody>
 </table>
-<p>All of these are data. All of them should be tracked, documented, and locatable — even the ones stored on a remote server. </p>
-<p>Figures and analyses count as data too — track how they were made and preserve the numerical data behind them.</p>
 </details>
 </details>
 <details class="question" open="open">
-<summary>Who is responsible for keeping track of your data?</summary>
-<p>When your data is spread across lab-owned servers, cloud based storage, collaborators, etc., who is responsible for knowing where the data lives and how it's managed? </p>
+<summary>Exercise - How do you find your data? Who keeps track of it?</summary>
+<p>Now that we know what counts as data for your project, consider:</p>
+<ul>
+<li>How many of these pieces of data are not currently documented anywhere?</li>
+<li>How many are kept in separate places or by separate people?</li>
+<li>Which one would be the biggest disaster if it got lost?</li>
+<li><strong>Who is responsible for knowing where the data lives and how it's managed?</strong></li>
+</ul>
 <details class="success">
 <summary>Solution</summary>
 <p>You are responsible for knowing where your data lives, how it was generated, and what stage it is in.</p>
@@ -2396,10 +2409,9 @@
 </details>
 <hr />
 <h2 id="part-1-fair-data-principles">Part 1: FAIR Data Principles</h2>
-<div style="text-align: center; margin: 1rem 0 1.5rem;">
-  <img src="images/slide29_img00.png" alt="FAIR: Findable, Accessible, Interoperable, Reusable" style="max-width: 520px; border-radius: 6px;">
-</div>
-
+<figure>
+    <img alt="FAIR: Findable, Accessible, Interoperable, Reusable" src="images/slide29_img00.png" style="width:520px; border-radius:6px;" />
+</figure>
 <p>The <strong>FAIR Guiding Principles</strong> (published in <em>Scientific Data</em>, 2016) define best practices for data management and stewardship. Originally aimed at published datasets, they are equally valuable for everyday project management.</p>
 <p>The goal: make data <strong>Findable, Accessible, Interoperable, and Reusable</strong> — by both humans and computers.</p>
 <div class="admonition abstract">
@@ -2414,9 +2426,7 @@
 <li><strong>Logical folder structure</strong> — related files grouped together, with clear hierarchy</li>
 <li><strong>Searchable metadata</strong> — a record that describes the dataset's location, contents, and context</li>
 </ul>
-<blockquote>
-<p>If future-you or a collaborator can't find it, it's not FAIR.</p>
-</blockquote>
+<p><strong>If future-you or a collaborator can't find it, it's not FAIR.</strong></p>
 <h3 id="accessible">Accessible</h3>
 <p>Published data and metadata should be <strong>retrievable via standard methods</strong> — downloading from NCBI, querying BioMart, fetching from a model organism database.</p>
 <p>For project-level work, accessibility means:</p>
@@ -2434,7 +2444,115 @@
 <li>Store <strong>numeric data as numbers</strong> — never as PDFs or images of tables</li>
 <li>Always provide the <strong>underlying numerical data</strong> used to generate figures</li>
 </ul>
-<h4 id="a-special-note-on-gene-ids">A Special Note on Gene IDs</h4>
+<h3 id="reusable">Reusable</h3>
+<p>Data should be <strong>ready for replication and reuse in new contexts</strong>. This requires:</p>
+<ul>
+<li><strong>Detailed, structured metadata</strong> — biological sample details, experimental design, analysis tools, data locations</li>
+<li><strong>A README file</strong> describing project organization and processing steps</li>
+<li><strong>Tidy data structure</strong> — one variable per column, one observation per row, one value per cell</li>
+<li><strong>Clear, descriptive column headers</strong> — <code>weight_g</code> rather than <code>wt</code></li>
+</ul>
+<hr />
+<h3 id="what-happens-when-data-arent-fair">What Happens When Data Aren't FAIR?</h3>
+<p>The following three scenarios are adapted from real situations researchers encounter.</p>
+<details class="question" open="open">
+<summary>Exercise 1.1 — Uninterpretable file names</summary>
+<p>You receive a dataset from a collaborator:</p>
+<div class="highlight"><pre><span></span><code>/shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
+├── A1.fastq.gz
+├── A2.fastq.gz
+├── ...
+└── H12.fastq.gz
+</code></pre></div>
+<ol>
+<li>Which biological samples are <code>A1.fastq.gz</code> and <code>H12.fastq.gz</code>?</li>
+<li>Is there a control group? How many replicates?</li>
+<li>Can you re-analyze this data in 6 months without emailing your collaborator?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<p>You cannot answer any of these questions from the file names or directory alone.</p>
+<ul>
+<li><code>A1</code>–<code>H12</code> are plate-well positions. Without a sample sheet there is no way to know which biological sample occupies each well.</li>
+<li>There are no metadata files in the directory.</li>
+<li>Folder names like <code>Misc_Stuff</code>, <code>new/old/backup2</code> give zero information about the project, organism, or date.</li>
+</ul>
+<p><strong>FAIR principles violated:</strong> Findable (no consistent naming), Accessible (not interpretable), Reusable (no metadata).</p>
+<p><strong>What would fix it:</strong> Rename files with a convention that encodes biological information; add a <code>samplesheet.csv</code> that maps file name → sample → condition → replicate; add a README.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.2 — Mismatched gene identifiers</summary>
+<p>You compile a gene list from three papers:</p>
+<div class="highlight"><pre><span></span><code>TP53
+Actb
+MYC
+pax6
+Gapdh
+</code></pre></div>
+<p>You try to look these up in your RNA-seq results, and only 2 out of 5 match.</p>
+<ol>
+<li>Why might these names fail to match?</li>
+<li>What should you have used instead?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<table>
+<thead>
+<tr>
+<th>Gene</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TP53</code></td>
+<td>Human HGNC symbol — mouse equivalent is <code>Trp53</code></td>
+</tr>
+<tr>
+<td><code>Actb</code></td>
+<td>Mouse mixed-case — analysis pipeline may expect <code>ACTB</code> or Ensembl ID</td>
+</tr>
+<tr>
+<td><code>MYC</code></td>
+<td>Human symbol — correct species?</td>
+</tr>
+<tr>
+<td><code>pax6</code></td>
+<td>Lowercase — annotation likely uses <code>Pax6</code></td>
+</tr>
+<tr>
+<td><code>Gapdh</code></td>
+<td>Mouse mixed-case — some annotations use <code>GAPDH</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The fix:</strong> Use Ensembl gene IDs as primary identifiers. Include the human-readable name as a convenience column but join by ID. Always document the organism, annotation version, and ID source.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.3 — Undocumented analysis file</summary>
+<p>You receive <code>DEGs_table.csv</code> with 847 rows and columns:</p>
+<div class="highlight"><pre><span></span><code>gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
+</code></pre></div>
+<p>List everything you would need to correctly interpret, share, or reproduce this analysis.</p>
+<details class="success">
+<summary>Solution</summary>
+<p>At minimum you need:</p>
+<ul>
+<li><strong>What tool was used</strong> — DESeq2? edgeR? Each calculates <code>log2FC</code> differently</li>
+<li><strong>What the comparison is</strong> — which condition is treatment vs. control?</li>
+<li><strong>What filtering was applied</strong> — count threshold? Minimum CPM?</li>
+<li><strong>What normalization was used</strong> — default DESeq2 median-of-ratios? Something custom?</li>
+<li><strong>What reference was used</strong> — genome build, annotation version, organism</li>
+<li><strong>What statistical cutoffs</strong> — is <code>padj</code> Benjamini-Hochberg? What threshold?</li>
+<li><strong>Who ran it and when</strong> — author, date, software version</li>
+</ul>
+<p>A file named <code>DEGs_table.csv</code> with no accompanying README is <strong>not reusable</strong>. The more information provided, the better.</p>
+</details>
+</details>
+<h3 id="a-special-note-on-gene-ids">A Special Note on Gene IDs</h3>
+<p>Gene IDs can cause your data to violate the FAIR principles. Use this guidance to maintain FAIR data.</p>
 <div class="admonition warning">
 <p class="admonition-title">Gene names are not unique identifiers</p>
 <p>Human-readable gene names like <code>TP53</code>, <code>ACTB</code>, or <code>Gapdh</code> are not safe to use as primary identifiers in analysis:</p>
@@ -2472,113 +2590,6 @@
 </table>
 <p>Always document the <strong>organism, annotation release, and annotation source</strong> alongside any gene list. It is fine to include human-readable names as a convenience column — just never use them as the join key in an analysis.</p>
 </div>
-<h3 id="reusable">Reusable</h3>
-<p>Data should be <strong>ready for replication and reuse in new contexts</strong>. This requires:</p>
-<ul>
-<li><strong>Detailed, structured metadata</strong> — biological sample details, experimental design, analysis tools, data locations</li>
-<li><strong>A README file</strong> describing project organization and processing steps</li>
-<li><strong>Tidy data structure</strong> — one variable per column, one observation per row, one value per cell</li>
-<li><strong>Clear, descriptive column headers</strong> — <code>weight_g</code> rather than <code>wt</code></li>
-</ul>
-<hr />
-<h2 id="what-happens-when-data-arent-fair">What Happens When Data Aren't FAIR?</h2>
-<p>The following three scenarios are adapted from real situations researchers encounter.</p>
-<details class="question" open="open">
-<summary>Scenario 1 — Uninterpretable file names</summary>
-<p>You receive a dataset from a collaborator:</p>
-<div class="highlight"><pre><span></span><code>/shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
-├── A1.fastq.gz
-├── A2.fastq.gz
-├── ...
-└── H12.fastq.gz
-</code></pre></div>
-<ol>
-<li>Which biological samples are <code>A1.fastq.gz</code> and <code>H12.fastq.gz</code>?</li>
-<li>Is there a control group? How many replicates?</li>
-<li>Can you re-analyze this data in 6 months without emailing your collaborator?</li>
-</ol>
-<details class="success">
-<summary>Discussion</summary>
-<p>You cannot answer any of these questions from the file names or directory alone.</p>
-<ul>
-<li><code>A1</code>–<code>H12</code> are plate-well positions. Without a sample sheet there is no way to know which biological sample occupies each well.</li>
-<li>There are no metadata files in the directory.</li>
-<li>Folder names like <code>Misc_Stuff</code>, <code>new/old/backup2</code> give zero information about the project, organism, or date.</li>
-</ul>
-<p><strong>FAIR principles violated:</strong> Findable (no consistent naming), Accessible (not interpretable), Reusable (no metadata).</p>
-<p><strong>What would fix it:</strong> Rename files with a convention that encodes biological information; add a <code>samplesheet.csv</code> that maps file name → sample → condition → replicate; add a README.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Scenario 2 — Mismatched gene identifiers</summary>
-<p>You compile a gene list from three papers:</p>
-<div class="highlight"><pre><span></span><code>TP53
-Actb
-MYC
-pax6
-Gapdh
-</code></pre></div>
-<p>You try to look these up in your RNA-seq results, and only 2 out of 5 match.</p>
-<ol>
-<li>Why might these names fail to match?</li>
-<li>What should you have used instead?</li>
-</ol>
-<details class="success">
-<summary>Discussion</summary>
-<table>
-<thead>
-<tr>
-<th>Gene</th>
-<th>Problem</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>TP53</code></td>
-<td>Human HGNC symbol — mouse equivalent is <code>Trp53</code></td>
-</tr>
-<tr>
-<td><code>Actb</code></td>
-<td>Mouse mixed-case — analysis pipeline may expect <code>ACTB</code> or Ensembl ID</td>
-</tr>
-<tr>
-<td><code>MYC</code></td>
-<td>Human symbol — correct species?</td>
-</tr>
-<tr>
-<td><code>pax6</code></td>
-<td>Lowercase — annotation likely uses <code>Pax6</code></td>
-</tr>
-<tr>
-<td><code>Gapdh</code></td>
-<td>Mouse mixed-case — some annotations use <code>GAPDH</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>The fix:</strong> Use Ensembl gene IDs as primary identifiers. Include the human-readable name as a convenience column but join by ID. Always document the organism, annotation version, and ID source.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Scenario 3 — Undocumented analysis file</summary>
-<p>You receive <code>DEGs_table.csv</code> with 847 rows and columns:</p>
-<div class="highlight"><pre><span></span><code>gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
-</code></pre></div>
-<p>List everything you would need to correctly interpret, share, or reproduce this analysis.</p>
-<details class="success">
-<summary>Discussion</summary>
-<p>At minimum you need:</p>
-<ul>
-<li><strong>What tool was used</strong> — DESeq2? edgeR? Each calculates <code>log2FC</code> differently</li>
-<li><strong>What the comparison is</strong> — which condition is treatment vs. control?</li>
-<li><strong>What filtering was applied</strong> — count threshold? Minimum CPM?</li>
-<li><strong>What normalization was used</strong> — default DESeq2 median-of-ratios? Something custom?</li>
-<li><strong>What reference was used</strong> — genome build, annotation version, organism</li>
-<li><strong>What statistical cutoffs</strong> — is <code>padj</code> Benjamini-Hochberg? What threshold?</li>
-<li><strong>Who ran it and when</strong> — author, date, software version</li>
-</ul>
-<p>A file named <code>DEGs_table.csv</code> with no accompanying README is <strong>not reusable</strong>. The more information provided, the better.</p>
-</details>
-</details>
 <div class="admonition success">
 <p class="admonition-title">Key Points</p>
 <ul>
@@ -2591,7 +2602,15 @@ Gapdh
 <h2 id="part-2-metadata">Part 2: Metadata</h2>
 <h3 id="what-is-metadata">What Is Metadata?</h3>
 <p>Metadata is <strong>data about your data</strong> — information that describes what the data are and how they were generated. Without it, a file is often uninterpretable.</p>
-<p>A FASTQ file named <code>A1.fastq.gz</code> means nothing on its own. Add a sample sheet that maps <code>A1</code> → <em>Mock_DMSO replicate 1A, mouse J774A.1 macrophage cells, polyA-selected RNA-seq, 150bp PE</em> — now the file is interpretable, reusable, and reproducible.</p>
+<p>A FASTQ file named <code>A1.fastq.gz</code> means nothing on its own. Add a <strong>sample sheet</strong> that maps this file to all the information about that sample. Each column of a sample sheet should contain a different field of information about the samples, such as:</p>
+<ul>
+<li><em>FASTQ file:</em> <code>A1.fastq.gz</code></li>
+<li><em>Condition:</em> Mock DMSO</li>
+<li><em>Replicate</em>: 1A</li>
+<li><em>Cell type:</em> mouse J774A.1 macrophage cells</li>
+<li><em>Data type:</em> polyA-selected RNA-seq</li>
+</ul>
+<p>With this additional metadata, now the data files are more FAIR.</p>
 <p>In genomics, metadata connects <strong>samples → sequencing → analysis → results</strong>. Without it, you cannot:</p>
 <ul>
 <li>Recreate analyses or compare across studies</li>
@@ -2622,7 +2641,7 @@ Gapdh
 </tr>
 </tbody>
 </table>
-<p>Structural metadata is the most important for maintaining FAIR principles, and the most commonly missing.</p>
+<p><strong>Structural metadata is the most important for maintaining FAIR principles, and the most commonly missing.</strong></p>
 <h3 id="what-to-track-in-a-genomics-metadata-file">What to Track in a Genomics Metadata File</h3>
 <table>
 <thead>
@@ -2657,18 +2676,26 @@ Gapdh
 <div class="admonition abstract">
 <p class="admonition-title">Before reading on...</p>
 <p>Look at the figure below — a multi-panel summary figure from a published genomics experiment.</p>
-<p><strong>What can you tell about this experiment from the figure alone?</strong> What organism is it? What tissue or cell type? What do the sample labels 6-BA, ABA, IAA, JA mean? What was the experimental question? How confident are you?</p>
-</div>
-<figure>
+<ul>
+<li><strong>What can you tell about this experiment from the figure alone?</strong> </li>
+<li>What organism is it? What tissue or cell type? </li>
+<li>What do the sample labels 6-BA, ABA, IAA, JA mean? </li>
+<li>What was the experimental question? How confident are you?</li>
+</ul>
+<p><figure markdown="span">
     <img alt="Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA" src="images/slide24_sub3_0.png" style="width:540px; border-radius:6px;" />
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">A figure without metadata is incomplete data</p>
-<p>Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. The sample codes (6-BA = 6-benzylaminopurine, ABA = abscisic acid, IAA = indole-3-acetic acid, JA = jasmonic acid) are plant hormones — but only a plant biologist would know that, and only with a README would anyone know the organism, concentration, timepoints, or experimental context. Figures always represent numerical data behind them. That underlying data — and the metadata that describes it — must be preserved alongside every figure.</p>
+</figure></p>
 </div>
+<h3 id="a-figure-without-metadata-is-incomplete-data">A figure without metadata is incomplete data</h3>
+<p>Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. </p>
+<ul>
+<li>The sample codes (6-BA = 6-benzylaminopurine, ABA = abscisic acid, IAA = indole-3-acetic acid, JA = jasmonic acid) are plant hormones —<strong>but only a plant biologist would know that</strong>, </li>
+<li>Without any metadata (samplesheet, README, etc.) we also don't know the organism, concentration, timepoints, or experimental context. </li>
+<li>Figures always represent numerical data. That underlying data and the metadata that describes it must always be preserved alongside every figure.</li>
+</ul>
 <details class="question" open="open">
-<summary>Exercise M.1 — What does a good sample sheet look like?</summary>
-<p>Below is the sample sheet from the RNA-seq project shown in the PCA above. Read through it and answer the questions.</p>
+<summary>Exercise 2.1 — What does a good sample sheet look like?</summary>
+<p>Below is a sample sheet from an the RNA-seq project. Read through it and answer the questions.</p>
 <table>
 <thead>
 <tr>
@@ -2737,12 +2764,18 @@ Gapdh
 <li>What information is missing that you would want for a complete metadata record?</li>
 <li>Below is the PCA generated from this dataset. Without the sample sheet, the sample IDs (<code>1A</code>, <code>2B</code>, etc.) are uninterpretable. With it, what can you now say about the biology?</li>
 </ol>
-<p><div style="text-align: center; margin: 0.5rem 0 0.5rem;">
-  <img src="images/PCA_example.png" alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" style="max-width: 480px; border-radius: 6px;">
-</div></p>
+<p><figure markdown="span">
+    <img alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" src="images/PCA_example.png" style="width:480px; border-radius:6px;" />
+</figure></p>
 <details class="success">
-<summary>Discussion</summary>
-<p><strong>1. What the sample names encode:</strong> Each name follows <code>{agonist}_{inhibitor}_{groupReplicate}</code>, encoding two treatment factors and replicate identity directly in the file name. The four conditions are:</p>
+<summary>Solution</summary>
+<p><strong>1. What the sample names encode:</strong> </p>
+<ul>
+<li>
+<p>Each name follows <code>{agonist}_{inhibitor}_{groupReplicate}</code>, encoding two treatment factors and replicate identity directly in the file name. </p>
+</li>
+<li>
+<p>The four conditions are:</p>
 <table>
 <thead>
 <tr>
@@ -2779,8 +2812,20 @@ Gapdh
 </tr>
 </tbody>
 </table>
-<p><strong>2. What's missing:</strong> The sample sheet links file names to biological samples, but complete metadata also needs: organism (mouse J774A.1 macrophage-like cells), library type (polyA-selected RNA-seq), read length (150bp paired-end), sequencing platform, and genome build/annotation version used for alignment.</p>
-<p>A companion <strong>design file</strong> (<code>design.tsv</code>) provides structured analysis-level metadata that the R code can read directly:</p>
+</li>
+</ul>
+<p><strong>2. What's missing:</strong> </p>
+<ul>
+<li>The sample sheet links file names to biological samples, but complete metadata (e.g. README.txt) also needs:<ul>
+<li>organism (mouse J774A.1 macrophage-like cells)</li>
+<li>library type (polyA-selected RNA-seq)</li>
+<li>read length (150bp paired-end)</li>
+<li>sequencing platform</li>
+<li>genome build/annotation version used for alignment.</li>
+</ul>
+</li>
+<li>
+<p>More information about the biological samples as well can be found in a companion <strong>design file</strong> (<code>design.tsv</code>) which structured analysis-level metadata that the R code can read directly:</p>
 <table>
 <thead>
 <tr>
@@ -2820,10 +2865,26 @@ Gapdh
 <td>4u8C</td>
 <td>4A</td>
 </tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
 </tbody>
 </table>
-<p>Note that <code>sample</code> names are <strong>identical</strong> between <code>samplesheet.csv</code> and <code>design.tsv</code> — this is intentional. The shared column allows the two tables to be joined in analysis without ambiguity.</p>
-<p><strong>3. PCA interpretation:</strong> With the sample sheet in hand, groups 1 (Mock_DMSO, pink circles) and 3 (Mock_4u8C, pink triangles) cluster tightly on the left — the agonist treatment, not the inhibitor, drives most of the variation (PC1: 94.8%). Groups 2 and 4 (poly_IC, teal) are far to the right. The inhibitor adds a small PC2 separation within the agonist groups. Without the sample sheet, <code>1A–4D</code> are meaningless labels; with it, the biology is immediately readable.</p>
+</li>
+<li>
+<p><strong>Note that <code>sample</code> names are <em>identical</em> between <code>samplesheet.csv</code> and <code>design.tsv</code> — this is intentional. The shared column allows the two tables to be joined in analysis without ambiguity.</strong></p>
+</li>
+</ul>
+<p><strong>3. PCA interpretation:</strong> </p>
+<ul>
+<li>With the sample sheet in hand, groups 1 and 3 (Mock, red) cluster tightly on the left and groups 2 and 4 (poly_IC, teal) are far to the right, so now we can conclude that the agonist treatment, not the inhibitor, drives most of the variation (PC1: 94.8%). </li>
+<li>Now we also know that groups 1 and 2 (DMSO, circles) cluster near the top, and groups 3 and 4 (4u8c, triangles) are near the bottom. Now we can conclude that the inhibitor adds a small PC2 separation within the agonist groups. </li>
+<li>Without the sample sheet, <code>1A–4D</code> are meaningless labels; with it, we can map the metadata onto the PCA and the biology is immediately readable.</li>
+</ul>
 </details>
 </details>
 <h3 id="readme-files">README Files</h3>
@@ -2858,11 +2919,15 @@ Gapdh
 <td><strong>Version info</strong></td>
 <td>Genome build, annotation release, software versions</td>
 </tr>
+<tr>
+<td><strong>Other important information</strong></td>
+<td>Anything pertinent to your project</td>
+</tr>
 </tbody>
 </table>
 <details class="question" open="open">
-<summary>Exercise M.2 — Evaluate a real README</summary>
-<p>The tabs below show the same README file two ways: as the raw plain-text <code>.txt</code> file a researcher would open in any text editor, and as a formatted preview. Read through it and answer the questions.</p>
+<summary>Exercise 2.2 — Evaluate a real README</summary>
+<p>Below is a README file as raw plain-text. Read through it and answer the questions.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Raw text (README.txt)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3038,10 +3103,10 @@ DESeq2 analysis:
 <li><strong>Date</strong>: <code>YYYY-MM-DD</code></li>
 <li><strong>Data type</strong>: <code>.raw</code> or <code>.norm</code></li>
 </ul>
-<div class="admonition abstract">
-<p class="admonition-title">Before reading on...</p>
-<p>Look at the messy file list below. Before reading any of the exercises, see how many distinct problems you can identify on your own.</p>
-</div>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.1 — Messy Fie Names</summary>
+<p>Look at the messy file list above. Before reading the analysis, write down every problem you can spot. </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Messy Files</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3067,28 +3132,30 @@ ld_phyA_ons_t04_2020-08-12.norm.txt
 </div>
 </div>
 </div>
-<hr />
-<details class="question" open="open">
-<summary>Exercise N.1 — What problem arises when the date is placed first?</summary>
-<p>Look at the first 9 files in the messy list. All of them start with a date (<code>2020-07-14_...</code>, <code>AUG-13_...</code>).</p>
-<p>If you sort this folder alphabetically, what order do the files appear in? Is it easier or harder to find all <code>LD phyA on</code> samples compared to the clean list?</p>
+<p><strong>Step through each problem:</strong></p>
+<ol>
+<li>What happens when the date is placed at the beginning of the name?</li>
+<li>What date formats are used across the 18 files, and why does inconsistency matter?</li>
+<li>Which sample numbers are not zero-padded, and why does that break sorting?</li>
+<li>Find all capitalization inconsistencies. What goes wrong in a script?</li>
+<li>Spot the typo in the media field. Why is it particularly dangerous?</li>
+<li>How many distinct naming conventions are in use across the 18 files?</li>
+</ol>
 <details class="success">
-<summary>Solution</summary>
-<p>When dates come first, files sort by <strong>date of collection</strong>, not by <strong>experimental condition</strong>. All <code>2020-07-14</code> files appear together, then all <code>2020-08-12</code> files — regardless of whether they are from <code>LD</code>, <code>SD</code>, <code>phyA</code>, or <code>phyB</code>.</p>
-<p>When the experimental variables come first (as in the clean list), all <code>LD_phyA_on</code> files appear together when sorted. This makes it faster to find related samples, verify you have all expected files, and notice if something is missing.</p>
-<p><strong>The fix:</strong> Put the most biologically meaningful variables first. Reserve the date for the end, where it serves as a tie-breaker without dominating the sort order.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Exercise N.2 — What date formats are used and why does it matter?</summary>
-<p>Find every different date format used across the 18 messy files. List them.</p>
-<details class="success">
-<summary>Solution</summary>
+<summary>Step-by-step analysis</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Problem 1: Date placed first</label><label for="__tabbed_3_2">Problem 2: Inconsistent date formats</label><label for="__tabbed_3_3">Problem 3: Missing zero-padding</label><label for="__tabbed_3_4">Problem 4: Case inconsistencies</label><label for="__tabbed_3_5">Problem 5: Typo in field value</label><label for="__tabbed_3_6">Problem 6: Multiple conventions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Files prefixed with a date (<code>2020-07-14_...</code>, <code>AUG-13_...</code>) sort by <strong>date of collection</strong>, not by <strong>experimental condition</strong>. All <code>2020-07-14</code> files appear together — regardless of light condition, genotype, or media. Finding all <code>LD phyA on</code> samples requires scanning the entire folder.</p>
+<p>When experimental variables come first (as in the clean list), all <code>LD_phyA_on</code> files group together when sorted alphabetically. Related samples are adjacent, missing files are obvious, and scripts that glob by condition work without extra logic.</p>
+<p><strong>The fix:</strong> Put the most biologically meaningful variables first. Date goes at the end as a tie-breaker.</p>
+</div>
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
 <th>File</th>
-<th>Date format</th>
+<th>Format used</th>
 <th>Problem</th>
 </tr>
 </thead>
@@ -3106,120 +3173,306 @@ ld_phyA_ons_t04_2020-08-12.norm.txt
 <tr>
 <td><code>AUG-13_phyB_...</code></td>
 <td><code>MON-DD</code></td>
-<td>Month name abbreviation, no year</td>
+<td>Month name only — no year, won't sort chronologically</td>
 </tr>
 <tr>
 <td><code>JUL-31_phyB_...</code></td>
 <td><code>MON-DD</code></td>
-<td>Month name abbreviation, no year</td>
+<td>Month name only — no year at all</td>
 </tr>
 </tbody>
 </table>
-<p><code>YYYY-7-12</code> and <code>YYYY-07-12</code> sort differently — single-digit months appear after <code>YYYY-09</code> and before <code>YYYY-1</code>. Files from <code>AUG</code> and <code>JUL</code> sort by the text of the month name, not chronologically. And dates with no year are meaningless once a project runs past 12 months.</p>
-<p><strong>The fix:</strong> Always use <code>YYYY-MM-DD</code> with zero-padding for month and day.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Exercise N.3 — Find the missing zero-padding and explain why it breaks sorting</summary>
-<p>Find the files where sample numbers (<code>s1</code>, <code>s2</code>) are not zero-padded.</p>
-<p>Sort these three sample IDs alphabetically: <code>s1</code>, <code>s2</code>, <code>s12</code>. Then sort <code>s01</code>, <code>s02</code>, <code>s12</code>. What do you notice?</p>
-<details class="success">
-<summary>Solution</summary>
-<p>Messy files with missing zero-padding:</p>
+<p><code>YYYY-7-12</code> and <code>YYYY-07-12</code> sort differently: single-digit months appear out of order. <code>AUG</code> and <code>JUL</code> sort alphabetically (August before July), not chronologically. Dates missing the year are meaningless once a project runs past 12 months.</p>
+<p><strong>The fix:</strong> Always use <code>YYYY-MM-DD</code> with zero-padded month and day.</p>
+</div>
+<div class="tabbed-block">
+<p>Files with unpadded sample numbers:</p>
 <ul>
 <li><code>2020-07-14_s1_phyA_on_LD_t05.raw.txt</code> — <code>s1</code> instead of <code>s01</code></li>
 <li><code>2020-07-14_s2_phyB_on_SD_t11.raw.txt</code> — <code>s2</code> instead of <code>s02</code></li>
 <li><code>2020-7-12_s2_phyB_on_SD_t01.raw.txt</code> — <code>s2</code> instead of <code>s02</code></li>
 </ul>
-<p>Alphabetical sort of <code>s1, s2, s12</code> → <code>s1, s12, s2</code> (wrong — <code>s12</code> sorts between <code>s1</code> and <code>s2</code>)</p>
-<p>Alphabetical sort of <code>s01, s02, s12</code> → <code>s01, s02, s12</code> (correct)</p>
-<p><strong>The fix:</strong> Zero-pad to a consistent width. If you have up to 99 samples, always use two digits: <code>s01</code> through <code>s99</code>.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Exercise N.4 — Find all capitalization inconsistencies</summary>
-<p>How many different capitalizations of the same variable value can you find in the messy list? What goes wrong in a script?</p>
-<details class="success">
-<summary>Solution</summary>
+<p>Alphabetical sort of <code>s1, s2, s12</code> → <strong><code>s1, s12, s2</code></strong> (wrong)</p>
+<p>Alphabetical sort of <code>s01, s02, s12</code> → <strong><code>s01, s02, s12</code></strong> (correct)</p>
+<p><code>s12</code> slides between <code>s1</code> and <code>s2</code> because computers sort character by character: <code>1</code> &lt; <code>12</code>... no — <code>1</code> comes before <code>2</code> at position 2. So <code>s12</code> comes right after <code>s1</code>. This silently reorders your files every time you list them.</p>
+<p><strong>The fix:</strong> Zero-pad to a consistent width: <code>s01</code> through <code>s99</code> for up to 99 samples.</p>
+</div>
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
 <th>Variable</th>
-<th>Inconsistent values found</th>
+<th>Values found</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Light condition</td>
-<td><code>LD</code> (correct), <code>ld</code> (in <code>ld_phyA_ons_...</code>)</td>
+<td><code>LD</code> (correct) · <code>ld</code> in <code>ld_phyA_ons_...</code></td>
 </tr>
 <tr>
 <td>Genotype</td>
-<td><code>phyA</code>, <code>phyB</code> (correct), <code>phya</code> (in <code>SD_phya_off_...</code>, <code>SD_phya_ons_...</code>)</td>
+<td><code>phyA</code>, <code>phyB</code> (correct) · <code>phya</code> in <code>SD_phya_off_...</code> and <code>SD_phya_ons_...</code></td>
 </tr>
 </tbody>
 </table>
-<p>In a shell script, <code>ls LD_*</code> will not return <code>ld_phyA_ons_t04_2020-08-12.norm.txt</code> — the lowercase file is silently excluded. In R or Python, string grouping (<code>group_by(light)</code>) will create separate groups for <code>"LD"</code> and <code>"ld"</code> with no error or warning.</p>
-<p><strong>The fix:</strong> Pick a case convention and enforce it for every variable. Never mix cases for the same value.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Exercise N.5 — Spot the typo</summary>
-<p>Find the files that have a typo in the media field. What is the typo, and why is it dangerous?</p>
-<details class="success">
-<summary>Solution</summary>
+<p>In a shell script, <code>ls LD_*</code> silently skips <code>ld_phyA_ons_t04_2020-08-12.norm.txt</code>. In R, <code>group_by(light)</code> creates separate groups for <code>"LD"</code> and <code>"ld"</code> with no warning — your summary statistics for <code>LD</code> are missing two samples and you will never know.</p>
+<p><strong>The fix:</strong> Standardize case for every variable value and enforce it consistently across all files.</p>
+</div>
+<div class="tabbed-block">
 <p>Two files use <code>ons</code> instead of <code>on</code> in the media field:</p>
 <ul>
 <li><code>SD_phya_ons_t04_2020-07-12.norm.txt</code></li>
 <li><code>ld_phyA_ons_t04_2020-08-12.norm.txt</code></li>
 </ul>
-<p>A script that groups by <code>media == "on"</code> will <strong>silently exclude</strong> these two files. The analysis runs to completion with no error — but the <code>on</code> group has 2 fewer samples than it should. The results are wrong without any indication that anything went wrong.</p>
-<p><strong>The fix:</strong> Enforce a controlled vocabulary for each variable field. Better yet: after creating a batch of files, generate a list of all unique values for each position in the name and verify them against the expected vocabulary.</p>
-</details>
-</details>
-<details class="question" open="open">
-<summary>Exercise N.6 — How many naming conventions are in use?</summary>
-<p>Group the 18 messy files by their naming convention (the pattern of fields and separators). How many distinct conventions are there?</p>
-<details class="success">
-<summary>Solution</summary>
-<p>At least <strong>three different conventions</strong> are used across 18 files:</p>
+<p>A script filtering by <code>media == "on"</code> <strong>silently excludes</strong> these two files. The analysis completes without error — but the <code>on</code> group has 2 fewer samples than it should. The results are wrong with no indication anything went wrong. This is the worst kind of error.</p>
+<p><strong>The fix:</strong> After creating a batch of files, list all unique values for each field position and verify them against your expected vocabulary before running any analysis.</p>
+</div>
+<div class="tabbed-block">
+<p>At least <strong>three distinct conventions</strong> are present across the 18 files:</p>
 <table>
 <thead>
 <tr>
 <th>Convention</th>
 <th>Example</th>
-<th>Issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>YYYY-MM-DD_sXX_geno_media_light_tXX.type.txt</code></td>
 <td><code>2020-07-14_s12_phyB_on_SD_t04.raw.txt</code></td>
-<td>Date first; no date in name for norm files</td>
 </tr>
 <tr>
 <td><code>light_geno_media_tXX_YYYY-MM-DD.type.txt</code></td>
 <td><code>LD_phyA_on_t04_2020-07-14.norm.txt</code></td>
-<td>No sample ID field</td>
 </tr>
 <tr>
 <td><code>MON-DD_geno_media_light_sX_tXX.type.txt</code></td>
 <td><code>AUG-13_phyB_on_LD_s1_t11.raw.txt</code></td>
-<td>Non-ISO date, no year, mixed field order</td>
 </tr>
 </tbody>
 </table>
-<p>Mixed conventions are the hardest to fix programmatically — you cannot write a single parser that handles all three. A script that extracts the light condition from position 1 works for convention 2 but fails for conventions 1 and 3.</p>
+<p>Mixed conventions cannot be parsed by a single script. A glob for <code>LD_*</code> misses the date-first raw files entirely. A parser that reads field 1 as the light condition works for convention 2 but breaks on conventions 1 and 3.</p>
+</div>
+</div>
+</div>
 </details>
-</details>
-<hr />
-<details class="question" open="open">
-<summary>Exercise N.7 — Write the README for the clean files</summary>
-<p>The clean naming convention is <code>{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt</code>.</p>
-<p>Write the key sections of a README that should accompany these data files. Think about what a new lab member would need to use them.</p>
 <details class="success">
-<summary>Reference README</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Raw text (README.txt)</label><label for="__tabbed_3_2">Formatted preview</label></div>
+<summary>Cleaned file names</summary>
+<p>After stepping through each problem and each fix, the cleaned files should be names as follows: </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Clean Files</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
+LD_phyA_on_t04_2020-07-14.norm.txt
+LD_phyA_on_t04_2020-08-12.norm.txt
+LD_phyA_on_t03_s03_2020-08-12.raw.txt
+LD_phyA_on_t05_s01_2020-07-14.raw.txt
+LD_phyB_off_t04_2020-08-12.norm.txt
+LD_phyB_on_t04_2020-07-14.norm.txt
+LD_phyB_on_t01_s12_2020-08-12.raw.txt
+LD_phyB_on_t03_s01_2020-07-31.raw.txt
+LD_phyB_on_t11_s01_2020-08-13.raw.txt
+SD_phyA_off_t04_2020-08-13.norm.txt
+SD_phyA_on_t04_2020-07-12.norm.txt
+SD_phyB_off_t04_2020-08-13.norm.txt
+SD_phyB_on_t04_2020-07-12.norm.txt
+SD_phyB_on_t01_s02_2020-07-12.raw.txt
+SD_phyB_on_t02_s01_2020-08-13.raw.txt
+SD_phyB_on_t04_s12_2020-07-14.raw.txt
+SD_phyB_on_t11_s02_2020-07-14.raw.txt
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.2 — Organize by Datatype</summary>
+<p>Now that the names are consistent, the next step is to separate files by type into subfolders. All 18 cleaned files are one of two datatypes: <code>raw</code> (unprocessed) or <code>norm</code> (normalized). Organizing them into <code>raw/</code> and <code>norm/</code> subdirectories serves several purposes:</p>
+<ul>
+<li>Raw data stays clearly separated from processed outputs — easier to treat as read-only</li>
+<li>The subfolder conveys the datatype without needing it parsed from the filename</li>
+<li>Scripts can target all normalized files with a simple <code>norm/*.txt</code> glob</li>
+</ul>
+<details class="success">
+<summary>Datatype subfolders</summary>
+<div class="highlight"><pre><span></span><code>phytochrome_light_response/
+├── raw/
+│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
+│   ├── LD_phyA_on_t05_s01_2020-07-14.raw.txt
+│   ├── LD_phyB_on_t01_s12_2020-08-12.raw.txt
+│   ├── LD_phyB_on_t03_s01_2020-07-31.raw.txt
+│   ├── LD_phyB_on_t11_s01_2020-08-13.raw.txt
+│   ├── SD_phyB_on_t01_s02_2020-07-12.raw.txt
+│   ├── SD_phyB_on_t02_s01_2020-08-13.raw.txt
+│   ├── SD_phyB_on_t04_s12_2020-07-14.raw.txt
+│   └── SD_phyB_on_t11_s02_2020-07-14.raw.txt
+└── norm/
+    ├── LD_phyA_off_t04_2020-08-12.norm.txt
+    ├── LD_phyA_on_t04_2020-07-14.norm.txt
+    ├── LD_phyA_on_t04_2020-08-12.norm.txt
+    ├── LD_phyB_off_t04_2020-08-12.norm.txt
+    ├── LD_phyB_on_t04_2020-07-14.norm.txt
+    ├── SD_phyA_off_t04_2020-08-13.norm.txt
+    ├── SD_phyA_on_t04_2020-07-12.norm.txt
+    ├── SD_phyB_off_t04_2020-08-13.norm.txt
+    └── SD_phyB_on_t04_2020-07-12.norm.txt
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.3 — Create a samplesheet for the phytochrome data</summary>
+<p>A samplesheet is a structured table that records the metadata for every file in a dataset — the same information as the filename, but in a form that analysis code can query, filter, and join directly.</p>
+<p>Given the 9 normalized phytochrome files in <code>norm/</code>, design a samplesheet that fully describes each sample.</p>
+<p><strong>Files in <code>norm/</code>:</strong></p>
+<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
+LD_phyA_on_t04_2020-07-14.norm.txt
+LD_phyA_on_t04_2020-08-12.norm.txt
+LD_phyB_off_t04_2020-08-12.norm.txt
+LD_phyB_on_t04_2020-07-14.norm.txt
+SD_phyA_off_t04_2020-08-13.norm.txt
+SD_phyA_on_t04_2020-07-12.norm.txt
+SD_phyB_off_t04_2020-08-13.norm.txt
+SD_phyB_on_t04_2020-07-12.norm.txt
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>What columns should the samplesheet include?</li>
+<li>Two files share the same experimental condition (<code>LD</code>, <code>phyA</code>, <code>on</code>, <code>t04</code>) but have different dates. What does that tell you, and how should the samplesheet handle it?</li>
+<li>What format should the samplesheet be saved as, and where should it live?</li>
+</ol>
+<details class="success">
+<summary>Samplesheet</summary>
+<table>
+<thead>
+<tr>
+<th>filename</th>
+<th>light</th>
+<th>genotype</th>
+<th>media</th>
+<th>timepoint</th>
+<th>date</th>
+<th>datatype</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LD_phyA_off_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyA_on_t04_2020-07-14.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-14</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyA_on_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyB_off_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyB</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyB_on_t04_2020-07-14.norm.txt</td>
+<td>LD</td>
+<td>phyB</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-14</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyA_off_t04_2020-08-13.norm.txt</td>
+<td>SD</td>
+<td>phyA</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-13</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyA_on_t04_2020-07-12.norm.txt</td>
+<td>SD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyB_off_t04_2020-08-13.norm.txt</td>
+<td>SD</td>
+<td>phyB</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-13</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyB_on_t04_2020-07-12.norm.txt</td>
+<td>SD</td>
+<td>phyB</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-12</td>
+<td>norm</td>
+</tr>
+</tbody>
+</table>
+<p><em>Saved as <code>samplesheet.txt</code> (tab-separated) or <code>samplesheet.csv</code> (comma-separated) in the project root alongside <code>README.txt</code>.</em></p>
+<p><strong>Key Points:</strong></p>
+<ol>
+<li>
+<p><strong>Columns:</strong> </p>
+<ul>
+<li><code>filename</code> as the primary key, then one column per experimental variable: <code>light</code>, <code>genotype</code>, <code>media</code>, <code>timepoint</code>, <code>date</code>, <code>datatype</code>. </li>
+<li>Add any additional details not in the filename (organism, tissue, instrument, library prep, etc.) as extra columns.</li>
+</ul>
+</li>
+<li>
+<p><strong>Two files, same condition, different dates:</strong> </p>
+<ul>
+<li>These represent two separate measurements — perhaps collected on different runs or from different plants. The <code>date</code> column distinguishes them. </li>
+<li>This is also a signal that if you ever want to simplify the filename (by dropping the date), you would first need to add a replicate or run identifier to maintain uniqueness.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format and location:</strong> </p>
+<ul>
+<li>Save as <code>samplesheet.txt</code> (tab-separated) or <code>samplesheet.csv</code> (comma-separated) — plain text, readable by any tool without proprietary software. </li>
+<li>Place it in the project root alongside <code>README.txt</code> (next step), so anyone opening the directory sees it immediately.</li>
+</ul>
+</li>
+</ol>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.4 — Write the README for the clean project</summary>
+<p>The project now has consistently named files, organized into <code>raw/</code> and <code>norm/</code> subfolders, and a <code>samplesheet.txt</code>. Write the key sections of a README that completes the documentation. Think about what a new lab member would need to understand and use this dataset.</p>
+<details class="success">
+<summary>README</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Raw text (README.txt)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>README: Phytochrome Light Response Data
@@ -3240,9 +3493,9 @@ File Naming Convention
   genotype:  phyA or phyB
   media:     on (sucrose) or off (no sucrose)
   timepoint: tXX — two-digit zero-padded timepoint number
-  sample:    sXX — two-digit zero-padded replicate ID (s00 = unspecified)
+  sample:    sXX — two-digit zero-padded replicate ID (omitted when unspecified)
   date:      YYYY-MM-DD — collection or processing date
-  datatype:  raw or norm
+  datatype:  raw or norm (also indicated by subfolder)
 
 Directory Structure
 -------------------
@@ -3252,90 +3505,22 @@ Directory Structure
 ├── README.txt
 └── samplesheet.txt
 
+Samplesheet
+-----------
+samplesheet.txt (tab-separated) contains one row per normalized file.
+Columns: filename, light, genotype, media, timepoint, date, datatype.
+See samplesheet.txt for sample-level details.
+
 Notes
 -----
 Raw and normalized files should remain unmodified.
-See samplesheet.txt for sample ID → date mapping and biological details.
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div markdown>
-<p><strong>README — Phytochrome Light Response Data</strong></p>
-<p><strong>Project:</strong> Light-dependent expression measurements in <em>phyA</em> and <em>phyB</em> genotypes under LD and SD conditions. Multiple timepoints; on/off sucrose media.</p>
-<p><strong>File naming:</strong> <code>{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Values</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>light</code></td>
-<td><code>LD</code>, <code>SD</code></td>
-<td>Long Day, Short Day</td>
-</tr>
-<tr>
-<td><code>genotype</code></td>
-<td><code>phyA</code>, <code>phyB</code></td>
-<td>Plant genotype</td>
-</tr>
-<tr>
-<td><code>media</code></td>
-<td><code>on</code>, <code>off</code></td>
-<td>On or off sucrose</td>
-</tr>
-<tr>
-<td><code>timepoint</code></td>
-<td><code>tXX</code></td>
-<td>Zero-padded timepoint</td>
-</tr>
-<tr>
-<td><code>sample</code></td>
-<td><code>sXX</code></td>
-<td>Zero-padded replicate ID (<code>s00</code> = unspecified)</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td><code>YYYY-MM-DD</code></td>
-<td>Collection or processing date</td>
-</tr>
-<tr>
-<td><code>datatype</code></td>
-<td><code>raw</code>, <code>norm</code></td>
-<td>Raw or normalized data</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Directory:</strong> <code>raw/</code> unprocessed · <code>norm/</code> normalized · <code>README.txt</code> · <code>samplesheet.txt</code></p>
-</div>
 </div>
 </div>
 </div>
 </details>
 </details>
 <hr />
-<p>After the exercises, the final clean result separates raw and normalized files into subfolders and adds a README and samplesheet — so the date can be tracked in the samplesheet rather than embedded in every file name:</p>
-<div class="highlight"><pre><span></span><code>.
-├── norm/
-│   ├── LD_phyA_off_t04.norm.txt
-│   ├── LD_phyA_on_t04.norm.txt
-│   ├── LD_phyB_off_t04.norm.txt
-│   ├── LD_phyB_on_t04.norm.txt
-│   ├── SD_phyA_off_t04.norm.txt
-│   ├── SD_phyA_on_t04.norm.txt
-│   ├── SD_phyB_off_t04.norm.txt
-│   └── SD_phyB_on_t04.norm.txt
-├── raw/
-│   ├── LD_phyA_on_t03.raw.txt
-│   ├── LD_phyA_on_t05.raw.txt
-│   ├── LD_phyB_on_t01.raw.txt
-│   └── ...
-├── README.txt
-└── samplesheet.txt
-</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Key Points</p>
 <ul>
@@ -3372,12 +3557,8 @@ See samplesheet.txt for sample ID → date mapping and biological details.
 <p>Avoid naming files by their position in a manuscript (<code>fig_3_a.png</code>) or by sequential number (<code>result1.csv</code>, <code>result2.csv</code>). Both will change as the project evolves. Use descriptive names: <code>PCA_all_samples.png</code>, <code>DEGs_agonist_vs_control.csv</code>.</p>
 </div>
 <details class="question" open="open">
-<summary>Exercise D.1 — Reorganize a messy project</summary>
-<div class="admonition abstract">
-<p class="admonition-title">Before reading on...</p>
-<p>Look at the directory structure below. Before reading the problem analysis, write down every issue you can identify. Then think about what the improved structure would look like.</p>
-</div>
-<p>A collaborator shares the following project directory with you:</p>
+<summary>Exercise 3.5 — Reorganize a messy project</summary>
+<p>Look at the directory structure below. Write down every issue you can identify. Then think about what the improved structure would look like.</p>
 <div class="highlight"><pre><span></span><code>smith_lab_rna/
 ├── final analysis.R
 ├── Final_analysis_v2.R
@@ -3410,7 +3591,7 @@ See samplesheet.txt for sample ID → date mapping and biological details.
 </ol>
 <details class="success">
 <summary>Step-by-step analysis</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Problem 1: Ambiguous raw data</label><label for="__tabbed_4_2">Problem 2: Version-control chaos in scripts</label><label for="__tabbed_4_3">Problem 3: Three versions of figure 1</label><label for="__tabbed_4_4">Problem 4: DEGs.xlsx instead of .csv</label><label for="__tabbed_4_5">Problem 5: OLD/ and misc/ folders</label><label for="__tabbed_4_6">Problem 6: What is missing?</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Problem 1: Ambiguous raw data</label><label for="__tabbed_6_2">Problem 2: Version-control chaos in scripts</label><label for="__tabbed_6_3">Problem 3: Three versions of figure 1</label><label for="__tabbed_6_4">Problem 4: DEGs.xlsx instead of .csv</label><label for="__tabbed_6_5">Problem 5: OLD/ and misc/ folders</label><label for="__tabbed_6_6">Problem 6: What is missing?</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><code>A1.fastq.gz</code>, <code>A2.fastq.gz</code>, <code>B1.fastq.gz</code>, <code>B2.fastq.gz</code> — these are plate-well identifiers with no biological meaning. Without a sample sheet, there is no way to know what organism, condition, or replicate each file represents.</p>
@@ -3493,8 +3674,8 @@ See samplesheet.txt for sample ID → date mapping and biological details.
 </div>
 <hr />
 <h2 id="workshop-summary-quick-reference">Workshop Summary — Quick Reference</h2>
-<p>Use this as a cheat sheet for your own projects. A print-friendly version is available as a standalone page:</p>
-<p><a class="md-button md-button--primary" href="cheatsheet/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3"/></svg></span> Open printable quick reference</a></p>
+<p>Use this as a cheat sheet for your own projects. A one-page visual reference is available to download and print:</p>
+<p><a href="quickref.pdf" download class="md-button md-button--primary"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Quick Reference (PDF)</a></p>
 <h3 id="fair-data-principles">FAIR Data Principles</h3>
 <table>
 <thead>
@@ -3699,13 +3880,13 @@ See samplesheet.txt for sample ID → date mapping and biological details.
         
         
           
-          <a href="cheatsheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick Reference">
+          <a href="../introR/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to R &amp; RStudio">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Quick Reference
+                Introduction to R & RStudio
               </div>
             </div>
             <div class="md-footer__button md-icon">

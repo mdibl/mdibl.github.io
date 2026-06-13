@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managing Data & Projects for Genomics — Quick Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --teal:   #007299;
+    --teal-l: #e6f3f8;
+    --green:  #799c4b;
+    --green-l:#f1f5ea;
+    --gray:   #4a5568;
+    --gray-l: #f7f8fa;
+    --border: #dee2e9;
+    --text:   #1a202c;
+    --fair-f: #007299;
+    --fair-a: #2e7d32;
+    --fair-i: #6a1b9a;
+    --fair-r: #c66000;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 8pt;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.35;
+  }
+
+  .page {
+    width: 8.5in;
+    padding: 0.02in 0.3in 0.02in;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+  }
+
+  /* ── Header ───────────────────────────────────── */
+  header {
+    border-bottom: 2.5pt solid var(--teal);
+    padding-bottom: 5px;
+    margin-bottom: 9px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.3px;
+  }
+  header .sub {
+    font-size: 7pt;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  header .brand {
+    text-align: right;
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  header .brand strong {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  /* ── Two-column grid ───────────────────────────── */
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .col { display: flex; flex-direction: column; gap: 9px; }
+
+  /* ── Section card ─────────────────────────────── */
+  .card {
+    border: 1pt solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .card-head {
+    padding: 4px 9px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-head .icon { font-size: 9pt; }
+  .card-body { padding: 7px 9px; }
+
+  .teal-head  { background: var(--teal);   color: #fff; }
+  .green-head { background: var(--green);  color: #fff; }
+  .gray-head  { background: #2d3748;       color: #fff; }
+  .amber-head { background: #c66000;       color: #fff; }
+
+  /* ── FAIR pills ───────────────────────────────── */
+  .fair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .fair-pill {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1pt solid var(--border);
+  }
+  .fair-letter {
+    display: block;
+    font-size: 15pt;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px 0 2px;
+    line-height: 1;
+  }
+  .fair-pill .pill-body {
+    padding: 4px 7px 5px;
+    background: #fff;
+  }
+  .fair-pill strong {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .fair-pill p {
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.35;
+  }
+
+  .fair-f .fair-letter { background: #dbeeff; color: var(--fair-f); }
+  .fair-a .fair-letter { background: #d7f0d9; color: var(--fair-a); }
+  .fair-i .fair-letter { background: #ede7f6; color: var(--fair-i); }
+  .fair-r .fair-letter { background: #fde8d1; color: var(--fair-r); }
+
+  /* ── Tables ───────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.8pt;
+  }
+  th {
+    background: var(--gray-l);
+    font-weight: 600;
+    padding: 3px 6px;
+    text-align: left;
+    border-bottom: 1pt solid var(--border);
+    color: var(--gray);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1pt solid #eef0f3;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--gray-l); }
+
+  .good { color: #2e7d32; font-weight: 500; }
+  .bad  { color: #c62828; }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 7.5pt;
+    background: #f0f4f8;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #2d3748;
+  }
+
+  /* ── Directory tree ───────────────────────────── */
+  .tree {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 7pt;
+    background: #1a202c;
+    color: #e2e8f0;
+    border-radius: 4px;
+    padding: 7px 10px;
+    line-height: 1.55;
+  }
+  .tree .dir  { color: #63b3ed; font-weight: 600; }
+  .tree .note { color: #68d391; font-style: italic; }
+  .tree .root { color: #fbd38d; font-weight: 700; }
+
+  /* ── Samplesheet example ──────────────────────── */
+  .sample-table th { background: #2d3748; color: #e2e8f0; }
+  .sample-table td { font-family: 'JetBrains Mono', monospace; font-size: 7pt; }
+  .sample-table tr:nth-child(even) td { background: #f0f4f8; }
+
+  /* ── Checklist ────────────────────────────────── */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 2.5px 0;
+    padding-left: 16px;
+    position: relative;
+    font-size: 7.5pt;
+    border-bottom: 1pt solid #eef0f3;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 1px;
+    color: var(--teal);
+    font-size: 8.5pt;
+    line-height: 1.1;
+  }
+  .checklist-2col {
+    columns: 2;
+    column-gap: 14px;
+  }
+  .checklist-2col li { break-inside: avoid; }
+  .checklist-3col {
+    columns: 3;
+    column-gap: 14px;
+  }
+  .checklist-3col li { break-inside: avoid; }
+
+  /* ── Fix-this-week ────────────────────────────── */
+  .fix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .fix-card {
+    border: 1pt solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .fix-card .fix-label {
+    background: var(--teal-l);
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 7pt;
+    padding: 3px 6px;
+    border-bottom: 1pt solid #c5dce8;
+  }
+  .fix-card .fix-action {
+    padding: 4px 6px;
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.35;
+  }
+
+  /* ── Footer ───────────────────────────────────── */
+  footer {
+    border-top: 1pt solid var(--border);
+    margin-top: 10px;
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7pt;
+    color: #a0aec0;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  /* ── Naming rule badges ───────────────────────── */
+  .rule-badge {
+    display: inline-block;
+    background: var(--teal-l);
+    color: var(--teal);
+    border: 1pt solid #c5dce8;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 7pt;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── Section divider between cards ───────────────*/
+  .section-label {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a0aec0;
+    padding: 0 0 3px 0;
+    border-bottom: 1pt solid var(--border);
+    margin-bottom: 5px;
+  }
+
+  .tip {
+    background: var(--green-l);
+    border-left: 3pt solid var(--green);
+    border-radius: 0 4px 4px 0;
+    padding: 4px 8px;
+    font-size: 7pt;
+    color: #3d5a1a;
+    margin-top: 6px;
+  }
+  .tip strong { color: var(--green); }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div>
+      <h1>Managing Data &amp; Projects for Genomics</h1>
+      <div class="sub">Quick Reference &nbsp;·&nbsp; Keep these practices in every project</div>
+    </div>
+    <div class="brand">
+      <strong>MDIBL CGDS Core</strong><br>
+      CGDS@mdibl.org
+    </div>
+  </header>
+
+  <!-- ── FAIR (full width) ── -->
+  <div class="card" style="margin-bottom:9px;">
+    <div class="card-head teal-head">
+      <span class="icon">◈</span> FAIR Data Principles
+    </div>
+    <div class="card-body">
+      <div class="fair-grid">
+
+        <div class="fair-pill fair-f">
+          <span class="fair-letter">F</span>
+          <div class="pill-body">
+            <strong>Findable</strong>
+            <p>Consistent names · logical folders · searchable metadata · persistent IDs (DOI, GEO, Ensembl)</p>
+          </div>
+        </div>
+
+        <div class="fair-pill fair-a">
+          <span class="fair-letter">A</span>
+          <div class="pill-body">
+            <strong>Accessible</strong>
+            <p>Documented paths · readable formats · open without special software · clear metadata</p>
+          </div>
+        </div>
+
+        <div class="fair-pill fair-i">
+          <span class="fair-letter">I</span>
+          <div class="pill-body">
+            <strong>Interoperable</strong>
+            <p>Open formats (<code>.csv</code>, <code>.tsv</code>) · standard gene IDs · numeric data as numbers, not PDFs</p>
+          </div>
+        </div>
+
+        <div class="fair-pill fair-r">
+          <span class="fair-letter">R</span>
+          <div class="pill-body">
+            <strong>Reusable</strong>
+            <p>README · samplesheet · tidy structure · descriptive headers · documented pipeline + parameters</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="tip" style="margin-top:7px;">
+        <strong>Gene IDs:</strong> Use Ensembl IDs (<code>ENSG00000141510</code>) as primary keys — never gene symbols. Symbols change across annotation versions and cause silent mismatches.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TWO-COLUMN BODY ── -->
+  <div class="cols">
+
+    <!-- LEFT COLUMN -->
+    <div class="col">
+
+      <!-- Metadata Documents -->
+      <div class="card">
+        <div class="card-head green-head">
+          <span class="icon">☰</span> Metadata — What to Create
+        </div>
+        <div class="card-body">
+          <table>
+            <thead>
+              <tr><th>Document</th><th>Contents</th><th>Location</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>samplesheet.csv</code></td>
+                <td>One row per file: filename, condition, treatment, replicate, collection date</td>
+                <td><code>data/</code></td>
+              </tr>
+              <tr>
+                <td><code>design.tsv</code></td>
+                <td>One row per sample: condition + treatment variables for analysis code</td>
+                <td><code>analysis/input/</code></td>
+              </tr>
+              <tr>
+                <td><code>README.txt</code></td>
+                <td>Project overview, directory map, file naming convention, tool versions</td>
+                <td>Project root</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:9px;">
+            <div class="section-label">Samplesheet structure (tidy data)</div>
+            <table class="sample-table">
+              <thead>
+                <tr><th>filename</th><th>light</th><th>genotype</th><th>media</th><th>timepoint</th><th>date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>LD_phyA_off_t04_2020-08-12.norm.txt</td><td>LD</td><td>phyA</td><td>off</td><td>t04</td><td>2020-08-12</td></tr>
+                <tr><td>LD_phyA_on_t04_2020-07-14.norm.txt</td><td>LD</td><td>phyA</td><td>on</td><td>t04</td><td>2020-07-14</td></tr>
+                <tr><td>SD_phyB_off_t04_2020-08-13.norm.txt</td><td>SD</td><td>phyB</td><td>off</td><td>t04</td><td>2020-08-13</td></tr>
+                <tr style="color:#888; font-style:italic;"><td colspan="6" style="text-align:center; padding:2px 7px; font-size:7pt;">· · · one row per file · · ·</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:7pt; color:#718096; margin-top:4px;">One variable per column · one observation per row · one value per cell</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- README Checklist -->
+      <div class="card">
+        <div class="card-head" style="background:#4a5568; color:#fff;">
+          <span class="icon">✓</span> README Must-Haves
+        </div>
+        <div class="card-body">
+          <ul class="checklist checklist-2col">
+            <li>Project title and one-sentence description</li>
+            <li>Organism (species · strain/cell line)</li>
+            <li>Reference genome build + annotation version</li>
+            <li>Date created and point of contact (name + email)</li>
+            <li>Directory map — what each folder contains</li>
+            <li>File naming convention — every field defined</li>
+            <li>Samplesheet location and what columns mean</li>
+            <li>Pipeline name + version + key parameters</li>
+            <li>Statistical cutoffs and normalization method</li>
+            <li>Known issues or data caveats</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- end left col -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <!-- File Naming -->
+      <div class="card">
+        <div class="card-head amber-head">
+          <span class="icon">⌗</span> File Naming Rules
+        </div>
+        <div class="card-body">
+          <p style="font-size:7.8pt; margin-bottom:7px; color:#555;">
+            Pattern: <code>{light}_{genotype}_{media}_{timepoint}_{date}.{datatype}.txt</code>
+          </p>
+          <table>
+            <thead><tr><th>Rule</th><th class="good">✓ Do this</th><th class="bad">✗ Not this</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="rule-badge">No spaces</span></td>
+                <td><code class="good">Mock_DMSO_rep1.fastq.gz</code></td>
+                <td><code class="bad">Mock DMSO rep1.fastq.gz</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">No special characters</span></td>
+                <td><code class="good">results_v2.csv</code></td>
+                <td><code class="bad">results (v2)!.csv</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">Zero-pad</span></td>
+                <td><code class="good">s01, s02, s12</code></td>
+                <td><code class="bad">s1, s2, s12</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">ISO 8601 date</span></td>
+                <td><code class="good">2024-07-16</code></td>
+                <td><code class="bad">07-16-24 · JUL-16</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">Consistent case</span></td>
+                <td><code class="good">LD_phyA · LD_phyB</code></td>
+                <td><code class="bad">LD_phyA · ld_phyb</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">Content-based</span></td>
+                <td><code class="good">PCA_all_samples.png</code></td>
+                <td><code class="bad">fig_3_a.png</code></td>
+              </tr>
+              <tr>
+                <td><span class="rule-badge">Variables first</span></td>
+                <td><code class="good">LD_phyA_on_t04_2024-07.norm.txt</code></td>
+                <td><code class="bad">2024-07-14_s1_LD.txt</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Directory Template -->
+      <div class="card">
+        <div class="card-head teal-head">
+          <span class="icon">⊞</span> Project Directory Template
+        </div>
+        <div class="card-body">
+          <pre class="tree">
+<span class="root">project_name/</span>
+├── <span class="dir">data/</span>           <span class="note">← raw data + metadata (READ-ONLY)</span>
+│   ├── <span class="dir">raw/</span>        <span class="note">← unprocessed files, never modify</span>
+│   ├── <span class="dir">norm/</span>       <span class="note">← normalized / processed outputs</span>
+│   ├── samplesheet.csv
+│   └── *.fastq.gz / reference files
+├── <span class="dir">analysis/</span>       <span class="note">← code, pipeline inputs &amp; outputs</span>
+│   ├── script.Rmd
+│   ├── <span class="dir">input/</span>
+│   └── <span class="dir">output/</span>
+├── <span class="dir">doc/</span>            <span class="note">← protocols, notes, documentation</span>
+├── <span class="dir">results/</span>        <span class="note">← final figures and tables for paper</span>
+└── README.txt      <span class="note">← who/what/when/where/how + map</span>
+          </pre>
+          <ul style="font-size:7.5pt; color:var(--gray); margin-top:7px; padding-left:14px; line-height:1.7;">
+            <li>One project per directory</li>
+            <li>Separate raw from processed — treat raw as read-only</li>
+            <li>No <code>OLD/</code>, <code>misc/</code>, or version number suffixes</li>
+            <li>Name files by content, not manuscript position</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- end right col -->
+  </div><!-- end cols -->
+
+  <!-- ── FIX THIS WEEK (full width) ── -->
+  <div style="margin-top: 9px;">
+    <div class="card">
+      <div class="card-head" style="background:#c66000; color:#fff;">
+        <span class="icon">▶</span> One Thing to Fix This Week
+      </div>
+      <div class="card-body" style="padding: 9px 10px;">
+        <div class="fix-grid">
+
+          <div class="fix-card">
+            <div class="fix-label">No README?</div>
+            <div class="fix-action">Write one for your most-used project. Start with: a description, where is the raw data, what does each folder contain.</div>
+          </div>
+
+          <div class="fix-card">
+            <div class="fix-label">No samplesheet?</div>
+            <div class="fix-action">Create a <code>.csv</code> with one row per file: sample name · condition · replicate · file name. Move collection dates out of filenames and into this table.</div>
+          </div>
+
+          <div class="fix-card">
+            <div class="fix-label">Inconsistent file names?</div>
+            <div class="fix-action">Write down the convention you wish you had used — pick one and document it in your README. Apply it to all new files going forward.</div>
+          </div>
+
+          <div class="fix-card">
+            <div class="fix-label">Results in .xlsx?</div>
+            <div class="fix-action">Export your key analysis result to <code>.csv</code></div>
+          </div>
+
+          <div class="fix-card">
+            <div class="fix-label">Gene symbols as IDs?</div>
+            <div class="fix-action">Add an <code>ensembl_id</code> column (<code>ENSG…</code>)</div>
+          </div>
+
+          <div class="fix-card">
+            <div class="fix-label">No folder structure?</div>
+            <div class="fix-action">Start by separating datatypes into <code>raw/</code> and <code>results/</code>.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>Managing Data &amp; Projects for Genomics &nbsp;·&nbsp; MDIBL Comparative Genomics and Data Science Core</span>
+    <span>mdibl.org &nbsp;·&nbsp; <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
