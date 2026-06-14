@@ -1,16 +1,11 @@
 {
   "name": "Intro to R & RStudio",
-
-  // Rocker tidyverse devcontainer image: R 4.4 + tidyverse pre-installed,
-  // VS Code server support built in for Codespaces.
-  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
-
-  "features": {
-    // Adds RStudio Server and exposes it on port 8787.
-    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:1": {}
+  "build": {
+    "dockerfile": "Dockerfile"
   },
-
-  // Forward RStudio Server port and open it automatically in the browser.
+  "containerEnv": {
+    "DISABLE_AUTH": "true"
+  },
   "forwardPorts": [8787],
   "portsAttributes": {
     "8787": {
@@ -18,18 +13,7 @@
       "onAutoForward": "openBrowser"
     }
   },
-
-  // DISABLE_AUTH skips the RStudio login screen.
-  // Codespaces handles access control (GitHub login required to reach the Codespace).
-  "containerEnv": {
-    "DISABLE_AUTH": "true"
-  },
-
-  // After the container is created:
-  //   1. Set R's working directory to docs/introR/ for every session.
-  //   2. Install any packages beyond what tidyverse provides (none needed yet).
   "postCreateCommand": "echo 'setwd(\"/workspaces/mdibl.github.io/docs/introR\")' >> /home/rstudio/.Rprofile",
-
-  "remoteUser": "rstudio",
-  "workspaceFolder": "/workspaces/mdibl.github.io"
+  "postStartCommand": "/init &",
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/introR"
 }
