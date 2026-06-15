@@ -1,22 +1,13 @@
 {
   "name": "Intro to R & RStudio",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
   "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
-      "version": "release"
-    },
-    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {}
   },
-  "postAttachCommand": {
-    "rstudio-start": "rserver --auth-none=1"
-  },
-  "postCreateCommand": "Rscript -e \"install.packages('tidyverse', repos='https://cloud.r-project.org', Ncpus=4L)\"",
+  "postAttachCommand": "sudo rstudio-server start",
   "forwardPorts": [8787],
   "portsAttributes": {
-    "8787": {
-      "label": "RStudio IDE",
-      "onAutoForward": "openBrowser"
-    }
+    "8787": { "label": "RStudio IDE", "onAutoForward": "openBrowser" }
   },
   "workspaceFolder": "/workspaces/mdibl.github.io/docs/introR"
 }
