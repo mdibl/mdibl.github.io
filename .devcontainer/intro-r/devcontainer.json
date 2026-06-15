@@ -2,12 +2,16 @@
   "name": "Intro to R & RStudio",
   "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
   "features": {
-    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {}
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
   },
-  "postAttachCommand": "sudo rstudio-server start",
   "forwardPorts": [8787],
   "portsAttributes": {
-    "8787": { "label": "RStudio IDE", "onAutoForward": "openBrowser" }
+    "8787": {
+      "label": "RStudio",
+      "requireLocalPort": true,
+      "onAutoForward": "ignore"
+    }
   },
+  "postAttachCommand": { "rstudio-start": "rserver" },
   "workspaceFolder": "/workspaces/mdibl.github.io/docs/introR"
 }
