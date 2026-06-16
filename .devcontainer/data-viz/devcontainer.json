@@ -1,0 +1,17 @@
+{
+  "name": "Intro to Data Visualization",
+  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
+  },
+  "forwardPorts": [8787],
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio",
+      "requireLocalPort": true,
+      "onAutoForward": "ignore"
+    }
+  },
+  "postAttachCommand": { "rstudio-start": "rserver" },
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/dataViz"
+}
