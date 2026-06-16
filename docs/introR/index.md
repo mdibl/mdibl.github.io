@@ -142,24 +142,36 @@ Parentheses control order of operations exactly as in math:
 (2 + 3) * 4  # 20 — parentheses evaluated first
 ```
 
-???+ question "Exercise 1.1 — Calculator warm-up"
+???+ question "Exercise 1.1 — Dog years"
 
-    A mouse has a maximum lifespan of about 4 years. A human's maximum lifespan is 122.5 years. Using only R arithmetic operators, calculate:
+    Different species age at different rates. A common way to convert an animal's age into "human-equivalent years" is to use the **lifespan ratio**:
 
-    1. How many human years correspond to 2 years in a mouse?
-    2. What fraction of a human lifespan does 1 mouse year represent?
+    ```
+    human-equivalent age = (animal age / animal max lifespan) × human max lifespan
+    ```
+
+    Use these values:
+
+    | | Value |
+    |---|---|
+    | Human maximum lifespan | 122.5 years |
+    | Dog maximum lifespan | 24 years |
+    | Dog's current age | 8 years |
+
+    **Using only numbers and arithmetic operators** (no objects yet), type the formula into R and calculate: **how old is an 8-year-old dog in human years?**
 
     ??? success "Solution"
 
         ```r
-        # 1. Mouse-to-human lifespan ratio applied to 2 mouse years
-        2 / 4 * 122.5   # 61.25
-
-        # 2. One mouse year as a fraction of a human lifespan
-        (1 / 4) / 122.5   # 0.00204...
+        8 / 24 * 122.5
+        ```
+        ```
+        [1] 40.83333
         ```
 
-        Both are straightforward ratio calculations — but notice how quickly numbers become hard to track. In the next section we fix that.
+        An 8-year-old dog is approximately **41 human years** old.
+
+        Notice that the formula works, but it is hard to read — what does `8` mean? What does `24` represent? If you needed to change the dog's age, you would have to hunt through the expression to find the right number. In the next section we solve this with **objects**.
 
 ### Objects: Saving Values for Later
 
@@ -232,17 +244,17 @@ Object names can be almost anything, but a few rules apply:
 
 ???+ question "Exercise 1.2 — Objects and the dog-years formula"
 
-    The formula for converting an animal's age to an equivalent human age is:
+    Reminder of the formula for converting an animal's age to an equivalent human age is:
 
     ```
-    human_equivalent = (animal_age / animal_max_lifespan) × human_max_lifespan
+    human-equivalent age = (animal age / animal max lifespan) × human max lifespan
     ```
 
-    Using `human_max <- 122.5` and `dog_max <- 24`:
+    Using your existing objects `human_max <- 122.5` and `dog_max <- 24`:
 
     1. How old is a 3-year-old dog in human years?
     2. How old is a 15-year-old dog in human years?
-    3. Change `dog_max` to `19` (the maximum lifespan of a cat) and recalculate both ages.
+    3. Make a new object for the maximum lifespan of a cat which is 38, and recalculate both ages.
 
     ??? success "Solution"
 
@@ -256,13 +268,11 @@ Object names can be almost anything, but a few rules apply:
         # 2. 15-year-old dog
         15 / dog_max * human_max   # 76.5625
 
-        # 3. Same ages, but for a cat (max lifespan = 19 years)
-        cat_max <- 19
-        3  / cat_max * human_max   # 19.34...
-        15 / cat_max * human_max   # 96.7...
+        # 3. Same ages, but for a cat (max lifespan = 38 years)
+        cat_max <- 38
+		3  / cat_max * human_max   # 9.6...
+		15 / cat_max * human_max   # 48.3...
         ```
-
-        Notice how changing `cat_max` once updates both calculations automatically — this is the core payoff of using objects instead of raw numbers.
 
 !!! success "Key Points — Objects"
     - Use `<-` to assign a value to a named object.
@@ -350,29 +360,43 @@ weights[-1]       # all elements EXCEPT the first: 32 28 51 37
     v_a <- c(1, 2, 3)
 
     # Vector B
-    v_b <- c(TRUE, FALSE, TRUE)
+    v_b <- c(1L, 2L, 3L) 
+    v_b2 <- as.integer(c(1,2,3))
 
     # Vector C
-    v_c <- c(1, 2, "three")
+    v_c <- c(TRUE, FALSE, TRUE)
 
     # Vector D
-    v_d <- c(TRUE, FALSE, 1, 0)
+    v_d <- c(1, 2, "three")
 
     # Vector E
-    v_e <- c("mouse", "rat", TRUE)
+    v_e <- c(TRUE, FALSE, 1, 0)
+
+    # Vector F
+    v_f <- c("mouse", "rat", TRUE)
     ```
 
     ??? success "Solution"
 
         | Vector | Class | Reason |
         |--------|-------|--------|
-        | `v_a` | `"numeric"` | All numbers |
-        | `v_b` | `"logical"` | All logical |
-        | `v_c` | `"character"` | One string forces all to character |
-        | `v_d` | `"numeric"` | `TRUE`→1, `FALSE`→0; numeric wins over logical |
-        | `v_e` | `"character"` | One string forces all to character; `TRUE` becomes `"TRUE"` |
+        | `v_a` | `"numeric"` | Plain numbers are stored as 64-bit doubles by default |
+        | `v_b` / `v_b2` | `"integer"` | `L` suffix and `as.integer()` both produce integer storage |
+        | `v_c` | `"logical"` | All logical |
+        | `v_d` | `"character"` | One string forces all to character |
+        | `v_e` | `"numeric"` | `TRUE`→1, `FALSE`→0; numeric wins over logical |
+        | `v_f` | `"character"` | One string forces all to character; `TRUE` becomes `"TRUE"` |
 
         The coercion hierarchy is: `logical` < `integer` < `numeric` < `character`.
+
+        **Two ways to create an integer vector:**
+
+        ```r
+        c(1L, 2L, 3L)         # L suffix at definition
+        as.integer(c(1, 2, 3)) # convert an existing numeric vector
+        ```
+
+        Both return `"integer"` from `class()`. `as.integer()` is part of a family of type-conversion functions — `as.numeric()`, `as.character()`, `as.logical()` — that let you explicitly change a vector's type. This is useful when a column comes in as the wrong type (e.g., a year read as character that needs to be numeric).
 
 ???+ question "Exercise 2.2 — Subsetting"
 
@@ -492,16 +516,28 @@ table(data$taxa)   # counts per taxa group
 hist(data$year)    # quick histogram of collection year
 ```
 
-!!! abstract "Before reading on..."
-    Run `str(data)` and `summary(data)` in your script. Before looking up the answers:
+???+ question "Exercise 3.1 — Explore the structure"
+
+    Run `str(data)` and `summary(data)` in your script. Before looking up the answers, try to answer these questions from the output alone:
 
     1. How many columns contain numeric data? How many contain text?
     2. Which column has the most missing values (`NA`)?
     3. What is the range of years in this dataset?
 
-???+ question "Exercise 3.1 — First look at the data"
+    ??? success "Solution"
 
-    Load the dataset and answer these questions using only the exploration functions above (no manual scrolling):
+        ```r
+        str(data)
+        summary(data)
+        ```
+
+        1. **Numeric columns:** `record_id`, `month`, `day`, `year`, `plot_id`, `hindfoot_length`, `weight` — 7 columns. Text (character) columns: `species_id`, `sex`, `genus`, `species`, `taxa`, `plot_type` — 6 columns.
+        2. **Most NAs:** `hindfoot_length` has the most missing values — visible in `summary(data)` as `NA's: <count>`.
+        3. **Year range:** `str(data)` shows years starting at 1977; `summary(data)` shows Min = 1977, Max = 1989.
+
+???+ question "Exercise 3.2 — First look at the data"
+
+    Answer these questions using only the exploration functions above (no manual scrolling):
 
     1. How many rows and columns does the dataset have?
     2. What are the column names?
@@ -525,17 +561,15 @@ hist(data$year)    # quick histogram of collection year
         # 3. Taxa counts
         table(data$taxa)
         # Bird    Rabbit    Reptile    Rodent
-        #   450        75          16     16337
+        #   300        69          4     16148
 
         # 4. Mean weight — na.rm removes NA values before calculating
-        mean(data$weight, na.rm = TRUE)   # ~42.7 grams
+        mean(data$weight, na.rm = TRUE)   # ~53.2 grams
         ```
 
-???+ question "Exercise 3.2 — Summary of the last 6 rows"
+???+ question "Exercise 3.3 — Summary of the last 6 rows"
 
-    *This is a 4-minute timed activity from the workshop.*
-
-    Calculate summary statistics for **only the last 6 rows** of the dataset. There is more than one way to do this — try at least two approaches.
+    Calculate summary statistics for **only the last 6 rows** of the dataset. There is more than one way to do this.
 
     ??? success "Solution"
 
@@ -551,7 +585,7 @@ hist(data$year)    # quick histogram of collection year
         summary(data[16873:16878, ])
         ```
 
-        Approach 1 is the most readable. Approach 2 is the most robust — it works even if the number of rows changes.
+        **Approach 1 is the most readable**. Approach 2 is the most robust — it works even if the number of rows changes. Approach 3 works for now, but won't always work if the data structure changes. Approach 3 is called "hard-coding" and is **not recommended.**
 
 !!! success "Key Points — Loading & Exploring"
     - `read.csv("path")` loads a CSV into a data frame. The path is relative to your working directory.
@@ -597,17 +631,29 @@ data[, c("genus", "species")]  # two columns by name
 ```
 
 !!! abstract "Stop and think — why won't `data[16]` work?"
-    Try running `data[16]` in R. What does it return? Is it what you expected?
-
-    Then try `data[16, ]` and `data[, 16]`. What is the difference?
+    Try running `data[16]`, `data[16, ]`, and `data[, 16]` in R. What does each return?
 
     ??? success "Explanation"
 
-        `data[16]` actually *does* work in R — it returns column 16. But `data` only has 13 columns, so you get an error. More importantly, `data[16]` uses **list indexing** (which returns a data frame with one column), while `data[, 16]` uses **matrix indexing** (which returns a vector). The comma is not optional — `[row, col]` is the correct syntax for data frames.
+        ```r
+        > data[16]
+        Error in `[.data.frame`(data, 16) : undefined columns selected
 
-        - `data[16]` — treats the data frame like a list; returns column 16 as a 1-column data frame (or an error if the column doesn't exist)
-        - `data[16, ]` — row 16, all columns ✓
-        - `data[, 16]` — all rows, column 16 ✓
+        > data[16, ]
+           record_id month day year plot_id species_id sex hindfoot_length weight     genus  species   taxa plot_type
+        16        16     7  16 1977       4         DM   F              36     NA Dipodomys merriami Rodent   Control
+
+        > data[, 16]
+        Error in `[.data.frame`(data, , 16) : undefined columns selected
+        ```
+
+        `data` only has 13 columns, so both `data[16]` and `data[, 16]` throw an error — there is no 16th column to select. The comma makes all the difference:
+
+        - `data[16]` — treats the data frame like a list and tries to return column 16; errors because column 16 doesn't exist
+        - `data[16, ]` — row 16, all columns ✓ (this is the one that works)
+        - `data[, 16]` — all rows, column 16 — same error as `data[16]`
+
+        The syntax `[row, col]` is the correct way to index a data frame. When you omit the comma, R treats it as a column selector, not a row selector.
 
 ### Statistics on a Single Column
 
@@ -657,9 +703,7 @@ mean(c(1, 2, NA, 4), na.rm = TRUE)  # 2.333... — NAs excluded
         median(data[1:2000, "hindfoot_length"], na.rm = TRUE)
         ```
 
-???+ question "Exercise 4.2 — Five-minute challenge"
-
-    *From the workshop — 5 minutes.*
+???+ question "Exercise 4.2 — Investigating the data"
 
     1. How many samples had a `plot_type` of `"Control"`? (Hint: `table()`)
     2. What was the minimum recorded `hindfoot_length`? What was the first quartile value?
@@ -670,19 +714,19 @@ mean(c(1, 2, NA, 4), na.rm = TRUE)  # 2.333... — NAs excluded
         ```r
         # 1. Control samples
         table(data$plot_type)
-        # Control: 3161 samples (your dataset may vary slightly)
+        # Control: 7213 samples
 
         # Or more directly:
         sum(data$plot_type == "Control")
 
         # 2. Min and Q1 of hindfoot_length
         summary(data$hindfoot_length)
-        # Min: 2 mm   1st Qu.: 21 mm
+        # Min: 6 mm   1st Qu.: 21 mm
 
         # 3. Weight range in first 2000 rows (excluding NAs)
         first2000_weight <- data[1:2000, "weight"]
         min(first2000_weight, na.rm = TRUE)   # 4 g
-        max(first2000_weight, na.rm = TRUE)   # 243 g
+        max(first2000_weight, na.rm = TRUE)   # 239 g
         ```
 
 !!! success "Key Points — Indexing"
@@ -771,7 +815,7 @@ The condition is tested for every row. Rows where it is `TRUE` are kept; rows wh
 ```r
 # Keep only rows where taxa is "Rodent"
 data_rodent <- data[data$taxa == "Rodent", ]
-nrow(data_rodent)   # 16337
+nrow(data_rodent)   # 16505
 
 # Keep only observations from the 1980s
 data_80s <- data[data$year >= 1980 & data$year <= 1989, ]
@@ -851,11 +895,11 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
         ```r
         # 1. Female animals
         data_female <- data[data$sex == "F", ]
-        nrow(data_female)   # 8059
+        nrow(data_female)   # 7318
 
         # 2. Weight > 50 g (includes some NA rows — see note below)
         data_heavy <- data[!is.na(data$weight) & data$weight > 50, ]
-        nrow(data_heavy)
+        nrow(data_heavy) # 4254
 
         # 3. Male Rodents in plot 2
         data_m_rodent_p2 <- data[
@@ -863,7 +907,7 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
             data$taxa == "Rodent" &
             data$plot_id == 2,
         ]
-        nrow(data_m_rodent_p2)
+        nrow(data_m_rodent_p2) # 529
         ```
 
         Note on question 2: `data[data$weight > 50, ]` will include rows where `weight` is `NA` (because `NA > 50` is `NA`, not `FALSE`). Adding `!is.na(data$weight) &` ensures NAs are excluded.
@@ -879,13 +923,13 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
 
         ```r
         # 1. Missing weights
-        sum(is.na(data$weight))           # 1752
+        sum(is.na(data$weight))           # 1692
 
         # 2. Missing hindfoot_length
-        sum(is.na(data$hindfoot_length))  # 1626
+        sum(is.na(data$hindfoot_length))  # 2733
 
         # 3. Complete rows (no NAs anywhere)
-        sum(complete.cases(data))         # varies — typically ~14,000+
+        sum(complete.cases(data))         # 13797
 
         # 4. Blank strings in sex column
         sum(data$sex == "", na.rm = TRUE)   # count blanks before conversion
@@ -926,35 +970,30 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
     ??? success "Solution"
 
         ```r
+        # approach 1: using genus & species
         nrow(data[data$genus == "Neotoma" & data$species == "albigula" &
-                    data$year == 1980 & data$plot_id == 2, ])
-        # or using species_id (faster to type):
-        nrow(data[data$species_id == "NL" & data$year == 1980 & data$plot_id == 2, ])
+                    data$year == 1980 & data$plot_id == 2, ])   # 4
+
+        # approach 2: using species_id
+        nrow(data[data$species_id == "NL" & data$year == 1980 & data$plot_id == 2, ])   # 4
         ```
 
-???+ question "Challenge 3 — Species with greatest average hindfoot length"
+???+ question "Challenge 3 — Heaviest individual"
 
-    Which species has the highest average `hindfoot_length`? Use `aggregate()`, which takes the form:
-
-    ```r
-    aggregate(value ~ group, data = df, FUN = function)
-    ```
+    Which single observation has the highest recorded `weight`? Return the **entire row** — species, location, date, and all — in one line.
 
     ??? success "Solution"
 
         ```r
-        hf_means <- aggregate(hindfoot_length ~ species_id, data = data, FUN = mean)
-
-        # Find the row with the maximum mean
-        hf_means[which.max(hf_means$hindfoot_length), ]
+        data[which.max(data$weight), ]
         ```
 
         ```
-           species_id hindfoot_length
-        ##         NL        32.29...
+          record_id month day year plot_id species_id sex hindfoot_length weight   genus  species   taxa plot_type
+          12871     5  28 1987       2         NL   M              32    278 Neotoma albigula Rodent   Control
         ```
 
-        *Neotoma albigula* (species code `NL`) has the longest average hindfoot length. This is the same species from Challenge 2!
+        `which.max()` returns the **index** of the largest value. Passing that index to `data[row, ]` retrieves the full row — every column at once. This is the same indexing pattern from Part 4, combined with the `which()` family from Part 5. The heaviest individual (278 g) is a male *Neotoma albigula.*
 
 ---
 
