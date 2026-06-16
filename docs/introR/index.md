@@ -18,6 +18,16 @@
 
 ## Launch Your Workspace
 
+!!! info "You need a free GitHub account to use this workshop"
+    This workshop runs in **GitHub Codespaces** — a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
+
+    **GitHub Free quota (per account, per month):**
+
+    - 120 core-hours of compute — equivalent to **60 hours** of run time on a standard 2-core Codespace
+    - 15 GB of storage
+
+    This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
+
 This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.
 
 <div style="margin: 1.2rem 0;">
@@ -26,7 +36,7 @@ This workshop runs entirely in a cloud environment — no software installation 
 </a>
 </div>
 
-!!! warning "First launch takes ~5 minutes"
+!!! info "First launch takes ~5 minutes"
     The first time the Codespace builds, GitHub installs R packages including the full tidyverse collection. Subsequent launches are instant. Start the build, then read through the "Why R?" section while it runs.
 
 **What you'll see:**
@@ -34,6 +44,26 @@ This workshop runs entirely in a cloud environment — no software installation 
 1. GitHub opens a VS Code editor in your browser — this is the Codespace container. You do not need to use VS Code for this workshop.
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
+
+!!! tip "Keep your Codespace awake — and stop it when you're done"
+    Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
+
+    **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
+
+    ```bash
+    while true; do echo "keepalive $(date)"; sleep 300; done
+    ```
+
+    This pings the Codespace every 5 minutes to prevent it from suspending during the session.
+
+	!!! danger "How to stop your codespace *when you're done*"
+	
+		1. Switch to the VS Code terminal tab where the `keepalive` loop is running.
+		2. Press **Ctrl+C** to stop it.
+		3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
+	
+		***Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.***
+
 
 **Getting oriented in RStudio:**
 
@@ -994,6 +1024,14 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
         ```
 
         `which.max()` returns the **index** of the largest value. Passing that index to `data[row, ]` retrieves the full row — every column at once. This is the same indexing pattern from Part 4, combined with the `which()` family from Part 5. The heaviest individual (278 g) is a male *Neotoma albigula.*
+---
+
+!!! danger "Before you leave — stop your Codespace"
+    1. Switch to the VS Code terminal tab where the keepalive loop is running.
+    2. Press **Ctrl+C** to stop it.
+    3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
+
+    Closing the browser tab is **not** enough — a suspended Codespace still counts against your monthly storage quota.
 
 ---
 
