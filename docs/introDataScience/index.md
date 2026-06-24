@@ -32,9 +32,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Get started with R — the statistical computing language used throughout biology and data science. Learn to navigate RStudio, write your first scripts, and load and explore the datasets from this course series.
 
-    **Coming soon**
-
-    [:octicons-arrow-right-24: Preview](../introR/index.md){ .md-button }
+    **~120 minutes &nbsp;·&nbsp; Available now**
+    
+    [:octicons-arrow-right-24: Start the workshop](../introR/index.md){ .md-button .md-button--primary }
 
 -   :material-chart-scatter-plot:{ .lg .middle } **Introduction to Data Visualization in R**
 
@@ -42,9 +42,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Learn the grammar of graphics and build publication-quality plots using `ggplot2`. Covers choosing the right chart type, customizing appearance, and common visualizations for biological data.
 
-    **Coming soon**
+    **~120 minutes &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Preview](../dataViz/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../dataViz/index.md){ .md-button .md-button--primary }
 
 </div>
 

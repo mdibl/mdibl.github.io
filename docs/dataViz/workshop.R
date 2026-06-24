@@ -37,6 +37,15 @@ surveys %>% filter(taxa == "Rodent")
 surveys %>% filter(year == 1985)
 surveys %>% filter(taxa == "Rodent", !is.na(weight))   # combine with ,
 
+# %in% — match any value in a vector (cleaner than chaining | conditions)
+surveys %>% filter(sex == "M" | sex == "F")       # verbose
+surveys %>% filter(sex %in% c("M", "F"))          # same result, cleaner
+# %in% also silently drops NAs and blank strings — "F" and "M" only
+
+# Works with any vector, including a computed one
+top_taxa <- c("Rodent", "Bird")
+surveys %>% filter(taxa %in% top_taxa)
+
 
 # ── select() — keep specific columns ─────────────────────────────────────────
 
@@ -100,22 +109,27 @@ surveys %>% count(plot_type, sort = TRUE)
 #   head(5)
 
 
-## EXERCISE 1.2 — Does sex predict weight within species?
-# Overall mean weight is nearly identical for M and F (~53g each).
-# But does that hold within each species?
-# Using surveys_clean, calculate mean weight per species_id AND sex
-# (M and F only). Which species shows the largest sex difference?
+## EXERCISE 1.2 — Does sex predict weight?
+# Part A: using surveys, calculate mean weight and n for each sex
+#         (M and F only; exclude NA weights). What do you notice?
+# Part B: add species_id as a second grouping variable.
+#         Does the pattern from Part A hold within each species?
 
-## SOLUTION 1.2
-# surveys_clean %>%
-#   filter(sex %in% c("M", "F")) %>%
+## SOLUTION 1.2 — Part A
+# surveys %>%
+#   filter(!is.na(weight), sex %in% c("M", "F")) %>%
+#   group_by(sex) %>%
+#   summarise(mean_weight = round(mean(weight), 1), n = n())
+# Result: F ~53.1g, M ~53.2g — nearly identical at the aggregate level
+
+## SOLUTION 1.2 — Part B
+# surveys %>%
+#   filter(!is.na(weight), sex %in% c("M", "F")) %>%
 #   group_by(species_id, sex) %>%
 #   summarise(mean_weight = round(mean(weight), 1), n = n(), .groups = "drop") %>%
 #   arrange(species_id, sex)
-#
-# NL: M=168g, F=151g — largest absolute difference (~11% heavier males)
-# PE, RM: females slightly heavier (possibly sampled more while carrying young)
-# The overall M≈F average masks real within-species dimorphism.
+# NL: M=168g, F=151g — largest dimorphism (~11% heavier males)
+# PE, RM: females slightly heavier — species differences cancel out in the aggregate
 
 
 # ── PART 2: The Grammar of Graphics ──────────────────────────────────────────
@@ -260,21 +274,29 @@ surveys %>%
 #   theme_minimal()
 
 
-## EXERCISE 2.2 — Observations per year
-# Summarise the number of observations per year, then plot as a bar chart.
-# Add labels and a theme.
+## EXERCISE 2.2 — Does experimental treatment affect average body weight?
+# The Portal Project plots use five treatments that control which animals enter.
+# Using surveys, filter out NA weights, then summarise mean weight by plot_type.
+# Plot as geom_col. Rotate x-axis labels with:
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ## SOLUTION 2.2
 # surveys %>%
-#   count(year) %>%
-#   ggplot(aes(x = year, y = n)) +
+#   filter(!is.na(weight)) %>%
+#   group_by(plot_type) %>%
+#   summarise(avg_weight = mean(weight)) %>%
+#   ggplot(aes(x = plot_type, y = avg_weight)) +
 #   geom_col(fill = "steelblue") +
 #   labs(
-#     title = "Survey Observations by Year",
-#     x     = "Year",
-#     y     = "Number of Observations"
+#     title = "Average Rodent Weight by Plot Treatment",
+#     x     = "Plot Type",
+#     y     = "Average Weight (g)"
 #   ) +
-#   theme_bw()
+#   theme_bw() +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+#
+# Long-term Krat Exclosure: ~31g (heavy kangaroo rats excluded)
+# Control: ~59g — returns to this in Mini Project Q3
 
 
 # ── PART 3: Layering & Customizing ───────────────────────────────────────────
@@ -390,74 +412,72 @@ surveys_clean %>%
 
 # ── geom_tile() — heatmaps ────────────────────────────────────────────────────
 
-heatmap_data <- surveys %>%
-  filter(!is.na(weight), !is.na(taxa)) %>%
-  group_by(year, taxa) %>%
-  summarise(avg_weight = mean(weight), .groups = "drop")
+# Minimal heatmap example — observations per year for the top 6 species
+top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
 
-ggplot(heatmap_data, aes(x = year, y = taxa, fill = avg_weight)) +
+heatmap_data <- surveys_clean %>%
+  filter(species_id %in% top6) %>%
+  group_by(year, species_id) %>%
+  summarise(n_obs = n(), .groups = "drop")
+
+ggplot(heatmap_data, aes(x = year, y = species_id, fill = n_obs)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "steelblue") +
-  labs(title = "Mean Weight by Year and Taxa", fill = "Avg Weight (g)") +
+  labs(title = "Observations per Year by Species", fill = "Count") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-## EXERCISE 3.1 — Weight over time, by taxa
-# Summarise average weight by year and taxa.
-# Plot as a faceted line + point chart (one panel per taxa).
-# Use scales = "free_y". Remove the legend.
+## EXERCISE 3.1 — Weight over time, by species
+# Summarise average weight by year and species_id for the top 6 species.
+# Plot as a faceted line + point chart (one panel per species).
+# Use scales = "free_y" (NL ~150g vs RM ~10g — shared axis flattens small species).
+# Remove the legend.
 
 ## SOLUTION 3.1
-# weight_by_year_taxa <- surveys %>%
-#   filter(!is.na(weight), !is.na(taxa)) %>%
-#   group_by(year, taxa) %>%
+# top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
+#
+# weight_by_year_spp <- surveys_clean %>%
+#   filter(species_id %in% top6) %>%
+#   group_by(year, species_id) %>%
 #   summarise(avg_weight = mean(weight), .groups = "drop")
 #
-# ggplot(weight_by_year_taxa, aes(x = year, y = avg_weight, color = taxa)) +
+# ggplot(weight_by_year_spp, aes(x = year, y = avg_weight, color = species_id)) +
 #   geom_point() +
 #   geom_line() +
-#   facet_wrap(~ taxa, scales = "free_y") +
+#   facet_wrap(~ species_id, scales = "free_y") +
 #   labs(
-#     title = "Average Weight Over Time by Taxa",
+#     title = "Average Weight Over Time by Species",
 #     x     = "Year",
 #     y     = "Average Weight (g)"
 #   ) +
 #   theme_bw() +
 #   theme(legend.position = "none")
+# DM shows year-to-year fluctuations; DS shows a declining trend over the study period.
 
 
-## EXERCISE 3.2 — Species composition heatmap
-# Build a proportional heatmap: top 6 species × plot type.
-# Steps: find top 6 → filter → count by plot_type + species_id
-#        → proportion within each plot_type → geom_tile
+## EXERCISE 3.2 — Which species are captured in each plot type?
+# Using top6 and surveys_clean, count observations by plot_type AND species_id.
+# Plot as a geom_tile heatmap filled by count. Rotate x-axis labels.
 
 ## SOLUTION 3.2
-# top6_ids <- surveys_clean %>%
-#   count(species_id, sort = TRUE) %>%
-#   head(6) %>%
-#   pull(species_id)
-#
 # surveys_clean %>%
-#   filter(species_id %in% top6_ids) %>%
+#   filter(species_id %in% top6) %>%
 #   group_by(plot_type, species_id) %>%
 #   summarise(n = n(), .groups = "drop") %>%
-#   group_by(plot_type) %>%
-#   mutate(proportion = n / sum(n)) %>%
-#   ungroup() %>%
-#   ggplot(aes(x = species_id, y = plot_type, fill = proportion)) +
+#   ggplot(aes(x = species_id, y = plot_type, fill = n)) +
 #   geom_tile(color = "white", linewidth = 0.5) +
-#   scale_fill_gradient(low = "white", high = "steelblue",
-#                       labels = scales::percent) +
+#   scale_fill_gradient(low = "white", high = "steelblue") +
 #   labs(
-#     title    = "Species Composition by Plot Type",
-#     subtitle = "Proportion of captures (top 6 species)",
-#     x        = "Species ID",
-#     y        = "Plot Type",
-#     fill     = "Proportion"
+#     title = "Captures by Plot Type and Species",
+#     x     = "Species ID",
+#     y     = "Plot Type",
+#     fill  = "Count"
 #   ) +
 #   theme_minimal() +
 #   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# DM dominates Control; nearly absent from Krat Exclosures.
+# Mini Project Q3 extends this by converting counts to within-plot proportions.
 
 
 # ── ggsave() — saving figures ─────────────────────────────────────────────────

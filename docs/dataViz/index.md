@@ -148,6 +148,24 @@ surveys %>% filter(year == 1985)
 surveys %>% filter(taxa == "Rodent", !is.na(weight))
 ```
 
+**`%in%` — match any value in a vector**
+
+When you want to keep rows matching any one of several values, `%in%` is cleaner than chaining `|` conditions:
+
+```r
+# Without %in% — verbose
+surveys %>% filter(sex == "M" | sex == "F")
+
+# With %in% — clean, scales to any number of values
+surveys %>% filter(sex %in% c("M", "F"))
+
+# Works with any vector, including one you computed earlier
+top6 <- surveys %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
+surveys %>% filter(species_id %in% top6)
+```
+
+`%in%` also silently excludes `NA` values — `filter(sex %in% c("M", "F"))` drops blank strings and NAs at the same time, which is why you will see it used instead of `sex == "M" | sex == "F"` throughout the exercises.
+
 ### `select()` — Choose Columns
 
 `select()` keeps only the columns you name, dropping the rest. This makes large data frames easier to work with.
@@ -233,23 +251,39 @@ surveys %>% count(species_id, sort = TRUE)
 
         All five are large-bodied species. The heaviest individual (278 g) is *Neotoma albigula* — you may recognize it from the Introduction to R workshop challenges.
 
-???+ question "Exercise 1.2 — Does sex predict weight within species?"
+???+ question "Exercise 1.2 — Does sex predict weight?"
 
-    The overall mean weight for males and females across all species is nearly identical (~53 g each). But does that hold within each species? Some species may show clear sexual dimorphism while others do not.
+    **Part A.** Using `surveys`, calculate **mean weight and number of observations for each sex** (`"M"` and `"F"` only — exclude NA weights). What do you notice about the result?
+	
+	??? success "Part A Solution"
 
-    Using `surveys_clean`, calculate the **mean weight per species and sex** (`"M"` and `"F"` only). Which species shows the largest difference between sexes?
-
-    ??? success "Solution"
+        **Part A — mean weight by sex overall:**
 
         ```r
-        surveys_clean %>%
-          filter(sex %in% c("M", "F")) %>%
-          group_by(species_id, sex) %>%
-          summarise(mean_weight = round(mean(weight), 1), n = n(), .groups = "drop") %>%
-          arrange(species_id, sex)
+        surveys %>%
+          filter(!is.na(weight), sex %in% c("M", "F")) %>%
+          group_by(sex) %>%
+          summarise(mean_weight = round(mean(weight), 1), n = n())
         ```
 
-        *Neotoma albigula* (NL) shows the largest absolute difference — males average ~168 g vs females ~151 g (~11% heavier). Interestingly, some species go the other way: in *Peromyscus eremicus* (PE) and *Reithrodontomys megalotis* (RM), females are slightly heavier than males, possibly because females are sampled more often while carrying young. The aggregate sex difference disappears because species-level dimorphism patterns cancel out across the community.
+        Males and females are nearly identical — both average ~53 g. The aggregate result hides what is really going on.
+	
+	
+    **Part B.** Now add `species_id` as a second grouping variable so you get mean weight per **species and sex**. Does the pattern from Part A hold within each species?
+    
+	??? success "Part B Solution"
+
+        **Part B — mean weight by species and sex:**
+
+        ```r
+        surveys %>%
+          filter(!is.na(weight), sex %in% c("M", "F")) %>%
+          group_by(species_id, sex) %>%
+          summarise(mean_weight = round(mean(weight), 1), n = n(), .groups = "drop") %>%
+          arrange(species_id, sex) 
+        ```
+
+        Within species the picture is more interesting. *Neotoma albigula* (NL) shows the clearest dimorphism — males average ~168 g vs females ~151 g (~11% heavier). In contrast, *Peromyscus eremicus* (PE) and *Reithrodontomys megalotis* (RM) go the other way, with females slightly heavier than males. The community-wide average lands at ~53 g for both sexes because these species-level differences cancel out across the dataset.
 
 !!! success "Key Points — Data Wrangling"
     - Load tidyverse with `library(tidyverse)` — this gives you both `dplyr` and `ggplot2`.
@@ -507,28 +541,33 @@ Note how `%>%` pipes the summarised data directly into `ggplot()` — you do not
           theme_minimal()
         ```
 
-        The bimodal shape reflects two size classes of rodents in the data.
+        The multi-modal shape reflects mutliple size classes of rodents in the data.
 
-???+ question "Exercise 2.2 — Observations per year"
+???+ question "Exercise 2.2 — Does experimental treatment affect average body weight?"
 
-    Summarise the number of observations per year, then plot the result as a bar chart (`geom_col()`). Add labels and a theme.
+    The Portal Project plots have five experimental treatments that manipulate which animals can enter each plot. Do these treatments affect the average body weight of captured animals?
+
+    Using `surveys`, filter out rows where `weight` is `NA`, then summarise **mean weight by `plot_type`**. Plot the result as a bar chart. Add descriptive labels and rotate the x-axis text so the plot type names don't overlap (`theme(axis.text.x = element_text(angle = 45, hjust = 1))`).
 
     ??? success "Solution"
 
         ```r
         surveys %>%
-          count(year) %>%
-          ggplot(aes(x = year, y = n)) +
+          filter(!is.na(weight)) %>%
+          group_by(plot_type) %>%
+          summarise(avg_weight = mean(weight)) %>%
+          ggplot(aes(x = plot_type, y = avg_weight)) +
           geom_col(fill = "steelblue") +
           labs(
-            title = "Survey Observations by Year",
-            x     = "Year",
-            y     = "Number of Observations"
+            title = "Average Rodent Weight by Plot Treatment",
+            x     = "Plot Type",
+            y     = "Average Weight (g)"
           ) +
-          theme_bw()
+          theme_bw() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
         ```
 
-        Sampling effort varied across years, which is important to keep in mind when comparing counts across time.
+        The Long-term Krat Exclosure plots have the lowest average weight (~31 g) — the heavy kangaroo rat species (*Dipodomys merriami*, *D. spectabilis*) are excluded by the barriers, so the remaining community is dominated by smaller rodents. Control plots sit in the middle (~59 g). You will return to plot-type differences in Question 3 of the Mini Project.
 
 !!! success "Key Points — Grammar of Graphics"
     - Every ggplot needs data, `aes()` mappings, and at least one `geom_*()`.
@@ -651,55 +690,77 @@ ggplot(surveys_clean, aes(x = hindfoot_length, y = weight, color = species_id)) 
 
 `facet_wrap(~ variable)` splits a single plot into panels, one per level of the variable. This is one of the most powerful tools in ggplot2 for revealing group-level patterns.
 
+With 17 species in `surveys_clean`, all panels at once would be too small to read. Limit to the top 6 species first:
+
 ```r
-ggplot(surveys_clean, aes(x = hindfoot_length, y = weight)) +
+top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
+
+surveys_clean %>%
+  filter(species_id %in% top6) %>%
+  ggplot(aes(x = hindfoot_length, y = weight)) +
   geom_point(alpha = 0.2) +
   geom_smooth(method = "lm", se = FALSE, color = "darkred") +
-  facet_wrap(~ taxa) +
+  facet_wrap(~ species_id) +
   theme_bw()
 ```
 
-Add `scales = "free"` to let each panel choose its own axis range (useful when groups differ greatly in magnitude). Add `ncol =` to control layout.
+Add `scales = "free_y"` to let each panel choose its own y-axis range — essential here because body size differs so much across species:
+
+```r
+surveys_clean %>%
+  filter(species_id %in% top6) %>%
+  ggplot(aes(x = hindfoot_length, y = weight)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  facet_wrap(~ species_id, scales = "free_y") +
+  theme_bw()
+```
+
+Add `ncol =` to control the number of columns in the panel grid.
 
 ### `geom_tile()` — Heatmaps
 
 `geom_tile()` draws a filled rectangle for every row of data. It requires three aesthetics: `x`, `y` (the two categorical axes), and `fill` (the value encoded by color).
 
 ```r
-# Minimal heatmap example — mean weight by year and taxa
-heatmap_data <- surveys %>%
-  filter(!is.na(weight), !is.na(taxa)) %>%
-  group_by(year, taxa) %>%
-  summarise(avg_weight = mean(weight), .groups = "drop")
+# Minimal heatmap example — observations per year for the top 6 species
+top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
 
-ggplot(heatmap_data, aes(x = year, y = taxa, fill = avg_weight)) +
+heatmap_data <- surveys_clean %>%
+  filter(species_id %in% top6) %>%
+  group_by(year, species_id) %>%
+  summarise(n_obs = n(), .groups = "drop")
+
+ggplot(heatmap_data, aes(x = year, y = species_id, fill = n_obs)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "steelblue") +
-  labs(title = "Mean Weight by Year and Taxa", fill = "Avg Weight (g)") +
+  labs(title = "Observations per Year by Species", fill = "Count") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ---
 
-???+ question "Exercise 3.1 — Weight over time, by taxa"
+???+ question "Exercise 3.1 — Weight over time, by species"
 
-    Create a summary of **average weight by year and taxa**, then build a faceted line + point plot showing how weight changes over the study period for each taxon. Use `facet_wrap(~ taxa, scales = "free_y")` so each panel uses its own y-axis range. Remove the legend (it is redundant with facet labels).
+    Create a summary of **average weight by year and species** for the top 6 species in `surveys_clean`, then build a faceted line + point plot. Use `facet_wrap(~ species_id, scales = "free_y")` so each panel uses its own y-axis range. Remove the legend (it is redundant with the facet labels).
 
     ??? success "Solution"
 
         ```r
-        weight_by_year_taxa <- surveys %>%
-          filter(!is.na(weight), !is.na(taxa)) %>%
-          group_by(year, taxa) %>%
+        top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
+
+        weight_by_year_spp <- surveys_clean %>%
+          filter(species_id %in% top6) %>%
+          group_by(year, species_id) %>%
           summarise(avg_weight = mean(weight), .groups = "drop")
 
-        ggplot(weight_by_year_taxa, aes(x = year, y = avg_weight, color = taxa)) +
+        ggplot(weight_by_year_spp, aes(x = year, y = avg_weight, color = species_id)) +
           geom_point() +
           geom_line() +
-          facet_wrap(~ taxa, scales = "free_y") +
+          facet_wrap(~ species_id, scales = "free_y") +
           labs(
-            title = "Average Weight Over Time by Taxa",
+            title = "Average Weight Over Time by Species",
             x     = "Year",
             y     = "Average Weight (g)"
           ) +
@@ -707,59 +768,33 @@ ggplot(heatmap_data, aes(x = year, y = taxa, fill = avg_weight)) +
           theme(legend.position = "none")
         ```
 
-        Rodent weight shows a modest upward trend over the study period. Birds and Rabbits have fewer observations, producing noisier year-to-year patterns.
+        Each species shows a different trajectory. DM (*Dipodomys merriami*) shows notable year-to-year fluctuations; DS (*D. spectabilis*) shows a declining trend over the study period. The `free_y` scale is essential here — NL weighs ~150 g while RM weighs ~10 g, so a shared axis would flatten the smaller species into a flat line.
 
-???+ question "Exercise 3.2 — Species composition heatmap"
+???+ question "Exercise 3.2 — Which species are captured in each plot type?"
 
-    Do different plot types attract different species? Build a heatmap showing the **proportion** of captures belonging to each of the top 6 species within each plot type. Raw counts would be misleading because some species are far more common than others — proportions within each plot type make a fair comparison.
-
-    Work through these steps:
-
-    1. Find the top 6 species by total count in `surveys_clean`.
-    2. Filter `surveys_clean` to include only those 6 species.
-    3. Count observations by `plot_type` and `species_id`.
-    4. Within each `plot_type`, calculate `proportion = n / sum(n)`.
-    5. Plot with `geom_tile()`, filling by proportion.
+    Using the `top6` object from the teaching example above and `surveys_clean`, count observations by **`plot_type` and `species_id`**, then display the result as a heatmap filled by count. Rotate the x-axis labels.
 
     ??? success "Solution"
 
         ```r
-        # Step 1: top 6 species
-        top6 <- surveys_clean %>%
-          count(species_id, sort = TRUE) %>%
-          head(6)
-
-        top6_ids <- top6$species_id   # "DM" "DS" "DO" "RM" "PE" "OT"
-
-        # Step 2: filter to top 6
-        common <- surveys_clean %>%
-          filter(species_id %in% top6_ids)
-
-        # Step 3–4: counts and proportions
-        species_plot_props <- common %>%
+        surveys_clean %>%
+          filter(species_id %in% top6) %>%
           group_by(plot_type, species_id) %>%
           summarise(n = n(), .groups = "drop") %>%
-          group_by(plot_type) %>%
-          mutate(proportion = n / sum(n)) %>%
-          ungroup()
-
-        # Step 5: heatmap
-        ggplot(species_plot_props, aes(x = species_id, y = plot_type, fill = proportion)) +
+          ggplot(aes(x = species_id, y = plot_type, fill = n)) +
           geom_tile(color = "white", linewidth = 0.5) +
-          scale_fill_gradient(low = "white", high = "steelblue",
-                              labels = scales::percent) +
+          scale_fill_gradient(low = "white", high = "steelblue") +
           labs(
-            title    = "Species Composition by Plot Type",
-            subtitle = "Proportion of captures (top 6 species)",
-            x        = "Species ID",
-            y        = "Plot Type",
-            fill     = "Proportion"
+            title = "Captures by Plot Type and Species",
+            x     = "Species ID",
+            y     = "Plot Type",
+            fill  = "Count"
           ) +
           theme_minimal() +
           theme(axis.text.x = element_text(angle = 45, hjust = 1))
         ```
 
-        *Dipodomys merriami* (DM) dominates Control plots. Long-term Krat Exclosure plots — designed to exclude kangaroo rats — show a very different composition, with *Reithrodontomys megalotis* (RM) and *Onychomys torridus* (OT) becoming relatively more abundant as kangaroo-rat competition is removed.
+        DM (*Dipodomys merriami*) dominates in Control plots and is nearly absent from Krat Exclosure plots — exactly what the experimental barriers are designed to produce. In the Mini Project you will convert these raw counts to within-plot proportions to make a fairer comparison across plot types that differ in total sampling effort.
 
 ### `ggsave()` — Saving Figures
 
