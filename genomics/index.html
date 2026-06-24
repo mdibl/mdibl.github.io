@@ -1,0 +1,3933 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../dataOrganization/">
+      
+      
+        <link rel="next" href="../introR/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Managing Data & Projects for Genomics - MDIBL Comparative Genomics and Data Science Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#managing-data-projects-for-genomics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDIBL Comparative Genomics and Data Science Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Managing Data & Projects for Genomics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../home/team/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introDataScience/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Data Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../bits/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bioinformatics Bits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../courseArchives/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Course Archives
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    MDIBL Comparative Genomics and Data Science Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataScience/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Data Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataOrganization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-counts-as-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Counts as Data?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-fair-data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: FAIR Data Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: FAIR Data Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Findable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reusable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reusable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-data-arent-fair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Happens When Data Aren't FAIR?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-special-note-on-gene-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Special Note on Gene IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Metadata?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-track-in-a-genomics-metadata-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to Track in a Genomics Metadata File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-figure-without-metadata-is-incomplete-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A figure without metadata is incomplete data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-project-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Project Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Project Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-naming-what-makes-a-good-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Naming: What Makes a Good Name?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-fixing-messy-file-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: Fixing Messy File Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder Organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary — Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary — Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fair-data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAIR Data Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-essentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Essentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-naming-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Naming Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-directory-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Directory Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-thing-to-fix-this-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One Thing to Fix This Week
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataViz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../bits/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Bits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bioinformatics Bits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Archives
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Archives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introToCloudCourse/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/scrnaseq2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScRNAseq in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ScRNAseq in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/learning_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/loupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loupe Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/introCloud2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-counts-as-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Counts as Data?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-fair-data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: FAIR Data Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: FAIR Data Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Findable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reusable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reusable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-data-arent-fair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Happens When Data Aren't FAIR?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-special-note-on-gene-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Special Note on Gene IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Metadata?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-track-in-a-genomics-metadata-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to Track in a Genomics Metadata File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-figure-without-metadata-is-incomplete-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A figure without metadata is incomplete data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-project-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Project Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Project Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-naming-what-makes-a-good-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Naming: What Makes a Good Name?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-fixing-messy-file-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: Fixing Messy File Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder Organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary — Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary — Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fair-data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAIR Data Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-essentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Essentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-naming-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Naming Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-directory-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Directory Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-thing-to-fix-this-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One Thing to Fix This Week
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="managing-data-projects-for-genomics">Managing Data &amp; Projects for Genomics</h1>
+<blockquote>
+<p><strong>Workshop:</strong> ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
+</blockquote>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
+<ul>
+<li>Describe what counts as "data" in a genomics project</li>
+<li>Explain the FAIR data principles and why they matter</li>
+<li>Identify what metadata to collect for genomics experiments</li>
+<li>Create a README file that documents a project directory</li>
+<li>Apply a consistent file and folder naming convention</li>
+</ul>
+</div>
+<hr />
+<h2 id="why-this-matters">Why This Matters</h2>
+<p><img align="right" alt="Computers Made Easy bookshelf cartoon" src="images/slide02_img00.jpg" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;" /></p>
+<p>Computers are essential across all areas of modern science. We use them to collect, analyze, store, and share data — and to collaborate and write manuscripts. But most researchers are never taught the computational equivalent of <strong>basic lab skills</strong>: the everyday practices that keep data findable, interpretable, and reusable.</p>
+<p>The result is familiar to almost everyone who has done research:</p>
+<ul>
+<li>You can't find a file you created six months ago.</li>
+<li>A collaborator sends you data with no explanation of what anything means.</li>
+<li>You receive a gene list from a paper and half the names don't match your dataset.</li>
+<li>You finish a project and realize the analysis cannot be reproduced.</li>
+</ul>
+<p>These are not failures of intelligence — they are failures of systems. This workshop introduces practical, everyday practices to avoid them.</p>
+<p><img align="left" alt="Past Self, Present Self, Future Self cartoon" src="images/slide04_img00.jpg" style="width:210px; border-radius:6px; margin-right:1.5rem; margin-bottom:0.5rem;" /></p>
+<p>The collaborator who benefits most from good data practices is the one every researcher cares about: <strong>your future self</strong>.</p>
+<p><br style="clear:both;"></p>
+<div class="admonition abstract">
+<p class="admonition-title">Discussion — Before reading on...</p>
+<p>Think about these questions with a partner or on your own:</p>
+<ol>
+<li>What was the last file or data item you couldn't find in your own work?</li>
+<li>What part of your workflow — wet lab → sequencing → analysis → writing — loses track of information most easily?</li>
+</ol>
+</div>
+<hr />
+<h2 id="what-counts-as-data">What Counts as Data?</h2>
+<p>The word "data" often conjures up images of spreadsheets and measurement tables. In genomics, the reality is far broader.</p>
+<details class="question" open="open">
+<summary>Exercise — Brainstorm: What are all the data types in your current project?</summary>
+<p>Take 3 minutes. For a genomics project you are working on (or have worked on), list every type of data involved. </p>
+<details class="success">
+<summary>Solution</summary>
+<p>Data in a genomics project includes far more than gene expression tables:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Raw instrument data</strong></td>
+<td>FASTQ files, raw intensity files, mass spec outputs</td>
+</tr>
+<tr>
+<td><strong>Reference data</strong></td>
+<td>Genome assemblies (<code>.fa.gz</code>), annotation files (<code>.gtf</code>), transcript-to-gene maps</td>
+</tr>
+<tr>
+<td><strong>Metadata</strong></td>
+<td>Sample sheets, experimental design files, library prep records</td>
+</tr>
+<tr>
+<td><strong>Processed data</strong></td>
+<td>Aligned BAM files, count matrices, normalized expression tables</td>
+</tr>
+<tr>
+<td><strong>Analysis outputs</strong></td>
+<td>Differential expression results, PCA plots, volcano plots</td>
+</tr>
+<tr>
+<td><strong>Code and scripts</strong></td>
+<td>R Markdown files, Python scripts, Nextflow/Snakemake workflows</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>README files, data dictionaries, lab notebooks, protocols</td>
+</tr>
+<tr>
+<td><strong>Results</strong></td>
+<td>Published figures, supplementary tables, manuscript drafts</td>
+</tr>
+</tbody>
+</table>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise - How do you find your data? Who keeps track of it?</summary>
+<p>Now that we know what counts as data for your project, consider:</p>
+<ul>
+<li>How many of these pieces of data are not currently documented anywhere?</li>
+<li>How many are kept in separate places or by separate people?</li>
+<li>Which one would be the biggest disaster if it got lost?</li>
+<li><strong>Who is responsible for knowing where the data lives and how it's managed?</strong></li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<p>You are responsible for knowing where your data lives, how it was generated, and what stage it is in.</p>
+<p><figure markdown="span">
+    <img alt="Smokey Bear: Only You Can Keep Track of Your Data" src="images/slide08_img00.png" style="width:380px; border-radius:6px;" />
+</figure></p>
+</details>
+</details>
+<hr />
+<h2 id="part-1-fair-data-principles">Part 1: FAIR Data Principles</h2>
+<figure>
+    <img alt="FAIR: Findable, Accessible, Interoperable, Reusable" src="images/slide29_img00.png" style="width:520px; border-radius:6px;" />
+</figure>
+<p>The <strong>FAIR Guiding Principles</strong> (published in <em>Scientific Data</em>, 2016) define best practices for data management and stewardship. Originally aimed at published datasets, they are equally valuable for everyday project management.</p>
+<p>The goal: make data <strong>Findable, Accessible, Interoperable, and Reusable</strong> — by both humans and computers.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<p>For each letter in FAIR, write down what you think it means before reading the definitions below.</p>
+</div>
+<h3 id="findable">Findable</h3>
+<p>Data and metadata should be <strong>easy to locate and identify</strong>.</p>
+<p>For published resources, this means using persistent identifiers: DOIs, PubMed IDs, GEO/SRA accession numbers, UniProt/Ensembl/NCBI gene IDs. Within a project, findability comes from:</p>
+<ul>
+<li><strong>Consistent file naming</strong> — a standardized convention makes files scannable and searchable</li>
+<li><strong>Logical folder structure</strong> — related files grouped together, with clear hierarchy</li>
+<li><strong>Searchable metadata</strong> — a record that describes the dataset's location, contents, and context</li>
+</ul>
+<p><strong>If future-you or a collaborator can't find it, it's not FAIR.</strong></p>
+<h3 id="accessible">Accessible</h3>
+<p>Published data and metadata should be <strong>retrievable via standard methods</strong> — downloading from NCBI, querying BioMart, fetching from a model organism database.</p>
+<p>For project-level work, accessibility means:</p>
+<ul>
+<li>Files are in a known, documented location (local path, server path, cloud URL)</li>
+<li>Anyone with appropriate permissions can find and open those files</li>
+<li>The file format is readable without specialized software</li>
+<li>Data contents are interpretable without asking the creator</li>
+</ul>
+<h3 id="interoperable">Interoperable</h3>
+<p>Data should be <strong>usable across tools and systems</strong>.</p>
+<p>In practice:</p>
+<ul>
+<li>Use <strong>open, non-proprietary file formats</strong> — <code>.csv</code>, <code>.tsv</code>, <code>.fastq.gz</code>, <code>.bam</code>, <code>.vcf</code> instead of <code>.xlsx</code>, <code>.ods</code></li>
+<li>Store <strong>numeric data as numbers</strong> — never as PDFs or images of tables</li>
+<li>Always provide the <strong>underlying numerical data</strong> used to generate figures</li>
+</ul>
+<h3 id="reusable">Reusable</h3>
+<p>Data should be <strong>ready for replication and reuse in new contexts</strong>. This requires:</p>
+<ul>
+<li><strong>Detailed, structured metadata</strong> — biological sample details, experimental design, analysis tools, data locations</li>
+<li><strong>A README file</strong> describing project organization and processing steps</li>
+<li><strong>Tidy data structure</strong> — one variable per column, one observation per row, one value per cell</li>
+<li><strong>Clear, descriptive column headers</strong> — <code>weight_g</code> rather than <code>wt</code></li>
+</ul>
+<hr />
+<h3 id="what-happens-when-data-arent-fair">What Happens When Data Aren't FAIR?</h3>
+<p>The following three scenarios are adapted from real situations researchers encounter.</p>
+<details class="question" open="open">
+<summary>Exercise 1.1 — Uninterpretable file names</summary>
+<p>You receive a dataset from a collaborator:</p>
+<div class="highlight"><pre><span></span><code>/shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
+├── A1.fastq.gz
+├── A2.fastq.gz
+├── ...
+└── H12.fastq.gz
+</code></pre></div>
+<ol>
+<li>Which biological samples are <code>A1.fastq.gz</code> and <code>H12.fastq.gz</code>?</li>
+<li>Is there a control group? How many replicates?</li>
+<li>Can you re-analyze this data in 6 months without emailing your collaborator?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<p>You cannot answer any of these questions from the file names or directory alone.</p>
+<ul>
+<li><code>A1</code>–<code>H12</code> are plate-well positions. Without a sample sheet there is no way to know which biological sample occupies each well.</li>
+<li>There are no metadata files in the directory.</li>
+<li>Folder names like <code>Misc_Stuff</code>, <code>new/old/backup2</code> give zero information about the project, organism, or date.</li>
+</ul>
+<p><strong>FAIR principles violated:</strong> Findable (no consistent naming), Accessible (not interpretable), Reusable (no metadata).</p>
+<p><strong>What would fix it:</strong> Rename files with a convention that encodes biological information; add a <code>samplesheet.csv</code> that maps file name → sample → condition → replicate; add a README.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.2 — Mismatched gene identifiers</summary>
+<p>You compile a gene list from three papers:</p>
+<div class="highlight"><pre><span></span><code>TP53
+Actb
+MYC
+pax6
+Gapdh
+</code></pre></div>
+<p>You try to look these up in your RNA-seq results, and only 2 out of 5 match.</p>
+<ol>
+<li>Why might these names fail to match?</li>
+<li>What should you have used instead?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<table>
+<thead>
+<tr>
+<th>Gene</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TP53</code></td>
+<td>Human HGNC symbol — mouse equivalent is <code>Trp53</code></td>
+</tr>
+<tr>
+<td><code>Actb</code></td>
+<td>Mouse mixed-case — analysis pipeline may expect <code>ACTB</code> or Ensembl ID</td>
+</tr>
+<tr>
+<td><code>MYC</code></td>
+<td>Human symbol — correct species?</td>
+</tr>
+<tr>
+<td><code>pax6</code></td>
+<td>Lowercase — annotation likely uses <code>Pax6</code></td>
+</tr>
+<tr>
+<td><code>Gapdh</code></td>
+<td>Mouse mixed-case — some annotations use <code>GAPDH</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The fix:</strong> Use Ensembl gene IDs as primary identifiers. Include the human-readable name as a convenience column but join by ID. Always document the organism, annotation version, and ID source.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.3 — Undocumented analysis file</summary>
+<p>You receive <code>DEGs_table.csv</code> with 847 rows and columns:</p>
+<div class="highlight"><pre><span></span><code>gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
+</code></pre></div>
+<p>List everything you would need to correctly interpret, share, or reproduce this analysis.</p>
+<details class="success">
+<summary>Solution</summary>
+<p>At minimum you need:</p>
+<ul>
+<li><strong>What tool was used</strong> — DESeq2? edgeR? Each calculates <code>log2FC</code> differently</li>
+<li><strong>What the comparison is</strong> — which condition is treatment vs. control?</li>
+<li><strong>What filtering was applied</strong> — count threshold? Minimum CPM?</li>
+<li><strong>What normalization was used</strong> — default DESeq2 median-of-ratios? Something custom?</li>
+<li><strong>What reference was used</strong> — genome build, annotation version, organism</li>
+<li><strong>What statistical cutoffs</strong> — is <code>padj</code> Benjamini-Hochberg? What threshold?</li>
+<li><strong>Who ran it and when</strong> — author, date, software version</li>
+</ul>
+<p>A file named <code>DEGs_table.csv</code> with no accompanying README is <strong>not reusable</strong>. The more information provided, the better.</p>
+</details>
+</details>
+<h3 id="a-special-note-on-gene-ids">A Special Note on Gene IDs</h3>
+<p>Gene IDs can cause your data to violate the FAIR principles. Use this guidance to maintain FAIR data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Gene names are not unique identifiers</p>
+<p>Human-readable gene names like <code>TP53</code>, <code>ACTB</code>, or <code>Gapdh</code> are not safe to use as primary identifiers in analysis:</p>
+<ul>
+<li><strong>Not unique across species</strong> — <code>TP53</code> is the human gene; <code>Trp53</code> is mouse; <code>tp53</code> is zebrafish</li>
+<li><strong>Prone to case errors</strong> — <code>actb</code> and <code>ACTB</code> won't match in a case-sensitive join</li>
+<li><strong>Subject to renaming</strong> — deprecated names cause silent mismatches when annotations update</li>
+</ul>
+<p>Use standard, unique gene identifiers instead:</p>
+<table>
+<thead>
+<tr>
+<th>ID Type</th>
+<th>Example</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensembl Gene ID</td>
+<td><code>ENSG00000141510</code></td>
+<td>Ensembl</td>
+</tr>
+<tr>
+<td>Entrez Gene ID</td>
+<td><code>7157</code></td>
+<td>NCBI</td>
+</tr>
+<tr>
+<td>UniProt ID</td>
+<td><code>P04637</code></td>
+<td>UniProt</td>
+</tr>
+</tbody>
+</table>
+<p>Always document the <strong>organism, annotation release, and annotation source</strong> alongside any gene list. It is fine to include human-readable names as a convenience column — just never use them as the join key in an analysis.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>FAIR data is Findable, Accessible, Interoperable, and Reusable.</li>
+<li>These principles apply to everyday project data, not just published datasets.</li>
+<li>Poor naming, missing metadata, and non-standard identifiers are the most common FAIR failures.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-2-metadata">Part 2: Metadata</h2>
+<h3 id="what-is-metadata">What Is Metadata?</h3>
+<p>Metadata is <strong>data about your data</strong> — information that describes what the data are and how they were generated. Without it, a file is often uninterpretable.</p>
+<p>A FASTQ file named <code>A1.fastq.gz</code> means nothing on its own. Add a <strong>sample sheet</strong> that maps this file to all the information about that sample. Each column of a sample sheet should contain a different field of information about the samples, such as:</p>
+<ul>
+<li><em>FASTQ file:</em> <code>A1.fastq.gz</code></li>
+<li><em>Condition:</em> Mock DMSO</li>
+<li><em>Replicate</em>: 1A</li>
+<li><em>Cell type:</em> mouse J774A.1 macrophage cells</li>
+<li><em>Data type:</em> polyA-selected RNA-seq</li>
+</ul>
+<p>With this additional metadata, now the data files are more FAIR.</p>
+<p>In genomics, metadata connects <strong>samples → sequencing → analysis → results</strong>. Without it, you cannot:</p>
+<ul>
+<li>Recreate analyses or compare across studies</li>
+<li>Identify which files belong to which biological replicates</li>
+<li>Map results back to experimental conditions</li>
+<li>Share data with a repository or collaborator</li>
+</ul>
+<h3 id="types-of-metadata">Types of Metadata</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Descriptive</strong></td>
+<td>What the dataset is — title, authors, abstract, keywords</td>
+</tr>
+<tr>
+<td><strong>Administrative</strong></td>
+<td>Who owns and manages it — PI, funder, data license, project dates</td>
+</tr>
+<tr>
+<td><strong>Structural</strong></td>
+<td>How the data is organized — sample sheet, column definitions, naming conventions, file formats</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural metadata is the most important for maintaining FAIR principles, and the most commonly missing.</strong></p>
+<h3 id="what-to-track-in-a-genomics-metadata-file">What to Track in a Genomics Metadata File</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Fields to include</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Biological</strong></td>
+<td>Organism (species + strain), tissue/cell type, treatment/condition, sex, age, replicate number</td>
+</tr>
+<tr>
+<td><strong>Sequencing</strong></td>
+<td>Library prep kit, read length, paired vs. single end, sequencing platform, run date</td>
+</tr>
+<tr>
+<td><strong>Files</strong></td>
+<td>FASTQ file names, file path</td>
+</tr>
+<tr>
+<td><strong>Reference</strong></td>
+<td>Genome assembly (e.g., <code>GRCm39</code>), annotation version (e.g., <code>Ensembl 114</code>), GTF file used</td>
+</tr>
+<tr>
+<td><strong>Analysis</strong></td>
+<td>Pipeline name and version, key parameters, author, date run</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<p>Look at the figure below — a multi-panel summary figure from a published genomics experiment.</p>
+<ul>
+<li><strong>What can you tell about this experiment from the figure alone?</strong> </li>
+<li>What organism is it? What tissue or cell type? </li>
+<li>What do the sample labels 6-BA, ABA, IAA, JA mean? </li>
+<li>What was the experimental question? How confident are you?</li>
+</ul>
+<p><figure markdown="span">
+    <img alt="Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA" src="images/slide24_sub3_0.png" style="width:540px; border-radius:6px;" />
+</figure></p>
+</div>
+<h3 id="a-figure-without-metadata-is-incomplete-data">A figure without metadata is incomplete data</h3>
+<p>Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. </p>
+<ul>
+<li>The sample codes (6-BA = 6-benzylaminopurine, ABA = abscisic acid, IAA = indole-3-acetic acid, JA = jasmonic acid) are plant hormones —<strong>but only a plant biologist would know that</strong>, </li>
+<li>Without any metadata (samplesheet, README, etc.) we also don't know the organism, concentration, timepoints, or experimental context. </li>
+<li>Figures always represent numerical data. That underlying data and the metadata that describes it must always be preserved alongside every figure.</li>
+</ul>
+<details class="question" open="open">
+<summary>Exercise 2.1 — What does a good sample sheet look like?</summary>
+<p>Below is a sample sheet from an the RNA-seq project. Read through it and answer the questions.</p>
+<table>
+<thead>
+<tr>
+<th>sample</th>
+<th>fastq_1</th>
+<th>fastq_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mock_DMSO_1A</td>
+<td>Mock_DMSO_1A_S567_L002_R1_001.fastq.gz</td>
+<td>Mock_DMSO_1A_S567_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>Mock_DMSO_1B</td>
+<td>Mock_DMSO_1B_S568_L002_R1_001.fastq.gz</td>
+<td>Mock_DMSO_1B_S568_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>Mock_DMSO_1C</td>
+<td>Mock_DMSO_1C_S569_L002_R1_001.fastq.gz</td>
+<td>Mock_DMSO_1C_S569_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>Mock_DMSO_1D</td>
+<td>Mock_DMSO_1D_S570_L002_R1_001.fastq.gz</td>
+<td>Mock_DMSO_1D_S570_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>poly_IC_DMSO_2A</td>
+<td>poly_IC_DMSO_2A_S571_L002_R1_001.fastq.gz</td>
+<td>poly_IC_DMSO_2A_S571_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>poly_IC_DMSO_2B</td>
+<td>poly_IC_DMSO_2B_S572_L002_R1_001.fastq.gz</td>
+<td>poly_IC_DMSO_2B_S572_001.fastq.gz</td>
+</tr>
+<tr>
+<td>Mock_4u8C_3A</td>
+<td>Mock_4u8C_3A_S575_L002_R1_001.fastq.gz</td>
+<td>Mock_4u8C_3A_S575_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>Mock_4u8C_3B</td>
+<td>Mock_4u8C_3B_S576_L002_R1_001.fastq.gz</td>
+<td>Mock_4u8C_3B_S576_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>poly_IC_4u8C_4A</td>
+<td>poly_IC_4u8C_4A_S579_L002_R1_001.fastq.gz</td>
+<td>poly_IC_4u8C_4A_S579_L002_R2_001.fastq.gz</td>
+</tr>
+<tr>
+<td>poly_IC_4u8C_4B</td>
+<td>poly_IC_4u8C_4B_S580_L002_R1_001.fastq.gz</td>
+<td>poly_IC_4u8C_4B_S580_L002_R2_001.fastq.gz</td>
+</tr>
+</tbody>
+</table>
+<p><em>This table is stored as a <code>.csv</code> file: each row is one sample, the header row names the columns, and values are separated by commas.</em></p>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>From the sample names alone, what experimental factors can you identify?</li>
+<li>What information is missing that you would want for a complete metadata record?</li>
+<li>Below is the PCA generated from this dataset. Without the sample sheet, the sample IDs (<code>1A</code>, <code>2B</code>, etc.) are uninterpretable. With it, what can you now say about the biology?</li>
+</ol>
+<p><figure markdown="span">
+    <img alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" src="images/PCA_example.png" style="width:480px; border-radius:6px;" />
+</figure></p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>1. What the sample names encode:</strong> </p>
+<ul>
+<li>
+<p>Each name follows <code>{agonist}_{inhibitor}_{groupReplicate}</code>, encoding two treatment factors and replicate identity directly in the file name. </p>
+</li>
+<li>
+<p>The four conditions are:</p>
+<table>
+<thead>
+<tr>
+<th>Agonist</th>
+<th>Inhibitor</th>
+<th>Condition</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mock</td>
+<td>DMSO</td>
+<td>Mock_DMSO (group 1)</td>
+<td>Baseline — no treatment</td>
+</tr>
+<tr>
+<td>poly_IC</td>
+<td>DMSO</td>
+<td>poly_IC_DMSO (group 2)</td>
+<td>Inflammation induced</td>
+</tr>
+<tr>
+<td>Mock</td>
+<td>4u8C</td>
+<td>Mock_4u8C (group 3)</td>
+<td>Inhibitor only</td>
+</tr>
+<tr>
+<td>poly_IC</td>
+<td>4u8C</td>
+<td>poly_IC_4u8C (group 4)</td>
+<td>Inflammation + inhibition</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><strong>2. What's missing:</strong> </p>
+<ul>
+<li>The sample sheet links file names to biological samples, but complete metadata (e.g. README.txt) also needs:<ul>
+<li>organism (mouse J774A.1 macrophage-like cells)</li>
+<li>library type (polyA-selected RNA-seq)</li>
+<li>read length (150bp paired-end)</li>
+<li>sequencing platform</li>
+<li>genome build/annotation version used for alignment.</li>
+</ul>
+</li>
+<li>
+<p>More information about the biological samples as well can be found in a companion <strong>design file</strong> (<code>design.tsv</code>) which structured analysis-level metadata that the R code can read directly:</p>
+<table>
+<thead>
+<tr>
+<th>sample</th>
+<th>condition</th>
+<th>agonist</th>
+<th>inhibitor</th>
+<th>rep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mock_DMSO_1A</td>
+<td>Mock_DMSO</td>
+<td>Mock</td>
+<td>DMSO</td>
+<td>1A</td>
+</tr>
+<tr>
+<td>poly_IC_DMSO_2A</td>
+<td>poly_IC_DMSO</td>
+<td>poly_IC</td>
+<td>DMSO</td>
+<td>2A</td>
+</tr>
+<tr>
+<td>Mock_4u8C_3A</td>
+<td>Mock_4u8C</td>
+<td>Mock</td>
+<td>4u8C</td>
+<td>3A</td>
+</tr>
+<tr>
+<td>poly_IC_4u8C_4A</td>
+<td>poly_IC_4u8C</td>
+<td>poly_IC</td>
+<td>4u8C</td>
+<td>4A</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Note that <code>sample</code> names are <em>identical</em> between <code>samplesheet.csv</code> and <code>design.tsv</code> — this is intentional. The shared column allows the two tables to be joined in analysis without ambiguity.</strong></p>
+</li>
+</ul>
+<p><strong>3. PCA interpretation:</strong> </p>
+<ul>
+<li>With the sample sheet in hand, groups 1 and 3 (Mock, red) cluster tightly on the left and groups 2 and 4 (poly_IC, teal) are far to the right, so now we can conclude that the agonist treatment, not the inhibitor, drives most of the variation (PC1: 94.8%). </li>
+<li>Now we also know that groups 1 and 2 (DMSO, circles) cluster near the top, and groups 3 and 4 (4u8c, triangles) are near the bottom. Now we can conclude that the inhibitor adds a small PC2 separation within the agonist groups. </li>
+<li>Without the sample sheet, <code>1A–4D</code> are meaningless labels; with it, we can map the metadata onto the PCA and the biology is immediately readable.</li>
+</ul>
+</details>
+</details>
+<h3 id="readme-files">README Files</h3>
+<p>A sample sheet records per-file metadata. A <strong>README file</strong> gives any reader the big picture of the entire project directory.</p>
+<p><strong>Why it matters:</strong> Makes your data findable and understandable without asking the creator. Prevents loss of institutional knowledge when team members leave. Required by most data repositories (GEO, SRA, Zenodo).</p>
+<p><strong>What to include:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What to write</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Project overview</strong></td>
+<td>Purpose, organism, date created, point of contact</td>
+</tr>
+<tr>
+<td><strong>Directory structure</strong></td>
+<td>What each folder contains</td>
+</tr>
+<tr>
+<td><strong>Data descriptions</strong></td>
+<td>Sample sheet location, reference files, file formats</td>
+</tr>
+<tr>
+<td><strong>Analysis info</strong></td>
+<td>Tools used, pipeline version, key parameters, scripts</td>
+</tr>
+<tr>
+<td><strong>Version info</strong></td>
+<td>Genome build, annotation release, software versions</td>
+</tr>
+<tr>
+<td><strong>Other important information</strong></td>
+<td>Anything pertinent to your project</td>
+</tr>
+</tbody>
+</table>
+<details class="question" open="open">
+<summary>Exercise 2.2 — Evaluate a real README</summary>
+<p>Below is a README file as raw plain-text. Read through it and answer the questions.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Raw text (README.txt)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>README – Example Genomics Project
+Project: Mouse bulk RNA-seq (agonist &amp; inhibitor study)
+Date created: 2025-11-10
+Project owner: C. Nobrega (cnobrega@mdibl.org)
+Collaborators: J. Smith
+Raw Data location: /projects/JohnSmith_mouse_bulk/data/
+Last updated: 2025-11-11
+
+───────────────────────────────────────────────
+1. PROJECT OVERVIEW
+───────────────────────────────────────────────
+This project examines transcriptional changes in mouse macrophage-like
+J774A.1 cells exposed to an inflammatory agonist and a chemical inhibitor
+that modulates the cellular stress response.
+
+Two treatment factors:
+    - Agonist (poly IC): induces intracellular inflammatory response.
+    - Inhibitor (4u8C): blocks IRE1 endonuclease activity of the UPR.
+Four experimental conditions:
+    - Baseline:          Mock &amp; DMSO
+    - Inflammation:      poly_IC &amp; DMSO
+    - Inhibitor only:    Mock &amp; 4u8C
+    - Combined:          poly_IC &amp; 4u8C
+
+───────────────────────────────────────────────
+2. DIRECTORY STRUCTURE
+───────────────────────────────────────────────
+.
+├── README.txt
+├── data/    → sample sheet, raw FASTQs, reference files
+└── analysis/
+    ├── full_mouse_deseq.Rmd
+    ├── input/
+    │   ├── design.tsv
+    │   ├── tx2gene.tsv
+    │   └── salmon.merged.gene_counts.tsv
+    └── output/
+        ├── PCA.png
+        ├── agonist_main_volcano.png
+        ├── results_agonist_main.csv
+        └── results_inhibitor_main.csv
+
+───────────────────────────────────────────────
+3. DATA AND METADATA
+───────────────────────────────────────────────
+Sequencing metadata: data/samplesheet.csv
+  - Replicates: 4 per condition (total = 16)
+  - Library prep: standard polyA-selected RNA-seq
+  - File naming: {SampleID}_{S###}_{Lane}_{Read}_001.fastq.gz
+
+───────────────────────────────────────────────
+4. ANALYSIS DETAILS
+───────────────────────────────────────────────
+nf-core/rnaseq pipeline:
+  - version 3.19.0
+  - GTF:   Mus_musculus.GRCm39.114.gtf.gz
+  - FASTA: Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
+
+DESeq2 analysis:
+  - Script:  analysis/full_mouse_deseq.Rmd
+  - Outputs: analysis/output/
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>How many biological replicates per condition does this project have?</li>
+<li>If you needed to rerun the alignment, what genome build and annotation would you use?</li>
+<li>Where would you find the R code used to generate the figures?</li>
+<li>What information is missing that you would add to improve this README?</li>
+</ol>
+<details class="success">
+<summary>Discussion</summary>
+<ol>
+<li><strong>4 replicates per condition</strong> (16 samples total) — Section 3.</li>
+<li><strong>GRCm39</strong> genome build, <strong>Ensembl release 114</strong> GTF — Section 4.</li>
+<li><strong><code>analysis/full_mouse_deseq.Rmd</code></strong> — Section 4.</li>
+<li>Things worth adding:<ul>
+<li>R and DESeq2 version numbers specifically</li>
+<li>Statistical cutoffs used for DEG calling (adjusted p-value threshold, log2FC cutoff)</li>
+<li>Normalization method used in DESeq2</li>
+<li>Where raw FASTQs are stored if on a remote server (they are large)</li>
+<li>GEO or SRA accession once the project is published</li>
+</ul>
+</li>
+</ol>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Metadata is data about your data — without it, a file is often uninterpretable.</li>
+<li>A sample sheet links file names to biological samples and experimental conditions.</li>
+<li>A design file provides the structured per-sample metadata for analysis code to read.</li>
+<li>A README describes the big-picture context of an entire project directory.</li>
+<li>Keep all metadata files in the same folder as the data they describe — always.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-3-project-organization">Part 3: Project Organization</h2>
+<p>Good metadata tells you what your data is. Good project organization tells you where it lives. The two work together.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<p>Think about a project you are currently working on.</p>
+<ul>
+<li>How do you currently name your files? Could a collaborator understand your convention without asking you?</li>
+<li>Are all your project files in one place, or scattered across Desktop, Downloads, and email?</li>
+</ul>
+</div>
+<h3 id="file-naming-what-makes-a-good-name">File Naming: What Makes a Good Name?</h3>
+<p><img align="right" alt="XKCD comic: Untitled 138.docx" src="images/slide31_img03.png" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;" /></p>
+<p>Before collecting or analyzing data, decide how you will name and organize files. Establishing a convention at the start is far easier than cleaning up a folder of inconsistently named files.</p>
+<p>The main goals:</p>
+<ul>
+<li><strong>Quick to find</strong> — you can locate a file in under 30 seconds</li>
+<li><strong>Understand contents</strong> without opening the file</li>
+<li><strong>Prevent duplication</strong> — no more <code>results_v2_FINAL_revised.csv</code></li>
+<li><strong>Enable collaboration</strong> — a teammate can navigate your project without a tour</li>
+</ul>
+<p>A good naming convention is:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consistent</strong></td>
+<td>Every file in a dataset follows the same pattern</td>
+</tr>
+<tr>
+<td><strong>Unique</strong></td>
+<td>The name identifies exactly one file</td>
+</tr>
+<tr>
+<td><strong>Informative</strong></td>
+<td>Gives a sense of the content without opening it</td>
+</tr>
+<tr>
+<td><strong>Machine-friendly</strong></td>
+<td>Works reliably in scripts, on any OS, and when sorted</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rules for machine-friendly names:</strong></p>
+<ul>
+<li>Use only letters, numbers, underscores (<code>_</code>), hyphens (<code>-</code>), and periods (<code>.</code>)</li>
+<li><strong>No spaces</strong> — use <code>_</code> or <code>-</code>; spaces break command-line tools</li>
+<li><strong>No special characters</strong> — <code>&amp;</code>, <code>(</code>, <code>)</code>, <code>!</code>, <code>#</code> cause problems in scripts and URLs</li>
+<li><strong>Consistent case</strong> — mixing <code>UPPERCASE</code> and <code>lowercase</code> causes silent mismatches</li>
+<li><strong>Zero-pad numbers</strong> — <code>s01</code>, <code>s02</code>, ... <code>s12</code> sorts correctly; <code>s1</code>, <code>s2</code>, ... <code>s12</code> does not</li>
+<li><strong>ISO 8601 dates</strong> — <code>YYYY-MM-DD</code> (e.g., <code>2024-07-16</code>) sorts chronologically and is unambiguous</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Why ISO 8601?</p>
+<p><code>YYYY-MM-DD</code> is the only date format that sorts alphabetically in the correct chronological order, is internationally unambiguous, and works in all operating systems and scripting environments. <code>07-12</code> is July 12 in the US and December 7 in much of Europe.</p>
+</div>
+<h3 id="exercise-fixing-messy-file-names">Exercise: Fixing Messy File Names</h3>
+<p>The following files come from a real experiment containing light-response expression data from plants with different genotypes grown under different conditions.</p>
+<p>The intended naming convention encodes:</p>
+<ul>
+<li><strong>Light condition</strong>: <code>LD</code> (long day) or <code>SD</code> (short day)</li>
+<li><strong>Genotype</strong>: <code>phyA</code> or <code>phyB</code></li>
+<li><strong>Media</strong>: <code>on</code> (sucrose) or <code>off</code> (no sucrose)</li>
+<li><strong>Timepoint</strong>: <code>tXX</code> (zero-padded, e.g. <code>t04</code>)</li>
+<li><strong>Sample ID</strong> (optional): <code>sXX</code> (zero-padded)</li>
+<li><strong>Date</strong>: <code>YYYY-MM-DD</code></li>
+<li><strong>Data type</strong>: <code>.raw</code> or <code>.norm</code></li>
+</ul>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.1 — Messy Fie Names</summary>
+<p>Look at the messy file list above. Before reading the analysis, write down every problem you can spot. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Messy Files</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>2020-07-14_s12_phyB_on_SD_t04.raw.txt
+2020-07-14_s1_phyA_on_LD_t05.raw.txt
+2020-07-14_s2_phyB_on_SD_t11.raw.txt
+2020-08-12_s03_phyA_on_LD_t03.raw.txt
+2020-08-12_s12_phyB_on_LD_t01.raw.txt
+2020-08-13_s01_phyB_on_SD_t02.raw.txt
+2020-7-12_s2_phyB_on_SD_t01.raw.txt
+AUG-13_phyB_on_LD_s1_t11.raw.txt
+JUL-31_phyB_on_LD_s1_t03.raw.txt
+LD_phyA_off_t04_2020-08-12.norm.txt
+LD_phyA_on_t04_2020-07-14.norm.txt
+LD_phyB_off_t04_2020-08-12.norm.txt
+LD_phyB_on_t04_2020-07-14.norm.txt
+SD_phyB_off_t04_2020-08-13.norm.txt
+SD_phyB_on_t04_2020-07-12.norm.txt
+SD_phya_off_t04_2020-08-13.norm.txt
+SD_phya_ons_t04_2020-07-12.norm.txt
+ld_phyA_ons_t04_2020-08-12.norm.txt
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step through each problem:</strong></p>
+<ol>
+<li>What happens when the date is placed at the beginning of the name?</li>
+<li>What date formats are used across the 18 files, and why does inconsistency matter?</li>
+<li>Which sample numbers are not zero-padded, and why does that break sorting?</li>
+<li>Find all capitalization inconsistencies. What goes wrong in a script?</li>
+<li>Spot the typo in the media field. Why is it particularly dangerous?</li>
+<li>How many distinct naming conventions are in use across the 18 files?</li>
+</ol>
+<details class="success">
+<summary>Step-by-step analysis</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Problem 1: Date placed first</label><label for="__tabbed_3_2">Problem 2: Inconsistent date formats</label><label for="__tabbed_3_3">Problem 3: Missing zero-padding</label><label for="__tabbed_3_4">Problem 4: Case inconsistencies</label><label for="__tabbed_3_5">Problem 5: Typo in field value</label><label for="__tabbed_3_6">Problem 6: Multiple conventions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Files prefixed with a date (<code>2020-07-14_...</code>, <code>AUG-13_...</code>) sort by <strong>date of collection</strong>, not by <strong>experimental condition</strong>. All <code>2020-07-14</code> files appear together — regardless of light condition, genotype, or media. Finding all <code>LD phyA on</code> samples requires scanning the entire folder.</p>
+<p>When experimental variables come first (as in the clean list), all <code>LD_phyA_on</code> files group together when sorted alphabetically. Related samples are adjacent, missing files are obvious, and scripts that glob by condition work without extra logic.</p>
+<p><strong>The fix:</strong> Put the most biologically meaningful variables first. Date goes at the end as a tie-breaker.</p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Format used</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2020-07-14_s12_...</code></td>
+<td><code>YYYY-MM-DD</code></td>
+<td>✓ Correct</td>
+</tr>
+<tr>
+<td><code>2020-7-12_s2_...</code></td>
+<td><code>YYYY-M-DD</code></td>
+<td>Missing leading zero on month</td>
+</tr>
+<tr>
+<td><code>AUG-13_phyB_...</code></td>
+<td><code>MON-DD</code></td>
+<td>Month name only — no year, won't sort chronologically</td>
+</tr>
+<tr>
+<td><code>JUL-31_phyB_...</code></td>
+<td><code>MON-DD</code></td>
+<td>Month name only — no year at all</td>
+</tr>
+</tbody>
+</table>
+<p><code>YYYY-7-12</code> and <code>YYYY-07-12</code> sort differently: single-digit months appear out of order. <code>AUG</code> and <code>JUL</code> sort alphabetically (August before July), not chronologically. Dates missing the year are meaningless once a project runs past 12 months.</p>
+<p><strong>The fix:</strong> Always use <code>YYYY-MM-DD</code> with zero-padded month and day.</p>
+</div>
+<div class="tabbed-block">
+<p>Files with unpadded sample numbers:</p>
+<ul>
+<li><code>2020-07-14_s1_phyA_on_LD_t05.raw.txt</code> — <code>s1</code> instead of <code>s01</code></li>
+<li><code>2020-07-14_s2_phyB_on_SD_t11.raw.txt</code> — <code>s2</code> instead of <code>s02</code></li>
+<li><code>2020-7-12_s2_phyB_on_SD_t01.raw.txt</code> — <code>s2</code> instead of <code>s02</code></li>
+</ul>
+<p>Alphabetical sort of <code>s1, s2, s12</code> → <strong><code>s1, s12, s2</code></strong> (wrong)</p>
+<p>Alphabetical sort of <code>s01, s02, s12</code> → <strong><code>s01, s02, s12</code></strong> (correct)</p>
+<p><code>s12</code> slides between <code>s1</code> and <code>s2</code> because computers sort character by character: <code>1</code> &lt; <code>12</code>... no — <code>1</code> comes before <code>2</code> at position 2. So <code>s12</code> comes right after <code>s1</code>. This silently reorders your files every time you list them.</p>
+<p><strong>The fix:</strong> Zero-pad to a consistent width: <code>s01</code> through <code>s99</code> for up to 99 samples.</p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values found</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light condition</td>
+<td><code>LD</code> (correct) · <code>ld</code> in <code>ld_phyA_ons_...</code></td>
+</tr>
+<tr>
+<td>Genotype</td>
+<td><code>phyA</code>, <code>phyB</code> (correct) · <code>phya</code> in <code>SD_phya_off_...</code> and <code>SD_phya_ons_...</code></td>
+</tr>
+</tbody>
+</table>
+<p>In a shell script, <code>ls LD_*</code> silently skips <code>ld_phyA_ons_t04_2020-08-12.norm.txt</code>. In R, <code>group_by(light)</code> creates separate groups for <code>"LD"</code> and <code>"ld"</code> with no warning — your summary statistics for <code>LD</code> are missing two samples and you will never know.</p>
+<p><strong>The fix:</strong> Standardize case for every variable value and enforce it consistently across all files.</p>
+</div>
+<div class="tabbed-block">
+<p>Two files use <code>ons</code> instead of <code>on</code> in the media field:</p>
+<ul>
+<li><code>SD_phya_ons_t04_2020-07-12.norm.txt</code></li>
+<li><code>ld_phyA_ons_t04_2020-08-12.norm.txt</code></li>
+</ul>
+<p>A script filtering by <code>media == "on"</code> <strong>silently excludes</strong> these two files. The analysis completes without error — but the <code>on</code> group has 2 fewer samples than it should. The results are wrong with no indication anything went wrong. This is the worst kind of error.</p>
+<p><strong>The fix:</strong> After creating a batch of files, list all unique values for each field position and verify them against your expected vocabulary before running any analysis.</p>
+</div>
+<div class="tabbed-block">
+<p>At least <strong>three distinct conventions</strong> are present across the 18 files:</p>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>YYYY-MM-DD_sXX_geno_media_light_tXX.type.txt</code></td>
+<td><code>2020-07-14_s12_phyB_on_SD_t04.raw.txt</code></td>
+</tr>
+<tr>
+<td><code>light_geno_media_tXX_YYYY-MM-DD.type.txt</code></td>
+<td><code>LD_phyA_on_t04_2020-07-14.norm.txt</code></td>
+</tr>
+<tr>
+<td><code>MON-DD_geno_media_light_sX_tXX.type.txt</code></td>
+<td><code>AUG-13_phyB_on_LD_s1_t11.raw.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mixed conventions cannot be parsed by a single script. A glob for <code>LD_*</code> misses the date-first raw files entirely. A parser that reads field 1 as the light condition works for convention 2 but breaks on conventions 1 and 3.</p>
+</div>
+</div>
+</div>
+</details>
+<details class="success">
+<summary>Cleaned file names</summary>
+<p>After stepping through each problem and each fix, the cleaned files should be names as follows: </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Clean Files</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
+LD_phyA_on_t04_2020-07-14.norm.txt
+LD_phyA_on_t04_2020-08-12.norm.txt
+LD_phyA_on_t03_s03_2020-08-12.raw.txt
+LD_phyA_on_t05_s01_2020-07-14.raw.txt
+LD_phyB_off_t04_2020-08-12.norm.txt
+LD_phyB_on_t04_2020-07-14.norm.txt
+LD_phyB_on_t01_s12_2020-08-12.raw.txt
+LD_phyB_on_t03_s01_2020-07-31.raw.txt
+LD_phyB_on_t11_s01_2020-08-13.raw.txt
+SD_phyA_off_t04_2020-08-13.norm.txt
+SD_phyA_on_t04_2020-07-12.norm.txt
+SD_phyB_off_t04_2020-08-13.norm.txt
+SD_phyB_on_t04_2020-07-12.norm.txt
+SD_phyB_on_t01_s02_2020-07-12.raw.txt
+SD_phyB_on_t02_s01_2020-08-13.raw.txt
+SD_phyB_on_t04_s12_2020-07-14.raw.txt
+SD_phyB_on_t11_s02_2020-07-14.raw.txt
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.2 — Organize by Datatype</summary>
+<p>Now that the names are consistent, the next step is to separate files by type into subfolders. All 18 cleaned files are one of two datatypes: <code>raw</code> (unprocessed) or <code>norm</code> (normalized). Organizing them into <code>raw/</code> and <code>norm/</code> subdirectories serves several purposes:</p>
+<ul>
+<li>Raw data stays clearly separated from processed outputs — easier to treat as read-only</li>
+<li>The subfolder conveys the datatype without needing it parsed from the filename</li>
+<li>Scripts can target all normalized files with a simple <code>norm/*.txt</code> glob</li>
+</ul>
+<details class="success">
+<summary>Datatype subfolders</summary>
+<div class="highlight"><pre><span></span><code>phytochrome_light_response/
+├── raw/
+│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
+│   ├── LD_phyA_on_t05_s01_2020-07-14.raw.txt
+│   ├── LD_phyB_on_t01_s12_2020-08-12.raw.txt
+│   ├── LD_phyB_on_t03_s01_2020-07-31.raw.txt
+│   ├── LD_phyB_on_t11_s01_2020-08-13.raw.txt
+│   ├── SD_phyB_on_t01_s02_2020-07-12.raw.txt
+│   ├── SD_phyB_on_t02_s01_2020-08-13.raw.txt
+│   ├── SD_phyB_on_t04_s12_2020-07-14.raw.txt
+│   └── SD_phyB_on_t11_s02_2020-07-14.raw.txt
+└── norm/
+    ├── LD_phyA_off_t04_2020-08-12.norm.txt
+    ├── LD_phyA_on_t04_2020-07-14.norm.txt
+    ├── LD_phyA_on_t04_2020-08-12.norm.txt
+    ├── LD_phyB_off_t04_2020-08-12.norm.txt
+    ├── LD_phyB_on_t04_2020-07-14.norm.txt
+    ├── SD_phyA_off_t04_2020-08-13.norm.txt
+    ├── SD_phyA_on_t04_2020-07-12.norm.txt
+    ├── SD_phyB_off_t04_2020-08-13.norm.txt
+    └── SD_phyB_on_t04_2020-07-12.norm.txt
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.3 — Create a samplesheet for the phytochrome data</summary>
+<p>A samplesheet is a structured table that records the metadata for every file in a dataset — the same information as the filename, but in a form that analysis code can query, filter, and join directly.</p>
+<p>Given the 9 normalized phytochrome files in <code>norm/</code>, design a samplesheet that fully describes each sample.</p>
+<p><strong>Files in <code>norm/</code>:</strong></p>
+<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
+LD_phyA_on_t04_2020-07-14.norm.txt
+LD_phyA_on_t04_2020-08-12.norm.txt
+LD_phyB_off_t04_2020-08-12.norm.txt
+LD_phyB_on_t04_2020-07-14.norm.txt
+SD_phyA_off_t04_2020-08-13.norm.txt
+SD_phyA_on_t04_2020-07-12.norm.txt
+SD_phyB_off_t04_2020-08-13.norm.txt
+SD_phyB_on_t04_2020-07-12.norm.txt
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>What columns should the samplesheet include?</li>
+<li>Two files share the same experimental condition (<code>LD</code>, <code>phyA</code>, <code>on</code>, <code>t04</code>) but have different dates. What does that tell you, and how should the samplesheet handle it?</li>
+<li>What format should the samplesheet be saved as, and where should it live?</li>
+</ol>
+<details class="success">
+<summary>Samplesheet</summary>
+<table>
+<thead>
+<tr>
+<th>filename</th>
+<th>light</th>
+<th>genotype</th>
+<th>media</th>
+<th>timepoint</th>
+<th>date</th>
+<th>datatype</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LD_phyA_off_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyA_on_t04_2020-07-14.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-14</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyA_on_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyB_off_t04_2020-08-12.norm.txt</td>
+<td>LD</td>
+<td>phyB</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>LD_phyB_on_t04_2020-07-14.norm.txt</td>
+<td>LD</td>
+<td>phyB</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-14</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyA_off_t04_2020-08-13.norm.txt</td>
+<td>SD</td>
+<td>phyA</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-13</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyA_on_t04_2020-07-12.norm.txt</td>
+<td>SD</td>
+<td>phyA</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-12</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyB_off_t04_2020-08-13.norm.txt</td>
+<td>SD</td>
+<td>phyB</td>
+<td>off</td>
+<td>t04</td>
+<td>2020-08-13</td>
+<td>norm</td>
+</tr>
+<tr>
+<td>SD_phyB_on_t04_2020-07-12.norm.txt</td>
+<td>SD</td>
+<td>phyB</td>
+<td>on</td>
+<td>t04</td>
+<td>2020-07-12</td>
+<td>norm</td>
+</tr>
+</tbody>
+</table>
+<p><em>Saved as <code>samplesheet.txt</code> (tab-separated) or <code>samplesheet.csv</code> (comma-separated) in the project root alongside <code>README.txt</code>.</em></p>
+<p><strong>Key Points:</strong></p>
+<ol>
+<li>
+<p><strong>Columns:</strong> </p>
+<ul>
+<li><code>filename</code> as the primary key, then one column per experimental variable: <code>light</code>, <code>genotype</code>, <code>media</code>, <code>timepoint</code>, <code>date</code>, <code>datatype</code>. </li>
+<li>Add any additional details not in the filename (organism, tissue, instrument, library prep, etc.) as extra columns.</li>
+</ul>
+</li>
+<li>
+<p><strong>Two files, same condition, different dates:</strong> </p>
+<ul>
+<li>These represent two separate measurements — perhaps collected on different runs or from different plants. The <code>date</code> column distinguishes them. </li>
+<li>This is also a signal that if you ever want to simplify the filename (by dropping the date), you would first need to add a replicate or run identifier to maintain uniqueness.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format and location:</strong> </p>
+<ul>
+<li>Save as <code>samplesheet.txt</code> (tab-separated) or <code>samplesheet.csv</code> (comma-separated) — plain text, readable by any tool without proprietary software. </li>
+<li>Place it in the project root alongside <code>README.txt</code> (next step), so anyone opening the directory sees it immediately.</li>
+</ul>
+</li>
+</ol>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.4 — Write the README for the clean project</summary>
+<p>The project now has consistently named files, organized into <code>raw/</code> and <code>norm/</code> subfolders, and a <code>samplesheet.txt</code>. Write the key sections of a README that completes the documentation. Think about what a new lab member would need to understand and use this dataset.</p>
+<details class="success">
+<summary>README</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Raw text (README.txt)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>README: Phytochrome Light Response Data
+========================================
+
+Project Description
+-------------------
+Expression measurements from experiments investigating light-dependent
+responses of phyA and phyB genotypes under long-day (LD) and short-day
+(SD) conditions. Samples collected at multiple timepoints and media
+states (on sucrose / off sucrose).
+
+File Naming Convention
+----------------------
+{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt
+
+  light:     LD (Long Day) or SD (Short Day)
+  genotype:  phyA or phyB
+  media:     on (sucrose) or off (no sucrose)
+  timepoint: tXX — two-digit zero-padded timepoint number
+  sample:    sXX — two-digit zero-padded replicate ID (omitted when unspecified)
+  date:      YYYY-MM-DD — collection or processing date
+  datatype:  raw or norm (also indicated by subfolder)
+
+Directory Structure
+-------------------
+.
+├── raw/     — unprocessed measurements from acquisition pipeline
+├── norm/    — normalized data for downstream analysis
+├── README.txt
+└── samplesheet.txt
+
+Samplesheet
+-----------
+samplesheet.txt (tab-separated) contains one row per normalized file.
+Columns: filename, light, genotype, media, timepoint, date, datatype.
+See samplesheet.txt for sample-level details.
+
+Notes
+-----
+Raw and normalized files should remain unmodified.
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+</details>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Establish a naming convention before you start collecting data.</li>
+<li>Consistent separators, consistent case, zero-padded numbers, ISO 8601 dates.</li>
+<li>The same convention must apply to every file in a dataset — one exception breaks scripts.</li>
+<li>Document your naming convention in a README.</li>
+</ul>
+</div>
+<h3 id="folder-organization">Folder Organization</h3>
+<p>Once you have good file names, folder structure determines how easy it is to find files and understand how they relate to each other.</p>
+<p><strong>Core principles:</strong></p>
+<ul>
+<li><strong>One project per directory</strong>, named after the project</li>
+<li><strong>Separate raw from processed</strong> — treat raw data as read-only, put all outputs in a separate folder</li>
+<li><strong>Group files by type</strong> — <code>data/</code>, <code>analysis/</code>, <code>results/</code> rather than <code>2024-07/</code>, <code>2024-08/</code></li>
+<li><strong>Document the structure</strong> in the README</li>
+</ul>
+<p><strong>A widely-used template</strong> from <em>Good Enough Practices in Scientific Computing</em> (Wilson et al., 2017):</p>
+<div class="highlight"><pre><span></span><code>project_name/
+├── data/          ← raw data and metadata (read-only)
+├── results/       ← files generated during analysis
+├── doc/           ← project documentation
+├── src/           ← code and analysis scripts
+└── README.txt     ← project overview and directory guide
+</code></pre></div>
+<div style="text-align: center; margin: 1rem 0 1.5rem;">
+  <img src="images/slide41_img00.png" alt="Examples of good project directory structures A, B, C, D" style="max-width: 580px; border-radius: 6px;">
+  <p style="font-size: 0.85rem; color: #666; margin-top: 0.4rem;"><em>Four examples of well-organized genomics project directories. All separate raw data, analysis code, and outputs. All include a README. Each adapts the structure to the specific project.</em></p>
+</div>
+
+<div class="admonition tip">
+<p class="admonition-title">Name files by content, not by position</p>
+<p>Avoid naming files by their position in a manuscript (<code>fig_3_a.png</code>) or by sequential number (<code>result1.csv</code>, <code>result2.csv</code>). Both will change as the project evolves. Use descriptive names: <code>PCA_all_samples.png</code>, <code>DEGs_agonist_vs_control.csv</code>.</p>
+</div>
+<details class="question" open="open">
+<summary>Exercise 3.5 — Reorganize a messy project</summary>
+<p>Look at the directory structure below. Write down every issue you can identify. Then think about what the improved structure would look like.</p>
+<div class="highlight"><pre><span></span><code>smith_lab_rna/
+├── final analysis.R
+├── Final_analysis_v2.R
+├── Copy of Final_analysis_v2.R
+├── A1.fastq.gz
+├── A2.fastq.gz
+├── B1.fastq.gz
+├── B2.fastq.gz
+├── DEGs.xlsx
+├── figure 1.png
+├── figure 1 FINAL.png
+├── Figure1_revised.png
+├── misc/
+│   └── notes May.docx
+├── OLD/
+│   ├── results_old.csv
+│   └── analysis_backup.R
+└── refs/
+    ├── genome.fa.gz
+    └── annotation.gtf.gz
+</code></pre></div>
+<p><strong>Step through each problem:</strong></p>
+<ol>
+<li>What is wrong with the raw data files (<code>A1.fastq.gz</code>, etc.)?</li>
+<li>What is wrong with the analysis scripts?</li>
+<li>What is wrong with the figures?</li>
+<li>What is wrong with <code>DEGs.xlsx</code>?</li>
+<li>What do <code>OLD/</code> and <code>misc/</code> tell you about the project's history?</li>
+<li>What is missing entirely?</li>
+</ol>
+<details class="success">
+<summary>Step-by-step analysis</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Problem 1: Ambiguous raw data</label><label for="__tabbed_6_2">Problem 2: Version-control chaos in scripts</label><label for="__tabbed_6_3">Problem 3: Three versions of figure 1</label><label for="__tabbed_6_4">Problem 4: DEGs.xlsx instead of .csv</label><label for="__tabbed_6_5">Problem 5: OLD/ and misc/ folders</label><label for="__tabbed_6_6">Problem 6: What is missing?</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><code>A1.fastq.gz</code>, <code>A2.fastq.gz</code>, <code>B1.fastq.gz</code>, <code>B2.fastq.gz</code> — these are plate-well identifiers with no biological meaning. Without a sample sheet, there is no way to know what organism, condition, or replicate each file represents.</p>
+<p><strong>Fix:</strong> Rename files with biologically meaningful names (e.g., <code>Control_rep1_S001_R1.fastq.gz</code>) or add a <code>samplesheet.csv</code> that maps <code>A1</code> → sample name → condition → replicate. The files and the sample sheet should live in a <code>data/</code> subfolder.</p>
+</div>
+<div class="tabbed-block">
+<p>Three analysis scripts:</p>
+<ul>
+<li><code>final analysis.R</code> — spaces in the name (breaks scripts), no version indicator</li>
+<li><code>Final_analysis_v2.R</code> — different capitalization, <code>v2</code> implies history not recorded elsewhere</li>
+<li><code>Copy of Final_analysis_v2.R</code> — a copy made by the OS instead of a version control system</li>
+</ul>
+<p><strong>Fix:</strong> Use version control (git) instead of <code>_v2</code> and <code>Copy of</code> file naming. Pick one canonical script name: <code>deseq_analysis.R</code> or <code>full_analysis.Rmd</code>. Put scripts in a <code>src/</code> or <code>analysis/</code> folder.</p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>figure 1.png</code> — spaces, no version context</li>
+<li><code>figure 1 FINAL.png</code> — "FINAL" almost never is</li>
+<li><code>Figure1_revised.png</code> — different capitalization convention</li>
+</ul>
+<p><strong>Fix:</strong> Use descriptive names that reflect content, not manuscript position: <code>PCA_all_samples.png</code>, <code>volcano_agonist_vs_control.png</code>. Use version control or a results folder with clearly named subfolders for draft vs. publication figures.</p>
+</div>
+<div class="tabbed-block">
+<p><code>DEGs.xlsx</code> is a proprietary format that may render differently in different versions of Excel, can store hidden formatting, and is not accepted by most data repositories. Differential expression results are tabular data with no need for Excel features.</p>
+<p><strong>Fix:</strong> Export as <code>DEGs_agonist_vs_control.csv</code> with a descriptive name that encodes the comparison.</p>
+</div>
+<div class="tabbed-block">
+<p><code>OLD/</code> and <code>misc/</code> are signs that files were never properly versioned or documented. <code>OLD/results_old.csv</code> — old compared to what? <code>misc/notes May.docx</code> — May of which year? What notes?</p>
+<p><strong>Fix:</strong> Use git for version control so <code>OLD/</code> is never needed. Move useful notes into a <code>doc/</code> folder with descriptive names: <code>notes_2024-05_alignment_issues.md</code>. Delete what is truly obsolete.</p>
+</div>
+<div class="tabbed-block">
+<p>There is no README anywhere in this directory. No sample sheet. No documentation of what this project is, what organism, what the conditions are, or how to use the files.</p>
+</div>
+</div>
+</div>
+</details>
+<details class="success">
+<summary>Improved structure</summary>
+<div class="highlight"><pre><span></span><code>smith_lab_rna/
+├── README.txt                    ← who, what, when, where, how
+├── data/
+│   ├── samplesheet.csv           ← A1 → Control_rep1 → condition → rep
+│   ├── A1.fastq.gz               ← raw FASTQs (read-only)
+│   ├── A2.fastq.gz
+│   ├── B1.fastq.gz
+│   ├── B2.fastq.gz
+│   ├── genome.fa.gz              ← reference files with data
+│   └── annotation.gtf.gz
+├── analysis/
+│   ├── deseq_analysis.Rmd        ← single canonical script
+│   ├── input/
+│   │   ├── design.tsv
+│   │   └── gene_counts.tsv
+│   └── output/
+│       ├── PCA_all_samples.png
+│       ├── volcano_A_vs_B.png
+│       └── DEGs_A_vs_B.csv
+└── doc/
+    └── notes_alignment_issues.md
+</code></pre></div>
+<p><strong>What changed:</strong></p>
+<ul>
+<li>One README at the top level</li>
+<li><code>data/</code> holds raw FASTQs (read-only), reference files, and sample sheet</li>
+<li><code>analysis/</code> holds the single canonical script and clearly separated <code>input/</code> and <code>output/</code></li>
+<li>All files have descriptive names with no spaces</li>
+<li>No <code>OLD/</code>, no <code>misc/</code>, no version-number suffixes, no copies</li>
+</ul>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>One project per directory. Separate raw data from analysis outputs.</li>
+<li>Group files by type (<code>data/</code>, <code>analysis/</code>, <code>doc/</code>) not by date.</li>
+<li>Avoid <code>OLD/</code>, <code>misc/</code>, and version-number file names — use git instead.</li>
+<li>Name files by what they contain, not by their position in a manuscript.</li>
+<li>Always include a README.</li>
+</ul>
+</div>
+<hr />
+<h2 id="workshop-summary-quick-reference">Workshop Summary — Quick Reference</h2>
+<p>Use this as a cheat sheet for your own projects. A one-page visual reference is available to download and print:</p>
+<p><a href="quickref.pdf" download class="md-button md-button--primary"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Quick Reference (PDF)</a></p>
+<h3 id="fair-data-principles">FAIR Data Principles</h3>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Core idea</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Findable</strong></td>
+<td>You and others can locate the data</td>
+<td>Consistent file names, logical folder structure, searchable metadata</td>
+</tr>
+<tr>
+<td><strong>Accessible</strong></td>
+<td>You can open and read the data</td>
+<td>Documented file paths, readable formats, clear metadata</td>
+</tr>
+<tr>
+<td><strong>Interoperable</strong></td>
+<td>The data works across tools</td>
+<td>Open formats (<code>.csv</code>, <code>.tsv</code>), standard gene IDs (Ensembl), no proprietary features</td>
+</tr>
+<tr>
+<td><strong>Reusable</strong></td>
+<td>Others can repeat or build on your analysis</td>
+<td>README, sample sheet, documented parameters, tidy data structure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-essentials">Metadata Essentials</h3>
+<table>
+<thead>
+<tr>
+<th>What to create</th>
+<th>What it contains</th>
+<th>Where it lives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sample sheet</strong> (<code>samplesheet.csv</code>)</td>
+<td>File name → sample name → condition → replicate</td>
+<td><code>data/</code></td>
+</tr>
+<tr>
+<td><strong>Design file</strong> (<code>design.tsv</code>)</td>
+<td>One row per sample: condition, treatment variables, replicate — structured for analysis code</td>
+<td><code>analysis/input/</code></td>
+</tr>
+<tr>
+<td><strong>README</strong> (<code>README.txt</code>)</td>
+<td>Project overview, directory structure, tool versions, how to use the files</td>
+<td>Project root</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Always document:</strong> organism + strain, genome build + annotation version, pipeline name + version, statistical cutoffs used.</p>
+<h3 id="file-naming-rules">File Naming Rules</h3>
+<div class="highlight"><pre><span></span><code>{variable1}_{variable2}_{variable3}_{YYYY-MM-DD}.{ext}
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Good</th>
+<th>Bad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No spaces</td>
+<td><code>Mock_DMSO_rep1.fastq.gz</code></td>
+<td><code>Mock DMSO rep1.fastq.gz</code></td>
+</tr>
+<tr>
+<td>No special characters</td>
+<td><code>results_v2.csv</code></td>
+<td><code>results (v2)!.csv</code></td>
+</tr>
+<tr>
+<td>Zero-pad numbers</td>
+<td><code>s01, s02, s12</code></td>
+<td><code>s1, s2, s12</code></td>
+</tr>
+<tr>
+<td>ISO 8601 dates</td>
+<td><code>2024-07-16</code></td>
+<td><code>07-16-24</code>, <code>JUL-16</code></td>
+</tr>
+<tr>
+<td>Consistent case</td>
+<td><code>LD_phyA</code>, <code>LD_phyB</code></td>
+<td><code>LD_phyA</code>, <code>ld_phyb</code></td>
+</tr>
+<tr>
+<td>Informative, not positional</td>
+<td><code>PCA_all_samples.png</code></td>
+<td><code>fig_3_a.png</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="project-directory-template">Project Directory Template</h3>
+<div class="highlight"><pre><span></span><code>project_name/
+├── README.txt          ← who/what/when/where/how; directory guide
+├── data/               ← raw data + metadata (READ-ONLY)
+│   ├── samplesheet.csv
+│   └── *.fastq.gz
+├── analysis/           ← code, intermediate inputs, outputs
+│   ├── script.Rmd
+│   ├── input/
+│   └── output/
+├── doc/                ← notes, protocols, documentation
+└── results/            ← final figures and tables for the paper
+</code></pre></div>
+<h3 id="one-thing-to-fix-this-week">One Thing to Fix This Week</h3>
+<table>
+<thead>
+<tr>
+<th>If you don't have...</th>
+<th>Do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A README</td>
+<td>Write one for your most-used project. Start with: what is it, who owns it, where is the raw data.</td>
+</tr>
+<tr>
+<td>A sample sheet</td>
+<td>New <code>.csv</code>: sample name · condition · replicate · file name.</td>
+</tr>
+<tr>
+<td>Consistent file names</td>
+<td>Write down the convention you wish you had used. Apply it to new files going forward.</td>
+</tr>
+<tr>
+<td>Open format results</td>
+<td>Export your key analysis result from <code>.xlsx</code> to <code>.csv</code>.</td>
+</tr>
+<tr>
+<td>Documented gene IDs</td>
+<td>Add a <code>id_source</code> column: e.g., <code>Ensembl_114_GRCm39</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Questions? Contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dataOrganization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Organization in Spreadsheets">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Data Organization in Spreadsheets
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../introR/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to R &amp; RStudio">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction to R & RStudio
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

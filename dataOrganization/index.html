@@ -1,0 +1,4877 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../introDataScience/">
+      
+      
+        <link rel="next" href="../genomics/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Data Organization in Spreadsheets - MDIBL Comparative Genomics and Data Science Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-organization-in-spreadsheets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDIBL Comparative Genomics and Data Science Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Organization in Spreadsheets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../home/team/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introDataScience/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Data Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../bits/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bioinformatics Bits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../courseArchives/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Course Archives
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    MDIBL Comparative Genomics and Data Science Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataScience/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Data Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-good-data-organization-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Good Data Organization Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-spreadsheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Are Spreadsheets?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cardinal-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Cardinal Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dataset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protect-your-raw-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protect Your Raw Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Task
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-steps-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning Steps — Walkthrough
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-one-table-per-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: One Table Per Sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-one-piece-of-information-per-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: One Piece of Information Per Cell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-write-clean-field-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Write Clean Field Names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-consolidate-data-across-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Consolidate Data Across Tabs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-never-encode-data-in-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Never Encode Data in Formatting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-keep-cells-free-of-comments-and-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Keep Cells Free of Comments and Units
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-represent-missing-data-consistently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Represent Missing Data Consistently
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-store-dates-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Store Dates Safely
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-quality-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Quality Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Metadata?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-files-in-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Files in This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-create-a-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: Create a Data Dictionary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-your-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Your Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting Your Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-save-as-xlsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Save as .xlsx?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-save-as-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Save as CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-clean-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Clean Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataViz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../bits/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Bits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bioinformatics Bits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Archives
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Archives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introToCloudCourse/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/scrnaseq2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScRNAseq in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ScRNAseq in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/learning_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/loupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loupe Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/introCloud2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-good-data-organization-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Good Data Organization Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-spreadsheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Are Spreadsheets?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-cardinal-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Cardinal Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dataset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protect-your-raw-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protect Your Raw Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Task
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-steps-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning Steps — Walkthrough
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-one-table-per-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: One Table Per Sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-one-piece-of-information-per-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: One Piece of Information Per Cell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-write-clean-field-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Write Clean Field Names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-consolidate-data-across-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Consolidate Data Across Tabs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-never-encode-data-in-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Never Encode Data in Formatting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-keep-cells-free-of-comments-and-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Keep Cells Free of Comments and Units
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-represent-missing-data-consistently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Represent Missing Data Consistently
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-store-dates-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Store Dates Safely
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-quality-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Quality Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Metadata?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-files-in-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Files in This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-create-a-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise: Create a Data Dictionary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-your-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting Your Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting Your Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-save-as-xlsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Save as .xlsx?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-save-as-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Save as CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-clean-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Clean Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="data-organization-in-spreadsheets">Data Organization in Spreadsheets</h1>
+<blockquote>
+<p><strong>Workshop:</strong> ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
+</blockquote>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
+<ul>
+<li>Explain why raw data should never be directly edited</li>
+<li>Identify the cardinal rules of spreadsheet structure</li>
+<li>Recognize and fix at least six common spreadsheet mistakes</li>
+<li>Create a data dictionary to document your dataset</li>
+<li>Export cleaned data in a portable, software-independent format</li>
+</ul>
+</div>
+<hr />
+<h2 id="why-good-data-organization-matters">Why Good Data Organization Matters</h2>
+<p>Good data organization is the foundation of any research project. Messy or poorly structured data makes every downstream step — data wrangling, statistical analysis, bioinformatics pipelines — much harder than it needs to be.</p>
+<p>Consider how scientists typically spend their time on a project: a surprisingly large portion goes to <strong>data preparation and cleaning</strong>, not analysis. Organizing data well at the start reduces that burden dramatically and pays dividends every time someone opens the file — including future-you.</p>
+<p>Organized data also improves:</p>
+<ul>
+<li><strong>Reproducibility</strong> — anyone can open your file and understand it without asking you</li>
+<li><strong>Collaboration</strong> — teammates and analysts can use your data without guessing what columns mean</li>
+<li><strong>Transparency</strong> — reviewers and repositories can verify your results</li>
+</ul>
+<p><strong>The single biggest mistake</strong> researchers make with spreadsheets is treating them like a lab notebook — relying on margin notes, visual spacing, color highlighting, or merged cells to convey meaning. These cues make perfect sense to a human reader, but computers are completely literal. They cannot interpret merged cells, colored text, or visual spacing. Whatever information exists only as formatting will be silently lost the moment the file is imported into any analysis tool.</p>
+<hr />
+<h2 id="what-are-spreadsheets">What Are Spreadsheets?</h2>
+<p>"Spreadsheet" is broader than "Excel file." Any tabular data file that can be opened in a spreadsheet program qualifies — including plain-text formats:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Extension</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Excel Workbook</td>
+<td><code>.xlsx</code>, <code>.xls</code></td>
+<td>Proprietary; not ideal for long-term storage</td>
+</tr>
+<tr>
+<td>OpenDocument Spreadsheet</td>
+<td><code>.ods</code></td>
+<td>Open-source equivalent</td>
+</tr>
+<tr>
+<td>Comma-Separated Values</td>
+<td><code>.csv</code></td>
+<td>Plain text; universally readable</td>
+</tr>
+<tr>
+<td>Tab-Separated Values</td>
+<td><code>.tsv</code>, <code>.txt</code></td>
+<td>Plain text; universally readable</td>
+</tr>
+</tbody>
+</table>
+<p>Spreadsheet programs are useful for data entry, organizing records, sorting, and basic visualization. This workshop covers <strong>none</strong> of those advanced features — we are focused entirely on how to structure the underlying data so it can be used by any tool, any collaborator, and any analysis pipeline.</p>
+<div class="admonition note">
+<p class="admonition-title">What this workshop does not cover</p>
+<p>Statistics, plotting, formulas, and scripting inside spreadsheet programs. Once your data is clean and well-organized, those tasks are better handled in dedicated tools like R or Python — which we cover in later courses in this series.</p>
+</div>
+<hr />
+<h2 id="the-cardinal-rules">The Cardinal Rules</h2>
+<p>Every decision you make about your spreadsheet structure should flow from three rules. Internalize these and the rest of the workshop follows naturally.</p>
+<div class="grid">
+<div>
+<p><strong>Columns = Variables</strong></p>
+<p>Each column holds one type of measurement or attribute — weight, species, sex, date. Every row in that column contains the same kind of value.</p>
+</div>
+<div>
+<p><strong>Rows = Observations</strong></p>
+<p>Each row records a single, complete observation — one captured animal, one experimental sample, one survey event. Do not place multiple observations in one row.</p>
+</div>
+<div>
+<p><strong>Cells = Data</strong></p>
+<p>Each cell contains exactly one value. No units attached to numbers, no notes embedded in cells, no two pieces of information separated by a slash.</p>
+</div>
+</div>
+<hr />
+<details class="question" open="open">
+<summary>Exercise — What is the problem with this data format?</summary>
+<p>A field technician recorded the following survey data. Look at the columns carefully before reading on.</p>
+<table>
+<thead>
+<tr>
+<th>Date Collected</th>
+<th>Plot</th>
+<th>Species_Sex</th>
+<th>Weight (g)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>1</td>
+<td>DMM</td>
+<td>29</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>DMF</td>
+<td>40</td>
+</tr>
+<tr>
+<td>7/18/2013</td>
+<td>7</td>
+<td>DMM</td>
+<td>33</td>
+</tr>
+<tr>
+<td>8/19/2013</td>
+<td>8</td>
+<td>DOF</td>
+<td>52</td>
+</tr>
+</tbody>
+</table>
+<details class="success">
+<summary>Solution - part 1</summary>
+<p>The <code>Species_Sex</code> column combines the species code and sex code into a single value: <code>DMM</code> means species <code>DM</code>, sex <code>M</code> (male); <code>DOF</code> means species <code>DO</code>, sex <code>F</code> (female). 
+<strong>Which cardinal rule does this violate, and how would you fix it?</strong></p>
+</details>
+<details class="success">
+<summary>Solution - part 2</summary>
+<p>The <code>Species_Sex</code> column violates <strong>Cells = Data</strong> — one cell should hold exactly one value. By merging species and sex, you lose the ability to filter, sort, or analyze either variable on its own without writing a fragile parsing formula.</p>
+<p>The fix is to split the column into two, one variable each:</p>
+<table>
+<thead>
+<tr>
+<th>Date Collected</th>
+<th>Plot</th>
+<th>Species</th>
+<th>Sex</th>
+<th>Weight (g)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>1</td>
+<td>DM</td>
+<td>M</td>
+<td>29</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>DM</td>
+<td>F</td>
+<td>40</td>
+</tr>
+<tr>
+<td>7/18/2013</td>
+<td>7</td>
+<td>DM</td>
+<td>M</td>
+<td>33</td>
+</tr>
+<tr>
+<td>8/19/2013</td>
+<td>8</td>
+<td>DO</td>
+<td>F</td>
+<td>52</td>
+</tr>
+</tbody>
+</table>
+<p>This table is <strong>tidy data</strong>: columns = variables, rows = observations, cells = data. Any software can now import, filter, or analyze species and sex independently — no parsing required.</p>
+</details>
+</details>
+<hr />
+<h2 id="the-dataset">The Dataset</h2>
+<p>This workshop uses real ecological survey data from the <strong>Portal Project</strong>, a decades-long study tracking small mammal populations in the Chihuahuan Desert of New Mexico and Arizona. Researchers set live traps across 24 experimental plots and recorded each captured animal's species, sex, and weight.</p>
+<p>You will work with one file to start:</p>
+<p><a class="md-button md-button--primary" href="survey_data_messy.xlsx"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h149.5c17 0 33.3 6.7 45.3 18.7l106.5 106.6c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm208-5.5V152c0 13.3 10.7 24 24 24h93.5zm-44 208.2c-7.4-11-22.3-14-33.3-6.7s-14 22.3-6.7 33.3l39.2 58.7-39.2 58.7c-7.4 11-4.4 25.9 6.7 33.3s25.9 4.4 33.3-6.7l28-42 28 42c7.4 11 22.3 14 33.3 6.7s14-22.3 6.7-33.3L220.8 352l39.2-58.7c7.4-11 4.4-25.9-6.7-33.3s-25.9-4.4-33.3 6.7l-28 42z"/></svg></span> Download Messy Data</a></p>
+<h3 id="protect-your-raw-data">Protect Your Raw Data</h3>
+<p>Before you touch the data, there is one non-negotiable rule: <strong>never edit your original file.</strong></p>
+<p>Duplicate <code>survey_data_messy.xlsx</code> and rename the copy <code>survey_data_clean.xlsx</code>. All of your work happens in the copy — the original stays closed.</p>
+<div class="highlight"><pre><span></span><code>survey_data_messy.xlsx    ← original; close it, never open it again
+survey_data_clean.xlsx    ← working copy; all edits happen here
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Name your working copy clearly</p>
+<p>Use a suffix like <code>_clean</code>, <code>_working</code>, or today's date. Avoid <code>_final</code>, <code>_final2</code>, <code>_FINAL_v3</code> — those names always lie.</p>
+</div>
+<p><strong>Keeping track of your changes:</strong> Document every cleaning step like a lab procedure. Keep a plain-text file (e.g., <code>cleaning_notes.txt</code>) in the same folder as your data and write down what you changed and why. This makes your work reproducible and helps any future collaborator understand what happened to the original file.</p>
+<div class="highlight"><pre><span></span><code># cleaning_notes.txt
+2024-11-01
+- Made working copy: survey_data_clean.xlsx
+- Removed blank rows separating tables in 2013 tab
+- Renamed column M/F → Sex
+...
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Never edit your original data file.</li>
+<li>Work only on a named copy.</li>
+<li>Keep a plain-text log of every change you make.</li>
+</ul>
+</div>
+<h3 id="reference-files">Reference Files</h3>
+<p>The dataset uses two-letter shorthand codes for species and integer IDs for plots. Keep these open alongside your spreadsheet while you work:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Species Codes (excerpt)</label><label for="__tabbed_1_2">Plot Types (excerpt)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Genus</th>
+<th>Species</th>
+<th>Taxa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM</td>
+<td><em>Dipodomys</em></td>
+<td><em>merriami</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>DO</td>
+<td><em>Dipodomys</em></td>
+<td><em>ordii</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>DS</td>
+<td><em>Dipodomys</em></td>
+<td><em>spectabilis</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>OL</td>
+<td><em>Onychomys</em></td>
+<td><em>leucogaster</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>OT</td>
+<td><em>Onychomys</em></td>
+<td><em>torridus</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>PE</td>
+<td><em>Peromyscus</em></td>
+<td><em>eremicus</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>PF</td>
+<td><em>Perognathus</em></td>
+<td><em>flavus</em></td>
+<td>Rodent</td>
+</tr>
+<tr>
+<td>PM</td>
+<td><em>Peromyscus</em></td>
+<td><em>maniculatus</em></td>
+<td>Rodent</td>
+</tr>
+</tbody>
+</table>
+<p><a class="md-button" href="species.csv"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h80V400c0-35.3 28.7-64 64-64h176V170.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0zm261.5 176H264c-13.3 0-24-10.7-24-24V58.5zM264 380c-24.3 0-44 19.7-44 44v80c0 24.3 19.7 44 44 44h16c24.3 0 44-19.7 44-44v-8c0-11-9-20-20-20s-20 9-20 20v8c0 2.2-1.8 4-4 4h-16c-2.2 0-4-1.8-4-4v-80c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v8c0 11 9 20 20 20s20-9 20-20v-8c0-24.3-19.7-44-44-44zm136 0c-28.7 0-52 23.3-52 52s23.3 52 52 52c6.6 0 12 5.4 12 12s-5.4 12-12 12h-32c-11 0-20 9-20 20s9 20 20 20h32c28.7 0 52-23.3 52-52s-23.3-52-52-52c-6.6 0-12-5.4-12-12s5.4-12 12-12h24c11 0 20-9 20-20s-9-20-20-20zm96 0c-11 0-20 9-20 20v31.6c0 35.5 10.5 70.3 30.2 99.8l5.1 7.7c3.7 5.6 10 8.9 16.6 8.9s12.9-3.3 16.6-8.9l5.1-7.7c19.7-29.6 30.2-64.3 30.2-99.8V400c0-11-9-20-20-20s-20 9-20 20v31.6c0 19.6-4.1 38.9-12 56.7-7.9-17.8-12-37.1-12-56.7V400c0-11-9-20-20-20z"/></svg></span> Full Species List</a></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Plot ID</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Spectab exclosure</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Long-term Krat Exclosure</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Rodent Exclosure</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Short-term Krat Exclosure</td>
+</tr>
+</tbody>
+</table>
+<p><a class="md-button" href="plots.csv"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h80V400c0-35.3 28.7-64 64-64h176V170.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0zm261.5 176H264c-13.3 0-24-10.7-24-24V58.5zM264 380c-24.3 0-44 19.7-44 44v80c0 24.3 19.7 44 44 44h16c24.3 0 44-19.7 44-44v-8c0-11-9-20-20-20s-20 9-20 20v8c0 2.2-1.8 4-4 4h-16c-2.2 0-4-1.8-4-4v-80c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v8c0 11 9 20 20 20s20-9 20-20v-8c0-24.3-19.7-44-44-44zm136 0c-28.7 0-52 23.3-52 52s23.3 52 52 52c6.6 0 12 5.4 12 12s-5.4 12-12 12h-32c-11 0-20 9-20 20s9 20 20 20h32c28.7 0 52-23.3 52-52s-23.3-52-52-52c-6.6 0-12-5.4-12-12s5.4-12 12-12h24c11 0 20-9 20-20s-9-20-20-20zm96 0c-11 0-20 9-20 20v31.6c0 35.5 10.5 70.3 30.2 99.8l5.1 7.7c3.7 5.6 10 8.9 16.6 8.9s12.9-3.3 16.6-8.9l5.1-7.7c19.7-29.6 30.2-64.3 30.2-99.8V400c0-11-9-20-20-20s-20 9-20 20v31.6c0 19.6-4.1 38.9-12 56.7-7.9-17.8-12-37.1-12-56.7V400c0-11-9-20-20-20z"/></svg></span> Full Plot List</a></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="your-task">Your Task</h2>
+<div class="admonition abstract">
+<p class="admonition-title"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a7 7 0 0 1-7-7 7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7m7.03-12.61 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0-9 9 9 9 0 0 0 9 9c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M11 14h2V8h-2m4-7H9v2h6z"/></svg></span> 10–15 minutes — Give it a try before scrolling further</p>
+<p>Open <code>survey_data_clean.xlsx</code> and <strong>clean and combine the two tabs into one consistent, analysis-ready dataset.</strong></p>
+<p>The file has two tabs — <strong>2013</strong> and <strong>2014</strong> — each recorded by a different field assistant. Your goal is a single flat table where every row is one observation and every column holds one variable.</p>
+<p>Keep the reference files (species codes, plot types) open alongside your spreadsheet as you work.</p>
+<p><strong>Don't aim for perfection on the first pass.</strong> The goal is to notice problems and think through how you might fix them. We will work through each one together below.</p>
+</div>
+<hr />
+<h2 id="cleaning-steps-walkthrough">Cleaning Steps — Walkthrough</h2>
+<p><em>After your initial attempt, the steps below explain each problem you likely encountered and the reasoning behind every fix. If you are working through this independently, follow along step by step.</em></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Topic</th>
+<th>Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#step-1-one-table-per-sheet">Step 1</a></td>
+<td>One table per sheet</td>
+<td>Formatting Data Tables</td>
+</tr>
+<tr>
+<td><a href="#step-2-one-piece-of-information-per-cell">Steps 2–4</a></td>
+<td>Cell and column hygiene</td>
+<td>Common Spreadsheet Errors</td>
+</tr>
+<tr>
+<td><a href="#step-5-never-encode-data-in-formatting">Steps 5–6</a></td>
+<td>Formatting and comments</td>
+<td>Common Spreadsheet Errors</td>
+</tr>
+<tr>
+<td><a href="#step-7-represent-missing-data-consistently">Steps 7–8</a></td>
+<td>Missing values and dates</td>
+<td>Common Spreadsheet Errors</td>
+</tr>
+<tr>
+<td><a href="#step-9-quality-control">Step 9</a></td>
+<td>Checking for errors</td>
+<td>Quality Control</td>
+</tr>
+<tr>
+<td><a href="#metadata">Metadata</a></td>
+<td>Documenting your data</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td><a href="#exporting-your-data">Export</a></td>
+<td>Saving in open formats</td>
+<td>Exporting Data</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="step-1-one-table-per-sheet">Step 1: One Table Per Sheet</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Notice the two tabs on the spreadsheet. </li>
+<li>Does the 2013 tab follow the cardinal rules? What about the 2014 tab? </li>
+<li>What (if any) schema is being used to record data currently? </li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Open the <strong>2013</strong> tab. Instead of one flat table, you will find <strong>three sub-tables laid out side by side across the columns</strong>, with blank columns separating them. Look at the first three rows:</p>
+<ul>
+<li>Row 3: A title — "2013 Field Season"</li>
+<li>Row 6: Sub-table labels — <strong>"Species: DM"</strong>, <strong>"Species: DO"</strong>, <strong>"Species: DS"</strong></li>
+<li>Row 7: Each sub-table's own header row — Date Collected, Plot, M/F (or Sex), Weight</li>
+</ul>
+<div class="highlight"><pre><span></span><code>        | Species: DM                      |   | Species: DO                   |   | Species: DS
+Row 7:  | Date Collected | Plot | M/F | Wt |   | Date Collected | Plot | Sex | Wt |   | Date Collected | Plot | Sex    | Wt
+Row 8:  | 7/16/2013      |  2   |  F  |  0 |   | 8/19/2013      |  8   |  F  | 52 |   | 11/12/2013     |  9   | Female | 117
+Row 9:  | 7/16/2013      |  7   |  M  | 33g|   | 10/17/2013     |  3   |  F  | 33 |   | 11/12/2013     |  1   | Female | 121
+</code></pre></div>
+<p>Crucially, <strong>none of the three sub-tables has a Species column</strong> — the species identity lives only in the row 6 label above the table. The same side-by-side layout applies to the <strong>2014</strong> tab, which has sub-tables labeled Plot 1, Plot 2, and Plot 3 across the top — none with a Plot column — and a separate Plot 4 section below with entirely different column names (<code>species_sex</code>, <code>wgt</code>).</p>
+<p><strong>Why this breaks things:</strong> When software imports the spreadsheet row by row, it reads each row as one observation. Row 8 above contains data from two different animals in two different sub-tables — the software has no way to distinguish them, and they become one garbled record. Worse, because the species identity only exists in a label cell above the data and not in any column, it is permanently lost on import. The computer cannot read the label and infer what species each row belongs to.</p>
+<p><strong>The fix:</strong> For each sub-table, add a column for the variable that differentiates it, then stack all sub-tables vertically into one flat table.</p>
+<details class="question" open="open">
+<summary>Exercise 1.1 — 2013: Add a <code>Species</code> column and stack the 2013 sub-tables</summary>
+<ol>
+<li>In the <strong>2013</strong> tab, identify which columns belong to the DM sub-table, which to DO, and which to DS.</li>
+<li>In each sub-table, insert a new column labeled <code>Species</code> and fill every data row with the appropriate code (DM, DO, or DS).</li>
+<li>Copy all data rows from the DO and DS sub-tables.</li>
+<li>Paste them below the DM data rows, aligning columns so the same type of information sits in the same column.</li>
+<li>Delete the original side-by-side layout once all rows are stacked.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Before</label><label for="__tabbed_2_2">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Plot</th>
+<th>M/F</th>
+<th>Weight</th>
+<th>(blank)</th>
+<th>Date</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Wt</th>
+<th>(blank)</th>
+<th>Date</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>0</td>
+<td></td>
+<td>8/19/2013</td>
+<td>8</td>
+<td>F</td>
+<td>52</td>
+<td></td>
+<td>11/12/2013</td>
+<td>9</td>
+<td>Female</td>
+<td>117</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>7</td>
+<td>M</td>
+<td>33g</td>
+<td></td>
+<td>10/17/2013</td>
+<td>3</td>
+<td>F</td>
+<td>33</td>
+<td></td>
+<td>11/12/2013</td>
+<td>1</td>
+<td>Female</td>
+<td>121</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Switch view to see After</em></strong></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>M/F</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>0</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>7</td>
+<td>M</td>
+<td>33g</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>8/19/2013</td>
+<td>8</td>
+<td>F</td>
+<td>52</td>
+<td>DO</td>
+</tr>
+<tr>
+<td>10/17/2013</td>
+<td>3</td>
+<td>F</td>
+<td>33</td>
+<td>DO</td>
+</tr>
+<tr>
+<td>11/12/2013</td>
+<td>9</td>
+<td>Female</td>
+<td>117</td>
+<td>DS</td>
+</tr>
+<tr>
+<td>11/12/2013</td>
+<td>1</td>
+<td>Female</td>
+<td>121</td>
+<td>DS</td>
+</tr>
+</tbody>
+</table>
+<p>The 2013 tab now has one flat table with columns: Date Collected, Plot, M/F (or Sex), Weight, Species. Each row has a species code. There are no side-by-side sections remaining.</p>
+<p><em>This step fixes only the side-by-side layout. There are still many more fixes to be done in subsequent steps.</em></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.2 — 2014: Add a <code>Plot</code> column and stack the 2014 sub-tables</summary>
+<p>Repeat the same process for the <strong>2014</strong> tab. Plots 1–3 are side by side at the top; Plot 4 is in a separate section below. Add a <code>Plot</code> column to each sub-table and stack all four.</p>
+<p><strong>Note:</strong> Plot 4 uses different column names (<code>species_sex</code>, <code>wgt</code>) — add the Plot column and stack, but fix the column names in the next steps.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Before (side-by-side layout in 2014 tab)</label><label for="__tabbed_3_2">After (stacked with Plot column):</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Plot 1</th>
+<th></th>
+<th></th>
+<th></th>
+<th>Plot 2</th>
+<th></th>
+<th></th>
+<th></th>
+<th>Plot 3</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date collected</td>
+<td>Sex</td>
+<td>Weight</td>
+<td></td>
+<td>Date collected</td>
+<td>Sex</td>
+<td>Weight</td>
+<td></td>
+<td>Date collected</td>
+<td>Sex</td>
+<td>Weight</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>M</td>
+<td>44</td>
+<td></td>
+<td>1/8/2014</td>
+<td>F</td>
+<td>37</td>
+<td></td>
+<td>3/11/2014</td>
+<td>M</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Plot 4 is in a separate section below with <code>species_sex</code> and <code>wgt</code> columns.)</em></p>
+<p><strong><em>Switch view to see After</em></strong></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/8/2014</td>
+<td>1</td>
+<td>M</td>
+<td>44</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td>F</td>
+<td>37</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>3/11/2025</td>
+<td>3</td>
+<td>M</td>
+<td>29</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>(from species_sex)</td>
+<td>(from wgt)</td>
+<td>(from species_sex)</td>
+</tr>
+</tbody>
+</table>
+<p>The 2014 tab now has one flat table with a <code>Plot</code> column and all four plots' data stacked vertically under one header row. The wrong years (2025, 1978) and the <code>species_sex</code>/<code>wgt</code> column issues are still present — those are fixed in later steps.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>Why can't you just copy and paste the sub-tables together without first adding a Species or Plot column?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Because the species or plot identity exists only in the label above each sub-table, not as a column value in the data. Once you stack the rows, there is no way to tell which species or plot each row came from — that information would be permanently lost. You must add the column first to preserve it.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Side-by-side sub-tables are just as problematic as stacked ones — both break every analysis tool.</li>
+<li>When a variable (species, plot, year) separates sub-tables, add it as a column in each sub-table before combining.</li>
+<li>After stacking, verify that the same type of data sits in the same column across all rows.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Freeze the header row</p>
+<p>After combining into one table, freeze the top row so column names stay visible as you scroll: <strong>View → Freeze Top Row</strong>.</p>
+</div>
+<hr />
+<h2 id="step-2-one-piece-of-information-per-cell">Step 2: One Piece of Information Per Cell</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Look at the columns in the Plot 4 rows of your 2014 tab. </li>
+<li>Do they line up with the columns above? </li>
+<li>What does <code>DM_F</code> mean?</li>
+<li>How would software distinguish the species code from the sex code inside <code>DM_F</code>?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> After stacking the 2014 sub-tables in Step 1, Plot 4's data has a column named <code>species_sex</code> that combines the species code and sex code into one value:</p>
+<table>
+<thead>
+<tr>
+<th>Date collected</th>
+<th>Plot</th>
+<th>species_sex</th>
+<th>wgt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM_F</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM_F</td>
+<td>42</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM_M</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DS_F</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<p><code>DM_F</code> means species DM, sex F (female). <code>DM_M</code> means species DM, sex M (male).</p>
+<p><em>The 1978 dates are also wrong, which is a date problem addressed in Step 8. The column name <code>wgt</code> is a field-naming problem addressed in Step 3.</em></p>
+<p><strong>Why this breaks things:</strong> You cannot filter by species alone or by sex alone. Extracting either value requires a parsing formula — fragile, invisible to collaborators, and impossible to apply consistently if the format ever varies.</p>
+<p><strong>The fix:</strong> Split the <code>species_sex</code> column into two separate columns.</p>
+<details class="question" open="open">
+<summary>Exercise 2.1 — Split species_sex</summary>
+<ol>
+<li>In the <strong>2014</strong> tab, find the <code>species_sex</code> column in the Plot 4 rows.</li>
+<li>Insert two new blank columns to its right: <code>Species</code> and <code>Sex</code>.</li>
+<li>Use <strong>Data → Text to Columns</strong> (delimited by <code>_</code>) to split the values — species code lands in the first column, sex code in the second.</li>
+<li>Verify the split, then delete the original <code>species_sex</code> column.</li>
+</ol>
+<p><strong>Note:</strong> After merging tabs in Step 4, these two columns must sit in the same positions as the 2013 data.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Before</label><label for="__tabbed_4_2">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date collected</th>
+<th>Plot</th>
+<th>species_sex</th>
+<th>wgt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM_F</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM_M</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DS_F</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Switch view to see After</em></strong></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date collected</th>
+<th>Plot</th>
+<th>Species</th>
+<th>Sex</th>
+<th>wgt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM</td>
+<td>F</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DM</td>
+<td>M</td>
+<td>37</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>DS</td>
+<td>F</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<p>Each row that had <code>DM_F</code> now has <code>DM</code> in the Species column and <code>F</code> in the Sex column. </p>
+<p><em>The 1978 dates are still wrong, which is a date problem addressed in Step 8.</em></p>
+<p><em>The column name <code>wgt</code> is still a field-naming problem addressed in Step 3.</em></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>A student records GPS coordinates as <code>"44.3N, 68.2W"</code> in one cell. What should they do instead?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Split into two columns: <code>Latitude</code> (44.3) and <code>Longitude</code> (-68.2). Use signed decimal degrees (negative for West/South) so the values are numbers rather than strings, making any geographic calculation straightforward.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Each cell holds exactly one value.</li>
+<li>Never use delimiters inside a cell to encode two things at once.</li>
+<li>If a column name contains "and" or <code>/</code>, it almost certainly violates this rule.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">One variable, one column — always</p>
+<p>If you find yourself putting a separator character (<code>_</code>, <code>/</code>, <code>;</code>) inside a cell to pack two things together, that is a sign you need another column.</p>
+</div>
+<hr />
+<h2 id="step-3-write-clean-field-names">Step 3: Write Clean Field Names</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Flip back and forth between spreadsheet tabs side by side and compare column headers. Notice any differences? </li>
+<li>Are <code>Date Collected</code> and <code>Date collected</code> the same column name to a computer?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> After combining the sub-tables, the dataset has several field-name problems — and they are not all in the same places. Each sub-table was entered by a different person, so inconsistencies crept in:</p>
+<ul>
+<li><strong>2013 DM sub-table:</strong> uses <code>M/F</code> for the sex column (special character; ambiguous)</li>
+<li><strong>2013 DO and DS sub-tables:</strong> use <code>Sex</code> — different from the DM sub-table in the same tab</li>
+<li><strong>All sub-tables:</strong> use <code>Date Collected</code> or <code>Date collected</code> (space; inconsistent capitalization across tabs)</li>
+<li><strong>2014 Plot 4:</strong> uses <code>wgt</code> instead of <code>Weight</code> (abbreviation; doesn't match other sub-tables)</li>
+</ul>
+<p>This means the same piece of information has three different names across the combined dataset — <code>M/F</code>, <code>Sex</code>, and (implicitly after splitting) <code>Sex</code> from Plot 4. Before stacking any rows, all column names must match exactly.</p>
+<p><strong>Why this breaks things:</strong> Spaces in column names must be quoted in every programming language. Special characters cause syntax errors. Inconsistent naming (<code>M/F</code> vs <code>Sex</code>) means software treats them as different columns, splitting data that belongs together.</p>
+<p><strong>The rules for good field names:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Bad</th>
+<th>Good</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No spaces</td>
+<td><code>Date Collected</code></td>
+<td><code>Date_Collected</code></td>
+</tr>
+<tr>
+<td>No special characters</td>
+<td><code>M/F</code></td>
+<td><code>Sex</code></td>
+</tr>
+<tr>
+<td>Descriptive</td>
+<td><code>wgt</code>, <code>col1</code></td>
+<td><code>Weight</code></td>
+</tr>
+<tr>
+<td>No leading numbers</td>
+<td><code>2023_count</code></td>
+<td><code>count_2023</code></td>
+</tr>
+<tr>
+<td>Consistent style</td>
+<td><code>PlotID</code>, <code>sex</code>, <code>WEIGHT</code></td>
+<td><code>plot_id</code>, <code>sex</code>, <code>weight</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Underscores vs. CamelCase</p>
+<p>Both <code>date_collected</code> and <code>DateCollected</code> are acceptable — pick one style and apply it everywhere in the file.</p>
+</div>
+<p><strong>The fix:</strong> Rename fields to appropriate names.</p>
+<details class="question" open="open">
+<summary>Exercise 3.1 — Fix the field names</summary>
+<table>
+<thead>
+<tr>
+<th>Old Name</th>
+<th>Where</th>
+<th>New Name</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M/F</code></td>
+<td>2013 DM sub-table</td>
+<td><code>Sex</code></td>
+<td>Matches the other sub-tables; no special character</td>
+</tr>
+<tr>
+<td><code>Date Collected</code> / <code>Date collected</code></td>
+<td>All sub-tables</td>
+<td><code>Date_Collected</code></td>
+<td>No space; consistent casing across all tables</td>
+</tr>
+<tr>
+<td><code>wgt</code></td>
+<td>2014 Plot 4</td>
+<td><code>Weight</code></td>
+<td>Descriptive; matches every other sub-table</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>In the stacked <strong>2013</strong> data, rename <code>M/F</code> → <code>Sex</code> and <code>Date Collected</code> → <code>Date_Collected</code>.</li>
+<li>In the stacked <strong>2014</strong> data, rename <code>Date collected</code> → <code>Date_Collected</code> and <code>wgt</code> → <code>Weight</code>.</li>
+<li>Scan every header in both tabs for any remaining spaces, special characters, or abbreviations.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Before (sample headers):</label><label for="__tabbed_5_2">After (both tabs):</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>2013 tab</th>
+<th>2014 tab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date Collected</code>, <code>M/F</code>, <code>Weight</code></td>
+<td><code>Date collected</code>, <code>Sex</code>, <code>wgt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Switch view to see After</em></strong></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>2013 tab</th>
+<th>2014 tab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date_Collected</code>, <code>Sex</code>, <code>Weight</code></td>
+<td><code>Date_Collected</code>, <code>Sex</code>, <code>Weight</code></td>
+</tr>
+</tbody>
+</table>
+<p>Both tabs should now have identical headers: <code>Date_Collected | Plot | Sex | Weight | Species</code>. There are no remaining spaces or symbols in any column name. The two tabs are still separate — they are merged in Step 4.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>Which of these column names are problematic?</p>
+<ul>
+<li><code>sample_id</code></li>
+<li><code>% GC Content</code></li>
+<li><code>Time (hours)</code></li>
+<li><code>replicate</code></li>
+<li><code>2023_weight</code></li>
+<li><code>gene name</code></li>
+</ul>
+<details class="success">
+<summary>Answer</summary>
+<p>Problematic: <code>% GC Content</code> (space + <code>%</code>), <code>Time (hours)</code> (space + parentheses), <code>2023_weight</code> (starts with number), <code>gene name</code> (space).</p>
+<p>Fixed: <code>pct_gc_content</code>, <code>time_hours</code>, <code>weight_2023</code>, <code>gene_name</code>.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Column names: lowercase, underscores instead of spaces, only letters/numbers/underscores.</li>
+<li>Names should be descriptive enough to understand without a lookup.</li>
+<li>Apply the same convention to every column in the file.</li>
+</ul>
+</div>
+<hr />
+<h2 id="step-4-consolidate-data-across-tabs">Step 4: Consolidate Data Across Tabs</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Look at the column order in both tabs. If you copy the 2014 rows and paste them directly below the 2013 data, what could go wrong?</li>
+<li>Can you apply a filter across both tabs at once, or do you have to do it separately for each tab?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Your working file has two tabs: <strong>2013</strong> and <strong>2014</strong>. Splitting records across tabs by year (or batch, or site) is common, and it creates chronic headaches downstream.</p>
+<p><strong>Why this breaks things:</strong> Most analysis tools load one table at a time. Every analysis that needs both years requires extra code or manual pre-processing. The two tabs can also silently drift apart in column order or naming over time, causing misaligned data when they are eventually combined.</p>
+<p><strong>The fix:</strong> Stack the two tables into one sheet.</p>
+<details class="question" open="open">
+<summary>Exercise 4.1 — Align and merge the tabs</summary>
+<ol>
+<li>Compare the column order in both tabs side by side.</li>
+<li>Reorder the <strong>2014</strong> columns to match <strong>2013</strong> exactly.</li>
+<li>Copy all data rows (not the header) from the <strong>2014</strong> tab.</li>
+<li>Paste below the last data row in the <strong>2013</strong> tab.</li>
+<li>Rename the tab (e.g., <code>AllData</code>).</li>
+<li>Delete the now-empty <strong>2014</strong> tab.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Before merging — 2014 tab column order (wrong):</label><label for="__tabbed_6_2">After reordering and merging — AllData tab:</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Species</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Plot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/9/2014</td>
+<td>DM</td>
+<td>M</td>
+<td>40</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1/29/2014</td>
+<td>DM</td>
+<td>F</td>
+<td>36</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Switch view to see After</em></strong></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>0</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>7</td>
+<td>M</td>
+<td>33g</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>8/19/2013</td>
+<td>8</td>
+<td>F</td>
+<td>52</td>
+<td>DO</td>
+</tr>
+<tr>
+<td>11/12/2013</td>
+<td>9</td>
+<td>Female</td>
+<td>117</td>
+<td>DS</td>
+</tr>
+<tr>
+<td>1/9/2014</td>
+<td>1</td>
+<td>M</td>
+<td>40</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/29/2014</td>
+<td>1</td>
+<td>F</td>
+<td>36</td>
+<td>DM</td>
+</tr>
+</tbody>
+</table>
+<p>One header row, then all 2013 rows, then all 2014 rows in a single tab.</p>
+<p><em>The wrong dates (2025, 1978), the <code>33g</code> weight values, <code>0</code> weights, <code>Female</code>/<code>Male</code> in Sex, and calibration notes are still present — those are cleaned in Steps 5–9.</em></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>You are combining three experiment batches. Batch A: <code>Sample | Treatment | OD600</code>. Batch B: <code>Sample | OD600 | Treatment</code>. Batch C: <code>Sample | Treatment | OD_600</code>. What must happen before stacking?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Two issues: (1) Batch B has columns in a different order — reorder so <code>Treatment</code> precedes <code>OD600</code>. (2) Batch C uses <code>OD_600</code> instead of <code>OD600</code> — standardize the name. Only then is it safe to stack.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Keep one table per file; avoid splitting related records across multiple sheets.</li>
+<li>Before stacking, verify column names and positions are identical across all sources.</li>
+<li>Identifying information (year, batch, site) must be a column value — tab names are lost when you combine sheets.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Always verify column order before stacking</p>
+<p>Mismatched column order is one of the most common and hardest-to-catch mistakes in combining datasets. Compare headers side by side before copying any rows.</p>
+</div>
+<hr />
+<h2 id="step-5-never-encode-data-in-formatting">Step 5: Never Encode Data in Formatting</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Look at the 2013 DS rows and the 2014 rows. Is the calibration issue recorded the same way in both?</li>
+<li>If you export this as a CSV and open again, would the gray cell shading be preserved?</li>
+<li>How would a collaborator know which records weren't calibrated if they only received the CSV file?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> In the messy file, calibration status is communicated in two different ways by two different field assistants — and neither is stored as a real data value:</p>
+<ol>
+<li><strong>2013 DS sub-table:</strong> Calibration notes are embedded as text inside the weight cells themselves: <code>"132 (scale not calibrated)"</code>, <code>"113 (scale not callibtrated)"</code> <em>(note the typo — another reason free-text in cells is fragile)</em>.</li>
+<li><strong>2014 (Plots 1–3):</strong> A note reads <em>"gray cell means my measurement device wasn't calibrated correctly"</em> — the uncalibrated records are marked only by cell shading.</li>
+</ol>
+<p>Both are real, scientifically important pieces of information. Neither can be read by any analysis tool.</p>
+<p><strong>Why this breaks things:</strong> Cell color is invisible on import and is lost when copying. Text embedded in a numeric cell turns that cell into a string, breaking every sum and average. The meaning of either convention is undocumented unless you happen to notice the note or the coloring — a new collaborator would have no idea. And because the two field assistants used <em>different</em> conventions, you must hunt through the whole dataset to find all uncalibrated records.</p>
+<p>Other common formatting traps:</p>
+<ul>
+<li><strong>Bold</strong> text to flag outliers</li>
+<li><strong>Italic</strong> to indicate estimated values</li>
+<li><strong>Merged cells</strong> spanning a group label</li>
+</ul>
+<p><strong>The fix:</strong> Add a <code>Calibrated</code> column with values <code>Y</code> (scale was zeroed) or <code>N</code> (not zeroed). </p>
+<details class="question" open="open">
+<summary>Exercise 5.1 — Add the Calibrated column</summary>
+<ol>
+<li>Add a new column called <code>Calibrated</code> to the right of <code>Weight</code>.</li>
+<li>For every row where weight has a calibration note embedded in the cell, enter <code>N</code>.</li>
+<li>For every row with gray cell shading indicating a calibration issue, enter <code>N</code>.</li>
+<li>For every other row, enter <code>Y</code>.</li>
+<li>Clear all cell colors: select all cells → <strong>Home → Fill Color → No Fill</strong>. (Leave the note text in the weight cells for now — that is cleaned in Step 6.)</li>
+</ol>
+<p><strong>Reference:</strong> The final cleaned dataset has exactly <strong>4 rows</strong> with <code>N</code> in <code>Calibrated</code>.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Before (messy)</label><label for="__tabbed_7_2">After (Calibrated column added, colors cleared)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11/13/2013</td>
+<td>14</td>
+<td>Female</td>
+<td><code>113 (scale not callibtrated)</code></td>
+<td>DS</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>17</td>
+<td>Male</td>
+<td><code>132 (scale not calibrated)</code></td>
+<td>DS</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td>M</td>
+<td>157 (gray fill)</td>
+<td>DS</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>0</td>
+<td>DM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+<th>Calibrated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11/13/2013</td>
+<td>14</td>
+<td>Female</td>
+<td><code>113 (scale not callibtrated)</code></td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>17</td>
+<td>Male</td>
+<td><code>132 (scale not calibrated)</code></td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td>M</td>
+<td>157</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>0</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<p><em>The calibration notes (<code>132 (scale not calibrated)</code>) are still in the Weight cells — those are removed in Step 6. <code>0</code> weights, wrong dates, and <code>Female</code>/<code>Male</code> in Sex are cleaned in Steps 6–9.</em></p>
+<p>Filter <code>Calibrated</code> for <code>N</code> — you should see exactly 4 rows, all <code>DS</code> records. The calibration notes in the Weight cells are still present (cleaned in Step 6). All cell coloring has been removed.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>A researcher uses <strong>bold font</strong> in a species count spreadsheet to flag "species of special concern." Is this acceptable?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Not acceptable. Bold formatting is invisible on import and cannot be filtered or counted. They should add a <code>special_concern</code> column with <code>Y</code>/<code>N</code> and document what it means.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Formatting (color, bold, italics, merged cells) is invisible to analysis tools and silently dropped on import.</li>
+<li>Every piece of information that affects interpretation must live in a cell as a real value.</li>
+</ul>
+</div>
+<hr />
+<h2 id="step-6-keep-cells-free-of-comments-and-units">Step 6: Keep Cells Free of Comments and Units</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Select the Weight column and look at Excel's status bar at the bottom — does it show a Sum?</li>
+<li>Click on a <code>33g</code> cell: what data type does Excel show?</li>
+<li>Try summing the first 10 rows of the Weight column — does it include all the values you expect?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Two issues remain in the <code>Weight</code> column, both from the <strong>2013</strong> data:</p>
+<ol>
+<li><strong>Units embedded in cells (2013 DM sub-table):</strong> Weights were entered with a <code>g</code> suffix — <code>33g</code>, <code>40g</code>, <code>48g</code>, etc. This makes every value a text string.</li>
+<li><strong>Calibration notes embedded in cells (2013 DS sub-table):</strong> Two weight cells contain the value plus a parenthetical note — <code>"132 (scale not calibrated)"</code>, <code>"113 (scale not callibtrated)"</code>. These are also text strings, not numbers.</li>
+</ol>
+<p>The calibration status is now tracked in the <code>Calibrated</code> column from Step 5. The notes in the weight cells are redundant and need to be removed so the column is purely numeric.</p>
+<p><strong>Why this breaks things:</strong> <code>33g</code> is a text string, not a number. Excel will not sum it, and R/Python will import it as missing. Once any cell in a column is text, software may treat the entire column as text — silently discarding it from any numerical analysis.</p>
+<p><strong>The fix:</strong> Remove embedded notes and units</p>
+<details class="question" open="open">
+<summary>Exercise 6.1 — Clean the Weight column</summary>
+<ol>
+<li>Select the <code>Weight</code> column only.</li>
+<li>Use <strong>Ctrl+H</strong> (Find &amp; Replace): find <code>g</code> and replace with nothing to strip the unit suffix from the DM rows.</li>
+<li>For the DS rows with embedded calibration notes, delete everything after the number — leave only the integer value.</li>
+<li>Confirm those rows already have <code>N</code> in the <code>Calibrated</code> column.</li>
+<li>Verify the entire <code>Weight</code> column contains only numbers or empty cells — no text.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Before (messy)</label><label for="__tabbed_8_2">After (Weight column cleaned)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+<th>Calibrated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>7</td>
+<td>M</td>
+<td>33g</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>40g</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>14</td>
+<td>Female</td>
+<td>113 (scale not callibtrated)</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>17</td>
+<td>Male</td>
+<td>132 (scale not calibrated)</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+<th>Calibrated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>7</td>
+<td>M</td>
+<td>33</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td>40</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>14</td>
+<td>Female</td>
+<td>113</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>11/13/2013</td>
+<td>17</td>
+<td>Male</td>
+<td>132</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p><em><code>0</code> weights, wrong dates (2025, 1978), and <code>Female</code>/<code>Male</code> in Sex are still present — those are cleaned in Steps 7–9.</em></p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>A form records temperature as <code>"37.2C"</code>, time as <code>"10 min"</code>, and pH as <code>"7.4"</code>. Which need fixing?</p>
+<details class="success">
+<summary>Answer</summary>
+<p><code>37.2C</code> → <code>37.2</code> (rename column to <code>temp_celsius</code>). <code>10 min</code> → <code>10</code> (rename column to <code>time_min</code>). <code>7.4</code> is fine — pH is dimensionless.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Cells hold values only — not values plus units, not values plus notes.</li>
+<li>Record units once in the column header or data dictionary.</li>
+<li>Mixed-type columns silently break every downstream calculation.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Where to record units</p>
+<p>Include units in the column header (<code>weight_g</code>, <code>length_mm</code>, <code>temp_celsius</code>) or document them in a data dictionary (covered in the <a href="#metadata">Metadata</a> section). Never put units in individual cells.</p>
+</div>
+<hr />
+<h2 id="step-7-represent-missing-data-consistently">Step 7: Represent Missing Data Consistently</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>In the 2013 data, some Weight values are <code>0</code>. Did those animals actually weigh zero grams, or was the measurement just not recorded?</li>
+<li>In the Species column, you'll see both <code>NA</code> and blank cells — is there a difference? How would a computer distinguish them?</li>
+<li>If you ran an average on Weight, how would <code>0</code> values affect the result?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Three different representations of "no data recorded" appear across the dataset:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>How it appears</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013 weights not recorded</td>
+<td><code>0</code></td>
+<td>Zero is a valid weight — ambiguous</td>
+</tr>
+<tr>
+<td>2014 species unknown</td>
+<td><code>NA</code></td>
+<td>Is "NA" a species code or "not available"?</td>
+</tr>
+<tr>
+<td>2014 species unknown</td>
+<td><em>(blank)</em></td>
+<td>Is blank intentional or an entry error?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this breaks things:</strong> <code>0</code> will be included in every sum and average without warning. <code>NA</code> could be a real value or a label. You cannot tell without checking the metadata. Inconsistent representations mean you cannot reliably filter for "missing" records.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing value symbols that cause problems</p>
+<table>
+<thead>
+<tr>
+<th>Bad choice</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code> for a missing measurement</td>
+<td>Treated as a real zero in all calculations</td>
+</tr>
+<tr>
+<td><code>999</code>, <code>-999</code></td>
+<td>Look like real values; corrupt summary statistics</td>
+</tr>
+<tr>
+<td><code>n/a</code>, <code>N/A</code>, <code>na</code>, <code>NA</code> (mixed)</td>
+<td>Inconsistent capitalization fails string matching</td>
+</tr>
+<tr>
+<td><code>?</code>, <code>--</code>, <code>.</code></td>
+<td>Meaningless to software</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>The rules:</strong></p>
+<ol>
+<li><strong>Use blank cells for missing values.</strong> This is what R (<code>NA</code>), Python (<code>NaN</code>), and databases (<code>NULL</code>) expect by default on import.</li>
+<li><strong>Check your metadata.</strong> Is <code>NA</code> a real species code? Consult <code>species.csv</code> — it is not listed there. So <code>NA</code> in the Species column means missing data, not a species name.</li>
+<li><strong>Never use 0 to mean missing</strong> unless zero is a physically impossible measurement value. For weight, zero is possible in principle, so zero should not represent "not recorded."</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">On using NA</p>
+<p>Blank cells are the safest universal choice. <code>NA</code> (as text) is recognized natively in R but can still cause issues in Python and Excel. If you're sharing data with R users specifically, blank cells still work — R imports them as <code>NA</code> automatically.</p>
+<p><em>Wrong dates (2025, 1978) and <code>Female</code>/<code>Male</code> in the Sex column are still present — those are fixed in Steps 8–9.</em></p>
+</div>
+<details class="question" open="open">
+<summary>Exercise 7.1 — Replace zero weights and 'NA' species with blanks</summary>
+<p>In the Weight column, find all cells containing values of <code>0</code>. These represent measurements that were not recorded, not true zero weights. Replace each with a blank cell.</p>
+<p>In the Species column, find all cells containing <code>NA</code>. Confirm against <code>species.csv</code> that "NA" is not a valid code. Replace all with blank.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Before (messy)</label><label for="__tabbed_9_2">After (missing values standardized to blank)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>1</td>
+<td>M</td>
+<td><strong>0</strong></td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td><strong>NA</strong></td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td><em>(blank)</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>1</td>
+<td>M</td>
+<td><em>(blank)</em></td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td><em>(blank)</em></td>
+</tr>
+<tr>
+<td>1/8/2014</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td><em>(blank)</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>A researcher uses <code>-1</code> to represent "measurement not applicable." What are the risks?</p>
+<details class="success">
+<summary>Answer</summary>
+<p><code>-1</code> is a real number and will be included in any mean, min, or sum without warning. Better: leave the cell blank and optionally add a boolean column <code>measurement_applicable</code> set to <code>N</code> for those rows.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Choose one missing value representation (blank is safest) and use it everywhere.</li>
+<li>Never use <code>0</code> for missing unless zero is genuinely impossible for that measurement.</li>
+<li>Always check your metadata before deciding whether an unusual value is real or an error.</li>
+</ul>
+</div>
+<hr />
+<h2 id="step-8-store-dates-safely">Step 8: Store Dates Safely</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>Look at the dates for Plot 3 and Plot 4 of the 2014 data. Do those years match when the field study was actually conducted?</li>
+<li>If a colleague in Europe opened this file, would <code>7/16/2013</code> display the same way to them?</li>
+<li>What happens to a date that's missing the year when Excel auto-fills it?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Dates are the single most dangerous data type in spreadsheets. Excel's automatic date interpretation causes more invisible data corruption than almost anything else.</p>
+<p>Open the <code>Date_Collected</code> column. Several 2014 entries are missing the year — the data entry person wrote <code>1/8</code> or <code>3/11</code> instead of <code>1/8/2014</code> or <code>3/11/2014</code>. Excel filled the missing year in two different ways depending on context:</p>
+<ul>
+<li><strong>Plot 3 rows:</strong> dates show <strong>2025</strong> — Excel assumed the current year when the year was omitted.</li>
+<li><strong>Plot 4 rows:</strong> dates show <strong>1978</strong> — an older or differently-configured Excel version interpreted the partial date differently, landing on a nonsensical year.</li>
+</ul>
+<p>Both are wrong, but they fail in different ways, which is exactly why date problems are so dangerous: they do not always produce an obvious error. A 2025 date might be noticed; a 1978 date in an ecology dataset about 2014 fieldwork is harder to catch.</p>
+<p>Additionally, Excel stores all dates internally as serial integers and renders them based on regional settings. <code>7/16/2013</code> on your computer may display as <code>16/7/2013</code> on a European colleague's, or as the raw integer <code>41471</code> if the cell format accidentally changes.</p>
+<div class="admonition note">
+<p class="admonition-title">The gene name problem</p>
+<p>Excel doesn't only mangle dates you type — it also auto-converts certain text values it <em>thinks</em> are dates. Gene names like <code>MAR1</code>, <code>DEC1</code>, and <code>OCT4</code> get silently converted to dates (March 1, December 1, October 4) <strong>permanently altering your data</strong>. This is a well-known problem in genomics. Always store identifiers as plain text (prefix with a single quote in Excel: <code>'MAR1</code>) or work in a format that preserves text exactly, like CSV.</p>
+</div>
+<p><strong>The fix:</strong> Split the date into three separate integer columns: <code>Year</code>, <code>Month</code>, <code>Day</code>.</p>
+<p>This is the safest and most portable representation: no regional ambiguity, immune to auto-reformatting, and filterable by any individual component. </p>
+<details class="question" open="open">
+<summary>Exercise 8.1 — Split and fix the dates</summary>
+<ol>
+<li>Insert three columns to the left of <code>Date_Collected</code>: <code>Year</code>, <code>Month</code>, <code>Day</code>.</li>
+<li>Enter <code>=YEAR()</code>, <code>=MONTH()</code>, <code>=DAY()</code> formulas referencing the <code>Date_Collected</code> cell.</li>
+<li>Fill all formulas down, then <strong>Copy → Paste Special → Values Only</strong> to freeze the numbers.</li>
+<li>Scan the <code>Year</code> column for any value that is not 2013 or 2014. Correct those to 2014.</li>
+<li>Delete the original <code>Date_Collected</code> column.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Before (messy dates)</label><label for="__tabbed_10_2">After (split into Year/Month/Day, corrected)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Date_Collected</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/16/2013</td>
+<td>2</td>
+<td>F</td>
+<td></td>
+<td>DM</td>
+</tr>
+<tr>
+<td>3/11/2025</td>
+<td>3</td>
+<td>M</td>
+<td>29</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>1/8/1978</td>
+<td>4</td>
+<td>F</td>
+<td>37</td>
+<td>DM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013</td>
+<td>7</td>
+<td>16</td>
+<td>2</td>
+<td>F</td>
+<td></td>
+<td>DM</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>3</td>
+<td>11</td>
+<td>3</td>
+<td>M</td>
+<td>29</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>1</td>
+<td>8</td>
+<td>4</td>
+<td>F</td>
+<td>37</td>
+<td>DM</td>
+</tr>
+</tbody>
+</table>
+<p><em><code>Female</code>/<code>Male</code> in the Sex column is still present — that is fixed in Step 9 QC.</em></p>
+<p>After splitting, <code>Year</code> should contain only <code>2013</code> and <code>2014</code>. Both <code>2025</code> values (Plot 3 rows) and <code>1978</code> values (Plot 4 rows) are errors where the year was missing at entry. We can verify their source by looking at the <strong>raw data</strong>. Correct all of them to <code>2014</code>.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 8.2 — Verify no empty date fields</summary>
+<p>Filter each of the three date columns for blanks. All three should be fully populated.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>Data → Filter</strong>, click the <code>Year</code> dropdown, uncheck all except "Blanks." No rows should appear. Repeat for <code>Month</code> and <code>Day</code>. If any blanks appear, trace them back to the original <code>Date_Collected</code> column to determine whether the date was missing from the raw data.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>Why is <code>7/4/23</code> a problematic date format?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Three reasons: (1) Ambiguous — July 4 or April 7? (2) Two-digit year — 2023 or 1923? (3) Excel may interpret or re-display it differently depending on system settings. Safe alternatives: <code>2023-07-04</code> (ISO 8601) or three separate integer columns.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Never trust Excel's automatic date interpretation — verify every year is correct.</li>
+<li>Store dates as <code>Year</code>, <code>Month</code>, <code>Day</code> integer columns, or as <code>YYYY-MM-DD</code> text.</li>
+<li>Watch out for gene names and other text IDs that Excel silently converts to dates.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Alternative: ISO 8601</p>
+<p>If you must keep dates in a single column, use <strong>YYYY-MM-DD</strong> (e.g., <code>2013-07-16</code>). This international standard is unambiguous, sorts alphabetically in the correct chronological order, and is recognized by every modern software tool.</p>
+</div>
+<hr />
+<h2 id="step-9-quality-control">Step 9: Quality Control</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<ul>
+<li>After all your cleaning, filter the Sex column and look at every unique value — any surprises?</li>
+<li>Sort Plot IDs from smallest to largest — are all values between 1 and 24?</li>
+<li>Is there still any <code>0</code> in the Weight column?</li>
+</ul>
+</div>
+<p><strong>The problem:</strong> Even after fixing all structural issues, individual values may still be wrong. QC is the final check: verifying that every value in every column falls within its expected range or set of valid values.</p>
+<p><strong>How to find unique values in Excel:</strong> Click the filter arrow on any column and open the dropdown — every unique value in that column is listed. Anything unexpected stands out immediately. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:5"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Sex</label><label for="__tabbed_11_2">Plot</label><label for="__tabbed_11_3">Year</label><label for="__tabbed_11_4">Species</label><label for="__tabbed_11_5">Weight</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Expected:</strong> <code>M</code>, <code>F</code>, or blank</p>
+<p><strong>What's actually in the data:</strong> The 2013 DS sub-table used <code>Female</code> and <code>Male</code> instead of <code>F</code> and <code>M</code>.</p>
+<p>Fix with Find &amp; Replace: <code>Female</code> → <code>F</code>, <code>Male</code> → <code>M</code>.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Expected:</strong> integers 1–24</p>
+<p><strong>What's actually in the data:</strong> The 2013 DO sub-table has a value of <strong>32</strong> — which does not correspond to any real plot. This is a data entry error (possibly a transposition of <code>23</code>). Flag it and check the original field notes.</p>
+<p>Sort ascending — values outside range appear at the ends.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Expected:</strong> <code>2013</code>, <code>2014</code></p>
+<p><strong>What's actually in the data:</strong> <code>2025</code> (Plot 3 rows) and <code>1978</code> (Plot 4 rows), both corrected in Step 8. Verify none remain.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Expected:</strong> any two-letter code from <code>species.csv</code>, or blank</p>
+<p><strong>Look for:</strong> <code>NA</code> (should now be blank), codes not in <code>species.csv</code>, lowercase variants like <code>dm</code></p>
+<p>Use the <code>=UNIQUE()</code> formula (Excel 365) or a PivotTable to list every distinct code, then cross-reference against <code>species.csv</code>.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Expected:</strong> positive integers, or blank</p>
+<p><strong>Look for:</strong> <code>0</code> (should have been removed in Step 7), decimals, negatives, any remaining text</p>
+<p>Sort ascending — zeros and negatives appear at the top.</p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Using conditional formatting for QC</p>
+<p><strong>Home → Conditional Formatting → Highlight Cell Rules</strong> can automatically color cells that fall outside a valid range (e.g., weight &lt; 1 or weight &gt; 300). This is a fast way to visually scan a large dataset for outliers without manually reviewing every cell.</p>
+</div>
+<details class="question" open="open">
+<summary>Exercise 9.1 — QC the Sex column</summary>
+<p>Filter the <code>Sex</code> column and review every unique value. Fix anything that is not <code>M</code>, <code>F</code>, or blank.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Before</label><label for="__tabbed_12_2">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Sex (unique values found)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+</tr>
+<tr>
+<td>M</td>
+</tr>
+<tr>
+<td>Female</td>
+</tr>
+<tr>
+<td>Male</td>
+</tr>
+<tr>
+<td><em>(blank)</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Sex (unique values after fix)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+</tr>
+<tr>
+<td>M</td>
+</tr>
+<tr>
+<td><em>(blank)</em></td>
+</tr>
+</tbody>
+</table>
+<p>Use Find &amp; Replace to fix <code>Female</code> → <code>F</code> and <code>Male</code> → <code>M</code>. Only <code>M</code>, <code>F</code>, and blank should remain.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 9.2 — QC the Species column</summary>
+<p>List all unique species codes. Cross-reference with <code>species.csv</code>. Fix any code not in that file. Confirm no <code>NA</code> values remain.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Before (possible unique values)</label><label for="__tabbed_13_2">After:</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>In species.csv?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>DO</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>DS</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>No — means missing</td>
+</tr>
+<tr>
+<td><em>(blank)</em></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>In species.csv?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>DO</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>DS</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><em>(blank)</em></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>All species codes should appear in <code>species.csv</code>. Residual <code>NA</code> values should be replaced with blank. Also watch for codes with trailing spaces (<code>DM</code> vs <code>DM</code>) which won't match during analysis.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 9.3 — QC the Weight column</summary>
+<p>Sort Weight smallest to largest. Check for remaining zeros at the top and any implausibly large values.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Before (sorted ascending — potential issues)</label><label for="__tabbed_14_2">After (sorted ascending — clean)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>29</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>33</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Weight</th>
+<th>Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(blank)</em></td>
+<td>DM</td>
+</tr>
+<tr>
+<td>29</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>33</td>
+<td>DM</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Any remaining zeros should be cleared. Weights above ~250g warrant a look at the original field notes before deciding whether to keep or flag them. Plot 32 (an out-of-range plot ID found in Step 9.2 QC on the Plot column) should also be flagged for checking against the original field notes.</p>
+</div>
+</div>
+</div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Check Your Understanding</summary>
+<p>You are QC-ing a PCR dataset. <code>Ct_value</code> ranges from 12–45 but three cells contain <code>0</code>. What are two possible explanations and how would you investigate?</p>
+<details class="success">
+<summary>Answer</summary>
+<p>Explanations: (1) <code>0</code> means "no amplification detected" (undetermined Ct), or (2) data entry error. Investigate: check the original instrument export or lab notebook for those wells. If they are true non-amplifications, replace <code>0</code> with blank and document this in the data dictionary.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>QC is the last line of defense before your data enters an analysis pipeline.</li>
+<li>For every column, check the complete set of unique values for anything unexpected.</li>
+<li>Cross-reference coded columns (species, plot, treatment) against their metadata files.</li>
+<li>Fix every error found — silent errors produce silent wrong results.</li>
+</ul>
+</div>
+<hr />
+<h2 id="metadata">Metadata</h2>
+<p>Good metadata is what separates a dataset that can be understood and reused from one that only its creator can interpret. It is just as important as the data itself.</p>
+<h3 id="what-is-metadata">What Is Metadata?</h3>
+<p>Metadata is <strong>data about the data</strong> — information that describes, contextualizes, and makes your dataset interpretable to others (and to future-you).</p>
+<p>There are three types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it covers</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Administrative</strong></td>
+<td>Who owns and manages the data</td>
+<td>Principal investigator, project dates, funder, data license</td>
+</tr>
+<tr>
+<td><strong>Descriptive</strong></td>
+<td>What the dataset is and where it came from</td>
+<td>Title, authors, abstract, keywords, related publications</td>
+</tr>
+<tr>
+<td><strong>Structural</strong></td>
+<td>How the data is organized internally</td>
+<td>Column definitions, units, valid values, collection method, sample size</td>
+</tr>
+</tbody>
+</table>
+<p>For most research datasets, structural metadata — the <strong>data dictionary</strong> — is the most immediately useful.</p>
+<div class="admonition note">
+<p class="admonition-title">Metadata can use spaces and special characters</p>
+<p>Unlike your data spreadsheet, a metadata file does not need to follow strict naming conventions. It is documentation, not data. Feel free to use full sentences, spaces, and punctuation.</p>
+</div>
+<h3 id="metadata-files-in-this-dataset">Metadata Files in This Dataset</h3>
+<p>This dataset already has two metadata files you have been using:</p>
+<ul>
+<li><strong><code>species.csv</code></strong> — a reference table mapping two-letter species codes to genus, species name, and taxonomic group. Without this file, a code like <code>DM</code> is meaningless.</li>
+<li><strong><code>plots.csv</code></strong> — a reference table mapping plot IDs (1–24) to their experimental type. Without this, plot 4 is just a number.</li>
+</ul>
+<p>These are structural metadata. They make the coded values in your main dataset interpretable.</p>
+<h3 id="exercise-create-a-data-dictionary">Exercise: Create a Data Dictionary</h3>
+<p>The most important structural metadata document is a <strong>data dictionary</strong> — a plain description of every column in your dataset. It records:</p>
+<ul>
+<li>What each column represents</li>
+<li>The units used</li>
+<li>The valid values or range</li>
+<li>Any special notes about the data</li>
+</ul>
+<details class="question" open="open">
+<summary>Exercise M.1 — Create data_info.csv</summary>
+<p>Create a new spreadsheet called <code>data_info.csv</code> (or open a new tab) with the following columns: <code>Column</code>, <code>Description</code>, <code>Notes</code>.</p>
+<p>Fill in one row for each column in your cleaned dataset. Use the information you have learned throughout this workshop plus what you know about the Portal Project.</p>
+<p>After completing, compare with the reference version below.</p>
+<details class="success">
+<summary>Reference: data_info.csv</summary>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year</td>
+<td>Date collected — year</td>
+<td></td>
+</tr>
+<tr>
+<td>Month</td>
+<td>Date collected — month</td>
+<td></td>
+</tr>
+<tr>
+<td>Day</td>
+<td>Date collected — day</td>
+<td></td>
+</tr>
+<tr>
+<td>Plot</td>
+<td>Plot ID</td>
+<td>See plots.csv for descriptions</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>M = male, F = female</td>
+<td></td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>Weight in grams</td>
+<td>Blank = not recorded</td>
+</tr>
+<tr>
+<td>Species</td>
+<td>Species ID</td>
+<td>See species.csv for descriptions</td>
+</tr>
+<tr>
+<td>Calibrated</td>
+<td>Y = yes, N = no</td>
+<td>Only 4 samples were not calibrated</td>
+</tr>
+</tbody>
+</table>
+<p><a class="md-button" href="data_info.csv"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h80V400c0-35.3 28.7-64 64-64h176V170.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0zm261.5 176H264c-13.3 0-24-10.7-24-24V58.5zM264 380c-24.3 0-44 19.7-44 44v80c0 24.3 19.7 44 44 44h16c24.3 0 44-19.7 44-44v-8c0-11-9-20-20-20s-20 9-20 20v8c0 2.2-1.8 4-4 4h-16c-2.2 0-4-1.8-4-4v-80c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v8c0 11 9 20 20 20s20-9 20-20v-8c0-24.3-19.7-44-44-44zm136 0c-28.7 0-52 23.3-52 52s23.3 52 52 52c6.6 0 12 5.4 12 12s-5.4 12-12 12h-32c-11 0-20 9-20 20s9 20 20 20h32c28.7 0 52-23.3 52-52s-23.3-52-52-52c-6.6 0-12-5.4-12-12s5.4-12 12-12h24c11 0 20-9 20-20s-9-20-20-20zm96 0c-11 0-20 9-20 20v31.6c0 35.5 10.5 70.3 30.2 99.8l5.1 7.7c3.7 5.6 10 8.9 16.6 8.9s12.9-3.3 16.6-8.9l5.1-7.7c19.7-29.6 30.2-64.3 30.2-99.8V400c0-11-9-20-20-20s-20 9-20 20v31.6c0 19.6-4.1 38.9-12 56.7-7.9-17.8-12-37.1-12-56.7V400c0-11-9-20-20-20z"/></svg></span> Download data_info.csv</a></p>
+</details>
+</details>
+<h3 id="readme-files">README Files</h3>
+<p>A data dictionary covers column-level detail, but your dataset also deserves a broader description. A <strong>README file</strong> (plain text, <code>.txt</code> or <code>.md</code>) lives in the same folder as your data and gives any reader the big picture:</p>
+<ul>
+<li>What is this dataset and why was it collected?</li>
+<li>Who collected it and when?</li>
+<li>How are the files organized?</li>
+<li>What do abbreviations mean?</li>
+<li>Are there known issues or limitations?</li>
+</ul>
+<div class="highlight"><pre><span></span><code># Portal Project Rodent Survey — Cleaned Data
+
+## Overview
+Long-term small mammal survey data from the Chihuahuan Desert, AZ/NM.
+Records from 2013 and 2014, cleaned from survey_data_messy.xlsx.
+
+## Files
+- survey_data_clean.csv  — cleaned survey data
+- species.csv            — species code reference
+- plots.csv              — plot type reference
+- data_info.csv          — column-level data dictionary
+- cleaning_notes.txt     — log of all cleaning steps applied
+
+## Known Issues
+- 4 samples (Calibrated = N) have weight readings that may be inaccurate.
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">README files travel with the data</p>
+<p>Whenever you share your data — by email, on a server, in a repository — include the README and all metadata files in the same folder. A dataset without its metadata is incomplete.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Metadata makes your dataset understandable without asking the creator.</li>
+<li>A data dictionary defines every column: what it means, its units, and its valid values.</li>
+<li>A README file provides the big-picture context: who, what, when, why, and how the data was collected.</li>
+<li>Keep metadata files in the same folder as the data they describe.</li>
+</ul>
+</div>
+<hr />
+<h2 id="exporting-your-data">Exporting Your Data</h2>
+<h3 id="why-not-save-as-xlsx">Why Not Save as .xlsx?</h3>
+<p>Excel's native format (<code>.xlsx</code>, <code>.xls</code>) has several serious limitations for long-term data storage:</p>
+<ul>
+<li><strong>Proprietary:</strong> Future software versions may not open old Excel files correctly.</li>
+<li><strong>Version-sensitive:</strong> Different Excel versions handle dates, formulas, and encoding differently, which can introduce silent errors.</li>
+<li><strong>Software-dependent:</strong> Other spreadsheet programs (LibreOffice, Google Sheets) sometimes misread Excel-specific features, causing data loss.</li>
+<li><strong>Not accepted by repositories:</strong> Journals and data repositories require open formats for data submission.</li>
+</ul>
+<h3 id="how-to-save-as-csv">How to Save as CSV</h3>
+<p>A <strong>CSV (comma-separated values)</strong> file is plain text — columns separated by commas, rows separated by line breaks. It can be opened and read by virtually every software tool in existence, now and in the future.</p>
+<p>To export from Excel:</p>
+<ol>
+<li><strong>File → Save As</strong></li>
+<li>Under Format, choose <strong>Comma Separated Values (.csv)</strong></li>
+<li>Confirm the file name and click <strong>Save</strong></li>
+<li>When Excel warns that some features will be lost, click <strong>Continue</strong> — that's expected and fine</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">CSV file naming</p>
+<p>Apply the same rules to file names as to column names: no spaces, no special characters. <code>survey_data_clean.csv</code> is good. <code>Survey Data (Clean) Final v2.csv</code> is not.</p>
+</div>
+<details class="question" open="open">
+<summary>Exercise E.1 — Export the clean dataset</summary>
+<ol>
+<li>With <code>survey_data_clean.xlsx</code> open, go to <strong>File → Save As</strong>.</li>
+<li>Choose <strong>Comma Separated Values (.csv)</strong> as the format.</li>
+<li>Save as <code>survey_data_clean.csv</code> in the same folder.</li>
+<li>Open the CSV in a text editor (TextEdit, Notepad, VS Code) and confirm it looks like plain comma-separated text.</li>
+</ol>
+<details class="success">
+<summary>What you should see</summary>
+<div class="highlight"><pre><span></span><code>Year,Month,Day,Plot,Sex,Weight,Species,Calibrated
+2013,7,16,1,M,,DM,Y
+2013,7,16,2,F,,DM,Y
+2013,7,18,7,M,33,DM,Y
+...
+</code></pre></div>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Save analysis-ready data as CSV, not <code>.xlsx</code>.</li>
+<li>CSV files are plain text: universal, portable, and readable by any tool now or in the future.</li>
+<li>Keep the <code>.xlsx</code> working copy for your own reference, but share and archive the <code>.csv</code>.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">You can still open CSVs in Excel</p>
+<p>Saving as CSV does not mean you lose Excel. You can always open a CSV in Excel for viewing or editing. The difference is that the file is now stored in a universal format that any tool can read — not locked inside a proprietary format.</p>
+</div>
+<hr />
+<h2 id="the-clean-dataset">The Clean Dataset</h2>
+<p>After completing all steps, your <code>survey_data_clean.xlsx</code> should match this structure:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Valid Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year</td>
+<td>Integer</td>
+<td>2013, 2014</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>Integer</td>
+<td>1–12</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>Integer</td>
+<td>1–31</td>
+</tr>
+<tr>
+<td>Plot</td>
+<td>Integer</td>
+<td>1–24</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>Text</td>
+<td>M, F, or blank</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>Integer</td>
+<td>Positive integers, or blank</td>
+</tr>
+<tr>
+<td>Species</td>
+<td>Text</td>
+<td>2-letter code from species.csv, or blank</td>
+</tr>
+<tr>
+<td>Calibrated</td>
+<td>Text</td>
+<td>Y or N</td>
+</tr>
+</tbody>
+</table>
+<p>A preview of the first rows:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Plot</th>
+<th>Sex</th>
+<th>Weight</th>
+<th>Species</th>
+<th>Calibrated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013</td>
+<td>7</td>
+<td>16</td>
+<td>1</td>
+<td>M</td>
+<td></td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>7</td>
+<td>16</td>
+<td>2</td>
+<td>F</td>
+<td></td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>7</td>
+<td>18</td>
+<td>7</td>
+<td>M</td>
+<td>33</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>11</td>
+<td>13</td>
+<td>14</td>
+<td>F</td>
+<td>113</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>11</td>
+<td>13</td>
+<td>17</td>
+<td>M</td>
+<td>132</td>
+<td>DS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>1</td>
+<td>8</td>
+<td>2</td>
+<td>M</td>
+<td>44</td>
+<td>DM</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<p><a class="md-button md-button--primary" href="survey_data_clean.xlsx"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h149.5c17 0 33.3 6.7 45.3 18.7l106.5 106.6c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm208-5.5V152c0 13.3 10.7 24 24 24h93.5zm-44 208.2c-7.4-11-22.3-14-33.3-6.7s-14 22.3-6.7 33.3l39.2 58.7-39.2 58.7c-7.4 11-4.4 25.9 6.7 33.3s25.9 4.4 33.3-6.7l28-42 28 42c7.4 11 22.3 14 33.3 6.7s14-22.3 6.7-33.3L220.8 352l39.2-58.7c7.4-11 4.4-25.9-6.7-33.3s-25.9-4.4-33.3 6.7l-28 42z"/></svg></span> Download Clean Data (.xlsx)</a>
+<a class="md-button" href="survey_data_clean.csv"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h80V400c0-35.3 28.7-64 64-64h176V170.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0zm261.5 176H264c-13.3 0-24-10.7-24-24V58.5zM264 380c-24.3 0-44 19.7-44 44v80c0 24.3 19.7 44 44 44h16c24.3 0 44-19.7 44-44v-8c0-11-9-20-20-20s-20 9-20 20v8c0 2.2-1.8 4-4 4h-16c-2.2 0-4-1.8-4-4v-80c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v8c0 11 9 20 20 20s20-9 20-20v-8c0-24.3-19.7-44-44-44zm136 0c-28.7 0-52 23.3-52 52s23.3 52 52 52c6.6 0 12 5.4 12 12s-5.4 12-12 12h-32c-11 0-20 9-20 20s9 20 20 20h32c28.7 0 52-23.3 52-52s-23.3-52-52-52c-6.6 0-12-5.4-12-12s5.4-12 12-12h24c11 0 20-9 20-20s-9-20-20-20zm96 0c-11 0-20 9-20 20v31.6c0 35.5 10.5 70.3 30.2 99.8l5.1 7.7c3.7 5.6 10 8.9 16.6 8.9s12.9-3.3 16.6-8.9l5.1-7.7c19.7-29.6 30.2-64.3 30.2-99.8V400c0-11-9-20-20-20s-20 9-20 20v31.6c0 19.6-4.1 38.9-12 56.7-7.9-17.8-12-37.1-12-56.7V400c0-11-9-20-20-20z"/></svg></span> Download Clean Data (.csv)</a></p>
+<hr />
+<h2 id="summary">Summary</h2>
+<div class="admonition success">
+<p class="admonition-title">The Rules — in one place</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Protect raw data.</strong> Work on a copy; never modify the original. Log every change.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>One table per sheet.</strong> Remove blank rows and repeated headers.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>One value per cell.</strong> Split combined fields into separate columns.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Clean field names.</strong> No spaces, no special characters, descriptive, consistent.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>One table per file.</strong> Stack data from multiple tabs; verify columns align first.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>No formatting as data.</strong> Color and bold are invisible to every analysis tool.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>No units or comments in cells.</strong> Record units in column headers or the data dictionary.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Consistent missing values.</strong> Use blank everywhere; never use <code>0</code> for a missing measurement.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Safe dates.</strong> Split into <code>Year</code>, <code>Month</code>, <code>Day</code> or use <code>YYYY-MM-DD</code>. Watch for auto-conversion of text to dates.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Quality control.</strong> Check every column's unique values before sharing.</td>
+</tr>
+<tr>
+<td>+</td>
+<td><strong>Write metadata.</strong> Document every column in a data dictionary. Keep a README with your data.</td>
+</tr>
+<tr>
+<td>+</td>
+<td><strong>Export as CSV.</strong> Save your final, analysis-ready data in a universal plain-text format.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://datacarpentry.org/spreadsheet-ecology-lesson/">Data Carpentry: Data Organization in Spreadsheets for Ecologists</a> — the lesson that inspired this workshop</li>
+<li><a href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data — Hadley Wickham (2014)</a> — the foundational paper on what clean tabular data looks like</li>
+<li><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets — Broman &amp; Woo (2018)</a> — a practical guide aimed at researchers</li>
+<li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7">Gene name errors from Excel — Ziemann et al. (2016)</a> — a study quantifying how often Excel's date auto-conversion corrupts published genomics data</li>
+</ul>
+<hr />
+<p><strong>Next in this series:</strong> <a href="../genomics/">Managing Data &amp; Projects for Genomics</a></p>
+<p><em>Questions? Come to office hours or contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../introDataScience/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to Data Science">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction to Data Science
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../genomics/" class="md-footer__link md-footer__link--next" aria-label="Next: Managing Data &amp; Projects for Genomics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Managing Data & Projects for Genomics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
