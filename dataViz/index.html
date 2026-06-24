@@ -699,6 +699,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -715,6 +733,451 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-visualize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Visualize?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-tidyverse-data-wrangling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: The Tidyverse &amp; Data Wrangling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: The Tidyverse &amp; Data Wrangling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-tidyverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the Tidyverse?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Pipe %&gt;%
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-keep-rows-matching-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        filter() — Keep Rows Matching a Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-choose-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select() — Choose Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutate-create-or-modify-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mutate() — Create or Modify Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrange-sort-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrange() — Sort Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_by-summarise-aggregate-by-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        group_by() + summarise() — Aggregate by Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-quick-frequency-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        count() — Quick Frequency Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-the-grammar-of-graphics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: The Grammar of Graphics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: The Grammar of Graphics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-ggplot2-thinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How ggplot2 Thinks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-is-actually-in-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who is actually in this dataset?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histograms-with-geom_histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histograms with geom_histogram()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-labels-with-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Labels with labs()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Themes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatter-plots-with-geom_point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scatter Plots with geom_point()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bar-charts-with-geom_col" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bar Charts with geom_col()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-layering-customizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Layering &amp; Customizing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Layering &amp; Customizing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-vs-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color vs. Fill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-palettes-scale_color_brewer-and-scale_fill_brewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Palettes — scale_color_brewer() and scale_fill_brewer()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_smooth-trend-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geom_smooth() — Trend Lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facet_wrap-small-multiples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        facet_wrap() — Small Multiples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_tile-heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geom_tile() — Heatmaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ggsave-saving-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ggsave() — Saving Figures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mini-project-research-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mini Project — Research Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mini Project — Research Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-1-how-does-average-rodent-weight-change-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 1 — How does average rodent weight change over time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2-is-weight-correlated-with-hindfoot-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 2 — Is weight correlated with hindfoot length?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-3-do-plot-types-attract-different-species" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 3 — Do plot types attract different species?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrap-up-save-your-favorite-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrap Up — Save Your Favorite Plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-dplyr-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key dplyr Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-ggplot2-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key ggplot2 Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1637,6 +2100,440 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-visualize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Visualize?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-tidyverse-data-wrangling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: The Tidyverse &amp; Data Wrangling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: The Tidyverse &amp; Data Wrangling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-tidyverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the Tidyverse?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Pipe %&gt;%
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-keep-rows-matching-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        filter() — Keep Rows Matching a Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-choose-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select() — Choose Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutate-create-or-modify-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mutate() — Create or Modify Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrange-sort-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrange() — Sort Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_by-summarise-aggregate-by-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        group_by() + summarise() — Aggregate by Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-quick-frequency-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        count() — Quick Frequency Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-the-grammar-of-graphics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: The Grammar of Graphics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: The Grammar of Graphics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-ggplot2-thinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How ggplot2 Thinks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-is-actually-in-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who is actually in this dataset?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histograms-with-geom_histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histograms with geom_histogram()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-labels-with-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Labels with labs()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Themes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatter-plots-with-geom_point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scatter Plots with geom_point()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bar-charts-with-geom_col" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bar Charts with geom_col()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-layering-customizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Layering &amp; Customizing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Layering &amp; Customizing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-vs-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color vs. Fill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-palettes-scale_color_brewer-and-scale_fill_brewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Palettes — scale_color_brewer() and scale_fill_brewer()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_smooth-trend-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geom_smooth() — Trend Lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facet_wrap-small-multiples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        facet_wrap() — Small Multiples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_tile-heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geom_tile() — Heatmaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ggsave-saving-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ggsave() — Saving Figures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mini-project-research-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mini Project — Research Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mini Project — Research Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-1-how-does-average-rodent-weight-change-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 1 — How does average rodent weight change over time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2-is-weight-correlated-with-hindfoot-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 2 — Is weight correlated with hindfoot length?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-3-do-plot-types-attract-different-species" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 3 — Do plot types attract different species?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrap-up-save-your-favorite-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrap Up — Save Your Favorite Plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-dplyr-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key dplyr Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-ggplot2-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key ggplot2 Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1656,20 +2553,1073 @@
 
 
 <h1 id="introduction-to-data-visualization-in-r">Introduction to Data Visualization in R</h1>
+<blockquote>
+<p><strong>Workshop:</strong> ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
+</blockquote>
+<hr />
 <div class="admonition info">
-<p class="admonition-title">Coming Soon</p>
-<p>This course is under development and will be available soon.</p>
-<p><strong>Expected topics:</strong></p>
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
 <ul>
-<li>Grammar of graphics and the <code>ggplot2</code> package</li>
-<li>Choosing the right chart type for your data</li>
-<li>Customizing plots for publication and presentation</li>
-<li>Common visualizations for biological datasets</li>
+<li>Use dplyr verbs to filter, transform, and summarize a data frame</li>
+<li>Understand the grammar of graphics and how ggplot2 layers work</li>
+<li>Build histograms, scatter plots, bar plots, and heatmaps from real survey data</li>
+<li>Map variables to color, fill, size, and facets to reveal patterns</li>
+<li>Save publication-quality figures with <code>ggsave()</code></li>
 </ul>
 </div>
 <hr />
-<p>In the meantime, work through <a href="../dataOrganization/">Data Organization in Spreadsheets</a> and <a href="../introR/">Introduction to R &amp; RStudio</a> to prepare a solid foundation.</p>
-<p><em>Questions? Contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+<h2 id="launch-your-workspace">Launch Your Workspace</h2>
+<div class="admonition info">
+<p class="admonition-title">You need a free GitHub account to use this workshop</p>
+<p>This workshop runs in <strong>GitHub Codespaces</strong> — a cloud environment that requires a GitHub account. If you do not have one, create one for free at <a href="https://github.com">github.com</a> before the session. No paid plan is required.</p>
+<p><strong>GitHub Free quota (per account, per month):</strong></p>
+<ul>
+<li>120 core-hours of compute — equivalent to <strong>60 hours</strong> of run time on a standard 2-core Codespace</li>
+<li>15 GB of storage</li>
+</ul>
+<p>This is enough for workshops and occasional use, but is <strong>not intended to replace a local development environment</strong> for everyday work.</p>
+</div>
+<p>This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.</p>
+<div style="margin: 1.2rem 0;">
+<a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fdata-viz%2Fdevcontainer.json" target="_blank">
+  <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces" style="height:32px;">
+</a>
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">First launch takes ~5 minutes</p>
+<p>The first time the Codespace builds, GitHub installs R packages including the full tidyverse collection. Subsequent launches are instant. Start the build, then read through the "Why Visualize?" section while it runs.</p>
+</div>
+<p><strong>What you'll see:</strong></p>
+<ol>
+<li>GitHub opens a VS Code editor in your browser — this is the Codespace container. You do not need to use VS Code for this workshop.</li>
+<li>A browser tab for <strong>RStudio</strong> will open automatically at port 8787. No login is required.</li>
+<li>If RStudio does not open automatically: in VS Code, click the <strong>Ports</strong> tab at the bottom panel, find port <code>8787</code>, and click the globe icon to open it in a new tab.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Keep your Codespace awake — and stop it when you're done</p>
+<p>Codespaces automatically pause after <strong>30 minutes of inactivity</strong>, but suspended Codespaces still consume your monthly storage quota. <strong>Closing the browser tab does not stop the Codespace.</strong></p>
+<p><strong>At the start of the workshop</strong>, open a new terminal tab in VS Code (<strong>Terminal → New Terminal</strong>) and run this keepalive loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;keepalive </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>This pings the Codespace every 5 minutes to prevent it from suspending during the session.</p>
+<div class="admonition danger">
+<p class="admonition-title">How to stop your Codespace <em>when you're done</em></p>
+<ol>
+<li>Switch to the VS Code terminal tab where the <code>keepalive</code> loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
+<p><strong><em>Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.</em></strong></p>
+</div>
+</div>
+<p><strong>Getting oriented in RStudio:</strong></p>
+<p>Once RStudio is open, get the workshop files ready:</p>
+<ol>
+<li>In the <strong>Files</strong> pane (bottom-right), you will see the workshop directory. Click <code>dataViz.Rproj</code> to open the project — this sets your working directory correctly so data paths in the script will resolve.</li>
+<li>Open <code>workshop.R</code> (File → Open File, or click it in the Files pane). This is the script you will work through during the workshop.</li>
+<li>Run lines by placing your cursor on them and pressing <strong>Ctrl+Enter</strong> (Windows/Linux) or <strong>Cmd+Return</strong> (Mac).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Save your work</p>
+<p>Press <strong>Ctrl+S</strong> / <strong>Cmd+S</strong> often. At the end of the session, use the <strong>Files</strong> pane → More → Export to download your completed script to your computer before closing the Codespace.</p>
+</div>
+<hr />
+<h2 id="why-visualize">Why Visualize?</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<p>Think about the last time you looked at a table of numbers and tried to spot a pattern. How long did it take? How confident were you?</p>
+</div>
+<p>A well-chosen plot communicates in seconds what a table of numbers cannot communicate in minutes. Visualization is not decoration — it is the primary tool for <strong>exploring</strong> a dataset you have never seen before and for <strong>communicating</strong> findings to others.</p>
+<p>In this workshop we use the same Portal Project dataset from the Introduction to R workshop (<code>surveys_complete_77_89.csv</code>, 16,878 observations of small mammals in southern Arizona, 1977–1989). By the end you will have turned those rows and columns into figures that tell a biological story.</p>
+<hr />
+<h2 id="part-1-the-tidyverse-data-wrangling">Part 1: The Tidyverse &amp; Data Wrangling</h2>
+<h3 id="what-is-the-tidyverse">What is the Tidyverse?</h3>
+<p>The <strong>tidyverse</strong> is a collection of R packages that share a common design philosophy and work seamlessly together. The two we use most in this workshop:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dplyr</code></td>
+<td>Transform and summarize data frames (filter, group, aggregate)</td>
+</tr>
+<tr>
+<td><code>ggplot2</code></td>
+<td>Build plots layer by layer using the grammar of graphics</td>
+</tr>
+</tbody>
+</table>
+<p>Load the entire collection with a single call:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</code></pre></div>
+<p>When you load tidyverse, R confirms which packages were attached. You will see <code>ggplot2</code>, <code>dplyr</code>, <code>readr</code>, and others listed.</p>
+<p>Now load the data. We will call it <code>surveys</code> throughout this workshop to distinguish it from the <code>data</code> object in the Introduction to R workshop.</p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/surveys_complete_77_89.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>read_csv()</code> (from the <code>readr</code> package, part of tidyverse) is slightly preferred over base R's <code>read.csv()</code> — it reads blank cells as <code>NA</code> automatically and prints a column-type summary on load.</p>
+<h3 id="the-pipe">The Pipe <code>%&gt;%</code></h3>
+<p>The pipe operator <code>%&gt;%</code> passes the result of one function directly into the next. It lets you write a chain of operations from top to bottom instead of nesting them inside each other.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Without pipe — you have to read from the inside out</span>
+<span class="nf">arrange</span><span class="p">(</span><span class="nf">filter</span><span class="p">(</span><span class="n">surveys</span><span class="p">,</span><span class="w"> </span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">desc</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span>
+
+<span class="c1"># With pipe — reads like a recipe, top to bottom</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span>
+</code></pre></div>
+<p>Both produce identical output. The pipe version is easier to read, easier to edit, and easier to debug one step at a time.</p>
+<div class="admonition tip">
+<p class="admonition-title">Reading the pipe</p>
+<p>Read <code>%&gt;%</code> as <strong>"then"</strong>: take <code>surveys</code>, <em>then</em> filter, <em>then</em> arrange.</p>
+</div>
+<h3 id="filter-keep-rows-matching-a-condition"><code>filter()</code> — Keep Rows Matching a Condition</h3>
+<p><code>filter()</code> keeps rows where a condition is <code>TRUE</code> and drops the rest. The conditions use the same comparison operators you know from base R (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&amp;</code>, <code>|</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Keep only Rodents</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">)</span>
+
+<span class="c1"># Keep only observations from 1985</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1985</span><span class="p">)</span>
+
+<span class="c1"># Combine conditions: Rodents with a recorded weight</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span>
+</code></pre></div>
+<p><strong><code>%in%</code> — match any value in a vector</strong></p>
+<p>When you want to keep rows matching any one of several values, <code>%in%</code> is cleaner than chaining <code>|</code> conditions:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Without %in% — verbose</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">)</span>
+
+<span class="c1"># With %in% — clean, scales to any number of values</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">))</span>
+
+<span class="c1"># Works with any vector, including one you computed earlier</span>
+<span class="n">top6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span>
+</code></pre></div>
+<p><code>%in%</code> also silently excludes <code>NA</code> values — <code>filter(sex %in% c("M", "F"))</code> drops blank strings and NAs at the same time, which is why you will see it used instead of <code>sex == "M" | sex == "F"</code> throughout the exercises.</p>
+<h3 id="select-choose-columns"><code>select()</code> — Choose Columns</h3>
+<p><code>select()</code> keeps only the columns you name, dropping the rest. This makes large data frames easier to work with.</p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="mutate-create-or-modify-columns"><code>mutate()</code> — Create or Modify Columns</h3>
+<p><code>mutate()</code> adds new columns (or overwrites existing ones) without changing the number of rows.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Combine genus and species into a single readable name</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">scientific_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">genus</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="arrange-sort-rows"><code>arrange()</code> — Sort Rows</h3>
+<p><code>arrange()</code> sorts rows by one or more columns. Default is ascending; wrap a column in <code>desc()</code> to reverse.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Heaviest individuals first</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="group_by-summarise-aggregate-by-group"><code>group_by()</code> + <code>summarise()</code> — Aggregate by Group</h3>
+<p>This is the workhorse combination for producing summaries. <code>group_by()</code> splits the data into invisible groups; <code>summarise()</code> collapses each group down to a single row of statistics.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Mean weight per year</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span>
+<span class="w">    </span><span class="n">n_obs</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">()</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Mean weight and count by taxa</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">taxa</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">taxa</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span>
+<span class="w">    </span><span class="n">n</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">()</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<p><code>n()</code> inside <code>summarise()</code> counts the rows in each group — no argument needed.</p>
+<h3 id="count-quick-frequency-tables"><code>count()</code> — Quick Frequency Tables</h3>
+<p><code>count()</code> is a shortcut for <code>group_by() %&gt;% summarise(n = n())</code>. Use <code>sort = TRUE</code> to rank from most to least common.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Most common species</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.1 — Pipe practice</summary>
+<p>Using a single pipe chain, find the <strong>5 heaviest Rodent observations</strong> in the dataset. Show only the columns <code>species_id</code>, <code>weight</code>, <code>hindfoot_length</code>, and <code>year</code>. Exclude rows where <code>weight</code> is <code>NA</code>.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+</code></pre></div>
+<p>All five are large-bodied species. The heaviest individual (278 g) is <em>Neotoma albigula</em> — you may recognize it from the Introduction to R workshop challenges.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 1.2 — Does sex predict weight?</summary>
+<p><strong>Part A.</strong> Using <code>surveys</code>, calculate <strong>mean weight and number of observations for each sex</strong> (<code>"M"</code> and <code>"F"</code> only — exclude NA weights). What do you notice about the result?</p>
+<details class="success">
+<summary>Part A Solution</summary>
+<p><strong>Part A — mean weight by sex overall:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">sex</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">mean_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span>
+</code></pre></div>
+<p>Males and females are nearly identical — both average ~53 g. The aggregate result hides what is really going on.</p>
+</details>
+<p><strong>Part B.</strong> Now add <code>species_id</code> as a second grouping variable so you get mean weight per <strong>species and sex</strong>. Does the pattern from Part A hold within each species?</p>
+<details class="success">
+<summary>Part B Solution</summary>
+<p><strong>Part B — mean weight by species and sex:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">mean_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<p>Within species the picture is more interesting. <em>Neotoma albigula</em> (NL) shows the clearest dimorphism — males average ~168 g vs females ~151 g (~11% heavier). In contrast, <em>Peromyscus eremicus</em> (PE) and <em>Reithrodontomys megalotis</em> (RM) go the other way, with females slightly heavier than males. The community-wide average lands at ~53 g for both sexes because these species-level differences cancel out across the dataset.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Data Wrangling</p>
+<ul>
+<li>Load tidyverse with <code>library(tidyverse)</code> — this gives you both <code>dplyr</code> and <code>ggplot2</code>.</li>
+<li>The pipe <code>%&gt;%</code> chains operations: read it as "then."</li>
+<li><code>filter()</code> keeps rows; <code>select()</code> keeps columns; <code>mutate()</code> adds columns.</li>
+<li><code>group_by()</code> + <code>summarise()</code> produce aggregate statistics per group.</li>
+<li><code>count(col, sort = TRUE)</code> is a fast way to build a frequency table.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-2-the-grammar-of-graphics">Part 2: The Grammar of Graphics</h2>
+<h3 id="how-ggplot2-thinks">How ggplot2 Thinks</h3>
+<p>Every plot in ggplot2 is built from the same three ingredients:</p>
+<table>
+<thead>
+<tr>
+<th>Ingredient</th>
+<th>What it is</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data</strong></td>
+<td>The data frame</td>
+<td><code>surveys_clean</code></td>
+</tr>
+<tr>
+<td><strong>Aesthetics</strong> <code>aes()</code></td>
+<td>Columns mapped to visual properties</td>
+<td><code>x = hindfoot_length, y = weight</code></td>
+</tr>
+<tr>
+<td><strong>Geometry</strong> <code>geom_*()</code></td>
+<td>The shape drawn for each observation</td>
+<td><code>geom_point()</code>, <code>geom_histogram()</code></td>
+</tr>
+</tbody>
+</table>
+<p>The template is always:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="n">geom_</span><span class="o">*</span><span class="p">()</span>
+</code></pre></div>
+<p>Layers are added with <code>+</code>. Each layer is a new <code>geom_*()</code>, <code>scale_*()</code>, <code>labs()</code>, or <code>theme_*()</code> call.</p>
+<div class="admonition note">
+<p class="admonition-title">ggplot2 uses <code>+</code>, not <code>%&gt;%</code></p>
+<p>The pipe <code>%&gt;%</code> connects dplyr steps. Inside a ggplot, layers are connected with <code>+</code>. You will often pipe data <em>into</em> <code>ggplot()</code> and then switch to <code>+</code> for the layers.</p>
+</div>
+<h3 id="who-is-actually-in-this-dataset">Who is actually in this dataset?</h3>
+<p>Before we start plotting, it's worth understanding what <code>surveys</code> contains — because the subset we use for most of this workshop is not the full picture.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># All four taxa are represented</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">taxa</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># A tibble: 5 × 2
+  taxa        n
+  &lt;chr&gt;   &lt;int&gt;
+1 Rodent  16148
+2 Bird      300
+3 Rabbit     69
+4 Reptile     4
+5 NA        357
+</code></pre></div>
+<p>Rodents account for 96% of all captures. Birds, Rabbits, and Reptiles were recorded, but much less frequently — and crucially, weight and hindfoot length were almost never measured for them:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># How complete is the weight column by taxa?</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">taxa</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">taxa</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">n_total</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">n_with_weight</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">pct_weight</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="m">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n_with_weight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n_total</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  taxa    n_total n_with_weight pct_weight
+  Rodent    16148         15186       94.0
+  Bird        300             0        0.0
+  Rabbit       69             0        0.0
+  Reptile       4             0        0.0
+</code></pre></div>
+<p>No weight values were recorded for Birds, Rabbits, or Reptiles. When we filter for rows where both <code>weight</code> and <code>hindfoot_length</code> are present, we are effectively keeping only Rodent observations. This is intentional — the morphometric analysis in this workshop applies to the rodent data. The other taxa are real and ecologically important, but the data collected for them supports different questions (presence/absence, plot distribution) rather than size-based analysis.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Confirm: after filtering for complete morphometrics, only Rodents remain</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">hindfoot_length</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">taxa</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  taxa       n
+  Rodent 13797
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">surveys_clean = rodent morphometric data</p>
+<p>From here forward, <code>surveys_clean</code> refers to the 13,797 rodent observations that have both <code>weight</code> and <code>hindfoot_length</code> recorded. When you see a plot labeled "surveys_clean," you are looking at rodents only.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">surveys_clean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">hindfoot_length</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="histograms-with-geom_histogram">Histograms with <code>geom_histogram()</code></h3>
+<p>A histogram shows the distribution of a single numeric variable by counting how many observations fall into each bin.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simple histogram</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Control bin count and colors</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>fill</code> controls the bar interior; <code>color</code> controls the bar outline. Both are fixed here (set outside <code>aes()</code>) so every bar gets the same color.</p>
+<h3 id="adding-labels-with-labs">Adding Labels with <code>labs()</code></h3>
+<p><code>labs()</code> sets the title, subtitle, axis labels, and legend titles:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distribution of Body Weight&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Portal Project data, 1977–1989&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<h3 id="themes">Themes</h3>
+<p>Themes control all non-data visual elements: background, grid lines, font sizes. Three built-in themes cover most use cases:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w">   </span><span class="c1"># clean, light grid</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w">        </span><span class="c1"># white background, black border</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w">   </span><span class="c1"># no grid, clean axes — common in publications</span>
+</code></pre></div>
+<p>You can stack <code>theme()</code> on top of a named theme to override individual elements:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">    </span><span class="n">plot.title</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="n">face</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bold&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">axis.title</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<h3 id="scatter-plots-with-geom_point">Scatter Plots with <code>geom_point()</code></h3>
+<p>Scatter plots show the relationship between two numeric variables.</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span>
+</code></pre></div>
+<p>With 13,797 points, overplotting is a problem. Use <code>alpha</code> (transparency, 0–1) to reveal density:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise — What explains the clusters?</summary>
+<p>The scatter plot shows several distinct clouds of points rather than one continuous spread. Use color to figure out what each cluster represents. Try mapping <code>color</code> to each of these columns in turn:</p>
+<ol>
+<li><code>taxa</code></li>
+<li><code>species_id</code></li>
+<li><code>sex</code></li>
+</ol>
+<p>Which one best explains the cluster structure? What does this tell you about rodent body size?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Color by taxa — only one color appears. Why?</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taxa</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Color by taxa&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Only <code>"Rodent"</code> appears because <code>surveys_clean</code> contains only rodent observations — all other taxa had no weight or hindfoot data recorded. This is a good reminder that a filter can silently reshape your data.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2. Color by species_id — clusters snap into focus</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Color by species_id&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Each cluster is a different species. Rodent species vary enormously in body size — <em>Neotoma albigula</em> (NL) occupies the upper-right corner (large hindfoot, high weight), while <em>Reithrodontomys megalotis</em> (RM) sits in the lower-left (small hindfoot, low weight).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 3. Color by sex — no cluster structure</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Color by sex&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Sex does not explain the clusters — males and females of each species overlap almost completely in body size. <strong>Species identity is the dominant driver of the cluster structure.</strong></p>
+</details>
+</details>
+<h3 id="bar-charts-with-geom_col">Bar Charts with <code>geom_col()</code></h3>
+<p><code>geom_col()</code> draws bars where the height is a value already in your data (as opposed to <code>geom_bar()</code>, which counts rows for you). The typical workflow is to summarise first, then plot.</p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">taxa</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">taxa</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taxa</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_col</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Observations by Taxa&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Taxa&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Note how <code>%&gt;%</code> pipes the summarised data directly into <code>ggplot()</code> — you do not need to save an intermediate object.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 2.1 — Distribution of hindfoot length</summary>
+<p>Build a histogram of <code>hindfoot_length</code> using <code>surveys_clean</code>. Add a descriptive title, clear axis labels, and a theme of your choice.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;seagreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distribution of Hindfoot Length&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Portal Project data, 1977–1989&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+<p>The multi-modal shape reflects mutliple size classes of rodents in the data.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 2.2 — Does experimental treatment affect average body weight?</summary>
+<p>The Portal Project plots have five experimental treatments that manipulate which animals can enter each plot. Do these treatments affect the average body weight of captured animals?</p>
+<p>Using <code>surveys</code>, filter out rows where <code>weight</code> is <code>NA</code>, then summarise <strong>mean weight by <code>plot_type</code></strong>. Plot the result as a bar chart. Add descriptive labels and rotate the x-axis text so the plot type names don't overlap (<code>theme(axis.text.x = element_text(angle = 45, hjust = 1))</code>).</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">plot_type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plot_type</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg_weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_col</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Rodent Weight by Plot Treatment&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Plot Type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<p>The Long-term Krat Exclosure plots have the lowest average weight (~31 g) — the heavy kangaroo rat species (<em>Dipodomys merriami</em>, <em>D. spectabilis</em>) are excluded by the barriers, so the remaining community is dominated by smaller rodents. Control plots sit in the middle (~59 g). You will return to plot-type differences in Question 3 of the Mini Project.</p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Grammar of Graphics</p>
+<ul>
+<li>Every ggplot needs data, <code>aes()</code> mappings, and at least one <code>geom_*()</code>.</li>
+<li>Layers are added with <code>+</code>. Order matters — later layers draw on top of earlier ones.</li>
+<li><code>labs()</code> sets all text labels. <code>theme_*()</code> controls non-data appearance.</li>
+<li><code>alpha</code> (0–1) controls transparency — essential when points overlap.</li>
+<li>Pipe (<code>%&gt;%</code>) into <code>ggplot()</code>, then switch to <code>+</code> for ggplot layers.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-3-layering-customizing">Part 3: Layering &amp; Customizing</h2>
+<h3 id="color-vs-fill">Color vs. Fill</h3>
+<p>Two aesthetics control color in ggplot2:</p>
+<table>
+<thead>
+<tr>
+<th>Aesthetic</th>
+<th>Controls</th>
+<th>Applies to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td>Point outlines, line color, text color</td>
+<td><code>geom_point()</code>, <code>geom_line()</code>, <code>geom_smooth()</code></td>
+</tr>
+<tr>
+<td><code>fill</code></td>
+<td>Interior fill</td>
+<td><code>geom_histogram()</code>, <code>geom_col()</code>, <code>geom_tile()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Set them <strong>outside <code>aes()</code></strong> as a fixed value (every element gets the same color):</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span>
+</code></pre></div>
+<p>Map them <strong>inside <code>aes()</code></strong> to a column (each group gets a different color). Because <code>surveys_clean</code> is rodent-only, map to <code>species_id</code> to see meaningful color variation:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="color-palettes-scale_color_brewer-and-scale_fill_brewer">Color Palettes — <code>scale_color_brewer()</code> and <code>scale_fill_brewer()</code></h3>
+<p>ggplot2 assigns colors automatically, but you can control the palette explicitly. The <code>scale_color_*()</code> and <code>scale_fill_*()</code> families mirror each other — use whichever matches the aesthetic you mapped in <code>aes()</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Aesthetic is <code>color =</code></th>
+<th>Aesthetic is <code>fill =</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Named palette (ColorBrewer)</td>
+<td><code>scale_color_brewer()</code></td>
+<td><code>scale_fill_brewer()</code></td>
+</tr>
+<tr>
+<td>Colorblind-safe, many groups</td>
+<td><code>scale_color_viridis_d()</code></td>
+<td><code>scale_fill_viridis_d()</code></td>
+</tr>
+<tr>
+<td>Exact colors you choose</td>
+<td><code>scale_color_manual()</code></td>
+<td><code>scale_fill_manual()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>scale_color_brewer()</code> — named palettes for points and lines</strong></p>
+<p>ColorBrewer palettes (<code>"Set1"</code>, <code>"Set2"</code>, <code>"Dark2"</code>) are designed for readability and colorblind accessibility. Most handle up to 8–12 groups, so limit to the top 6 species for a clean result:</p>
+<div class="highlight"><pre><span></span><code><span class="n">top6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+
+<span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Dark2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Top 6 Species — Hindfoot vs Weight&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p><strong><code>scale_fill_brewer()</code> — the same idea, for bar and histogram fills</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Set1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+<p><strong><code>scale_color_viridis_d()</code> — when you have many categories</strong></p>
+<p>When groups outnumber a Brewer palette, viridis palettes handle the full 17-species range gracefully. They are perceptually uniform, colorblind-safe, and print well in grayscale. The <code>_d</code> suffix stands for discrete:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_viridis_d</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p><strong><code>scale_color_manual()</code> — when you need exact colors</strong></p>
+<p>Use <code>scale_color_manual()</code> when you need to match specific colors — institutional palette, reproducing a published figure, or highlighting one group. Supply a named vector so each level maps to a color explicitly:</p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;F&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkorange&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p><code>scale_fill_manual()</code> works identically — just swap the aesthetic from <code>color =</code> to <code>fill =</code> in both <code>aes()</code> and the scale call.</p>
+<h3 id="geom_smooth-trend-lines"><code>geom_smooth()</code> — Trend Lines</h3>
+<p>Add a trend line on top of a scatter plot. <code>method = "lm"</code> fits a straight line; the default fits a smooth curve (LOESS). <code>se = TRUE</code> (default) adds a shaded confidence band.</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>When a color aesthetic is mapped in <code>aes()</code>, <code>geom_smooth()</code> fits a separate trend line per group. Using <code>species_id</code> in <code>surveys_clean</code> shows how the weight–hindfoot relationship differs across rodent species:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="facet_wrap-small-multiples"><code>facet_wrap()</code> — Small Multiples</h3>
+<p><code>facet_wrap(~ variable)</code> splits a single plot into panels, one per level of the variable. This is one of the most powerful tools in ggplot2 for revealing group-level patterns.</p>
+<p>With 17 species in <code>surveys_clean</code>, all panels at once would be too small to read. Limit to the top 6 species first:</p>
+<div class="highlight"><pre><span></span><code><span class="n">top6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+
+<span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Add <code>scales = "free_y"</code> to let each panel choose its own y-axis range — essential here because body size differs so much across species:</p>
+<div class="highlight"><pre><span></span><code><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free_y&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+</code></pre></div>
+<p>Add <code>ncol =</code> to control the number of columns in the panel grid.</p>
+<h3 id="geom_tile-heatmaps"><code>geom_tile()</code> — Heatmaps</h3>
+<p><code>geom_tile()</code> draws a filled rectangle for every row of data. It requires three aesthetics: <code>x</code>, <code>y</code> (the two categorical axes), and <code>fill</code> (the value encoded by color).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Minimal heatmap example — observations per year for the top 6 species</span>
+<span class="n">top6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+
+<span class="n">heatmap_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">n_obs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">heatmap_data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_obs</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_tile</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_gradient</span><span class="p">(</span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Observations per Year by Species&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.1 — Weight over time, by species</summary>
+<p>Create a summary of <strong>average weight by year and species</strong> for the top 6 species in <code>surveys_clean</code>, then build a faceted line + point plot. Use <code>facet_wrap(~ species_id, scales = "free_y")</code> so each panel uses its own y-axis range. Remove the legend (it is redundant with the facet labels).</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">top6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+
+<span class="n">weight_by_year_spp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">weight_by_year_spp</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg_weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free_y&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight Over Time by Species&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Year&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Each species shows a different trajectory. DM (<em>Dipodomys merriami</em>) shows notable year-to-year fluctuations; DS (<em>D. spectabilis</em>) shows a declining trend over the study period. The <code>free_y</code> scale is essential here — NL weighs ~150 g while RM weighs ~10 g, so a shared axis would flatten the smaller species into a flat line.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.2 — Which species are captured in each plot type?</summary>
+<p>Using the <code>top6</code> object from the teaching example above and <code>surveys_clean</code>, count observations by <strong><code>plot_type</code> and <code>species_id</code></strong>, then display the result as a heatmap filled by count. Rotate the x-axis labels.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">plot_type</span><span class="p">,</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plot_type</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_gradient</span><span class="p">(</span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Captures by Plot Type and Species&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Plot Type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fill</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<p>DM (<em>Dipodomys merriami</em>) dominates in Control plots and is nearly absent from Krat Exclosure plots — exactly what the experimental barriers are designed to produce. In the Mini Project you will convert these raw counts to within-plot proportions to make a fairer comparison across plot types that differ in total sampling effort.</p>
+</details>
+</details>
+<h3 id="ggsave-saving-figures"><code>ggsave()</code> — Saving Figures</h3>
+<p>Store the plot in a variable, then save it to a file:</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight vs Hindfoot Length by Species&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;weight_hindfoot.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">my_plot</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span>
+</code></pre></div>
+<p><code>dpi = 300</code> produces print-quality resolution. The file is saved to your working directory (the <code>dataViz/</code> folder when you have opened <code>dataViz.Rproj</code>).</p>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Customizing</p>
+<ul>
+<li><code>color</code> affects lines and points; <code>fill</code> affects bars and tiles. Inside <code>aes()</code> maps to data; outside sets a fixed value.</li>
+<li><code>scale_color_manual()</code> / <code>scale_fill_manual()</code> let you choose your own palette.</li>
+<li><code>geom_smooth()</code> adds a trend line. Use <code>method = "lm"</code> for linear fits.</li>
+<li><code>facet_wrap(~ var)</code> creates a panel per group — one of the most powerful ggplot2 tools.</li>
+<li><code>geom_tile()</code> builds heatmaps using <code>x</code>, <code>y</code>, and <code>fill</code> aesthetics.</li>
+<li><code>ggsave("file.png", plot, width, height, dpi)</code> saves to disk.</li>
+</ul>
+</div>
+<hr />
+<h2 id="mini-project-research-questions">Mini Project — Research Questions</h2>
+<p><em>Apply what you have learned to answer three biological questions about the Portal Project data. Each question has a starter outline; try the code yourself before opening the solution.</em></p>
+<h3 id="setup">Setup</h3>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">surveys</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/surveys_complete_77_89.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Working dataset: rows with both weight and hindfoot_length recorded</span>
+<span class="n">surveys_clean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">hindfoot_length</span><span class="p">))</span>
+
+<span class="c1"># Add full scientific name</span>
+<span class="n">surveys_clean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">scientific_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">genus</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">))</span>
+
+<span class="nf">nrow</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">)</span><span class="w">   </span><span class="c1"># 13,797 rows</span>
+</code></pre></div>
+<hr />
+<h3 id="question-1-how-does-average-rodent-weight-change-over-time">Question 1 — How does average rodent weight change over time?</h3>
+<details class="question" open="open">
+<summary>Q1.1 — Weight trend across all rodents</summary>
+<p>Summarise <code>surveys_clean</code> to get <strong>mean weight per year</strong> (all species combined), then plot:</p>
+<ul>
+<li><code>year</code> on x, <code>avg_weight</code> on y</li>
+<li>Points (<code>geom_point()</code>) + a trend line (<code>geom_smooth()</code>)</li>
+<li>Descriptive title, axis labels, and a theme</li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">weight_by_year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="n">n_obs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">weight_by_year</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg_weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Rodent Weight Over Time&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Portal Project data, 1977–1989&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Year&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Q1.2 — Does the trend differ by species?</summary>
+<p>Group by <strong>both <code>year</code> and <code>species_id</code></strong>, summarise the mean weight, then plot with:</p>
+<ul>
+<li>Points and lines colored by <code>species_id</code></li>
+<li><code>facet_wrap(~ scientific_name)</code> for one panel per species</li>
+<li>No legend (redundant with facet labels)</li>
+<li>A publication-ready theme and labels</li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">weight_by_year_sci</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">scientific_name</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">avg_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">weight_by_year_sci</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg_weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scientific_name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">scientific_name</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight Over Time by Species&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Portal Project data, 1977–1989&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Year&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Each species shows a different trajectory. Some are stable; others show clear trends. Consider which species might be responding to the experimental plot treatments.</p>
+</details>
+</details>
+<hr />
+<h3 id="question-2-is-weight-correlated-with-hindfoot-length">Question 2 — Is weight correlated with hindfoot length?</h3>
+<details class="question" open="open">
+<summary>Q2.1 — Overall scatter plot with trend line</summary>
+<p>Plot <code>hindfoot_length</code> (x) vs <code>weight</code> (y) for all of <code>surveys_clean</code>. Add a linear trend line. What is the overall pattern?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Relationship Between Hindfoot Length and Weight&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+<p>There is a positive association overall, but the scatter is wide — the relationship is driven largely by species differences rather than within-species variation.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Q2.2 — Does the relationship hold within species?</summary>
+<p>Repeat the scatter plot, but color by <code>species_id</code> and add <code>facet_wrap(~ species_id)</code>. Add a per-species trend line. Does each species show the same relationship?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight vs Hindfoot Length by Species&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Portal Project data, 1977–1989&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Within most species, the positive relationship is weaker — some species show it clearly, others show almost no within-species correlation. This is a textbook example of <strong>Simpson's paradox</strong>: an aggregate trend driven by group membership can disappear or reverse when groups are examined separately.</p>
+</details>
+</details>
+<hr />
+<h3 id="question-3-do-plot-types-attract-different-species">Question 3 — Do plot types attract different species?</h3>
+<details class="question" open="open">
+<summary>Q3 — Species composition heatmap</summary>
+<p>Reproduce the proportional heatmap from Exercise 3.2 and interpret it ecologically. The five plot types reflect different experimental treatments: Control plots are unmanipulated; Krat Exclosures block kangaroo rats (<em>Dipodomys</em> spp.); Rodent Exclosures block all rodents; Spectab exclosures block <em>Dipodomys spectabilis</em> specifically.</p>
+<p>Given those treatments, does the heatmap match your expectations?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">top6_ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">pull</span><span class="p">(</span><span class="n">species_id</span><span class="p">)</span>
+
+<span class="n">surveys_clean</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">species_id</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top6_ids</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">plot_type</span><span class="p">,</span><span class="w"> </span><span class="n">species_id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">plot_type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">proportion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plot_type</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proportion</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_gradient</span><span class="p">(</span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species Composition by Plot Type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Top 6 species, proportion of captures within each plot type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Species ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Plot Type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fill</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Proportion&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<p>DM (<em>Dipodomys merriami</em>) dominates Control plots and nearly disappears in Rodent Exclosures — exactly what we expect since it is a rodent. In Long-term Krat Exclosure plots, RM (<em>Reithrodontomys megalotis</em>) and OT (<em>Onychomys torridus</em>) increase their share, consistent with competitive release once kangaroo rats are removed.</p>
+</details>
+</details>
+<hr />
+<h3 id="wrap-up-save-your-favorite-plot">Wrap Up — Save Your Favorite Plot</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Store your plot in a variable</span>
+<span class="n">my_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">surveys_clean</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight vs Hindfoot Length by Species&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hindfoot Length (mm)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Weight (g)&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span>
+
+<span class="c1"># Save to a PNG file (lands in your working directory)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;my_favorite_plot.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">my_plot</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<div class="admonition danger">
+<p class="admonition-title">Before you leave — stop your Codespace</p>
+<ol>
+<li>Switch to the VS Code terminal tab where the keepalive loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
+<p>Closing the browser tab is <strong>not</strong> enough — a suspended Codespace still counts against your monthly storage quota.</p>
+</div>
+<hr />
+<h2 id="workshop-summary">Workshop Summary</h2>
+<h3 id="key-dplyr-functions">Key dplyr Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter()</code></td>
+<td>Keep rows matching a condition</td>
+<td><code>filter(taxa == "Rodent")</code></td>
+</tr>
+<tr>
+<td><code>select()</code></td>
+<td>Keep specific columns</td>
+<td><code>select(species_id, weight, year)</code></td>
+</tr>
+<tr>
+<td><code>mutate()</code></td>
+<td>Add or modify a column</td>
+<td><code>mutate(sci = paste(genus, species))</code></td>
+</tr>
+<tr>
+<td><code>arrange()</code></td>
+<td>Sort rows</td>
+<td><code>arrange(desc(weight))</code></td>
+</tr>
+<tr>
+<td><code>group_by()</code></td>
+<td>Group for aggregation</td>
+<td><code>group_by(year)</code></td>
+</tr>
+<tr>
+<td><code>summarise()</code></td>
+<td>Collapse groups to summary rows</td>
+<td><code>summarise(avg = mean(weight))</code></td>
+</tr>
+<tr>
+<td><code>count()</code></td>
+<td>Frequency table shortcut</td>
+<td><code>count(species_id, sort = TRUE)</code></td>
+</tr>
+<tr>
+<td><code>%&gt;%</code></td>
+<td>Pipe: pass result to next function</td>
+<td><code>surveys %&gt;% filter(...) %&gt;% ...</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-ggplot2-functions">Key ggplot2 Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ggplot()</code></td>
+<td>Initialize a plot</td>
+<td><code>ggplot(data, aes(x, y))</code></td>
+</tr>
+<tr>
+<td><code>aes()</code></td>
+<td>Map columns to visual properties</td>
+<td><code>aes(x = year, color = taxa)</code></td>
+</tr>
+<tr>
+<td><code>geom_histogram()</code></td>
+<td>Distribution of one variable</td>
+<td><code>geom_histogram(bins = 30)</code></td>
+</tr>
+<tr>
+<td><code>geom_point()</code></td>
+<td>Scatter plot</td>
+<td><code>geom_point(alpha = 0.3)</code></td>
+</tr>
+<tr>
+<td><code>geom_line()</code></td>
+<td>Connect points with lines</td>
+<td><code>geom_line()</code></td>
+</tr>
+<tr>
+<td><code>geom_col()</code></td>
+<td>Bar chart (pre-summarised heights)</td>
+<td><code>geom_col(fill = "steelblue")</code></td>
+</tr>
+<tr>
+<td><code>geom_smooth()</code></td>
+<td>Trend line</td>
+<td><code>geom_smooth(method = "lm")</code></td>
+</tr>
+<tr>
+<td><code>geom_tile()</code></td>
+<td>Heatmap</td>
+<td><code>geom_tile(color = "white")</code></td>
+</tr>
+<tr>
+<td><code>facet_wrap()</code></td>
+<td>Panel per group</td>
+<td><code>facet_wrap(~ taxa)</code></td>
+</tr>
+<tr>
+<td><code>labs()</code></td>
+<td>Set all text labels</td>
+<td><code>labs(title = "...", x = "...")</code></td>
+</tr>
+<tr>
+<td><code>theme_bw()</code></td>
+<td>Clean black-and-white theme</td>
+<td><code>theme_bw()</code></td>
+</tr>
+<tr>
+<td><code>theme()</code></td>
+<td>Override specific elements</td>
+<td><code>theme(legend.position = "none")</code></td>
+</tr>
+<tr>
+<td><code>scale_fill_gradient()</code></td>
+<td>Custom continuous fill scale</td>
+<td><code>scale_fill_gradient(low, high)</code></td>
+</tr>
+<tr>
+<td><code>scale_color_manual()</code></td>
+<td>Custom discrete color scale</td>
+<td><code>scale_color_manual(values = c(...))</code></td>
+</tr>
+<tr>
+<td><code>ggsave()</code></td>
+<td>Save a plot to file</td>
+<td><code>ggsave("plot.png", p, width = 8)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-mistakes">Common Mistakes</h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using <code>%&gt;%</code> inside ggplot layers</td>
+<td>Switch to <code>+</code> after <code>ggplot()</code></td>
+</tr>
+<tr>
+<td>Color is wrong type (fill vs color)</td>
+<td>Check geometry: bars need <code>fill</code>, points need <code>color</code></td>
+</tr>
+<tr>
+<td>Mapping color outside <code>aes()</code></td>
+<td>Move inside <code>aes()</code> to map to a variable</td>
+</tr>
+<tr>
+<td>Overplotted scatter with 10k+ points</td>
+<td>Add <code>alpha = 0.2</code> to <code>geom_point()</code></td>
+</tr>
+<tr>
+<td><code>summarise()</code> with no <code>group_by()</code></td>
+<td>Add <code>group_by()</code> before <code>summarise()</code></td>
+</tr>
+<tr>
+<td><code>geom_bar()</code> instead of <code>geom_col()</code></td>
+<td>Use <code>geom_col()</code> when y is already a count/value</td>
+</tr>
+</tbody>
+</table>
 
 
 
