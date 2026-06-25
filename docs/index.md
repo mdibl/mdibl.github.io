@@ -1,15 +1,15 @@
-???+ info "Upcoming Workshops — Introduction to Data Science Series"
+???+ info "Upcoming Workshops — Introductions to Genomics Data Types Series"
 
-    Join us this June for Wednesday workshops, **3:30 - 5 PM in the Davis Classroom**, at MDI Biological Laboratory.
+    Join us this July for Wednesday workshops, **3:30 - 5 PM in the Davis Classroom**, at MDI Biological Laboratory.
 
     | Date | Workshop |
     |------|----------|
-    | <s>June 3, 2026</s>  | [Data Organization in Spreadsheets](dataOrganization/index.md) |
-    | <s>June 10, 2026</s> | [Managing Data & Projects for Genomics](genomics/index.md) |
-    | <s>June 17, 2026</s> | [Introduction to R & RStudio](introR/index.md) |
-    | **June 24, 2026** | **[Introduction to Data Visualization in R](dataViz/index.md)** |
+    | July 1, 2026  | [Differential Gene Expression (Bulk RNAseq)](bulkDGE/index.md) |
+    | July 8, 2026 | [Single Cell RNAseq](scRNAseq/index.md) |
+    | July 15, 2026 | [Spatial Transcriptomics](spatial/index.md) |
+    | July 22, 2026 | [Computational Workflows ](workflows/index.md) |
 
-    [Learn More :octicons-arrow-right-24:](introDataScience/index.md){ .md-button .md-button--primary }
+    [Learn More :octicons-arrow-right-24:](introDataTypes/index.md){ .md-button .md-button--primary }
 
 # MDIBL Comparative Genomics and Data Science Core
 

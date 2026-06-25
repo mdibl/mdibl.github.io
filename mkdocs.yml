@@ -10,6 +10,12 @@ nav:
     - Managing Data & Projects for Genomics: genomics/index.md
     - Introduction to R & RStudio: introR/index.md
     - Introduction to Data Visualization in R: dataViz/index.md
+  - Introduction to Genomics Data Types: 
+    - introDataTypes/index.md
+    - Differential Gene Expression (Bulk RNAseq): bulkDGE/index.md
+    - Single Cell RNAseq: scRNAseq/index.md
+    - Spatial Transcriptomics: spatial/index.md
+    - Computational Workflows: workflows/index.md
   - Bioinformatics Bits:
     - bits/index.md
     - Bit 1: bits/bit1.md
