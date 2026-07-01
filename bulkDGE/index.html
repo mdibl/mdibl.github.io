@@ -933,10 +933,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-upstream-input-a-samplesheet" class="md-nav__link">
+  <a href="#nf-corernaseq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The upstream input: a samplesheet
+        nf-core/rnaseq
       
     </span>
   </a>
@@ -944,10 +944,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-output-files-you-have" class="md-nav__link">
+  <a href="#what-the-command-looked-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The output files you have
+        What the command looked like
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-output-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The full output tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-we-use-only-three-of-these-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why we use only three of these files
       
     </span>
   </a>
@@ -2209,10 +2231,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-upstream-input-a-samplesheet" class="md-nav__link">
+  <a href="#nf-corernaseq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The upstream input: a samplesheet
+        nf-core/rnaseq
       
     </span>
   </a>
@@ -2220,10 +2242,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-output-files-you-have" class="md-nav__link">
+  <a href="#what-the-command-looked-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The output files you have
+        What the command looked like
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-output-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The full output tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-we-use-only-three-of-these-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why we use only three of these files
       
     </span>
   </a>
@@ -2467,29 +2511,50 @@
 </ul>
 <p>This is enough for workshops and occasional use, but is <strong>not intended to replace a local development environment</strong> for everyday work.</p>
 </div>
-<p>This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured VS Code session with all packages installed and the workshop files ready to use.</p>
+<p>This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.</p>
 <div style="margin: 1.2rem 0;">
 <a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fbulk-dge%2Fdevcontainer.json" target="_blank">
   <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces" style="height:32px;">
 </a>
 </div>
 
-<div class="admonition warning">
+<div class="admonition info">
 <p class="admonition-title">First launch takes ~10–15 minutes</p>
-<p>The first time the Codespace builds, GitHub installs Bioconductor packages including DESeq2. This takes longer than the June workshops. Start the build, then read through the background sections below while it runs. Subsequent launches are instant.</p>
+<p>The first time the Codespace builds, GitHub installs Bioconductor packages including DESeq2 — this takes longer than the June workshops. Start the build, then read through the background sections below while it runs. Subsequent launches are instant.</p>
 </div>
 <p><strong>What you'll see:</strong></p>
-<p>Unlike the June workshops, this one runs directly in <strong>VS Code</strong> — no separate RStudio tab. When the Codespace finishes building, VS Code will open in your browser with the workshop directory already active.</p>
 <ol>
-<li>In the <strong>Explorer</strong> pane (left sidebar), open <code>workshop.Rmd</code>. This is the file you will work through during the session.</li>
-<li>Open a terminal if you need one: <strong>Terminal → New Terminal</strong>.</li>
+<li>GitHub opens a VS Code editor in your browser — this is the Codespace container. You do not need to use VS Code for this workshop.</li>
+<li>A browser tab for <strong>RStudio</strong> will open automatically at port 8787. No login is required.</li>
+<li>If RStudio does not open automatically: in VS Code, click the <strong>Ports</strong> tab at the bottom panel, find port <code>8787</code>, and click the globe icon to open it in a new tab.</li>
 </ol>
-<p><strong>Running code in <code>workshop.Rmd</code>:</strong></p>
-<p>Each grey block is a code chunk. Run a chunk by clicking the <strong>▶ Run Chunk</strong> button (green play icon) at the top-right of the chunk, or by pressing <strong>Ctrl+Shift+Enter</strong> (Windows/Linux) or <strong>Cmd+Shift+Enter</strong> (Mac) with your cursor anywhere in the chunk. Output appears directly below each chunk.</p>
+<div class="admonition tip">
+<p class="admonition-title">Keep your Codespace awake — and stop it when you're done</p>
+<p>Codespaces automatically pause after <strong>30 minutes of inactivity</strong>, but suspended Codespaces still consume your monthly storage quota. <strong>Closing the browser tab does not stop the Codespace.</strong></p>
+<p><strong>At the start of the workshop</strong>, open a new terminal tab in VS Code (<strong>Terminal → New Terminal</strong>) and run this keepalive loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;keepalive </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>This pings the Codespace every 5 minutes to prevent it from suspending during the session.</p>
 <div class="admonition danger">
-<p class="admonition-title">Stop your Codespace when you're done</p>
-<p>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</p>
+<p class="admonition-title">How to stop your Codespace <em>when you're done</em></p>
+<ol>
+<li>Switch to the VS Code terminal tab where the <code>keepalive</code> loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
 <p><strong><em>Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.</em></strong></p>
+</div>
+</div>
+<p><strong>Getting oriented in RStudio:</strong></p>
+<p>Once RStudio is open, get the workshop files ready:</p>
+<ol>
+<li>In the <strong>Files</strong> pane (bottom-right), you will see the workshop directory. Click <code>bulkDGE.Rproj</code> to open the project — this sets your working directory correctly so data paths in the script will resolve.</li>
+<li>Open <code>workshop.Rmd</code> (File → Open File, or click it in the Files pane). This is the file you will work through during the workshop.</li>
+<li>Each grey block is a code chunk. Run a chunk by clicking the <strong>▶ Run Current Chunk</strong> button (green play icon at the top-right of the chunk), or press <strong>Ctrl+Shift+Enter</strong> (Windows/Linux) / <strong>Cmd+Shift+Return</strong> (Mac).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Save your work</p>
+<p>Press <strong>Ctrl+S</strong> / <strong>Cmd+S</strong> often. At the end of the session, use the <strong>Files</strong> pane → More → Export to download your completed notebook to your computer before closing the Codespace.</p>
 </div>
 <hr />
 <h2 id="what-is-bulk-rnaseq">What Is Bulk RNAseq?</h2>
@@ -2542,45 +2607,158 @@
 <p>Counts also have a statistical property that makes them difficult to analyze with standard tests: the <strong>variance increases with the mean</strong> (overdispersion). DESeq2 models this with a negative binomial distribution fitted separately for each gene, giving it proper statistical power across both lowly and highly expressed genes.</p>
 <hr />
 <h2 id="from-fastq-to-count-matrix">From FASTQ to Count Matrix</h2>
-<p>Before you received the count matrix for this workshop, the raw data went through an <strong>upstream pipeline</strong>. Here is what happened:</p>
-<div class="highlight"><pre><span></span><code>Sequencer → FASTQ files → nf-core/rnaseq → count matrix (counts.tsv)
+<p>Before you received the count matrix for this workshop, the raw data went through an <strong>upstream pipeline</strong>. This section shows what that pipeline does, what it produces, and why we hand only three of its ~245 output files to DESeq2.</p>
+<div class="admonition tip">
+<p class="admonition-title">Want to go deeper on pipelines?</p>
+<p>This section is a preview. The <strong><a href="../workflows/">Computational Workflows</a></strong> workshop covers Nextflow, nf-core, and running pipelines on HPC/cloud infrastructure in full detail — including how to write your own pipeline and interpret every parameter in a config file.</p>
+</div>
+<h3 id="nf-corernaseq">nf-core/rnaseq</h3>
+<p><a href="https://nf-co.re/rnaseq/"><strong>nf-core/rnaseq</strong></a> is a community-maintained, peer-reviewed Nextflow pipeline that takes paired-end FASTQ files and a reference genome and produces analysis-ready count matrices. Each step in the pipeline is a separate tool; the pipeline wires them together, parallelizes across samples, and logs everything.</p>
+<figure>
+<img src="img/nf-core-rnaseq-metro-map.svg" alt="nf-core/rnaseq pipeline metro map" style="width:100%; max-width:900px;">
+<figcaption>The nf-core/rnaseq metro map — each stop is a tool in the pipeline. Source: nf-core.re</figcaption>
+</figure>
+
+<p>Reading left to right, the pipeline:</p>
+<ol>
+<li><strong>Validates and lints</strong> input FASTQ files (<code>fq_lint</code>)</li>
+<li><strong>Assesses raw read quality</strong> per sample (<code>FastQC</code>)</li>
+<li><strong>Trims adapters and low-quality bases</strong> (<code>TrimGalore</code>)</li>
+<li><strong>Re-assesses quality</strong> after trimming (<code>FastQC</code> again)</li>
+<li><strong>Aligns reads to the genome</strong> (<code>STAR</code>)</li>
+<li><strong>Quantifies transcript abundance</strong> using the alignment + a pseudo-alignment step (<code>Salmon</code>)</li>
+<li><strong>Counts reads per gene</strong> as an alternative method (<code>featureCounts</code>)</li>
+<li><strong>Assembles transcripts</strong> from the alignments (<code>StringTie</code>)</li>
+<li><strong>Runs a battery of RNA-seq QC checks</strong> (duplication rate, junction saturation, strandedness, insert size, etc.) (<code>RSeQC</code>, <code>Qualimap</code>, <code>dupradar</code>, <code>Picard</code>)</li>
+<li><strong>Aggregates all QC reports</strong> into one HTML summary (<code>MultiQC</code>)</li>
+<li><strong>Merges Salmon quantifications</strong> across samples into a single count matrix (<code>tximeta</code>)</li>
+</ol>
+<h3 id="what-the-command-looked-like">What the command looked like</h3>
+<p>The actual Nextflow command used to process this dataset:</p>
+<div class="highlight"><pre><span></span><code>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-r<span class="w"> </span><span class="m">3</span>.23.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span>samplesheet.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outdir<span class="w"> </span>nextflowOutput/jcoffman_001/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-resume
 </code></pre></div>
-<h3 id="the-upstream-input-a-samplesheet">The upstream input: a samplesheet</h3>
-<p>The nf-core/rnaseq pipeline takes a simple CSV file listing each sample and the paths to its FASTQ files:</p>
+<p>With genome parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;fasta&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Danio_rerio.GRCz11.dna_sm.primary_assembly.fa.gz&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gtf&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;release-115/Danio_rerio.GRCz11.115.gtf.gz&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And the samplesheet linking each sample name to its FASTQ files:</p>
 <div class="highlight"><pre><span></span><code>sample,fastq_1,fastq_2,strandedness
-wt_veh1_jcoffman001,/path/to/SL94881_R1.fastq.gz,/path/to/SL94881_R2.fastq.gz,auto
-wt_veh2_jcoffman001,/path/to/SL94882_R1.fastq.gz,/path/to/SL94882_R2.fastq.gz,auto
-wt_veh3_jcoffman001,/path/to/SL94886_R1.fastq.gz,/path/to/SL94886_R2.fastq.gz,auto
-wt_cort1_jcoffman001,/path/to/SL94883_R1.fastq.gz,/path/to/SL94883_R2.fastq.gz,auto
-wt_cort2_jcoffman001,/path/to/SL94884_R1.fastq.gz,/path/to/SL94884_R2.fastq.gz,auto
-wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,auto
+wt_veh1_jcoffman001,SL94881_R1.fastq.gz,SL94881_R2.fastq.gz,auto
+wt_veh2_jcoffman001,SL94882_R1.fastq.gz,SL94882_R2.fastq.gz,auto
+wt_veh3_jcoffman001,SL94886_R1.fastq.gz,SL94886_R2.fastq.gz,auto
+wt_cort1_jcoffman001,SL94883_R1.fastq.gz,SL94883_R2.fastq.gz,auto
+wt_cort2_jcoffman001,SL94884_R1.fastq.gz,SL94884_R2.fastq.gz,auto
+wt_cort3_jcoffman001,SL94885_R1.fastq.gz,SL94885_R2.fastq.gz,auto
 </code></pre></div>
-<p>Along with the genome and annotation (here: <em>Danio rerio</em> GRCz11, Ensembl 115), nf-core/rnaseq runs quality control, trimming, pseudo-alignment with Salmon, and produces the count matrix you will use today.</p>
 <div class="admonition info">
 <p class="admonition-title">Why not do this hands-on?</p>
-<p>The nf-core/rnaseq pipeline takes <strong>8–24 hours</strong> of compute time and requires access to MDIBL's HPC cluster and reference genome files. For this workshop, the pipeline has already been run for you. Understanding what it does — and being able to read its outputs — is the important skill.</p>
+<p>These pipelines can take anywhere betwen <strong>5 to 12+ hours</strong> of compute time, requires cloud computing resources, and access to reference genome files totaling ~15 GB. For this workshop, it has already been run for you. The <a href="../workflows/">Computational Workflows</a> workshop is where you will run it yourself.</p>
 </div>
-<h3 id="the-output-files-you-have">The output files you have</h3>
-<p>Three files from the pipeline are in the <code>data/</code> folder:</p>
+<h3 id="the-full-output-tree">The full output tree</h3>
+<p>The pipeline produced <strong>245 files across 73 directories</strong>. The annotated tree below collapses the per-sample repetition to show structure:</p>
+<div class="highlight"><pre><span></span><code>nf-core/rnaseq output/
+│
+├── fastqc/                        # Read quality reports (FastQC)
+│   ├── raw/                       #   Before trimming — 4 files × 6 samples
+│   └── trim/                      #   After trimming  — 4 files × 6 samples
+│
+├── trimgalore/                    # Adapter trimming reports (TrimGalore)
+│   └── [sample]_trimming_report.txt  ×12 (one per read file per sample)
+│
+├── fq_lint/                       # FASTQ format validation logs
+│   ├── raw/   (×6 samples)
+│   └── trimmed/ (×6 samples)
+│
+├── multiqc/
+│   └── star_salmon/
+│       └── multiqc_report.html    ★ aggregated QC — first thing to review
+│
+├── pipeline_info/                 # Pipeline execution metadata
+│   ├── execution_report.html      #   Resource usage per process
+│   ├── execution_timeline.html    #   Gantt chart of process scheduling
+│   ├── execution_trace.txt        #   Per-task CPU/memory/wall-time
+│   ├── pipeline_dag.html          #   Visual workflow graph
+│   └── params.json                #   Record of all parameters used
+│
+└── star_salmon/                   # Main alignment + quantification outputs
+    │
+    ├── [sample]/                  # Per-sample Salmon directories (×6)
+    │   ├── quant.sf               #   Transcript-level counts + TPM
+    │   └── quant.genes.sf         #   Gene-level counts + TPM
+    │
+    ├── [sample].markdup.sorted.bam  # Sorted, duplicate-marked alignments (×6)
+    │
+    ├── salmon.merged.gene_counts.tsv           ★ DESeq2 input — raw counts
+    ├── salmon.merged.gene_counts_scaled.tsv    #   Library-size scaled counts
+    ├── salmon.merged.gene_counts_length_scaled.tsv  # Length + size scaled
+    ├── salmon.merged.gene_tpm.tsv              #   TPM (normalized expression)
+    ├── salmon.merged.gene_lengths.tsv          #   Effective gene lengths
+    ├── salmon.merged.transcript_counts.tsv     #   Transcript-level raw counts
+    ├── salmon.merged.transcript_tpm.tsv        #   Transcript-level TPM
+    ├── salmon.merged.gene.SummarizedExperiment.rds   # R object
+    ├── salmon.merged.transcript.SummarizedExperiment.rds
+    ├── salmon.merged.tx2gene.tsv               ★ transcript → gene ID map
+    │
+    ├── bigwig/                    # Genome coverage tracks for IGV/browser (×12)
+    ├── featurecounts/             # Alternative count method per sample (×6)
+    ├── stringtie/                 # Transcript assembly per sample (×6)
+    │
+    ├── deseq2_qc/                 # Automated pipeline PCA and clustering
+    ├── dupradar/                  # Duplication rate vs expression level
+    ├── qualimap/                  # BAM-level QC statistics (×6)
+    ├── rseqc/                     # RNA-seq QC: junction saturation, strand, etc.
+    ├── picard_metrics/            # Duplicate marking statistics (×6)
+    ├── samtools_stats/            # Alignment statistics (×6)
+    └── log/                       # STAR alignment logs per sample (×6)
+</code></pre></div>
+<h3 id="why-we-use-only-three-of-these-files">Why we use only three of these files</h3>
+<p>The pipeline gives you far more than you need for a standard differential expression analysis. Here is what we take and why each choice is deliberate:</p>
+<p><strong><code>salmon.merged.gene_counts.tsv</code> — the count matrix we use for DESeq2</strong></p>
+<p>This file contains the raw, unmodified count estimates from Salmon aggregated to the gene level. Raw counts are what DESeq2 requires — its own normalization (size factors) corrects for library depth, and its negative binomial model accounts for variance. We deliberately skip the alternatives:</p>
+<ul>
+<li><code>_tpm.tsv</code> — TPM has already been normalized for library size and gene length. Feeding pre-normalized values into DESeq2 corrupts its model.</li>
+<li><code>_scaled.tsv</code> and <code>_length_scaled.tsv</code> — these are useful with other tools (edgeR, limma-voom) but not needed here.</li>
+<li><code>featurecounts/</code> — Salmon's pseudo-alignment handles multi-mapping reads and quantification uncertainty more accurately than HTSeq-style counting; both are valid but Salmon is the better choice for this pipeline.</li>
+<li>Per-sample <code>quant.sf</code> files — the merged matrix is identical in content and much easier to load.</li>
+</ul>
+<p><strong><code>salmon.merged.tx2gene.tsv</code> — transcript-to-gene mapping</strong></p>
+<p>Salmon quantifies at the transcript level internally. This file is how the pipeline knows to aggregate <code>ENSDART00000123456</code> → gene <code>ENSDARG00000001234</code> → gene name <code>klf9</code>. It is the lookup table that gives us readable gene names in the results table.</p>
+<p><strong><code>multiqc/star_salmon/multiqc_report.html</code> — the QC gate</strong></p>
+<p>Before doing any statistics, you must verify the data quality. MultiQC aggregates the output of FastQC, TrimGalore, STAR, Salmon, RSeQC, Picard, and Qualimap into a single scrollable HTML report. Red flags to look for: low alignment rates (&lt;70%), high duplication rates (&gt;50% for non-amplified RNA-seq), inconsistent library sizes across samples, unexpected strand orientation. If something looks wrong in MultiQC, you need to resolve it before the counts are trustworthy.</p>
+<p><strong>What we skip and why</strong></p>
 <table>
 <thead>
 <tr>
-<th>File</th>
-<th>What it contains</th>
+<th>Output</th>
+<th>Why we skip it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>counts.tsv</code></td>
-<td>Gene × sample count matrix (32,520 genes, 6 samples)</td>
+<td><code>.bam</code> files</td>
+<td>Each is 1–5 GB; DESeq2 works on counts, not alignments</td>
 </tr>
 <tr>
-<td><code>design.txt</code></td>
-<td>Sample metadata: replicate, genotype, treatment</td>
+<td><code>bigwig/</code></td>
+<td>Used for IGV visualization — not needed for DE analysis</td>
 </tr>
 <tr>
-<td><code>tx2gene.tsv</code></td>
-<td>Transcript → gene ID → gene name mapping</td>
+<td><code>deseq2_qc/</code>, <code>dupradar/</code>, <code>qualimap/</code>, <code>rseqc/</code></td>
+<td>All summarized in the MultiQC report</td>
+</tr>
+<tr>
+<td><code>stringtie/</code></td>
+<td>Transcript assembly — relevant for novel isoform discovery, not standard DE</td>
+</tr>
+<tr>
+<td><code>pipeline_info/</code></td>
+<td>Infrastructure metadata — useful for reproducibility records, not analysis</td>
 </tr>
 </tbody>
 </table>
@@ -2595,11 +2773,11 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 <strong>Reference genome:</strong> GRCz11, Ensembl 115</p>
 </div>
 <p><strong>The biological question:</strong> Cortisol is the primary glucocorticoid stress hormone. In mammals it is broadly anti-inflammatory, but its role in early zebrafish development is less well characterized. Hartig et al. treated wild-type zebrafish larvae with cortisol and sequenced their transcriptomes to ask: which genes change, and in which direction?</p>
-<p>The result they found — and that you should see in your volcano plot — is a striking upregulation of <strong>immune response genes</strong>. Cortisol appears to activate rather than suppress immunity in early zebrafish embryos, pointing to species- and stage-specific differences in glucocorticoid signaling.</p>
+<p>The result you will see is a strong activation of the <strong>canonical glucocorticoid receptor (GR) transcription program</strong> — genes like <code>klf9</code> and <code>fkbp5</code> are among the most statistically significant hits, confirming that cortisol is engaging the GR pathway as expected. Alongside these direct GR targets, immune-modulatory genes (<code>socs3a</code>, <code>mpeg1.2</code>, <code>il19l</code>, <code>ccl20a.3</code>) appear in the significant list, consistent with Hartig et al.'s finding of altered immune gene expression in cortisol-treated larvae.</p>
 <hr />
 <h2 id="part-1-setting-up-for-deseq2">Part 1 — Setting Up for DESeq2</h2>
 <h3 id="load-packages">Load packages</h3>
-<p>Open <code>workshop.Rmd</code> and run the <strong>Setup</strong> chunk. This loads all packages and sets the working directory to the <code>bulkDGE</code> folder.</p>
+<p>Open <code>workshop.Rmd</code> and run the <strong>Setup</strong> chunk. This loads all packages and confirms the working directory is set correctly by <code>bulkDGE.Rproj</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">DESeq2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span>
@@ -2608,7 +2786,7 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 <span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">pheatmap</span><span class="p">)</span>
 
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/workspaces/mdibl.github.io/docs/bulkDGE&quot;</span><span class="p">)</span>
+<span class="nf">getwd</span><span class="p">()</span><span class="w">  </span><span class="c1"># should end in .../docs/bulkDGE</span>
 </code></pre></div>
 <hr />
 <details class="question" open="open">
@@ -2802,7 +2980,7 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 </tr>
 </tbody>
 </table>
-<p>We use <code>padj</code> — not <code>pvalue</code> — to call significance. Testing ~15,000 genes at once means ~750 false positives at p &lt; 0.05 by chance alone. BH correction controls the <strong>false discovery rate</strong>: at <code>padj &lt; 0.05</code>, we expect at most 5% of the called genes to be false positives.</p>
+<p>We use <code>padj</code> — not <code>pvalue</code> — to call significance. Testing ~25,000 genes at once means ~1,250 false positives at p &lt; 0.05 by chance alone. BH correction controls the <strong>false discovery rate</strong>: at <code>padj &lt; 0.05</code>, we expect at most 5% of the called genes to be false positives.</p>
 <hr />
 <details class="question" open="open">
 <summary>Exercise 2.1 — Filter, run DESeq2, and explore results</summary>
@@ -2838,28 +3016,20 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 </details>
 <details class="success">
 <summary>Solution</summary>
-<p>Approximate expected output (exact values depend on DESeq2 version):</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Genes after filtering: ~15,000–17,000</span>
-<span class="c1"># (roughly half of 32,520 genes have very low counts and are removed)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Genes after filtering: 24,955</span>
+<span class="c1"># (7,565 of 32,520 genes had &lt; 10 total counts and were removed)</span>
 
-<span class="c1"># summary(res):</span>
-<span class="c1"># LFC &gt; 0 (up in cort):      ~XXX genes (padj &lt; 0.1)</span>
-<span class="c1"># LFC &lt; 0 (down in cort):    ~XXX genes (padj &lt; 0.1)</span>
+<span class="c1"># summary(res) at padj &lt; 0.1 default threshold:</span>
+<span class="c1"># LFC &gt; 0 (up in cort):   413 genes (1.7%)</span>
+<span class="c1"># LFC &lt; 0 (down in cort): 137 genes (0.55%)</span>
 
-<span class="c1"># Top 10 most significant genes:</span>
-<span class="c1"># gene_name       log2FoldChange   padj</span>
-<span class="c1"># ...             ...              ...</span>
-<span class="c1"># Many top genes have names related to immune function (complement components,</span>
-<span class="c1"># lectins, antimicrobial peptides) — consistent with Hartig et al. finding</span>
-<span class="c1"># that cortisol activates immune pathways in zebrafish larvae.</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># How many at padj &lt; 0.05?</span>
+<span class="c1"># How many at the stricter padj &lt; 0.05?</span>
 <span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">nrow</span><span class="p">()</span>
-<span class="c1"># Several hundred to ~1000 significant genes, depending on threshold</span>
+<span class="c1"># 464 total — 353 up in cortisol, 111 down</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">What to look for in the gene names</p>
-<p>Complement components (<code>c3</code>, <code>c4</code>, <code>cfb</code>), lectin-type genes, and interferon-stimulated genes appearing in the top hits are consistent with the immune activation phenotype Hartig et al. reported.</p>
+<p class="admonition-title">What to look for in the top gene names</p>
+<p>The most statistically significant genes are <strong>canonical glucocorticoid receptor (GR) targets</strong>: <code>klf9</code> (a GR-responsive transcription factor) and <code>fkbp5</code> (the co-chaperone FKBP51, a classic feedback regulator of GR signaling). Their appearance at the very top confirms the analysis is biologically valid — these genes are upregulated by glucocorticoids across species. Genes like <code>socs3a</code>, <code>mpeg1.2</code>, <code>il19l</code>, and <code>ccl20a.3</code> in the significant list point to downstream immune modulation.</p>
 </div>
 </details>
 <hr />
@@ -2922,7 +3092,8 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
 </code></pre></div>
-<p><strong>Expected interpretation:</strong> PC1 will capture a large fraction of variance (often 60–80% in clean experiments) and cleanly separate <code>veh</code> from <code>cort</code>. Within each group, the three replicates should cluster tightly. A high PC1 percentage with clean group separation is a sign of a strong, consistent treatment effect.</p>
+<p><strong>Expected results:</strong> PC1 captures <strong>68.5%</strong> of variance and cleanly separates the two treatment groups — all three vehicle samples are negative on PC1, all three cortisol samples are positive. This strong separation on the first principal component confirms that cortisol treatment is the dominant source of transcriptional variation in the experiment.</p>
+<p>Within the cortisol group, <code>wt_cort3</code> sits noticeably further along PC1 than <code>wt_cort1</code> and <code>wt_cort2</code>. This is a real replicate-level difference worth noting — it does not invalidate the sample, but it means <code>wt_cort3</code> had a stronger transcriptional response. In a real analysis you would flag this, check the MultiQC report for any technical issues, and keep it unless there is a clear technical reason to exclude it.</p>
 </details>
 <hr />
 <h3 id="volcano-plot-gene-level-view">Volcano plot — gene-level view</h3>
@@ -3015,9 +3186,10 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 </code></pre></div>
 <p><strong>Expected interpretation:</strong></p>
 <ul>
-<li>The top labeled genes are likely immune-related: complement components (<code>c3a.1</code>, <code>c4</code>, <code>cfb</code>), lectins, and antimicrobial genes.</li>
-<li>A gene in the far right with a low y-value has a large fold change but high variability across replicates — large but noisy. It passes the fold-change filter but not the statistical one.</li>
-<li>This matches the Hartig et al. result: cortisol drives immune activation in zebrafish embryos, in contrast to its broadly immunosuppressive role in adult mammals.</li>
+<li>The most statistically significant labeled genes are canonical glucocorticoid receptor targets: <code>klf9</code> and <code>fkbp5</code> sit at the top of the upregulated cloud. Their prominence is biologically meaningful — KLF9 is a GR-responsive transcription factor and FKBP51 (encoded by <code>fkbp5</code>) is one of the best-characterized feedback regulators of glucocorticoid signaling across vertebrates.</li>
+<li>There are more genes up (353) than down (111) in cortisol — roughly 3:1. This asymmetry is consistent with glucocorticoids acting primarily as a transcriptional activator through the GR.</li>
+<li>A gene at the far right with a low y-value has a large fold change but wide variability across replicates — it is large but noisy, and independent filtering or Cook's distance outlier detection can also exclude genes from the adjusted p-value calculation.</li>
+<li>This profile — GR target activation plus downstream immune modulation — is consistent with the Hartig et al. 2016 finding.</li>
 </ul>
 </details>
 <hr />
@@ -3139,7 +3311,7 @@ wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,a
 <p><strong>NES</strong> (Normalized Enrichment Score) &gt; 0 means the gene set is enriched among genes upregulated in cortisol; NES &lt; 0 means enrichment among genes downregulated in cortisol.</p>
 <div class="admonition tip">
 <p class="admonition-title">What to look for</p>
-<p>Hallmark gene sets related to <strong>complement</strong>, <strong>inflammatory response</strong>, and <strong>interferon signaling</strong> appearing with positive NES would be strong confirmation of the immune activation phenotype described in Hartig et al. 2016.</p>
+<p>Given that <code>klf9</code> and <code>fkbp5</code> dominate the top hits, Hallmark gene sets related to <strong>glucocorticoid signaling</strong> or <strong>TNF-alpha signaling via NF-kB</strong> with a positive NES would be consistent with GR activation. Gene sets for <strong>IL-6/JAK/STAT3 signaling</strong> or <strong>interferon response</strong> in the significant list would connect the GR program to the immune modulation Hartig et al. described.</p>
 </div>
 <hr />
 <h2 id="further-reading">Further Reading</h2>

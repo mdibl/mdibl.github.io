@@ -21,8 +21,7 @@ library(tibble)
 library(readr)
 library(pheatmap)
 
-# Set working directory to the bulkDGE folder
-setwd("/workspaces/mdibl.github.io/docs/bulkDGE")
+# Working directory is set automatically by bulkDGE.Rproj — verify it here:
 getwd()  # should end in .../docs/bulkDGE
 ```
 
