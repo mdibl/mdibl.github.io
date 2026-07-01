@@ -12,7 +12,7 @@
       "onAutoForward": "ignore"
     }
   },
-  "postCreateCommand": "sudo apt-get install -y libglpk-dev && Rscript -e \"install.packages(c('ggrepel', 'pheatmap', 'msigdbr')); BiocManager::install(c('DESeq2', 'clusterProfiler', 'enrichplot'), ask = FALSE, update = FALSE)\"",
+  "postCreateCommand": "sudo apt-get update -qq && sudo apt-get install -y libglpk-dev && Rscript -e \"install.packages(c('ggrepel', 'pheatmap', 'msigdbr', 'igraph')); BiocManager::install(c('DESeq2', 'clusterProfiler', 'enrichplot'), ask = FALSE, update = FALSE)\"",
   "postAttachCommand": { "rstudio-start": "rserver" },
   "workspaceFolder": "/workspaces/mdibl.github.io/docs/bulkDGE"
 }
