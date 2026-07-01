@@ -1,0 +1,13 @@
+{
+  "name": "Differential Gene Expression",
+  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
+  "postCreateCommand": "Rscript -e \"install.packages(c('ggrepel', 'pheatmap', 'languageserver', 'msigdbr')); BiocManager::install(c('DESeq2', 'clusterProfiler', 'enrichplot'), ask = FALSE, update = FALSE)\"",
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/bulkDGE",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r"
+      ]
+    }
+  }
+}

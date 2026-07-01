@@ -1,0 +1,7 @@
+sample,fastq_1,fastq_2,strandedness
+wt_veh1_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94881_1_C6EG6ANXX_s1_GSLv3-7_55.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94881_2_C6EG6ANXX_s1_GSLv3-7_55.fastq.gz,auto
+wt_veh2_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94882_1_C6EG6ANXX_s1_GSLv3-7_56.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94882_2_C6EG6ANXX_s1_GSLv3-7_56.fastq.gz,auto
+wt_veh3_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94886_1_C6EG6ANXX_s1_GSLv3-7_60.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94886_2_C6EG6ANXX_s1_GSLv3-7_60.fastq.gz,auto
+wt_cort1_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94883_1_C6EG6ANXX_s1_GSLv3-7_57.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94883_2_C6EG6ANXX_s1_GSLv3-7_57.fastq.gz,auto
+wt_cort2_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94884_1_C6EG6ANXX_s1_GSLv3-7_58.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94884_2_C6EG6ANXX_s1_GSLv3-7_58.fastq.gz,auto
+wt_cort3_jcoffman001,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94885_1_C6EG6ANXX_s1_GSLv3-7_59.fastq.gz,/mdibl-data/JimCoffman/jcoffman_001.embryo_cortisol_2015/SL94885_2_C6EG6ANXX_s1_GSLv3-7_59.fastq.gz,auto
