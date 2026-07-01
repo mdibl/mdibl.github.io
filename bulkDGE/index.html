@@ -1,0 +1,3258 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../introDataTypes/">
+      
+      
+        <link rel="next" href="../scRNAseq/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Differential Gene Expression (Bulk RNAseq) - MDIBL Comparative Genomics and Data Science Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#differential-gene-expression-bulk-rnaseq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDIBL Comparative Genomics and Data Science Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Differential Gene Expression (Bulk RNAseq)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../home/team/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../introDataScience/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Data Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introDataTypes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Genomics Data Types
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../bits/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bioinformatics Bits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../courseArchives/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Course Archives
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    MDIBL Comparative Genomics and Data Science Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataScience/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Data Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataOrganization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataViz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataTypes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Genomics Data Types
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Genomics Data Types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Differential Gene Expression (Bulk RNAseq)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Differential Gene Expression (Bulk RNAseq)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-bulk-rnaseq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Bulk RNAseq?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is Bulk RNAseq?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-raw-counts-cannot-tell-you-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What raw counts cannot tell you directly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-fastq-to-count-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From FASTQ to Count Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From FASTQ to Count Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-upstream-input-a-samplesheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The upstream input: a samplesheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-output-files-you-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The output files you have
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-setting-up-for-deseq2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — Setting Up for DESeq2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Setting Up for DESeq2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-what-deseq2-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts: what DESeq2 needs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-running-deseq2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Running DESeq2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Running DESeq2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-deseq-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What DESeq() does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-results-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The results table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-visualizing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Visualizing Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Visualizing Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca-sample-level-quality-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCA — sample-level quality check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volcano-plot-gene-level-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volcano plot — gene-level view
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ma-plot-and-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MA plot and heatmap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-gene-set-enrichment-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus — Gene Set Enrichment Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single Cell RNAseq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Transcriptomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computational Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../bits/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Bits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bioinformatics Bits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Archives
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Archives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introToCloudCourse/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/scrnaseq2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScRNAseq in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ScRNAseq in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/learning_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/loupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loupe Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/introCloud2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-bulk-rnaseq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Bulk RNAseq?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Is Bulk RNAseq?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-raw-counts-cannot-tell-you-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What raw counts cannot tell you directly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-fastq-to-count-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From FASTQ to Count Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From FASTQ to Count Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-upstream-input-a-samplesheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The upstream input: a samplesheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-output-files-you-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The output files you have
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-setting-up-for-deseq2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — Setting Up for DESeq2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Setting Up for DESeq2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-what-deseq2-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts: what DESeq2 needs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-running-deseq2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Running DESeq2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Running DESeq2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-deseq-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What DESeq() does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-results-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The results table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-visualizing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Visualizing Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Visualizing Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca-sample-level-quality-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCA — sample-level quality check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volcano-plot-gene-level-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volcano plot — gene-level view
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ma-plot-and-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MA plot and heatmap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-gene-set-enrichment-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus — Gene Set Enrichment Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="differential-gene-expression-bulk-rnaseq">Differential Gene Expression (Bulk RNAseq)</h1>
+<blockquote>
+<p><strong>Workshop:</strong> ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
+</blockquote>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
+<ul>
+<li>Describe the structure of a bulk RNA-seq count matrix</li>
+<li>Explain what DESeq2 does and why raw counts are not directly comparable across samples</li>
+<li>Build a <code>DESeqDataSet</code> from a count matrix and design table</li>
+<li>Filter low-count genes, run <code>DESeq()</code>, and extract results</li>
+<li>Interpret <code>log2FoldChange</code>, <code>padj</code>, and <code>baseMean</code></li>
+<li>Build a PCA plot and a volcano plot to communicate differential expression results</li>
+</ul>
+</div>
+<hr />
+<h2 id="launch-your-workspace">Launch Your Workspace</h2>
+<div class="admonition info">
+<p class="admonition-title">You need a free GitHub account to use this workshop</p>
+<p>This workshop runs in <strong>GitHub Codespaces</strong> — a cloud environment that requires a GitHub account. If you do not have one, create one for free at <a href="https://github.com">github.com</a> before the session. No paid plan is required.</p>
+<p><strong>GitHub Free quota (per account, per month):</strong></p>
+<ul>
+<li>120 core-hours of compute — equivalent to <strong>60 hours</strong> of run time on a standard 2-core Codespace</li>
+<li>15 GB of storage</li>
+</ul>
+<p>This is enough for workshops and occasional use, but is <strong>not intended to replace a local development environment</strong> for everyday work.</p>
+</div>
+<p>This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured VS Code session with all packages installed and the workshop files ready to use.</p>
+<div style="margin: 1.2rem 0;">
+<a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fbulk-dge%2Fdevcontainer.json" target="_blank">
+  <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces" style="height:32px;">
+</a>
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">First launch takes ~10–15 minutes</p>
+<p>The first time the Codespace builds, GitHub installs Bioconductor packages including DESeq2. This takes longer than the June workshops. Start the build, then read through the background sections below while it runs. Subsequent launches are instant.</p>
+</div>
+<p><strong>What you'll see:</strong></p>
+<p>Unlike the June workshops, this one runs directly in <strong>VS Code</strong> — no separate RStudio tab. When the Codespace finishes building, VS Code will open in your browser with the workshop directory already active.</p>
+<ol>
+<li>In the <strong>Explorer</strong> pane (left sidebar), open <code>workshop.Rmd</code>. This is the file you will work through during the session.</li>
+<li>Open a terminal if you need one: <strong>Terminal → New Terminal</strong>.</li>
+</ol>
+<p><strong>Running code in <code>workshop.Rmd</code>:</strong></p>
+<p>Each grey block is a code chunk. Run a chunk by clicking the <strong>▶ Run Chunk</strong> button (green play icon) at the top-right of the chunk, or by pressing <strong>Ctrl+Shift+Enter</strong> (Windows/Linux) or <strong>Cmd+Shift+Enter</strong> (Mac) with your cursor anywhere in the chunk. Output appears directly below each chunk.</p>
+<div class="admonition danger">
+<p class="admonition-title">Stop your Codespace when you're done</p>
+<p>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</p>
+<p><strong><em>Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.</em></strong></p>
+</div>
+<hr />
+<h2 id="what-is-bulk-rnaseq">What Is Bulk RNAseq?</h2>
+<p>RNA sequencing measures gene expression by converting RNA molecules into DNA, sequencing those fragments, and counting how many reads came from each gene. The result is a table of <strong>counts</strong>: one row per gene, one column per sample.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>wt_veh1</th>
+<th>wt_veh2</th>
+<th>wt_veh3</th>
+<th>wt_cort1</th>
+<th>wt_cort2</th>
+<th>wt_cort3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gene A</td>
+<td>432</td>
+<td>398</td>
+<td>521</td>
+<td>1104</td>
+<td>978</td>
+<td>1231</td>
+</tr>
+<tr>
+<td>gene B</td>
+<td>87</td>
+<td>102</td>
+<td>93</td>
+<td>81</td>
+<td>96</td>
+<td>88</td>
+</tr>
+<tr>
+<td>gene C</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Each number is a count of sequencing reads that mapped to that gene in that sample. Higher counts indicate higher expression.</p>
+<h3 id="what-raw-counts-cannot-tell-you-directly">What raw counts cannot tell you directly</h3>
+<p>Two samples with the same read counts for a gene are not necessarily expressing it at the same level — libraries can differ in total depth (some samples have 20 million reads, others 40 million). DESeq2 estimates <strong>size factors</strong> that account for these library-size differences before any comparison is made.</p>
+<p>Counts also have a statistical property that makes them difficult to analyze with standard tests: the <strong>variance increases with the mean</strong> (overdispersion). DESeq2 models this with a negative binomial distribution fitted separately for each gene, giving it proper statistical power across both lowly and highly expressed genes.</p>
+<hr />
+<h2 id="from-fastq-to-count-matrix">From FASTQ to Count Matrix</h2>
+<p>Before you received the count matrix for this workshop, the raw data went through an <strong>upstream pipeline</strong>. Here is what happened:</p>
+<div class="highlight"><pre><span></span><code>Sequencer → FASTQ files → nf-core/rnaseq → count matrix (counts.tsv)
+</code></pre></div>
+<h3 id="the-upstream-input-a-samplesheet">The upstream input: a samplesheet</h3>
+<p>The nf-core/rnaseq pipeline takes a simple CSV file listing each sample and the paths to its FASTQ files:</p>
+<div class="highlight"><pre><span></span><code>sample,fastq_1,fastq_2,strandedness
+wt_veh1_jcoffman001,/path/to/SL94881_R1.fastq.gz,/path/to/SL94881_R2.fastq.gz,auto
+wt_veh2_jcoffman001,/path/to/SL94882_R1.fastq.gz,/path/to/SL94882_R2.fastq.gz,auto
+wt_veh3_jcoffman001,/path/to/SL94886_R1.fastq.gz,/path/to/SL94886_R2.fastq.gz,auto
+wt_cort1_jcoffman001,/path/to/SL94883_R1.fastq.gz,/path/to/SL94883_R2.fastq.gz,auto
+wt_cort2_jcoffman001,/path/to/SL94884_R1.fastq.gz,/path/to/SL94884_R2.fastq.gz,auto
+wt_cort3_jcoffman001,/path/to/SL94885_R1.fastq.gz,/path/to/SL94885_R2.fastq.gz,auto
+</code></pre></div>
+<p>Along with the genome and annotation (here: <em>Danio rerio</em> GRCz11, Ensembl 115), nf-core/rnaseq runs quality control, trimming, pseudo-alignment with Salmon, and produces the count matrix you will use today.</p>
+<div class="admonition info">
+<p class="admonition-title">Why not do this hands-on?</p>
+<p>The nf-core/rnaseq pipeline takes <strong>8–24 hours</strong> of compute time and requires access to MDIBL's HPC cluster and reference genome files. For this workshop, the pipeline has already been run for you. Understanding what it does — and being able to read its outputs — is the important skill.</p>
+</div>
+<h3 id="the-output-files-you-have">The output files you have</h3>
+<p>Three files from the pipeline are in the <code>data/</code> folder:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>counts.tsv</code></td>
+<td>Gene × sample count matrix (32,520 genes, 6 samples)</td>
+</tr>
+<tr>
+<td><code>design.txt</code></td>
+<td>Sample metadata: replicate, genotype, treatment</td>
+</tr>
+<tr>
+<td><code>tx2gene.tsv</code></td>
+<td>Transcript → gene ID → gene name mapping</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="about-this-dataset">About This Dataset</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Hartig et al. 2016 — PMID 27444789</p>
+<p><strong>Lab:</strong> Coffman lab, MDI Biological Laboratory<br />
+<strong>Organism:</strong> <em>Danio rerio</em> (zebrafish), wild-type embryos<br />
+<strong>Condition:</strong> Cortisol treatment vs vehicle control<br />
+<strong>Samples:</strong> 3 cortisol-treated, 3 vehicle-treated (n = 3 per group)<br />
+<strong>Reference genome:</strong> GRCz11, Ensembl 115</p>
+</div>
+<p><strong>The biological question:</strong> Cortisol is the primary glucocorticoid stress hormone. In mammals it is broadly anti-inflammatory, but its role in early zebrafish development is less well characterized. Hartig et al. treated wild-type zebrafish larvae with cortisol and sequenced their transcriptomes to ask: which genes change, and in which direction?</p>
+<p>The result they found — and that you should see in your volcano plot — is a striking upregulation of <strong>immune response genes</strong>. Cortisol appears to activate rather than suppress immunity in early zebrafish embryos, pointing to species- and stage-specific differences in glucocorticoid signaling.</p>
+<hr />
+<h2 id="part-1-setting-up-for-deseq2">Part 1 — Setting Up for DESeq2</h2>
+<h3 id="load-packages">Load packages</h3>
+<p>Open <code>workshop.Rmd</code> and run the <strong>Setup</strong> chunk. This loads all packages and sets the working directory to the <code>bulkDGE</code> folder.</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">DESeq2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tibble</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">pheatmap</span><span class="p">)</span>
+
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/workspaces/mdibl.github.io/docs/bulkDGE&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.1 — Load and inspect the data</summary>
+<p>Run the <strong>Exercise 1</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">counts_raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;data/counts.tsv&quot;</span><span class="p">)</span>
+<span class="n">design</span><span class="w">     </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;data/design.txt&quot;</span><span class="p">)</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">counts_raw</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">counts_raw</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">counts_raw</span><span class="p">)</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">design</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">design</span><span class="p">)</span>
+</code></pre></div>
+<p>Answer these questions before moving on:</p>
+<ol>
+<li>How many genes are in the count matrix?</li>
+<li>What are the six sample names in the counts file?</li>
+<li>What column in <code>design</code> maps each sample to its treatment group?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">counts_raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;data/counts.tsv&quot;</span><span class="p">)</span>
+<span class="n">design</span><span class="w">     </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_tsv</span><span class="p">(</span><span class="s">&quot;data/design.txt&quot;</span><span class="p">)</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">counts_raw</span><span class="p">)</span><span class="w">    </span><span class="c1"># 32520 rows (genes) × 8 cols (gene_id, gene_name, 6 samples)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">counts_raw</span><span class="p">)</span>
+<span class="c1"># &quot;gene_id&quot; &quot;gene_name&quot; &quot;wt_cort1_jcoffman001&quot; &quot;wt_cort2_jcoffman001&quot;</span>
+<span class="c1"># &quot;wt_cort3_jcoffman001&quot; &quot;wt_veh1_jcoffman001&quot; &quot;wt_veh2_jcoffman001&quot; &quot;wt_veh3_jcoffman001&quot;</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">design</span><span class="p">)</span>
+<span class="c1">#   sample     experiment_id  replicate  genotype  treatment  tissue  name</span>
+<span class="c1">#   SL94881    jcoffman001    1          wt        veh        embryo  wt_veh1_jcoffman001</span>
+<span class="c1">#   ...</span>
+<span class="c1"># The &quot;name&quot; column matches the count matrix column names.</span>
+<span class="c1"># The &quot;treatment&quot; column has two levels: &quot;veh&quot; and &quot;cort&quot;.</span>
+</code></pre></div>
+<p>The <code>name</code> column in <code>design</code> is the key that links sample metadata to count matrix columns.</p>
+</details>
+<hr />
+<h3 id="concepts-what-deseq2-needs">Concepts: what DESeq2 needs</h3>
+<p>DESeq2's main input function is <code>DESeqDataSetFromMatrix()</code>. It requires three things:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>countData</code></td>
+<td>Integer matrix — genes as rows, samples as columns</td>
+</tr>
+<tr>
+<td><code>colData</code></td>
+<td>Data frame — samples as rows, metadata columns (treatment, replicate, etc.)</td>
+</tr>
+<tr>
+<td><code>design</code></td>
+<td>Formula specifying which column(s) in <code>colData</code> to test</td>
+</tr>
+</tbody>
+</table>
+<p>The critical constraint: <strong><code>colnames(countData)</code> must exactly match <code>rownames(colData)</code></strong>, in the same order. DESeq2 will not reorder them for you.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.2 — Build the DESeqDataSet</summary>
+<p>Run the <strong>Exercise 2</strong> chunk in <code>workshop.Rmd</code>. The key steps are:</p>
+<ol>
+<li>Save <code>gene_id</code> and <code>gene_name</code> separately — you'll use them at the end to annotate results.</li>
+<li>Build an integer count matrix with <code>gene_id</code> as row names.</li>
+<li>Build <code>coldata</code> from <code>design</code>, using the <code>name</code> column as row names and setting <code>veh</code> as the reference level.</li>
+<li>Reorder the count matrix columns to match <code>coldata</code> row order.</li>
+<li>Verify alignment, then build the <code>DESeqDataSet</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">gene_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">counts_raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">gene_id</span><span class="p">,</span><span class="w"> </span><span class="n">gene_name</span><span class="p">)</span>
+
+<span class="n">cts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">counts_raw</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">gene_name</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">column_to_rownames</span><span class="p">(</span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">everything</span><span class="p">(),</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">.x</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">()))</span>
+
+<span class="n">coldata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">design</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;veh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cort&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">column_to_rownames</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="n">cts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cts</span><span class="p">[,</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">)]</span>
+<span class="nf">all</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">cts</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">))</span><span class="w">  </span><span class="c1"># must be TRUE</span>
+
+<span class="n">dds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">DESeqDataSetFromMatrix</span><span class="p">(</span>
+<span class="w">  </span><span class="n">countData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cts</span><span class="p">,</span>
+<span class="w">  </span><span class="n">colData</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">coldata</span><span class="p">,</span>
+<span class="w">  </span><span class="n">design</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">treatment</span>
+<span class="p">)</span>
+<span class="n">dds</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>Why do we set <code>levels = c("veh", "cort")</code> rather than <code>c("cort", "veh")</code>?</li>
+<li>Why does DESeq2 require integer counts? What are the Salmon counts (check <code>head(counts_raw)</code>)?</li>
+<li>After building <code>dds</code>, print it. How many genes does it report?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">gene_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">counts_raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">gene_id</span><span class="p">,</span><span class="w"> </span><span class="n">gene_name</span><span class="p">)</span>
+
+<span class="n">cts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">counts_raw</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">gene_name</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">column_to_rownames</span><span class="p">(</span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">everything</span><span class="p">(),</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">.x</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">()))</span>
+<span class="c1"># Salmon outputs fractional counts (pseudo-alignment + equivalence classes);</span>
+<span class="c1"># DESeq2&#39;s negative binomial model requires integers, so we round.</span>
+
+<span class="n">coldata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">design</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;veh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cort&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">column_to_rownames</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+<span class="c1"># &quot;veh&quot; is the first level = the reference. DESeq2 reports fold changes</span>
+<span class="c1"># as treatment / reference, so positive LFC = up in cortisol.</span>
+
+<span class="n">cts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cts</span><span class="p">[,</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">)]</span>
+<span class="nf">all</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">cts</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">))</span><span class="w">  </span><span class="c1"># TRUE</span>
+
+<span class="n">dds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">DESeqDataSetFromMatrix</span><span class="p">(</span>
+<span class="w">  </span><span class="n">countData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cts</span><span class="p">,</span>
+<span class="w">  </span><span class="n">colData</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">coldata</span><span class="p">,</span>
+<span class="w">  </span><span class="n">design</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">treatment</span>
+<span class="p">)</span>
+<span class="c1"># DESeqDataSet with 32520 rows (genes) and 6 columns (samples)</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="part-2-running-deseq2">Part 2 — Running DESeq2</h2>
+<h3 id="pre-filtering">Pre-filtering</h3>
+<p>Before running DESeq2, remove genes with very low counts. Genes with fewer than 10 total counts across all samples carry no statistical power and inflate the multiple-testing burden.</p>
+<div class="highlight"><pre><span></span><code><span class="n">keep</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="nf">counts</span><span class="p">(</span><span class="n">dds</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span>
+<span class="n">dds</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dds</span><span class="p">[</span><span class="n">keep</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<h3 id="what-deseq-does">What <code>DESeq()</code> does</h3>
+<p>The single <code>DESeq()</code> call performs three sequential steps:</p>
+<ol>
+<li><strong>Size factor estimation</strong> — normalizes for library depth differences between samples</li>
+<li><strong>Dispersion estimation</strong> — fits a dispersion–mean relationship across all genes</li>
+<li><strong>Wald test</strong> — for each gene, tests whether the estimated fold change is significantly different from zero</li>
+</ol>
+<h3 id="extracting-results">Extracting results</h3>
+<p>After running <code>DESeq()</code>, call <code>resultsNames(dds)</code> to see what comparisons are available, then pass the name to <code>results()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">resultsNames</span><span class="p">(</span><span class="n">dds</span><span class="p">)</span>
+<span class="c1"># [1] &quot;Intercept&quot;           &quot;treatment_cort_vs_veh&quot;</span>
+
+<span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">results</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;treatment_cort_vs_veh&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Positive <code>log2FoldChange</code> = higher expression in <code>cort</code> than in <code>veh</code> (the reference level).</p>
+<h3 id="the-results-table">The results table</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baseMean</code></td>
+<td>Average normalized count across all 6 samples</td>
+</tr>
+<tr>
+<td><code>log2FoldChange</code></td>
+<td>log2(cort / veh) — positive = up in cortisol</td>
+</tr>
+<tr>
+<td><code>lfcSE</code></td>
+<td>Standard error of the fold change estimate</td>
+</tr>
+<tr>
+<td><code>stat</code></td>
+<td>Wald statistic</td>
+</tr>
+<tr>
+<td><code>pvalue</code></td>
+<td>Raw p-value from the Wald test</td>
+</tr>
+<tr>
+<td><code>padj</code></td>
+<td>Benjamini–Hochberg adjusted p-value (FDR-corrected)</td>
+</tr>
+</tbody>
+</table>
+<p>We use <code>padj</code> — not <code>pvalue</code> — to call significance. Testing ~15,000 genes at once means ~750 false positives at p &lt; 0.05 by chance alone. BH correction controls the <strong>false discovery rate</strong>: at <code>padj &lt; 0.05</code>, we expect at most 5% of the called genes to be false positives.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 2.1 — Filter, run DESeq2, and explore results</summary>
+<p>Run the <strong>Exercise 3</strong> chunks in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">keep</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="nf">counts</span><span class="p">(</span><span class="n">dds</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span>
+<span class="n">dds</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dds</span><span class="p">[</span><span class="n">keep</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Genes after filtering:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">dds</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+
+<span class="n">dds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">DESeq</span><span class="p">(</span><span class="n">dds</span><span class="p">)</span>
+
+<span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">results</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;treatment_cort_vs_veh&quot;</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">res_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">rownames_to_column</span><span class="p">(</span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">gene_info</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">relocate</span><span class="p">(</span><span class="n">gene_name</span><span class="p">,</span><span class="w"> </span><span class="n">.after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gene_id</span><span class="p">)</span>
+
+<span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">nrow</span><span class="p">()</span>
+
+<span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">gene_name</span><span class="p">,</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="p">,</span><span class="w"> </span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>How many genes remain after the <code>rowSums &gt;= 10</code> filter?</li>
+<li>From <code>summary(res)</code>: how many genes are significantly up? Significantly down?</li>
+<li>Look at the top 10 genes by <code>padj</code>. Do any gene names give you a hypothesis about what cortisol is doing?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<p>Approximate expected output (exact values depend on DESeq2 version):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Genes after filtering: ~15,000–17,000</span>
+<span class="c1"># (roughly half of 32,520 genes have very low counts and are removed)</span>
+
+<span class="c1"># summary(res):</span>
+<span class="c1"># LFC &gt; 0 (up in cort):      ~XXX genes (padj &lt; 0.1)</span>
+<span class="c1"># LFC &lt; 0 (down in cort):    ~XXX genes (padj &lt; 0.1)</span>
+
+<span class="c1"># Top 10 most significant genes:</span>
+<span class="c1"># gene_name       log2FoldChange   padj</span>
+<span class="c1"># ...             ...              ...</span>
+<span class="c1"># Many top genes have names related to immune function (complement components,</span>
+<span class="c1"># lectins, antimicrobial peptides) — consistent with Hartig et al. finding</span>
+<span class="c1"># that cortisol activates immune pathways in zebrafish larvae.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># How many at padj &lt; 0.05?</span>
+<span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">nrow</span><span class="p">()</span>
+<span class="c1"># Several hundred to ~1000 significant genes, depending on threshold</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">What to look for in the gene names</p>
+<p>Complement components (<code>c3</code>, <code>c4</code>, <code>cfb</code>), lectin-type genes, and interferon-stimulated genes appearing in the top hits are consistent with the immune activation phenotype Hartig et al. reported.</p>
+</div>
+</details>
+<hr />
+<h2 id="part-3-visualizing-results">Part 3 — Visualizing Results</h2>
+<h3 id="pca-sample-level-quality-check">PCA — sample-level quality check</h3>
+<p>Principal Component Analysis (PCA) on the variance-stabilized count data is the first visualization you should always make. It answers two questions:</p>
+<ol>
+<li>Do replicates within a group cluster together? (If not, one replicate may be an outlier.)</li>
+<li>Do treatment groups separate? (If not, the treatment may have had little effect.)</li>
+</ol>
+<p>We use a <strong>variance-stabilizing transform (VST)</strong> before PCA. Raw counts are not appropriate for PCA because highly expressed genes would dominate. The VST brings count data onto approximately the same scale as log-transformed data without the instability at low counts.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.1 — PCA</summary>
+<p>Run the <strong>Exercise 4</strong> chunks in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vst_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vst</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">blind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">plotPCA</span><span class="p">(</span><span class="n">vst_data</span><span class="p">,</span><span class="w"> </span><span class="n">intgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;treatment&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Then build the polished ggplot2 version:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pca_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">plotPCA</span><span class="p">(</span><span class="n">vst_data</span><span class="p">,</span><span class="w"> </span><span class="n">intgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;treatment&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">returnData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">pct_var</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">attr</span><span class="p">(</span><span class="n">pca_data</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;percentVar&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">pca_data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC2</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_text_repel</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">veh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PCA — zebrafish embryo RNA-seq&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hartig et al. 2016 (jcoffman001)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC1: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pct_var</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;% variance&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC2: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pct_var</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;% variance&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Treatment&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>What percentage of variance does PC1 capture? What does that suggest about the dominant source of variation in this experiment?</li>
+<li>Do the three vehicle replicates cluster together? Do the three cortisol replicates?</li>
+<li>PC1 separates the groups — what does that tell you about whether the treatment had a global effect?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">vst_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vst</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">blind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="n">pca_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">plotPCA</span><span class="p">(</span><span class="n">vst_data</span><span class="p">,</span><span class="w"> </span><span class="n">intgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;treatment&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">returnData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">pct_var</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">attr</span><span class="p">(</span><span class="n">pca_data</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;percentVar&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">pca_data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC2</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_text_repel</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">veh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PCA — zebrafish embryo RNA-seq&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hartig et al. 2016 (jcoffman001)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC1: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pct_var</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;% variance&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC2: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pct_var</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;% variance&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Treatment&quot;</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Expected interpretation:</strong> PC1 will capture a large fraction of variance (often 60–80% in clean experiments) and cleanly separate <code>veh</code> from <code>cort</code>. Within each group, the three replicates should cluster tightly. A high PC1 percentage with clean group separation is a sign of a strong, consistent treatment effect.</p>
+</details>
+<hr />
+<h3 id="volcano-plot-gene-level-view">Volcano plot — gene-level view</h3>
+<p>A volcano plot places every tested gene on two axes:</p>
+<ul>
+<li><strong>x-axis:</strong> log2 fold change — how much the gene changed</li>
+<li><strong>y-axis:</strong> −log10(padj) — how confident we are that the change is real</li>
+</ul>
+<p>Significant genes (padj &lt; 0.05) with large fold changes appear in the upper-left (down in cortisol) and upper-right (up in cortisol) corners.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.2 — Volcano plot</summary>
+<p>Run the <strong>Exercise 5</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plot_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">log2FoldChange</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">    </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<span class="w">      </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;up in cort&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;down in cort&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w">                             </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;not significant&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">top_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">plot_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">arrange</span><span class="p">(</span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">15</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">log10</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direction</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;up in cort&quot;</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;down in cort&quot;</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;not significant&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey70&quot;</span>
+<span class="w">  </span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">log10</span><span class="p">(</span><span class="m">0.05</span><span class="p">),</span><span class="w"> </span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey40&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dotted&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_text_repel</span><span class="p">(</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top_genes</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gene_name</span><span class="p">),</span>
+<span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">max.overlaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Differential Expression: Cortisol vs Vehicle&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Zebrafish embryos — Hartig et al. 2016&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log2 Fold Change (cort / veh)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;-log10 adjusted p-value&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>Is there a clear asymmetry — more genes up or more down in cortisol?</li>
+<li>Look at the labeled genes in the upper-right corner. Do any suggest a biological pathway?</li>
+<li>What does a gene in the far right with a low y-value (near the x-axis) represent?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">plot_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">log2FoldChange</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">    </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<span class="w">      </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;up in cort&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">padj</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;down in cort&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w">                             </span><span class="o">~</span><span class="w"> </span><span class="s">&quot;not significant&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">top_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">plot_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">arrange</span><span class="p">(</span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="m">15</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log2FoldChange</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">log10</span><span class="p">(</span><span class="n">padj</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direction</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;up in cort&quot;</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;down in cort&quot;</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;not significant&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey70&quot;</span>
+<span class="w">  </span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">log10</span><span class="p">(</span><span class="m">0.05</span><span class="p">),</span><span class="w"> </span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey40&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dotted&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_text_repel</span><span class="p">(</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top_genes</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gene_name</span><span class="p">),</span>
+<span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">max.overlaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Differential Expression: Cortisol vs Vehicle&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Zebrafish embryos — Hartig et al. 2016&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log2 Fold Change (cort / veh)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;-log10 adjusted p-value&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Expected interpretation:</strong></p>
+<ul>
+<li>The top labeled genes are likely immune-related: complement components (<code>c3a.1</code>, <code>c4</code>, <code>cfb</code>), lectins, and antimicrobial genes.</li>
+<li>A gene in the far right with a low y-value has a large fold change but high variability across replicates — large but noisy. It passes the fold-change filter but not the statistical one.</li>
+<li>This matches the Hartig et al. result: cortisol drives immune activation in zebrafish embryos, in contrast to its broadly immunosuppressive role in adult mammals.</li>
+</ul>
+</details>
+<hr />
+<h3 id="ma-plot-and-heatmap">MA plot and heatmap</h3>
+<p>An MA plot shows <strong>mean expression</strong> (x-axis) against <strong>log2 fold change</strong> (y-axis). It is a companion to the volcano plot: where the volcano emphasizes statistical confidence, the MA plot reveals whether fold changes are inflated at low counts (a sign of normalization problems).</p>
+<p>A heatmap of the top differentially expressed genes shows the expression pattern across all samples simultaneously — useful for checking that DE genes are consistently high or low within each group, not driven by a single replicate.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.3 — MA plot and heatmap</summary>
+<p>Run the <strong>Exercise 6</strong> chunks in <code>workshop.Rmd</code>.</p>
+<p><strong>MA plot:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nf">plotMA</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-6</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MA Plot: Cortisol vs Vehicle&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey40&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Heatmap of top 50 DE genes:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">top50_ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">50</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">pull</span><span class="p">(</span><span class="n">gene_id</span><span class="p">)</span>
+
+<span class="n">mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">assay</span><span class="p">(</span><span class="n">vst_data</span><span class="p">)[</span><span class="n">top50_ids</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gene_info</span><span class="o">$</span><span class="n">gene_name</span><span class="p">[</span><span class="nf">match</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">mat</span><span class="p">),</span><span class="w"> </span><span class="n">gene_info</span><span class="o">$</span><span class="n">gene_id</span><span class="p">)]</span>
+
+<span class="n">anno_col</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coldata</span><span class="o">$</span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">))</span>
+<span class="n">anno_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">Treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">veh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">))</span>
+
+<span class="nf">pheatmap</span><span class="p">(</span>
+<span class="w">  </span><span class="n">mat</span><span class="p">,</span>
+<span class="w">  </span><span class="n">scale</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;row&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">annotation_col</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">anno_col</span><span class="p">,</span>
+<span class="w">  </span><span class="n">annotation_colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anno_colors</span><span class="p">,</span>
+<span class="w">  </span><span class="n">show_rownames</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fontsize_row</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="m">7</span><span class="p">,</span>
+<span class="w">  </span><span class="n">cluster_cols</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">main</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Top 50 DE Genes — Cortisol vs Vehicle&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>In the MA plot, do genes with low <code>baseMean</code> (far left) show larger fold changes? What would this pattern mean?</li>
+<li>In the heatmap, do the three cortisol replicates cluster together? Do the vehicle replicates?</li>
+<li><code>scale = "row"</code> z-scores each gene across samples. Why is this necessary when the genes have very different absolute expression levels?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nf">plotMA</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-6</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MA Plot: Cortisol vs Vehicle&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey40&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="c1"># Significant genes (padj &lt; 0.05) appear in blue.</span>
+<span class="c1"># Genes with very low baseMean should have fold changes centered near zero;</span>
+<span class="c1"># a systematic upward or downward bias at low counts indicates a normalization issue.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">top50_ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">padj</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">padj</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">50</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">pull</span><span class="p">(</span><span class="n">gene_id</span><span class="p">)</span>
+
+<span class="n">mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">assay</span><span class="p">(</span><span class="n">vst_data</span><span class="p">)[</span><span class="n">top50_ids</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gene_info</span><span class="o">$</span><span class="n">gene_name</span><span class="p">[</span><span class="nf">match</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">mat</span><span class="p">),</span><span class="w"> </span><span class="n">gene_info</span><span class="o">$</span><span class="n">gene_id</span><span class="p">)]</span>
+
+<span class="n">anno_col</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coldata</span><span class="o">$</span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">coldata</span><span class="p">))</span>
+<span class="n">anno_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">Treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">veh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tomato&quot;</span><span class="p">))</span>
+
+<span class="nf">pheatmap</span><span class="p">(</span>
+<span class="w">  </span><span class="n">mat</span><span class="p">,</span>
+<span class="w">  </span><span class="n">scale</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;row&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">annotation_col</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">anno_col</span><span class="p">,</span>
+<span class="w">  </span><span class="n">annotation_colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anno_colors</span><span class="p">,</span>
+<span class="w">  </span><span class="n">show_rownames</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fontsize_row</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="m">7</span><span class="p">,</span>
+<span class="w">  </span><span class="n">cluster_cols</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">main</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Top 50 DE Genes — Cortisol vs Vehicle&quot;</span>
+<span class="p">)</span>
+<span class="c1"># Without scale = &quot;row&quot;, highly expressed genes dominate the color scale</span>
+<span class="c1"># and lower-expressed genes appear uniformly pale regardless of their fold change.</span>
+<span class="c1"># Row z-scoring puts all genes on the same scale so patterns are visible.</span>
+</code></pre></div>
+<p><strong>Expected pattern:</strong> The heatmap should show a clear block of upregulated genes in the cortisol samples (red in the heatmap) and a block of downregulated genes, with <code>cluster_cols = TRUE</code> grouping the three cortisol replicates together.</p>
+</details>
+<hr />
+<h2 id="bonus-gene-set-enrichment-analysis">Bonus — Gene Set Enrichment Analysis</h2>
+<p>GSEA asks a broader question than the gene-by-gene volcano: is a <strong>gene set</strong> (a group of genes sharing a biological function) over-represented among genes that change in one direction?</p>
+<p>Instead of a yes/no cutoff, GSEA ranks all genes by fold change and asks whether the genes in a set are concentrated at the top or bottom of that ranked list.</p>
+<p>We use <strong>MSigDB Hallmark gene sets</strong> — 50 curated, biologically coherent gene programs — mapped to <em>Danio rerio</em> via orthology.</p>
+<div class="admonition info">
+<p class="admonition-title">This section requires additional packages</p>
+<p>The bonus section uses <code>clusterProfiler</code> and <code>msigdbr</code>, which are installed by the devcontainer. If the Setup chunk ran without errors, these packages are available.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">clusterProfiler</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">msigdbr</span><span class="p">)</span>
+
+<span class="n">hallmarks</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">msigdbr</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Danio rerio&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="p">)</span>
+<span class="n">TERM2GENE</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">hallmarks</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">gs_name</span><span class="p">,</span><span class="w"> </span><span class="n">ensembl_gene</span><span class="p">)</span>
+
+<span class="n">rank_vec</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res_df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">log2FoldChange</span><span class="p">),</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">gene_id</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">log2FoldChange</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">pull</span><span class="p">(</span><span class="n">log2FoldChange</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gene_id</span><span class="p">)</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span>
+<span class="n">gsea_res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">GSEA</span><span class="p">(</span>
+<span class="w">  </span><span class="n">geneList</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">rank_vec</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TERM2GENE</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">TERM2GENE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">pvalueCutoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span>
+<span class="w">  </span><span class="n">verbose</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
+<span class="p">)</span>
+
+<span class="nf">dotplot</span><span class="p">(</span><span class="n">gsea_res</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">showCategory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">label_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">linetype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;grey40&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GSEA: Cortisol vs Vehicle&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MSigDB Hallmark gene sets · Danio rerio&quot;</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+<p><strong>NES</strong> (Normalized Enrichment Score) &gt; 0 means the gene set is enriched among genes upregulated in cortisol; NES &lt; 0 means enrichment among genes downregulated in cortisol.</p>
+<div class="admonition tip">
+<p class="admonition-title">What to look for</p>
+<p>Hallmark gene sets related to <strong>complement</strong>, <strong>inflammatory response</strong>, and <strong>interferon signaling</strong> appearing with positive NES would be strong confirmation of the immune activation phenotype described in Hartig et al. 2016.</p>
+</div>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">DESeq2 vignette</a> — the authoritative reference, with detailed explanations of the statistical model</li>
+<li><a href="https://doi.org/10.1186/s13059-014-0550-8">Love, Huber &amp; Anders 2014</a> — the original DESeq2 paper</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/27444789/">Hartig et al. 2016 (PMID 27444789)</a> — the published paper for this dataset</li>
+<li><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/collections.jsp">MSigDB Hallmark gene sets</a> — documentation for the gene sets used in the GSEA bonus</li>
+</ul>
+<hr />
+<p><em>Questions? Contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../introDataTypes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to Genomics Data Types">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction to Genomics Data Types
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../scRNAseq/" class="md-footer__link md-footer__link--next" aria-label="Next: Single Cell RNAseq">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Single Cell RNAseq
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
