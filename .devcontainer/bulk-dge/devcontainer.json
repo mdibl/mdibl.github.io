@@ -1,13 +1,18 @@
 {
   "name": "Differential Gene Expression",
   "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
-  "postCreateCommand": "Rscript -e \"install.packages(c('ggrepel', 'pheatmap', 'languageserver', 'msigdbr')); BiocManager::install(c('DESeq2', 'clusterProfiler', 'enrichplot'), ask = FALSE, update = FALSE)\"",
-  "workspaceFolder": "/workspaces/mdibl.github.io/docs/bulkDGE",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "REditorSupport.r"
-      ]
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
+  },
+  "forwardPorts": [8787],
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio",
+      "requireLocalPort": true,
+      "onAutoForward": "ignore"
     }
-  }
+  },
+  "postCreateCommand": "Rscript -e \"install.packages(c('ggrepel', 'pheatmap', 'msigdbr')); BiocManager::install(c('DESeq2', 'clusterProfiler', 'enrichplot'), ask = FALSE, update = FALSE)\"",
+  "postAttachCommand": { "rstudio-start": "rserver" },
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/bulkDGE"
 }
