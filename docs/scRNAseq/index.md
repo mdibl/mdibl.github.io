@@ -5,6 +5,23 @@
 
 ---
 
+!!! info "Learning Objectives"
+    By the end of this workshop you will be able to:
+
+    - Understand single-cell sequencing technology and its underlying fundamentals
+    - Interpret a single-cell expression matrix and understand its file structure
+    - Build a Seurat object from barcode, feature, and matrix files
+
+    **QC / Pre-processing**
+
+    - Perform quality control on a Seurat object: scoring mitochondrial content, filtering low-count cells, and thresholding `nFeature_RNA` to flag potential doublets
+    - Log-normalize and scale expression data in preparation for dimensionality reduction
+
+    **Post-processing**
+
+    - Reduce dimensionality with PCA and construct a k-nearest neighbor (KNN) graph
+    - Cluster cells with the Louvain algorithm and visualize results with UMAP/t-SNE
+
 Single-cell RNA sequencing (scRNA-seq) resolves gene expression at the level of individual cells, revealing the diversity of cell types and states within a tissue that bulk RNA-seq would average together. It has become a foundational tool for mapping cell atlases, characterizing tumor microenvironments, and studying development.
 
 In this workshop you will work with a processed single-cell dataset, learn how the cell × gene matrix differs from bulk data, perform quality control and normalization, cluster cells into groups, and identify cell types from marker genes, all visualized through UMAP embeddings.
@@ -35,23 +52,6 @@ The clip below is real microscopy footage of that junction: each droplet pinchin
 </figure>
 
 Downstream, Cell Ranger uses the shared barcode to group reads by cell of origin and the UMI to collapse PCR duplicates into a single molecule count, which is exactly what becomes the rows and columns of the count matrix in Part 1.
-
-!!! info "Learning Objectives"
-    By the end of this workshop you will be able to:
-
-    - Understand single-cell sequencing technology and its underlying fundamentals
-    - Interpret a single-cell expression matrix and understand its file structure
-    - Build a Seurat object from barcode, feature, and matrix files
-
-    **QC / Pre-processing**
-
-    - Perform quality control on a Seurat object: scoring mitochondrial content, filtering low-count cells, and thresholding `nFeature_RNA` to flag potential doublets
-    - Log-normalize and scale expression data in preparation for dimensionality reduction
-
-    **Post-processing**
-
-    - Reduce dimensionality with PCA and construct a k-nearest neighbor (KNN) graph
-    - Cluster cells with the Louvain algorithm and visualize results with UMAP/t-SNE
 
 ## Prerequisites
 
