@@ -1,0 +1,148 @@
+---
+title: "Single Cell RNA-seq Analysis"
+subtitle: "PBMC 3k — 10x Genomics / Seurat Guided Clustering Tutorial"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+---
+
+## Setup
+
+Run this chunk first to load all packages and set your working directory.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(Seurat)
+library(patchwork)
+library(dplyr)
+library(ggplot2)
+
+# Working directory is set automatically by scRNAseq.Rproj — verify it here:
+getwd()  # should end in .../docs/scRNAseq
+```
+
+---
+
+## Part 1 — QC & Pre-processing
+
+## Exercise 1 — Load the Data and Build a Seurat Object
+
+```{r ex1-load}
+pbmc.data <- Read10X(data.dir = "data/pbmc3k/filtered_gene_bc_matrices/hg19/")
+pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc3k", min.cells = 3, min.features = 200)
+pbmc
+```
+
+---
+
+## Exercise 2 — Score Mitochondrial Content and Visualize QC Metrics
+
+```{r ex2-qc, fig.height=7, fig.width=13}
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+summary(pbmc$percent.mt)
+
+# Visualize QC metrics as a violin plot
+VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+
+# FeatureScatter visualizes feature-feature relationships
+plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+---
+
+## Exercise 3 — Filter Low-Quality Cells and Doublets
+
+```{r ex3-filter}
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc
+```
+
+---
+
+## Exercise 4 — Normalize and Find Variable Features
+
+```{r ex4-normalize-variable, fig.height=5, fig.width=10}
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 1e4)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+
+# Identify the 10 most highly variable genes
+top10 <- head(VariableFeatures(pbmc), 10)
+top10
+
+plot1 <- VariableFeaturePlot(pbmc)
+LabelPoints(plot = plot1, points = top10, repel = TRUE)
+```
+
+---
+
+## Exercise 5 — Scale the Data
+
+```{r ex5-scale, results='hide'}
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+```
+
+---
+
+## Part 2 — Post-processing
+
+## Exercise 6 — Run and Visualize PCA
+
+```{r ex6-pca, fig.height=8, fig.width=10, results='hide'}
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+
+print(pbmc[["pca"]], dims = 1:5, nfeatures = 5)
+VizDimLoadings(pbmc, dims = 1:2, reduction = "pca")
+DimPlot(pbmc, reduction = "pca") + NoLegend()
+
+# Elbow plot — how many PCs carry real signal?
+ElbowPlot(pbmc)
+```
+
+---
+
+## Exercise 7 — Build the KNN Graph and Cluster with Louvain
+
+```{r ex7-cluster}
+pbmc <- FindNeighbors(pbmc, dims = 1:10)
+pbmc <- FindClusters(pbmc, resolution = 0.5)
+
+# Look at cluster IDs of the first 5 cells
+head(Idents(pbmc), 5)
+table(Idents(pbmc))
+```
+
+---
+
+## Exercise 8 — Run UMAP
+
+```{r ex8-umap, fig.height=8, fig.width=8}
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+DimPlot(pbmc, reduction = "umap")
+```
+
+---
+
+## Bonus — Marker Genes and Cell Type Annotation
+
+```{r bonus-markers}
+pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE)
+
+pbmc.markers %>%
+  group_by(cluster) %>%
+  dplyr::filter(avg_log2FC > 1) %>%
+  slice_head(n = 5) %>%
+  ungroup()
+```
+
+```{r bonus-annotate, fig.height=5, fig.width=9}
+new.cluster.ids <- c("Naive CD4 T", "CD14+ Mono", "Memory CD4 T", "B", "CD8 T",
+                      "FCGR3A+ Mono", "NK", "DC", "Platelet")
+names(new.cluster.ids) <- levels(pbmc)
+pbmc <- RenameIdents(pbmc, new.cluster.ids)
+
+DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
+```
