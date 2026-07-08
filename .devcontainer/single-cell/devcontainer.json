@@ -12,7 +12,7 @@
       "onAutoForward": "ignore"
     }
   },
-  "postCreateCommand": "Rscript -e \"install.packages(c('Seurat', 'patchwork'))\"",
+  "postCreateCommand": "sudo chown -R rstudio:rstudio /var/lib/rstudio-server /var/run/rstudio-server && sudo apt-get update -qq && sudo apt-get install -y libglpk-dev && Rscript -e \"install.packages(c('Seurat', 'patchwork'))\"",
   "postAttachCommand": { "rstudio-start": "rserver" },
   "workspaceFolder": "/workspaces/mdibl.github.io/docs/scRNAseq"
 }
