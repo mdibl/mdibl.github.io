@@ -1,6 +1,6 @@
 ---
 title: "Single Cell RNA-seq Analysis"
-subtitle: "PBMC 3k — 10x Genomics / Seurat Guided Clustering Tutorial"
+subtitle: "PBMC 3k: 10x Genomics / Seurat Guided Clustering Tutorial"
 output:
   html_document:
     toc: true
@@ -18,15 +18,15 @@ library(patchwork)
 library(dplyr)
 library(ggplot2)
 
-# Working directory is set automatically by scRNAseq.Rproj — verify it here:
+# Working directory is set automatically by scRNAseq.Rproj, verify it here:
 getwd()  # should end in .../docs/scRNAseq
 ```
 
 ---
 
-## Part 1 — QC & Pre-processing
+## Part 1: QC & Pre-processing
 
-## Exercise 1 — Load the Data and Build a Seurat Object
+## Exercise 1: Load the Data and Build a Seurat Object
 
 ```{r ex1-load}
 pbmc.data <- Read10X(data.dir = "data/pbmc3k/filtered_gene_bc_matrices/hg19/")
@@ -36,7 +36,7 @@ pbmc
 
 ---
 
-## Exercise 2 — Score Mitochondrial Content and Visualize QC Metrics
+## Exercise 2: Score Mitochondrial Content and Visualize QC Metrics
 
 ```{r ex2-qc, fig.height=7, fig.width=13}
 pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
@@ -53,18 +53,41 @@ plot1 + plot2
 
 ---
 
-## Exercise 3 — Filter Low-Quality Cells and Doublets
+## Exercise 3: Choose Your Own QC Thresholds and Filter
+
+Look at the plots from Exercise 2 and decide your own cutoffs. There is no single correct answer here; record your reasoning in the workshop questions.
 
 ```{r ex3-filter}
-pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+min_features   <- 200    # lower bound on nFeature_RNA, pick your own
+max_features   <- 2500   # upper bound on nFeature_RNA (your doublet proxy), pick your own
+max_percent_mt <- 5      # upper bound on percent.mt, pick your own
+
+pbmc <- subset(
+  pbmc,
+  subset = nFeature_RNA > min_features & nFeature_RNA < max_features & percent.mt < max_percent_mt
+)
 pbmc
 ```
 
 ---
 
-## Exercise 4 — Normalize and Find Variable Features
+## Exercise 4: Re-Visualize QC Metrics After Filtering
 
-```{r ex4-normalize-variable, fig.height=5, fig.width=10}
+Run the *same* plotting calls from Exercise 2 again, now on your filtered object, and compare.
+
+```{r ex4-qc-recheck, fig.height=7, fig.width=13}
+VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+
+plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+---
+
+## Exercise 5: Normalize and Find Variable Features
+
+```{r ex5-normalize-variable, fig.height=5, fig.width=10}
 pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 1e4)
 pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
 
@@ -78,36 +101,45 @@ LabelPoints(plot = plot1, points = top10, repel = TRUE)
 
 ---
 
-## Exercise 5 — Scale the Data
+## Exercise 6: Scale the Data
 
-```{r ex5-scale, results='hide'}
+```{r ex6-scale, results='hide'}
 all.genes <- rownames(pbmc)
 pbmc <- ScaleData(pbmc, features = all.genes)
 ```
 
 ---
 
-## Part 2 — Post-processing
+## Part 2: Post-processing
 
-## Exercise 6 — Run and Visualize PCA
+## Exercise 7: Run and Visualize PCA
 
-```{r ex6-pca, fig.height=8, fig.width=10, results='hide'}
+```{r ex7-pca, fig.height=8, fig.width=10, results='hide'}
 pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 
 print(pbmc[["pca"]], dims = 1:5, nfeatures = 5)
 VizDimLoadings(pbmc, dims = 1:2, reduction = "pca")
 DimPlot(pbmc, reduction = "pca") + NoLegend()
-
-# Elbow plot — how many PCs carry real signal?
-ElbowPlot(pbmc)
 ```
 
 ---
 
-## Exercise 7 — Build the KNN Graph and Cluster with Louvain
+## Exercise 8: Choose Your Number of PCs
 
-```{r ex7-cluster}
-pbmc <- FindNeighbors(pbmc, dims = 1:10)
+Inspect the elbow plot, then set `n_pcs` to whatever cutoff you decide on. Every remaining step uses `dims = 1:n_pcs`, so this single choice propagates through the rest of your analysis.
+
+```{r ex8-elbow, fig.height=6, fig.width=10}
+ElbowPlot(pbmc, ndims = 30)
+
+n_pcs <- 10   # pick your own cutoff based on the elbow plot above
+```
+
+---
+
+## Exercise 9: Build the KNN Graph and Cluster with Louvain
+
+```{r ex9-cluster}
+pbmc <- FindNeighbors(pbmc, dims = 1:n_pcs)
 pbmc <- FindClusters(pbmc, resolution = 0.5)
 
 # Look at cluster IDs of the first 5 cells
@@ -117,30 +149,61 @@ table(Idents(pbmc))
 
 ---
 
-## Exercise 8 — Run UMAP
+## Exercise 10: Run UMAP
 
-```{r ex8-umap, fig.height=8, fig.width=8}
-pbmc <- RunUMAP(pbmc, dims = 1:10)
+```{r ex10-umap, fig.height=8, fig.width=8}
+pbmc <- RunUMAP(pbmc, dims = 1:n_pcs)
 DimPlot(pbmc, reduction = "umap")
 ```
 
 ---
 
-## Bonus — Marker Genes and Cell Type Annotation
+## Part 3: Cluster Marker Research Assignment
 
-```{r bonus-markers}
+## Exercise 11: Find All Cluster Marker Genes
+
+```{r ex11-markers}
 pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE)
 
 pbmc.markers %>%
   group_by(cluster) %>%
   dplyr::filter(avg_log2FC > 1) %>%
-  slice_head(n = 5) %>%
+  slice_head(n = 10) %>%
   ungroup()
 ```
 
-```{r bonus-annotate, fig.height=5, fig.width=9}
-new.cluster.ids <- c("Naive CD4 T", "CD14+ Mono", "Memory CD4 T", "B", "CD8 T",
-                      "FCGR3A+ Mono", "NK", "DC", "Platelet")
+---
+
+## Exercise 12: Annotate Your Assigned Cluster
+
+Your instructor will assign you one cluster number from **your own** results.
+
+```{r ex12-my-cluster-markers}
+my_cluster <- 0   # replace with the cluster number your instructor assigned you
+
+FindMarkers(pbmc, ident.1 = my_cluster) %>%
+  filter(pct.1 > 0.25) %>%   # expressed in a meaningful fraction of the cluster, not just a couple of cells
+  arrange(desc(avg_log2FC)) %>%
+  head(15)
+```
+
+Once you've picked 3-5 candidate marker genes from that table and researched them, sanity-check them against your cluster:
+
+```{r ex12-my-cluster-plots, fig.height=5, fig.width=10}
+my_genes <- c("GENE1", "GENE2", "GENE3")  # replace with your chosen marker genes
+
+VlnPlot(pbmc, features = my_genes)
+FeaturePlot(pbmc, features = my_genes)
+```
+
+---
+
+## Finalize the Annotation as a Class
+
+After everyone presents their assigned cluster, fill in the agreed-upon labels in cluster order and apply them together.
+
+```{r finalize-annotation, fig.height=5, fig.width=9}
+new.cluster.ids <- c("cluster0_label", "cluster1_label", "cluster2_label")  # extend/edit to match your class's clusters
 names(new.cluster.ids) <- levels(pbmc)
 pbmc <- RenameIdents(pbmc, new.cluster.ids)
 

@@ -14,13 +14,18 @@
 
     **QC / Pre-processing**
 
-    - Perform quality control on a Seurat object: scoring mitochondrial content, filtering low-count cells, and thresholding `nFeature_RNA` to flag potential doublets
+    - Perform quality control on a Seurat object: score mitochondrial content and choose your own thresholds to filter low-count cells and flag potential doublets
+    - Evaluate the effect of your QC choices by comparing metrics before and after filtering
     - Log-normalize and scale expression data in preparation for dimensionality reduction
 
     **Post-processing**
 
-    - Reduce dimensionality with PCA and construct a k-nearest neighbor (KNN) graph
+    - Reduce dimensionality with PCA, choose an appropriate number of principal components from an elbow plot, and construct a k-nearest neighbor (KNN) graph
     - Cluster cells with the Louvain algorithm and visualize results with UMAP/t-SNE
+
+    **Cell Type Annotation**
+
+    - Research marker genes for an assigned cluster using primary literature and databases, and propose a cell type identity with supporting evidence
 
 Single-cell RNA sequencing (scRNA-seq) resolves gene expression at the level of individual cells, revealing the diversity of cell types and states within a tissue that bulk RNA-seq would average together. It has become a foundational tool for mapping cell atlases, characterizing tumor microenvironments, and studying development.
 
@@ -128,7 +133,7 @@ Once RStudio is open, get the workshop files ready:
     **Data download:** [`pbmc3k_filtered_gene_bc_matrices.tar.gz`](https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz)
     **Template:** This workshop follows the structure of the Seurat [**Guided Clustering Tutorial (pbmc3k)**](https://satijalab.org/seurat/articles/pbmc3k_tutorial), developed and maintained by the **Satija Lab and collaborators**.
 
-This dataset and analysis walkthrough is one of the most widely used entry points to single-cell analysis, and the workshop exercises mirror its structure: quality control and filtering, log-normalization, variable feature selection, scaling, PCA, graph-based (Louvain) clustering, UMAP visualization, and marker-based cell type annotation.
+This dataset and analysis walkthrough is one of the most widely used entry points to single-cell analysis. The workshop exercises mirror its structure (quality control and filtering, log-normalization, variable feature selection, scaling, PCA, graph-based (Louvain) clustering, UMAP visualization), but the QC thresholds, PC cutoff, and final cell type annotation are yours to determine, not given to you.
 
 **Citing Seurat:** if you use Seurat in your own research, cite the paper corresponding to the version you use:
 
@@ -237,6 +242,7 @@ Three metrics distinguish a real cell from an empty droplet, background noise, o
 
     1. What is the median `percent.mt` across cells? Are there outlier cells with very high mitochondrial content?
     2. In the `nCount_RNA` vs `nFeature_RNA` scatter plot, what would a cell sitting well above the main trend line (high count, disproportionately high feature number) suggest?
+    3. **Look closely at these plots, you'll use them to make real decisions in the next exercise.** Where do the bulk of cells sit? Where do the tails start?
 
 ??? success "Solution"
 
@@ -247,7 +253,7 @@ Three metrics distinguish a real cell from an empty droplet, background noise, o
     #   0.000   1.537   2.031   2.217   2.643  22.569
     ```
 
-    Median `percent.mt` is ~2%, typical for healthy PBMCs; most cells sit in a tight, low band. A handful of cells reach up into the teens and twenties; those are the ones the `percent.mt < 5` threshold below will remove.
+    Median `percent.mt` is ~2%, typical for healthy PBMCs; most cells sit in a tight, low band. A handful of cells reach up into the teens and twenties, that's the tail you'll need to decide what to do with next.
 
     A cell far above the main `nCount_RNA` vs `nFeature_RNA` trend (more total UMIs than its gene count would predict) is one of the signals used to flag potential **doublets**: two cells' worth of transcripts captured under one barcode.
 
@@ -255,41 +261,71 @@ Three metrics distinguish a real cell from an empty droplet, background noise, o
 
 ### Filtering low-quality cells and doublets
 
-We now apply thresholds on all three metrics at once:
+There is no universal cutoff for `nFeature_RNA` or `percent.mt`. Every dataset's distribution is different, and the "right" thresholds are a judgment call you make by looking at the plots from Exercise 1.2, not a number you memorize. In general you're looking for:
 
-- **`nFeature_RNA > 200`**: removes empty droplets / low-complexity cells
-- **`nFeature_RNA < 2500`**: removes the top tail of the distribution, our proxy for doublets: a cell registering an unusually large number of unique genes is more likely to be two cells captured under one barcode than one unusually complex cell
-- **`percent.mt < 5`**: removes dying / lysed cells
+- A **lower bound on `nFeature_RNA`** that excludes the low-complexity tail (empty droplets, dying cells) without cutting into the main population
+- An **upper bound on `nFeature_RNA`** near the top of the distribution, as a proxy for doublets: a cell registering an unusually large number of unique genes is more likely to be two cells captured under one barcode than one unusually complex cell
+- An **upper bound on `percent.mt`** that excludes the high-mitochondrial tail (dying/lysed cells) without discarding legitimately active cells
 
-!!! tip "Setting the doublet threshold in practice"
-    The `2500` upper bound on `nFeature_RNA` is this dataset's version of a general strategy: set the ceiling near the top **N%** of the `nFeature_RNA` distribution (inspect the violin plot above) rather than picking a number blind. Dedicated doublet-detection tools (e.g. `scDblFinder`, `DoubletFinder`) formalize this further, but a distribution-informed `nFeature_RNA` ceiling is the standard first pass.
+!!! tip "Setting thresholds in practice"
+    Dedicated doublet-detection tools (e.g. `scDblFinder`, `DoubletFinder`) formalize the upper `nFeature_RNA` bound further, but for this workshop you'll set all three thresholds by eye. Be ready to justify your choice: what would happen to your dataset if you moved the `percent.mt` cutoff from 5% to 20%? From 5% to 2%?
 
 ---
 
-???+ question "Exercise 1.3: Filter the Seurat object"
+???+ question "Exercise 1.3: Choose your own QC thresholds and filter"
 
-    Run the **Exercise 3** chunk in `workshop.Rmd`:
+    Run the **Exercise 3** chunk in `workshop.Rmd`, but first replace the placeholder values with your own, chosen from the Exercise 1.2 plots:
 
     ```r
-    pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+    min_features   <- ___   # lower bound on nFeature_RNA
+    max_features   <- ___   # upper bound on nFeature_RNA (your doublet proxy)
+    max_percent_mt <- ___   # upper bound on percent.mt
+
+    pbmc <- subset(
+      pbmc,
+      subset = nFeature_RNA > min_features & nFeature_RNA < max_features & percent.mt < max_percent_mt
+    )
     pbmc
     ```
 
     **Questions:**
 
-    1. How many cells were removed by this filter?
-    2. Which of the three criteria do you think removed the most cells here, and why?
+    1. What values did you choose, and why? Point to a specific feature of the distribution (a gap, a tail, a knee in the curve) that justifies each one.
+    2. How many cells did your thresholds remove?
+    3. Compare with a classmate who chose different values. How different were your final cell counts? Whose thresholds were more permissive?
+    4. Which of your three criteria removed the most cells?
 
-??? success "Solution"
+??? tip "There's no answer key, but a sanity check"
+    Most published PBMC analyses land somewhere in the neighborhood of `nFeature_RNA` between roughly 200 and 2,500, with `percent.mt` below 5-10%, but the right values always depend on the shape of *your* distributions, not a memorized number. If your thresholds remove more than ~20-30% of cells, revisit the plots; you may be cutting into the healthy population instead of trimming a tail.
+
+---
+
+### Seeing what filtering actually changed
+
+Filtering doesn't just shrink a table, it changes the shape of your data. Re-running the same QC plots on the filtered object makes that concrete, and lets you check your own work.
+
+---
+
+???+ question "Exercise 1.4: Re-visualize QC metrics after filtering"
+
+    Run the **Exercise 4** chunk in `workshop.Rmd`: the same plotting calls as Exercise 1.2, now on your filtered `pbmc` object.
 
     ```r
-    pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
-    pbmc
-    # An object of class Seurat
-    # 13714 features across 2638 samples within 1 assay
+    VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+
+    plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
+    plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+    plot1 + plot2
     ```
 
-    2,638 of the original 2,700 cells survive: only **62 cells removed**. Given the median `percent.mt` of ~2% and the tight `nFeature_RNA` distribution seen in the violin plots, most of this dataset was already high quality; the `percent.mt < 5` cutoff catches the small population of cells in the double-digit tail.
+    **Questions:**
+
+    1. Scroll up and compare these plots side-by-side with your Exercise 1.2 plots. What changed, and what stayed the same?
+    2. Did the tails get clipped, or did the whole distribution shift? What would it mean if the *entire* distribution had shifted rather than just the extremes?
+    3. If a classmate used looser thresholds than you, would you expect their post-filtering violin plots to look different from yours? How?
+
+??? success "What to look for"
+    The clearest change is usually the top of the `nFeature_RNA` and `percent.mt` violins getting clipped flat right at your chosen cutoffs, the long tail is gone. The bulk of the distribution, where most cells sit, should look nearly identical to before, since your thresholds were chosen specifically to avoid touching it. If the whole distribution moved rather than just the tails, that's a sign your cutoffs were more aggressive than intended.
 
 ---
 
@@ -316,9 +352,9 @@ Most genes are either uninformative "housekeeping" genes (similar expression eve
 
 ---
 
-???+ question "Exercise 1.4: Normalize and find variable features"
+???+ question "Exercise 1.5: Normalize and find variable features"
 
-    Run the **Exercise 4** chunk in `workshop.Rmd`:
+    Run the **Exercise 5** chunk in `workshop.Rmd`:
 
     ```r
     pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 1e4)
@@ -344,7 +380,7 @@ Most genes are either uninformative "housekeeping" genes (similar expression eve
     #  [9] "GNG11"  "S100A8"
     ```
 
-    `PPBP` and `PF4` are platelet markers, `LYZ`/`S100A9`/`S100A8` are myeloid/monocyte markers, and `GNLY` marks NK/cytotoxic cells; this list is already hinting at the distinct cell populations we'll recover with clustering later. Highly variable genes sit **above** the mean-variance trend line: for their average expression level, they show more cell-to-cell variance than expected by chance.
+    (Your exact list may differ slightly depending on which cells passed your QC filter in Exercise 1.3.) `PPBP` and `PF4` are platelet markers, `LYZ`/`S100A9`/`S100A8` are myeloid/monocyte markers, and `GNLY` marks NK/cytotoxic cells; this list is already hinting at the distinct cell populations we'll recover with clustering later. Highly variable genes sit **above** the mean-variance trend line: for their average expression level, they show more cell-to-cell variance than expected by chance.
 
 ---
 
@@ -364,9 +400,9 @@ pbmc <- ScaleData(pbmc, features = all.genes)
 
 ---
 
-???+ question "Exercise 1.5: Scale the data"
+???+ question "Exercise 1.6: Scale the data"
 
-    Run the **Exercise 5** chunk in `workshop.Rmd`:
+    Run the **Exercise 6** chunk in `workshop.Rmd`:
 
     ```r
     all.genes <- rownames(pbmc)
@@ -403,7 +439,7 @@ pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 
 ???+ question "Exercise 2.1: Run and visualize PCA"
 
-    Run the **Exercise 6** chunk in `workshop.Rmd`:
+    Run the **Exercise 7** chunk in `workshop.Rmd`:
 
     ```r
     pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
@@ -423,18 +459,35 @@ pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 
 ### Determining the dimensionality of the dataset
 
-Not every PC captures real signal; later PCs are increasingly dominated by noise. An **elbow plot** ranks PCs by the percentage of variance they explain; the "elbow" (where the curve flattens) is a heuristic for how many PCs carry real signal.
-
-```r
-ElbowPlot(pbmc)
-```
+Not every PC captures real signal; later PCs are increasingly dominated by noise. An **elbow plot** ranks PCs by the percentage of variance they explain; the "elbow" (where the curve flattens) is a heuristic for how many PCs carry real signal. Exactly where that elbow is, and how many PCs you decide to carry forward, is your call.
 
 <figure>
 <img src="img/elbow-plot.png" alt="Elbow plot of principal component standard deviation, flattening out after around PC 9-10" style="width:100%; max-width:600px;">
-<figcaption>Standard deviation explained per PC. The curve drops sharply for the first ~10 components, then flattens (the "elbow"), indicating diminishing biological signal in later PCs. Output from the CGDS Core's internal scRNA-seq pipeline.</figcaption>
+<figcaption>Standard deviation explained per PC. Diminishing biological signal in later PCs shows up as the curve flattening out (the "elbow"). This example is output from the CGDS Core's internal scRNA-seq pipeline; your own elbow plot will look similar but not identical, since it depends on your QC thresholds from Part 1.</figcaption>
 </figure>
 
-In this dataset the elbow sits around **PC9–10**, so the workshop uses the first **10 PCs** for everything downstream. (The Seurat authors note that erring on the higher side rarely hurts: the difference between 10, 15, or 20 PCs is usually small, but using only 5 does noticeably degrade results.)
+---
+
+???+ question "Exercise 2.2: Choose your number of PCs"
+
+    Run the **Exercise 8** chunk in `workshop.Rmd`:
+
+    ```r
+    ElbowPlot(pbmc, ndims = 30)
+
+    n_pcs <- ___   # pick your own cutoff based on the elbow plot above
+    ```
+
+    Store your choice in `n_pcs`. Every remaining step in this workshop (`FindNeighbors()`, `RunUMAP()`) uses `dims = 1:n_pcs`, so this single choice propagates through the rest of your analysis, don't change it later without re-running everything downstream.
+
+    **Questions:**
+
+    1. Where does the curve flatten out for you? Is there one obvious elbow, or a plausible range?
+    2. The Seurat authors note that erring on the higher side rarely hurts (the difference between 10, 15, or 20 PCs is usually small), but using only 5 does noticeably degrade results. Does your choice reflect that advice?
+    3. If you're torn between two values, which do you pick, and why?
+
+??? tip "No fixed answer, but a reference point"
+    Using close-to-default QC thresholds, a common choice for this dataset lands around PC 9-10, but your own elbow plot will shift slightly depending on the QC cutoffs you chose in Part 1. Pick a number, write down why, and commit to it for the rest of the workshop.
 
 ---
 
@@ -459,12 +512,12 @@ The `resolution` parameter controls granularity, higher values produce more, sma
 
 ---
 
-???+ question "Exercise 2.2: Build the KNN graph and cluster with Louvain"
+???+ question "Exercise 2.3: Build the KNN graph and cluster with Louvain"
 
-    Run the **Exercise 7** chunk in `workshop.Rmd`:
+    Run the **Exercise 9** chunk in `workshop.Rmd`, using the `n_pcs` you chose in Exercise 2.2:
 
     ```r
-    pbmc <- FindNeighbors(pbmc, dims = 1:10)
+    pbmc <- FindNeighbors(pbmc, dims = 1:n_pcs)
     pbmc <- FindClusters(pbmc, resolution = 0.5)
 
     head(Idents(pbmc), 5)
@@ -473,10 +526,11 @@ The `resolution` parameter controls granularity, higher values produce more, sma
 
     **Questions:**
 
-    1. How many clusters does resolution `0.5` produce?
+    1. How many clusters do you get, and how many cells fall in the smallest one?
     2. What happens if you try `resolution = 0.1` or `resolution = 1.5`? (Try it and re-run `table(Idents(pbmc))`.)
+    3. Compare your cluster count with a classmate who chose a different `n_pcs` or different QC thresholds. Who has more clusters? Any guesses why?
 
-??? success "Solution"
+??? example "One reference run (10 PCs, QC thresholds 200/2500/5%, resolution 0.5)"
 
     ```r
     pbmc <- FindNeighbors(pbmc, dims = 1:10)
@@ -486,45 +540,49 @@ The `resolution` parameter controls granularity, higher values produce more, sma
     # 684 481 476 344 291 162 155  32  13
     ```
 
-    Resolution `0.5` produces **9 clusters**, ranging from 684 cells down to a rare population of just 13. Lowering resolution merges related clusters together (fewer, larger groups); raising it splits them further (more, smaller groups); there is no single "correct" resolution, only one appropriate to how finely you want to distinguish cell states.
+    This particular combination of choices produces **9 clusters**, ranging from 684 cells down to a rare population of just 13. Your own numbers will differ: lowering resolution merges related clusters together (fewer, larger groups); raising it splits them further (more, smaller groups); different `n_pcs` and QC thresholds shift things further still. There is no single "correct" answer, only one appropriate to how finely you want to distinguish cell states and how you chose to filter your data.
 
 ---
 
 ### Run non-linear dimensional reduction (UMAP)
 
-PCA and clustering happen in high-dimensional space (10 PCs); **UMAP** compresses that structure into 2D for visualization, aiming to keep cells that are close together in the KNN graph close together on the plot. It's a visualization tool, not a source of biological truth on its own; conclusions should rest on the clustering and marker analysis, not the UMAP layout alone.
+PCA and clustering happen in high-dimensional space (your chosen `n_pcs`); **UMAP** compresses that structure into 2D for visualization, aiming to keep cells that are close together in the KNN graph close together on the plot. It's a visualization tool, not a source of biological truth on its own; conclusions should rest on the clustering and marker analysis, not the UMAP layout alone.
 
 ```r
-pbmc <- RunUMAP(pbmc, dims = 1:10)
+pbmc <- RunUMAP(pbmc, dims = 1:n_pcs)
 ```
 
 <figure>
 <img src="img/umap-concept.svg" alt="Diagram of UMAP collapsing 10 PCs into a 2D layout with distinct cell type islands" style="width:100%; max-width:900px;">
-<figcaption>UMAP folds the 10-dimensional PCA space down to 2D, keeping cells that were close neighbors near each other: related T cell subsets sit close together while monocytes, B cells, and other distinct types form separate islands.</figcaption>
+<figcaption>UMAP folds the high-dimensional PCA space down to 2D, keeping cells that were close neighbors near each other: related T cell subsets sit close together while monocytes, B cells, and other distinct types form separate islands.</figcaption>
 </figure>
 
 ---
 
-???+ question "Exercise 2.3: Run UMAP"
+???+ question "Exercise 2.4: Run UMAP"
 
-    Run the **Exercise 8** chunk in `workshop.Rmd`:
+    Run the **Exercise 10** chunk in `workshop.Rmd`:
 
     ```r
-    pbmc <- RunUMAP(pbmc, dims = 1:10)
+    pbmc <- RunUMAP(pbmc, dims = 1:n_pcs)
     DimPlot(pbmc, reduction = "umap")
     ```
 
     **Question:** Do the clusters from `FindClusters()` form visually distinct islands on the UMAP plot, or do some blend together?
 
-??? success "Solution"
+??? success "What to look for"
 
     The large lymphocyte clusters (naive/memory CD4+ T, CD8+ T) tend to sit close together with soft boundaries (reflecting real biological similarity between T cell subsets), while monocyte, B, NK, and platelet clusters typically form clearly separated islands. Overlap on the UMAP between two clusters doesn't mean the clustering was wrong; it reflects a continuum of similar transcriptional states.
 
 ---
 
-## Bonus: Marker Genes & Cell Type Annotation
+## Part 3: Cluster Marker Research Assignment
 
-Clusters are just numbers until you connect them to biology. `FindAllMarkers()` runs differential expression for every cluster against all other cells and reports the genes that best distinguish each one.
+Clusters are just numbers until you connect them to biology, and unlike the earlier steps in this workshop, there's no shortcut here: real annotation requires reading about real genes. Because everyone chose their own QC thresholds and `n_pcs`, **your clusters are not the same as your classmates'**: this assignment is based on your own results, not a shared answer key.
+
+### Find all cluster marker genes
+
+`FindAllMarkers()` runs differential expression for every cluster against all other cells and reports the genes that best distinguish each one.
 
 ```r
 pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE)
@@ -532,35 +590,64 @@ pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE)
 pbmc.markers %>%
   group_by(cluster) %>%
   dplyr::filter(avg_log2FC > 1) %>%
-  slice_head(n = 5) %>%
+  slice_head(n = 10) %>%
   ungroup()
 ```
 
-For PBMCs, a small set of canonical marker genes is enough to assign each cluster a cell type identity:
+---
 
-| Cluster | Markers | Cell Type |
-|---|---|---|
-| 0 | `IL7R`, `CCR7` | Naive CD4+ T |
-| 1 | `CD14`, `LYZ` | CD14+ Mono |
-| 2 | `IL7R`, `S100A4` | Memory CD4+ T |
-| 3 | `MS4A1` | B |
-| 4 | `CD8A` | CD8+ T |
-| 5 | `FCGR3A`, `MS4A7` | FCGR3A+ Mono |
-| 6 | `GNLY`, `NKG7` | NK |
-| 7 | `FCER1A`, `CST3` | DC |
-| 8 | `PPBP` | Platelet |
+???+ question "Exercise 3.1: Annotate your assigned cluster"
+
+    **Your instructor will assign you one cluster number from your own results.**
+
+    1. Pull the top marker genes for your assigned cluster specifically. Run the **Exercise 12** chunk in `workshop.Rmd`:
+
+        ```r
+        my_cluster <- ___   # the cluster number your instructor assigned you
+
+        FindMarkers(pbmc, ident.1 = my_cluster) %>%
+          filter(pct.1 > 0.25) %>%   # expressed in a meaningful fraction of the cluster, not just a couple of cells
+          arrange(desc(avg_log2FC)) %>%
+          head(15)
+        ```
+
+        !!! warning "Watch out for noise genes"
+            If you sort by `avg_log2FC` without filtering on `pct.1` (the fraction of cells in your cluster expressing the gene) first, you'll often get genes detected in only 1-2% of cells with huge fold changes, statistically "significant" but not real markers of anything. A gene expressed in <10% of your cluster isn't a useful marker, no matter how large its fold change.
+
+    2. Pick the 3-5 genes with the highest `avg_log2FC` and lowest `p_val_adj`. Research each one using at least one of:
+
+        - [GeneCards](https://www.genecards.org/)
+        - [The Human Protein Atlas](https://www.proteinatlas.org/)
+        - [PubMed](https://pubmed.ncbi.nlm.nih.gov/) (search the gene symbol plus "PBMC" or "immune cell")
+        - [CellMarker 2.0](http://bio-bigdata.hrbmu.edu.cn/CellMarker/)
+
+    3. Sanity-check your candidate genes against your cluster visually:
+
+        ```r
+        my_genes <- c("GENE1", "GENE2", "GENE3")  # substitute your chosen genes
+
+        VlnPlot(pbmc, features = my_genes)
+        FeaturePlot(pbmc, features = my_genes)
+        ```
+
+    4. Write a short paragraph (3-5 sentences) proposing a cell type identity for your cluster. Cite at least one source, and state your confidence: is this a well-known canonical marker, or a more ambiguous call?
+
+    **Come prepared to present:** your cluster number, your top marker genes, your proposed cell type, and the evidence that convinced you.
+
+!!! info "PBMCs contain a known, limited set of cell types"
+    To narrow your search: peripheral blood mononuclear cells are overwhelmingly composed of T cells (multiple subsets), B cells, monocytes, NK cells, dendritic cells, and platelets. You don't need to consider rare or exotic cell types, but you do need to determine *which* of these your cluster is, and ideally which subset.
+
+### Finalizing the annotation as a class
+
+Once everyone has presented, agree on a label for each cluster as a group and apply them together:
 
 ```r
-new.cluster.ids <- c("Naive CD4 T", "CD14+ Mono", "Memory CD4 T", "B", "CD8 T",
-                      "FCGR3A+ Mono", "NK", "DC", "Platelet")
+new.cluster.ids <- c("your", "class's", "agreed", "labels", "in", "cluster", "order")  # extend/edit to match your clusters
 names(new.cluster.ids) <- levels(pbmc)
 pbmc <- RenameIdents(pbmc, new.cluster.ids)
 
 DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 ```
-
-!!! tip "Rare populations"
-    Clusters 7 and 8 are small (32 and 13 cells respectively) but still resolve cleanly because their marker genes (`FCER1A`/`CST3` for dendritic cells, `PPBP` for platelets) are so strongly and specifically expressed. Rare, transcriptionally distinct populations can be recovered even from a dataset of a few thousand cells.
 
 ## Further Reading
 
