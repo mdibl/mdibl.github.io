@@ -1,13 +1,40 @@
 # Single Cell RNAseq
 
-!!! info "Coming soon — July 2026"
+!!! info "Coming soon: July 2026"
     This workshop is under development and will be available for the July 2026 workshop series. Check back closer to the session date for the full course page.
 
 ---
 
 Single-cell RNA sequencing (scRNA-seq) resolves gene expression at the level of individual cells, revealing the diversity of cell types and states within a tissue that bulk RNA-seq would average together. It has become a foundational tool for mapping cell atlases, characterizing tumor microenvironments, and studying development.
 
-In this workshop you will work with a processed single-cell dataset, learn how the cell × gene matrix differs from bulk data, perform quality control and normalization, cluster cells into groups, and identify cell types from marker genes — all visualized through UMAP embeddings.
+In this workshop you will work with a processed single-cell dataset, learn how the cell × gene matrix differs from bulk data, perform quality control and normalization, cluster cells into groups, and identify cell types from marker genes, all visualized through UMAP embeddings.
+
+## How Single-Cell Sequencing Works
+
+Before any analysis begins, individual cells have to be physically isolated and tagged so that every read can be traced back to the cell it came from. The 10x Genomics Chromium platform (the source of this workshop's dataset) does this with **droplet microfluidics**.
+
+Each cell is paired with a single **gel bead** carrying millions of copies of a DNA oligo. Every oligo on a given bead shares the same **10x cell barcode**, but has a different random **UMI (Unique Molecular Identifier)** and a poly(dT) tail that captures mRNA:
+
+<figure>
+<img src="img/10x-v3-gel-beads.png" alt="10x Genomics gel bead oligo structure: TruSeq Read 1, 10x Barcode, UMI, Poly(dT)" style="width:100%; max-width:800px;">
+<figcaption>Every oligo on one gel bead shares the same 10x Barcode but a unique UMI. This is what lets reads be traced back to their cell of origin and de-duplicated to individual RNA molecules. Source: 10x Genomics.</figcaption>
+</figure>
+
+A microfluidic chip then merges one cell, one gel bead, and oil at a T-junction, encapsulating them together in a nanoliter droplet called a **GEM** (Gel bead-in-EMulsion):
+
+<figure>
+<img src="img/gem-droplet-capture.png" alt="10x Genomics GEM generation: barcoded gel beads and cells merge with oil into single-cell droplets" style="width:100%; max-width:900px;">
+<figcaption>Barcoded gel beads, cells, and oil meet at a microfluidic junction. Poisson loading keeps most droplets empty or single-occupancy; a small fraction end up with two cells, which is where doublets come from (see QC below). Source: 10x Genomics.</figcaption>
+</figure>
+
+The clip below is real microscopy footage of that junction: each droplet pinching off is one GEM, and (ideally) one cell, forming in real time:
+
+<figure>
+<img src="img/microfluidics-capture.gif" alt="Microscopy footage of droplets forming at a microfluidic junction" style="width:100%; max-width:700px;">
+<figcaption>Droplet generation at the microfluidic junction. Once a cell lyses inside its droplet, its mRNA hybridizes to the bead's oligos, tagging every transcript with that cell's barcode before sequencing.</figcaption>
+</figure>
+
+Downstream, Cell Ranger uses the shared barcode to group reads by cell of origin and the UMI to collapse PCR duplicates into a single molecule count, which is exactly what becomes the rows and columns of the count matrix in Part 1.
 
 !!! info "Learning Objectives"
     By the end of this workshop you will be able to:
@@ -18,7 +45,7 @@ In this workshop you will work with a processed single-cell dataset, learn how t
 
     **QC / Pre-processing**
 
-    - Perform quality control on a Seurat object — scoring mitochondrial content, filtering low-count cells, and thresholding `nFeature_RNA` to flag potential doublets
+    - Perform quality control on a Seurat object: scoring mitochondrial content, filtering low-count cells, and thresholding `nFeature_RNA` to flag potential doublets
     - Log-normalize and scale expression data in preparation for dimensionality reduction
 
     **Post-processing**
@@ -36,16 +63,16 @@ In this workshop you will work with a processed single-cell dataset, learn how t
 ## Launch Your Workspace
 
 !!! info "You need a free GitHub account to use this workshop"
-    This workshop runs in **GitHub Codespaces** — a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
+    This workshop runs in **GitHub Codespaces**, a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
 
     **GitHub Free quota (per account, per month):**
 
-    - 120 core-hours of compute — equivalent to **60 hours** of run time on a standard 2-core Codespace
+    - 120 core-hours of compute, equivalent to **60 hours** of run time on a standard 2-core Codespace
     - 15 GB of storage
 
     This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
 
-This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with Seurat and all required packages installed.
+This workshop runs entirely in a cloud environment: no software installation required. One click opens a pre-configured RStudio session with Seurat and all required packages installed.
 
 <div style="margin: 1.2rem 0;">
 <a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fsingle-cell%2Fdevcontainer.json" target="_blank">
@@ -58,11 +85,11 @@ This workshop runs entirely in a cloud environment — no software installation 
 
 **What you'll see:**
 
-1. GitHub opens a VS Code editor in your browser — this is the Codespace container. You do not need to use VS Code for this workshop.
+1. GitHub opens a VS Code editor in your browser, this is the Codespace container. You do not need to use VS Code for this workshop.
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
 
-!!! tip "Keep your Codespace awake — and stop it when you're done"
+!!! tip "Keep your Codespace awake, and stop it when you're done"
     Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
 
     **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
@@ -79,13 +106,13 @@ This workshop runs entirely in a cloud environment — no software installation 
     2. Press **Ctrl+C** to stop it.
     3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
 
-    ***Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.***
+    ***Closing the browser tab is not enough: a suspended Codespace still counts against your monthly storage quota.***
 
 **Getting oriented in RStudio:**
 
 Once RStudio is open, get the workshop files ready:
 
-1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `scRNAseq.Rproj` to open the project — this sets your working directory correctly so data paths in the script will resolve.
+1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `scRNAseq.Rproj` to open the project, this sets your working directory correctly so data paths in the script will resolve.
 2. Open `workshop.Rmd` (File → Open File, or click it in the Files pane). This is the file you will work through during the workshop.
 3. Each grey block is a code chunk. Run a chunk by clicking the **▶ Run Current Chunk** button (green play icon at the top-right of the chunk), or press **Ctrl+Shift+Enter** (Windows/Linux) / **Cmd+Shift+Return** (Mac).
 
@@ -96,8 +123,8 @@ Once RStudio is open, get the workshop files ready:
 
 ## About This Dataset
 
-!!! abstract "10x Genomics PBMC 3k — Seurat Guided Clustering Tutorial"
-    **Source:** [10x Genomics](https://www.10xgenomics.com/) — Peripheral Blood Mononuclear Cells (PBMC), 2,700 single cells sequenced on the Illumina NextSeq 500
+!!! abstract "10x Genomics PBMC 3k: Seurat Guided Clustering Tutorial"
+    **Source:** [10x Genomics](https://www.10xgenomics.com/), Peripheral Blood Mononuclear Cells (PBMC), 2,700 single cells sequenced on the Illumina NextSeq 500
     **Data download:** [`pbmc3k_filtered_gene_bc_matrices.tar.gz`](https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz)
     **Template:** This workshop follows the structure of the Seurat [**Guided Clustering Tutorial (pbmc3k)**](https://satijalab.org/seurat/articles/pbmc3k_tutorial), developed and maintained by the **Satija Lab and collaborators**.
 
@@ -105,16 +132,16 @@ This dataset and analysis walkthrough is one of the most widely used entry point
 
 **Citing Seurat:** if you use Seurat in your own research, cite the paper corresponding to the version you use:
 
-- Hao, Y. et al. ["Dictionary learning for integrative, multimodal and scalable single-cell analysis."](https://doi.org/10.1038/s41587-023-01767-y) *Nature Biotechnology* (2023) — Seurat v5
-- Hao\*, Hao\*, et al. ["Integrated analysis of multimodal single-cell data."](https://doi.org/10.1016/j.cell.2021.04.048) *Cell* (2021) — Seurat v4
-- Stuart\*, Butler\*, et al. ["Comprehensive Integration of Single-Cell Data."](https://doi.org/10.1016/j.cell.2019.05.031) *Cell* (2019) — Seurat v3
+- Hao, Y. et al. ["Dictionary learning for integrative, multimodal and scalable single-cell analysis."](https://doi.org/10.1038/s41587-023-01767-y) *Nature Biotechnology* (2023), Seurat v5
+- Hao\*, Hao\*, et al. ["Integrated analysis of multimodal single-cell data."](https://doi.org/10.1016/j.cell.2021.04.048) *Cell* (2021), Seurat v4
+- Stuart\*, Butler\*, et al. ["Comprehensive Integration of Single-Cell Data."](https://doi.org/10.1016/j.cell.2019.05.031) *Cell* (2019), Seurat v3
 
 !!! tip "Acknowledgement"
     Dataset courtesy of 10x Genomics. Tutorial structure and analysis workflow adapted from the Seurat project ([satijalab.org/seurat](https://satijalab.org/seurat/)), developed by the Satija Lab and collaborators.
 
 ---
 
-## Part 1 — QC & Pre-processing
+## Part 1: QC & Pre-processing
 
 ### Load packages
 
@@ -131,19 +158,24 @@ getwd()  # should end in .../docs/scRNAseq
 
 ### What is a single-cell expression matrix?
 
-Instead of one column per sample (as in bulk RNA-seq), a single-cell count matrix has **one column per cell** and **one row per gene** — thousands of columns instead of a handful. Each value is the number of UMIs (unique molecular identifiers) for that gene detected in that cell. The vast majority of entries are zero, since any one cell only expresses a fraction of the genome — so Seurat stores the matrix in **sparse format** to save memory.
+Instead of one column per sample (as in bulk RNA-seq), a single-cell count matrix has **one column per cell** and **one row per gene**, thousands of columns instead of a handful. Each value is the number of UMIs (unique molecular identifiers) for that gene detected in that cell. The vast majority of entries are zero, since any one cell only expresses a fraction of the genome, so Seurat stores the matrix in **sparse format** to save memory.
+
+<figure>
+<img src="img/sparse-matrix.svg" alt="Diagram of a sparse cell by gene count matrix stored as MatrixMarket (gene, cell, count) triplets" style="width:100%; max-width:900px;">
+<figcaption>Most cell/gene pairs are zero, so only the non-zero entries are stored, as (gene, cell, count) triplets; this is the MatrixMarket (.mtx) format Cell Ranger outputs.</figcaption>
+</figure>
 
 The `Read10X()` function expects a directory containing three files, the standard output of the [Cell Ranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger) pipeline:
 
 | File | Contents |
 |---|---|
-| `barcodes.tsv.gz` | One cell barcode per line — the column names of the matrix |
-| `features.tsv.gz` | One gene per line (ID + symbol) — the row names of the matrix |
+| `barcodes.tsv.gz` | One cell barcode per line (the column names of the matrix) |
+| `features.tsv.gz` | One gene per line (ID + symbol), the row names of the matrix |
 | `matrix.mtx.gz` | The sparse count matrix itself, in MatrixMarket format |
 
 ---
 
-???+ question "Exercise 1.1 — Load the data and build a Seurat object"
+???+ question "Exercise 1.1: Load the data and build a Seurat object"
 
     Run the **Exercise 1** chunk in `workshop.Rmd`:
 
@@ -153,7 +185,7 @@ The `Read10X()` function expects a directory containing three files, the standar
     pbmc
     ```
 
-    `min.cells = 3` drops genes detected in fewer than 3 cells; `min.features = 200` drops cells with fewer than 200 detected genes — a first, coarse pass at removing empty droplets and background noise.
+    `min.cells = 3` drops genes detected in fewer than 3 cells; `min.features = 200` drops cells with fewer than 200 detected genes, a first, coarse pass at removing empty droplets and background noise.
 
     **Questions:**
 
@@ -171,7 +203,7 @@ The `Read10X()` function expects a directory containing three files, the standar
     # Active assay: RNA (13714 features, 0 variable features)
     ```
 
-    The raw matrix has 32,738 genes × 2,700 cells. After the `min.cells`/`min.features` filter, 13,714 genes remain (genes never detected in at least 3 cells carry no information); all 2,700 cells are still present at this stage — `min.features = 200` is a very permissive floor, mainly there to drop obviously empty droplets before real QC begins.
+    The raw matrix has 32,738 genes × 2,700 cells. After the `min.cells`/`min.features` filter, 13,714 genes remain (genes never detected in at least 3 cells carry no information); all 2,700 cells are still present at this stage. `min.features = 200` is a very permissive floor, mainly there to drop obviously empty droplets before real QC begins.
 
 ---
 
@@ -179,15 +211,15 @@ The `Read10X()` function expects a directory containing three files, the standar
 
 Three metrics distinguish a real cell from an empty droplet, background noise, or a doublet:
 
-- **`nFeature_RNA`** — the number of unique genes detected in a cell. Too low → empty droplet or a dying cell; abnormally high → possibly two cells captured in one droplet (a **doublet**).
-- **`nCount_RNA`** — total UMIs detected in a cell (correlates with `nFeature_RNA`).
-- **`percent.mt`** — the percentage of a cell's reads that map to mitochondrial genes. Dying or lysed cells leak cytoplasmic RNA but retain mitochondrial RNA, so a high `percent.mt` flags low-quality cells.
+- **`nFeature_RNA`**: the number of unique genes detected in a cell. Too low → empty droplet or a dying cell; abnormally high → possibly two cells captured in one droplet (a **doublet**).
+- **`nCount_RNA`**: total UMIs detected in a cell (correlates with `nFeature_RNA`).
+- **`percent.mt`**: the percentage of a cell's reads that map to mitochondrial genes. Dying or lysed cells leak cytoplasmic RNA but retain mitochondrial RNA, so a high `percent.mt` flags low-quality cells.
 
-`PercentageFeatureSet()` computes the mitochondrial percentage by summing counts for every gene matching a pattern — human mitochondrial genes are conventionally prefixed `MT-`.
+`PercentageFeatureSet()` computes the mitochondrial percentage by summing counts for every gene matching a pattern: human mitochondrial genes are conventionally prefixed `MT-`.
 
 ---
 
-???+ question "Exercise 1.2 — Score mitochondrial content and visualize QC metrics"
+???+ question "Exercise 1.2: Score mitochondrial content and visualize QC metrics"
 
     Run the **Exercise 2** chunk in `workshop.Rmd`:
 
@@ -215,9 +247,9 @@ Three metrics distinguish a real cell from an empty droplet, background noise, o
     #   0.000   1.537   2.031   2.217   2.643  22.569
     ```
 
-    Median `percent.mt` is ~2%, typical for healthy PBMCs — most cells sit in a tight, low band. A handful of cells reach up into the teens and twenties; those are the ones the `percent.mt < 5` threshold below will remove.
+    Median `percent.mt` is ~2%, typical for healthy PBMCs; most cells sit in a tight, low band. A handful of cells reach up into the teens and twenties; those are the ones the `percent.mt < 5` threshold below will remove.
 
-    A cell far above the main `nCount_RNA` vs `nFeature_RNA` trend — more total UMIs than its gene count would predict — is one of the signals used to flag potential **doublets**: two cells' worth of transcripts captured under one barcode.
+    A cell far above the main `nCount_RNA` vs `nFeature_RNA` trend (more total UMIs than its gene count would predict) is one of the signals used to flag potential **doublets**: two cells' worth of transcripts captured under one barcode.
 
 ---
 
@@ -225,16 +257,16 @@ Three metrics distinguish a real cell from an empty droplet, background noise, o
 
 We now apply thresholds on all three metrics at once:
 
-- **`nFeature_RNA > 200`** — removes empty droplets / low-complexity cells
-- **`nFeature_RNA < 2500`** — removes the top tail of the distribution, our proxy for doublets: a cell registering an unusually large number of unique genes is more likely to be two cells captured under one barcode than one unusually complex cell
-- **`percent.mt < 5`** — removes dying / lysed cells
+- **`nFeature_RNA > 200`**: removes empty droplets / low-complexity cells
+- **`nFeature_RNA < 2500`**: removes the top tail of the distribution, our proxy for doublets: a cell registering an unusually large number of unique genes is more likely to be two cells captured under one barcode than one unusually complex cell
+- **`percent.mt < 5`**: removes dying / lysed cells
 
 !!! tip "Setting the doublet threshold in practice"
     The `2500` upper bound on `nFeature_RNA` is this dataset's version of a general strategy: set the ceiling near the top **N%** of the `nFeature_RNA` distribution (inspect the violin plot above) rather than picking a number blind. Dedicated doublet-detection tools (e.g. `scDblFinder`, `DoubletFinder`) formalize this further, but a distribution-informed `nFeature_RNA` ceiling is the standard first pass.
 
 ---
 
-???+ question "Exercise 1.3 — Filter the Seurat object"
+???+ question "Exercise 1.3: Filter the Seurat object"
 
     Run the **Exercise 3** chunk in `workshop.Rmd`:
 
@@ -257,13 +289,13 @@ We now apply thresholds on all three metrics at once:
     # 13714 features across 2638 samples within 1 assay
     ```
 
-    2,638 of the original 2,700 cells survive — only **62 cells removed**. Given the median `percent.mt` of ~2% and the tight `nFeature_RNA` distribution seen in the violin plots, most of this dataset was already high quality; the `percent.mt < 5` cutoff catches the small population of cells in the double-digit tail.
+    2,638 of the original 2,700 cells survive: only **62 cells removed**. Given the median `percent.mt` of ~2% and the tight `nFeature_RNA` distribution seen in the violin plots, most of this dataset was already high quality; the `percent.mt < 5` cutoff catches the small population of cells in the double-digit tail.
 
 ---
 
 ### Normalizing the data
 
-Just as with bulk RNA-seq, raw UMI counts aren't directly comparable across cells — different cells capture different total numbers of transcripts due to technical variation in droplet capture efficiency, not biology. Seurat's default **`LogNormalize`** method:
+Just as with bulk RNA-seq, raw UMI counts aren't directly comparable across cells: different cells capture different total numbers of transcripts due to technical variation in droplet capture efficiency, not biology. Seurat's default **`LogNormalize`** method:
 
 1. Divides each gene's count in a cell by that cell's total counts (library-size normalization)
 2. Multiplies by a scale factor (`10,000` by default)
@@ -273,13 +305,18 @@ Just as with bulk RNA-seq, raw UMI counts aren't directly comparable across cell
 pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 1e4)
 ```
 
+<figure>
+<img src="img/normalization-concept.svg" alt="Worked example of LogNormalize: dividing a gene's count by total counts per cell, multiplying by the scale factor, then log-transforming" style="width:100%; max-width:900px;">
+<figcaption>Two cells can have the identical raw count for a gene and still differ purely because one was sequenced more deeply. Dividing by each cell's total counts before comparing removes that technical difference.</figcaption>
+</figure>
+
 ### Identifying highly variable features
 
-Most genes are either uninformative "housekeeping" genes (similar expression everywhere) or too lowly expressed to be useful. `FindVariableFeatures()` models the mean–variance relationship across all genes and returns the subset that varies the most *beyond* what expression level alone would predict — by default the top 2,000. Downstream steps (scaling, PCA) focus on these features so that biological signal isn't drowned out by uninformative genes.
+Most genes are either uninformative "housekeeping" genes (similar expression everywhere) or too lowly expressed to be useful. `FindVariableFeatures()` models the mean–variance relationship across all genes and returns the subset that varies the most *beyond* what expression level alone would predict, by default the top 2,000. Downstream steps (scaling, PCA) focus on these features so that biological signal isn't drowned out by uninformative genes.
 
 ---
 
-???+ question "Exercise 1.4 — Normalize and find variable features"
+???+ question "Exercise 1.4: Normalize and find variable features"
 
     Run the **Exercise 4** chunk in `workshop.Rmd`:
 
@@ -307,7 +344,7 @@ Most genes are either uninformative "housekeeping" genes (similar expression eve
     #  [9] "GNG11"  "S100A8"
     ```
 
-    `PPBP` and `PF4` are platelet markers, `LYZ`/`S100A9`/`S100A8` are myeloid/monocyte markers, and `GNLY` marks NK/cytotoxic cells — this list is already hinting at the distinct cell populations we'll recover with clustering later. Highly variable genes sit **above** the mean-variance trend line: for their average expression level, they show more cell-to-cell variance than expected by chance.
+    `PPBP` and `PF4` are platelet markers, `LYZ`/`S100A9`/`S100A8` are myeloid/monocyte markers, and `GNLY` marks NK/cytotoxic cells; this list is already hinting at the distinct cell populations we'll recover with clustering later. Highly variable genes sit **above** the mean-variance trend line: for their average expression level, they show more cell-to-cell variance than expected by chance.
 
 ---
 
@@ -320,9 +357,14 @@ all.genes <- rownames(pbmc)
 pbmc <- ScaleData(pbmc, features = all.genes)
 ```
 
+<figure>
+<img src="img/scaling-before-after.svg" alt="Before and after ScaleData: genes at different means and scales are transformed to mean 0, variance 1" style="width:100%; max-width:900px;">
+<figcaption>Before scaling, genes sit at very different means and spreads; after scaling, every gene is centered at 0 with unit variance, so no single gene can dominate PCA just by being highly expressed.</figcaption>
+</figure>
+
 ---
 
-???+ question "Exercise 1.5 — Scale the data"
+???+ question "Exercise 1.5: Scale the data"
 
     Run the **Exercise 5** chunk in `workshop.Rmd`:
 
@@ -331,30 +373,35 @@ pbmc <- ScaleData(pbmc, features = all.genes)
     pbmc <- ScaleData(pbmc, features = all.genes)
     ```
 
-    **Question:** By default, `ScaleData()` only needs to be run on variable features for PCA to work — why scale `all.genes` here instead?
+    **Question:** By default, `ScaleData()` only needs to be run on variable features for PCA to work; why scale `all.genes` here instead?
 
 ??? success "Solution"
 
-    Scaling all genes (rather than just the 2,000 variable features) means the resulting `scale.data` slot can also be used later for visualizations like `DoHeatmap()` across any gene of interest — not just the ones used for PCA. It costs more compute but keeps the object flexible for downstream exploration.
+    Scaling all genes (rather than just the 2,000 variable features) means the resulting `scale.data` slot can also be used later for visualizations like `DoHeatmap()` across any gene of interest, not just the ones used for PCA. It costs more compute but keeps the object flexible for downstream exploration.
 
     !!! tip "Removing unwanted variation"
-        `ScaleData(pbmc, vars.to.regress = "percent.mt")` can regress out a covariate like mitochondrial content directly during scaling — useful when a technical factor is confounding biological signal you care about.
+        `ScaleData(pbmc, vars.to.regress = "percent.mt")` can regress out a covariate like mitochondrial content directly during scaling, useful when a technical factor is confounding biological signal you care about.
 
 ---
 
-## Part 2 — Post-processing
+## Part 2: Post-processing
 
 ### Perform linear dimensional reduction (PCA)
 
-With scaled data in hand, `RunPCA()` computes principal components using the variable features. Each PC is a linear combination of genes — a "metafeature" summarizing a correlated expression pattern across cells — and the first several PCs typically capture the dominant axes of biological variation (here, differences between immune cell types).
+With scaled data in hand, `RunPCA()` computes principal components using the variable features. Each PC is a linear combination of genes (a "metafeature" summarizing a correlated expression pattern across cells), and the first several PCs typically capture the dominant axes of biological variation (here, differences between immune cell types).
 
 ```r
 pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 ```
 
+<figure>
+<img src="img/pca-concept.svg" alt="Diagram of PCA collapsing 2,000 variable genes into a PC1 vs PC2 scatter plot with cell type clusters" style="width:100%; max-width:900px;">
+<figcaption>PCA compresses thousands of correlated gene measurements down to a handful of components. Cell type identity is already visible along the first couple of PCs, well before clustering or UMAP.</figcaption>
+</figure>
+
 ---
 
-???+ question "Exercise 2.1 — Run and visualize PCA"
+???+ question "Exercise 2.1: Run and visualize PCA"
 
     Run the **Exercise 6** chunk in `workshop.Rmd`:
 
@@ -370,19 +417,24 @@ pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 
 ??? success "Solution"
 
-    PC1's top positive/negative loadings are dominated by myeloid genes (`LYZ`, `CST3`, `S100A8/9`) on one end and lymphocyte genes (`CD3`-family, `IL7R`) on the other — PC1 is primarily separating **myeloid cells (monocytes/DCs) from lymphocytes (T/B/NK cells)**, the single largest axis of variation in PBMCs.
+    PC1's top positive/negative loadings are dominated by myeloid genes (`LYZ`, `CST3`, `S100A8/9`) on one end and lymphocyte genes (`CD3`-family, `IL7R`) on the other: PC1 is primarily separating **myeloid cells (monocytes/DCs) from lymphocytes (T/B/NK cells)**, the single largest axis of variation in PBMCs.
 
 ---
 
 ### Determining the dimensionality of the dataset
 
-Not every PC captures real signal — later PCs are increasingly dominated by noise. An **elbow plot** ranks PCs by the percentage of variance they explain; the "elbow" — where the curve flattens — is a heuristic for how many PCs carry real signal.
+Not every PC captures real signal; later PCs are increasingly dominated by noise. An **elbow plot** ranks PCs by the percentage of variance they explain; the "elbow" (where the curve flattens) is a heuristic for how many PCs carry real signal.
 
 ```r
 ElbowPlot(pbmc)
 ```
 
-In this dataset the elbow sits around **PC9–10**, so the workshop uses the first **10 PCs** for everything downstream. (The Seurat authors note that erring on the higher side rarely hurts — the difference between 10, 15, or 20 PCs is usually small — but using only 5 does noticeably degrade results.)
+<figure>
+<img src="img/elbow-plot.png" alt="Elbow plot of principal component standard deviation, flattening out after around PC 9-10" style="width:100%; max-width:600px;">
+<figcaption>Standard deviation explained per PC. The curve drops sharply for the first ~10 components, then flattens (the "elbow"), indicating diminishing biological signal in later PCs. Output from the CGDS Core's internal scRNA-seq pipeline.</figcaption>
+</figure>
+
+In this dataset the elbow sits around **PC9–10**, so the workshop uses the first **10 PCs** for everything downstream. (The Seurat authors note that erring on the higher side rarely hurts: the difference between 10, 15, or 20 PCs is usually small, but using only 5 does noticeably degrade results.)
 
 ---
 
@@ -390,14 +442,24 @@ In this dataset the elbow sits around **PC9–10**, so the workshop uses the fir
 
 Seurat clusters cells using a **graph-based** approach rather than a classic method like k-means:
 
-1. **`FindNeighbors()`** builds a **k-nearest neighbor (KNN) graph** in PCA space — connecting each cell to its most similar neighbors by Euclidean distance on the chosen PCs — then refines edge weights by the *shared* overlap between neighborhoods (Jaccard similarity), producing a shared nearest neighbor (SNN) graph.
+1. **`FindNeighbors()`** builds a **k-nearest neighbor (KNN) graph** in PCA space, connecting each cell to its most similar neighbors by Euclidean distance on the chosen PCs, then refines edge weights by the *shared* overlap between neighborhoods (Jaccard similarity), producing a shared nearest neighbor (SNN) graph.
 2. **`FindClusters()`** partitions that graph into communities using the **Louvain algorithm** (the default modularity-optimization method), which iteratively groups cells to maximize the density of connections within clusters relative to between them.
 
-The `resolution` parameter controls granularity — higher values produce more, smaller clusters. `0.4–1.2` is the typical useful range for a dataset of a few thousand cells.
+The `resolution` parameter controls granularity, higher values produce more, smaller clusters. `0.4–1.2` is the typical useful range for a dataset of a few thousand cells.
+
+<figure>
+<img src="img/knn-graph.svg" alt="Diagram of a k-nearest-neighbor graph in PCA space, showing one focal cell connected to its 5 nearest neighbors" style="width:100%; max-width:900px;">
+<figcaption>FindNeighbors() connects each cell to its nearest neighbors in PCA space, forming the graph that Louvain clustering will later partition.</figcaption>
+</figure>
+
+<figure>
+<img src="img/louvain-clusters.svg" alt="Diagram of Louvain community detection: densely connected clusters of nodes with sparse edges between clusters" style="width:100%; max-width:900px;">
+<figcaption>Louvain clustering finds communities with dense internal connections and sparse connections to other communities: each community becomes a numbered cluster.</figcaption>
+</figure>
 
 ---
 
-???+ question "Exercise 2.2 — Build the KNN graph and cluster with Louvain"
+???+ question "Exercise 2.2: Build the KNN graph and cluster with Louvain"
 
     Run the **Exercise 7** chunk in `workshop.Rmd`:
 
@@ -424,21 +486,26 @@ The `resolution` parameter controls granularity — higher values produce more, 
     # 684 481 476 344 291 162 155  32  13
     ```
 
-    Resolution `0.5` produces **9 clusters**, ranging from 684 cells down to a rare population of just 13. Lowering resolution merges related clusters together (fewer, larger groups); raising it splits them further (more, smaller groups) — there is no single "correct" resolution, only one appropriate to how finely you want to distinguish cell states.
+    Resolution `0.5` produces **9 clusters**, ranging from 684 cells down to a rare population of just 13. Lowering resolution merges related clusters together (fewer, larger groups); raising it splits them further (more, smaller groups); there is no single "correct" resolution, only one appropriate to how finely you want to distinguish cell states.
 
 ---
 
 ### Run non-linear dimensional reduction (UMAP)
 
-PCA and clustering happen in high-dimensional space (10 PCs); **UMAP** compresses that structure into 2D for visualization, aiming to keep cells that are close together in the KNN graph close together on the plot. It's a visualization tool, not a source of biological truth on its own — conclusions should rest on the clustering and marker analysis, not the UMAP layout alone.
+PCA and clustering happen in high-dimensional space (10 PCs); **UMAP** compresses that structure into 2D for visualization, aiming to keep cells that are close together in the KNN graph close together on the plot. It's a visualization tool, not a source of biological truth on its own; conclusions should rest on the clustering and marker analysis, not the UMAP layout alone.
 
 ```r
 pbmc <- RunUMAP(pbmc, dims = 1:10)
 ```
 
+<figure>
+<img src="img/umap-concept.svg" alt="Diagram of UMAP collapsing 10 PCs into a 2D layout with distinct cell type islands" style="width:100%; max-width:900px;">
+<figcaption>UMAP folds the 10-dimensional PCA space down to 2D, keeping cells that were close neighbors near each other: related T cell subsets sit close together while monocytes, B cells, and other distinct types form separate islands.</figcaption>
+</figure>
+
 ---
 
-???+ question "Exercise 2.3 — Run UMAP"
+???+ question "Exercise 2.3: Run UMAP"
 
     Run the **Exercise 8** chunk in `workshop.Rmd`:
 
@@ -451,11 +518,11 @@ pbmc <- RunUMAP(pbmc, dims = 1:10)
 
 ??? success "Solution"
 
-    The large lymphocyte clusters (naive/memory CD4+ T, CD8+ T) tend to sit close together with soft boundaries — reflecting real biological similarity between T cell subsets — while monocyte, B, NK, and platelet clusters typically form clearly separated islands. Overlap on the UMAP between two clusters doesn't mean the clustering was wrong; it reflects a continuum of similar transcriptional states.
+    The large lymphocyte clusters (naive/memory CD4+ T, CD8+ T) tend to sit close together with soft boundaries (reflecting real biological similarity between T cell subsets), while monocyte, B, NK, and platelet clusters typically form clearly separated islands. Overlap on the UMAP between two clusters doesn't mean the clustering was wrong; it reflects a continuum of similar transcriptional states.
 
 ---
 
-## Bonus — Marker Genes & Cell Type Annotation
+## Bonus: Marker Genes & Cell Type Annotation
 
 Clusters are just numbers until you connect them to biology. `FindAllMarkers()` runs differential expression for every cluster against all other cells and reports the genes that best distinguish each one.
 
@@ -493,16 +560,16 @@ DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 ```
 
 !!! tip "Rare populations"
-    Clusters 7 and 8 are small — 32 and 13 cells respectively — but still resolve cleanly because their marker genes (`FCER1A`/`CST3` for dendritic cells, `PPBP` for platelets) are so strongly and specifically expressed. Rare, transcriptionally distinct populations can be recovered even from a dataset of a few thousand cells.
+    Clusters 7 and 8 are small (32 and 13 cells respectively) but still resolve cleanly because their marker genes (`FCER1A`/`CST3` for dendritic cells, `PPBP` for platelets) are so strongly and specifically expressed. Rare, transcriptionally distinct populations can be recovered even from a dataset of a few thousand cells.
 
 ## Further Reading
 
-- [Seurat — Guided Clustering Tutorial (pbmc3k)](https://satijalab.org/seurat/articles/pbmc3k_tutorial) — the source tutorial this workshop is adapted from
-- [Hao et al. 2023, *Nature Biotechnology*](https://doi.org/10.1038/s41587-023-01767-y) — the Seurat v5 paper
-- [Stuart\* & Butler\* et al. 2019, *Cell*](https://doi.org/10.1016/j.cell.2019.05.031) — variable feature selection and anchor-based integration methodology
-- [Macosko et al. 2015, *Cell*](https://doi.org/10.1016/j.cell.2015.05.002) — Drop-seq and the graph-based clustering approach Seurat builds on
-- [10x Genomics — PBMC 3k dataset](https://www.10xgenomics.com/) — original data source
+- [Seurat Guided Clustering Tutorial (pbmc3k)](https://satijalab.org/seurat/articles/pbmc3k_tutorial): the source tutorial this workshop is adapted from
+- [Hao et al. 2023, *Nature Biotechnology*](https://doi.org/10.1038/s41587-023-01767-y): the Seurat v5 paper
+- [Stuart\* & Butler\* et al. 2019, *Cell*](https://doi.org/10.1016/j.cell.2019.05.031): variable feature selection and anchor-based integration methodology
+- [Macosko et al. 2015, *Cell*](https://doi.org/10.1016/j.cell.2015.05.002): Drop-seq and the graph-based clustering approach Seurat builds on
+- [10x Genomics PBMC 3k Dataset](https://www.10xgenomics.com/): original data source
 
 ---
 
-*Questions? Contact the CGDS Core — [CGDS@mdibl.org](mailto:CGDS@mdibl.org)*
+*Questions? Contact the CGDS Core: [CGDS@mdibl.org](mailto:CGDS@mdibl.org)*
