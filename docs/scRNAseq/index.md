@@ -1,7 +1,6 @@
 # Single Cell RNAseq
 
-!!! info "Coming soon: July 2026"
-    This workshop is under development and will be available for the July 2026 workshop series. Check back closer to the session date for the full course page.
+> **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
 ---
 
