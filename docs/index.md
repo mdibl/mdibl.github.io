@@ -7,7 +7,7 @@
     | <s>July 1, 2026</s>  | [Differential Gene Expression (Bulk RNAseq)](bulkDGE/index.md) |
     |<s>July 8, 2026</s> | [Single Cell RNAseq](scRNAseq/index.md) |
     | <s>July 15, 2026</s> | [Spatial Transcriptomics](spatial/index.md) |
-    | **July 22, 2026</s> | [Computational Workflows ](workflows/index.md) |
+    | **July 22, 2026** | [Computational Workflows ](workflows/index.md) |
 
     [Learn More :octicons-arrow-right-24:](introDataTypes/index.md){ .md-button .md-button--primary }
 
