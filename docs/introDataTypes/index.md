@@ -12,9 +12,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Learn how to go from raw RNA-seq count data to a list of differentially expressed genes. Covers the structure of count matrices, normalization, DESeq2, and how to visualize results with volcano plots and heatmaps.
 
-    **~120 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Learn more](../bulkDGE/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../bulkDGE/index.md){ .md-button .md-button--primary }
 
 -   :material-dots-grid:{ .lg .middle } **Single Cell RNAseq**
 
@@ -22,9 +22,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Explore gene expression one cell at a time. Learn the structure of single-cell data, how to perform quality control and clustering, and how to identify cell types from marker genes and UMAP embeddings.
 
-    **~120 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Learn more](../scRNAseq/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../scRNAseq/index.md){ .md-button .md-button--primary }
 
 -   :material-map:{ .lg .middle } **Spatial Transcriptomics**
 
@@ -32,7 +32,7 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Combine gene expression with tissue context. Learn how spatial transcriptomics data is structured, how to visualize gene expression overlaid on tissue sections, and how spatial patterns connect to tissue architecture.
 
-    **~120 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Coming July 2026**
 
     [:octicons-arrow-right-24: Learn more](../spatial/index.md){ .md-button }
 
@@ -42,7 +42,7 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Learn how bioinformatics pipelines connect raw sequencing reads to analysis-ready outputs. Covers workflow concepts, running nf-core pipelines, and moving between local, cloud, and HPC environments.
 
-    **~120 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Coming July 2026**
 
     [:octicons-arrow-right-24: Learn more](../workflows/index.md){ .md-button }
 
