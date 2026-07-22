@@ -1,0 +1,4181 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../genomics/">
+      
+      
+        <link rel="next" href="../dataViz/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Introduction to R & RStudio - MDIBL Comparative Genomics and Data Science Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-r-rstudio" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDIBL Comparative Genomics and Data Science Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to R & RStudio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../home/team/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introDataScience/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Data Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../introDataTypes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Genomics Data Types
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../bits/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bioinformatics Bits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../courseArchives/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Course Archives
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    MDIBL Comparative Genomics and Data Science Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataScience/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Data Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataOrganization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why R?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why R?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is R?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is RStudio?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-r-for-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why use R for science?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-tour-of-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Tour of RStudio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-r-as-a-calculator-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: R as a Calculator &amp; Objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: R as a Calculator &amp; Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-as-a-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R as a Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects-saving-values-for-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objects: Saving Values for Later
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Vectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Vectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Vector?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-coercion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Coercion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexing Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-loading-and-exploring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Loading and Exploring Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Loading and Exploring Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Data Frame?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-a-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploring a Data Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-indexing-data-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Indexing Data Frames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Indexing Data Frames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-columns-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Columns with $
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bracket-notation-row-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bracket Notation [row, column]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistics-on-a-single-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statistics on a Single Column
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-logical-operators-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Logical Operators &amp; Filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Logical Operators &amp; Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-data-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering Data Frames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-row-numbers-instead-of-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        which() — Row Numbers Instead of Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-na-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling NA Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-functions-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Functions Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operators Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes to Avoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataViz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataTypes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Genomics Data Types
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Genomics Data Types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bulkDGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Differential Gene Expression (Bulk RNAseq)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single Cell RNAseq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Transcriptomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computational Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../bits/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Bits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bioinformatics Bits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Archives
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Archives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introToCloudCourse/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/scrnaseq2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScRNAseq in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ScRNAseq in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/learning_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/loupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loupe Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/introCloud2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why R?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why R?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is R?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is RStudio?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-r-for-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why use R for science?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-tour-of-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Tour of RStudio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-r-as-a-calculator-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: R as a Calculator &amp; Objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: R as a Calculator &amp; Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-as-a-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R as a Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects-saving-values-for-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objects: Saving Values for Later
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Vectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Vectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Vector?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-coercion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Coercion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexing Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-loading-and-exploring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Loading and Exploring Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Loading and Exploring Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Data Frame?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-a-data-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploring a Data Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-indexing-data-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Indexing Data Frames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Indexing Data Frames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-columns-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Columns with $
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bracket-notation-row-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bracket Notation [row, column]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistics-on-a-single-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statistics on a Single Column
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-logical-operators-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Logical Operators &amp; Filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Logical Operators &amp; Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-data-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering Data Frames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-row-numbers-instead-of-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        which() — Row Numbers Instead of Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-na-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling NA Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workshop Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workshop Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-functions-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Functions Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operators Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes to Avoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-to-r-rstudio">Introduction to R &amp; RStudio</h1>
+<blockquote>
+<p><strong>Workshop:</strong> ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
+</blockquote>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
+<ul>
+<li>Navigate the RStudio interface with confidence</li>
+<li>Create and use objects and vectors in R</li>
+<li>Load a real dataset into R from a CSV file</li>
+<li>Explore a data frame using core inspection functions</li>
+<li>Access specific rows, columns, and cells using <code>$</code> and bracket notation</li>
+<li>Filter data using logical conditions and handle missing values</li>
+</ul>
+</div>
+<hr />
+<h2 id="launch-your-workspace">Launch Your Workspace</h2>
+<div class="admonition info">
+<p class="admonition-title">You need a free GitHub account to use this workshop</p>
+<p>This workshop runs in <strong>GitHub Codespaces</strong> — a cloud environment that requires a GitHub account. If you do not have one, create one for free at <a href="https://github.com">github.com</a> before the session. No paid plan is required.</p>
+<p><strong>GitHub Free quota (per account, per month):</strong></p>
+<ul>
+<li>120 core-hours of compute — equivalent to <strong>60 hours</strong> of run time on a standard 2-core Codespace</li>
+<li>15 GB of storage</li>
+</ul>
+<p>This is enough for workshops and occasional use, but is <strong>not intended to replace a local development environment</strong> for everyday work.</p>
+</div>
+<p>This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.</p>
+<div style="margin: 1.2rem 0;">
+<a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fintro-r%2Fdevcontainer.json" target="_blank">
+  <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces" style="height:32px;">
+</a>
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">First launch takes ~5 minutes</p>
+<p>The first time the Codespace builds, GitHub installs R packages including the full tidyverse collection. Subsequent launches are instant. Start the build, then read through the "Why R?" section while it runs.</p>
+</div>
+<p><strong>What you'll see:</strong></p>
+<ol>
+<li>GitHub opens a VS Code editor in your browser — this is the Codespace container. You do not need to use VS Code for this workshop.</li>
+<li>A browser tab for <strong>RStudio</strong> will open automatically at port 8787. No login is required.</li>
+<li>If RStudio does not open automatically: in VS Code, click the <strong>Ports</strong> tab at the bottom panel, find port <code>8787</code>, and click the globe icon to open it in a new tab.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Keep your Codespace awake — and stop it when you're done</p>
+<p>Codespaces automatically pause after <strong>30 minutes of inactivity</strong>, but suspended Codespaces still consume your monthly storage quota. <strong>Closing the browser tab does not stop the Codespace.</strong></p>
+<p><strong>At the start of the workshop</strong>, open a new terminal tab in VS Code (<strong>Terminal → New Terminal</strong>) and run this keepalive loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;keepalive </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>This pings the Codespace every 5 minutes to prevent it from suspending during the session.</p>
+<div class="admonition danger">
+<p class="admonition-title">How to stop your codespace <em>when you're done</em></p>
+<ol>
+<li>Switch to the VS Code terminal tab where the <code>keepalive</code> loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
+<p><strong><em>Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.</em></strong></p>
+</div>
+</div>
+<p><strong>Getting oriented in RStudio:</strong></p>
+<p>Once RStudio is open, get the workshop files ready:</p>
+<ol>
+<li>In the <strong>Files</strong> pane (bottom-right), you will see the workshop directory. Click <code>introR.Rproj</code> to open the project — this sets your working directory correctly so data paths in the script will resolve.</li>
+<li>Open <code>workshop.R</code> (File → Open File, or click it in the Files pane). This is the script you will work through during the workshop.</li>
+<li>Run lines by placing your cursor on them and pressing <strong>Ctrl+Enter</strong> (Windows/Linux) or <strong>Cmd+Return</strong> (Mac).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Save your work</p>
+<p>Press <strong>Ctrl+S</strong> / <strong>Cmd+S</strong> often. At the end of the session, use the <strong>Files</strong> pane → More → Export to download your completed script to your computer before closing the Codespace.</p>
+</div>
+<hr />
+<h2 id="why-r">Why R?</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Before reading on...</p>
+<p>Think about these questions before scrolling to the explanations below:</p>
+<ol>
+<li>What tools do you currently use to analyze data? What are their limitations?</li>
+<li>If you had to hand your analysis to a collaborator tomorrow, could they reproduce every step exactly?</li>
+</ol>
+</div>
+<h3 id="what-is-r">What is R?</h3>
+<p>R is a <strong>statistical programming language</strong> built specifically for data analysis and visualization. It runs on Windows, Mac, Linux, and in the cloud. It is free and open source.</p>
+<p>"R" refers to both the language itself and the software that interprets your commands. When you type an instruction, R reads it, executes it, and returns a result.</p>
+<h3 id="what-is-rstudio">What is RStudio?</h3>
+<p>RStudio is an <strong>Integrated Development Environment (IDE)</strong> — a user-friendly application that wraps around R and makes it easier to write, organize, and run your code. Think of it as a lab bench: R is the science; RStudio is the workbench you use to do it.</p>
+<div class="admonition note">
+<p class="admonition-title">R ≠ RStudio</p>
+<p>R can run without RStudio. RStudio cannot run without R. This workshop uses both — R does the computing, RStudio provides the interface.</p>
+</div>
+<h3 id="why-use-r-for-science">Why use R for science?</h3>
+<p><strong>Your analysis lives in code, not memory.</strong>
+Point-and-click tools (Excel, GraphPad, etc.) require you to remember every menu, every button, every order of operations. In R, every step is a line of code — readable, shareable, and repeatable. Added more samples? Rerun the script. Caught a data error? Fix it once and the whole analysis updates.</p>
+<p><strong>An ecosystem built for science.</strong>
+Over 20,000 packages extend base R with tools for statistics, ecology, genomics, machine learning, geographic analysis, and more. The same code that works on a 100-row dataset scales to millions of rows without rewriting anything.</p>
+<p><strong>Publication-quality figures.</strong>
+R's <code>ggplot2</code> package produces figures that meet the standards of high-impact journals — with full control over every visual element.</p>
+<p><strong>Free, open, and trustworthy.</strong>
+No licensing costs. Runs on laptops, HPC clusters, and cloud platforms. Because the code is open source, you can inspect exactly what any function does.</p>
+<h3 id="a-tour-of-rstudio">A Tour of RStudio</h3>
+<p>RStudio is divided into four panes. Understanding what lives where will save you a lot of confusion.</p>
+<table>
+<thead>
+<tr>
+<th>Pane</th>
+<th>Location</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Script Editor</strong></td>
+<td>Top-left</td>
+<td>Where you write and save R code. Code here is not run until you explicitly execute it.</td>
+</tr>
+<tr>
+<td><strong>Console</strong></td>
+<td>Bottom-left</td>
+<td>Where R runs commands and prints output. You can type directly here for quick one-off commands.</td>
+</tr>
+<tr>
+<td><strong>Environment / History</strong></td>
+<td>Top-right</td>
+<td>Shows every object currently in memory (Environment tab) and every command you have run (History tab).</td>
+</tr>
+<tr>
+<td><strong>Files / Plots / Help</strong></td>
+<td>Bottom-right</td>
+<td>A file browser, a viewer for plots, and built-in help documentation.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Running code from the Script Editor</p>
+<p>Place your cursor anywhere on a line and press <strong>Ctrl+Enter</strong> (Windows) or <strong>Cmd+Return</strong> (Mac) to run that line. Select multiple lines to run them all at once. Output appears in the Console below.</p>
+</div>
+<details class="question" open="open">
+<summary>Exercise — Get oriented in RStudio</summary>
+<p>Complete these steps to get comfortable with the RStudio interface:</p>
+<ol>
+<li><strong>Create a new script:</strong> File → New File → R Script. A blank editor tab opens.</li>
+<li><strong>Type and run a line:</strong> In the script, type <code>print("Hello world!")</code>. Press Ctrl+Enter / Cmd+Return. The result (<code>[1] "Hello world!"</code>) appears in the Console.</li>
+<li><strong>Save the script:</strong> File → Save As. Name it <code>practice.R</code>. Notice it appears in the Files pane.</li>
+<li><strong>Find the Help tab:</strong> In the bottom-right pane, click the Help tab. Type <code>print</code> in the search box and read the documentation that appears.</li>
+</ol>
+<details class="success">
+<summary>What to expect</summary>
+<ul>
+<li>After running <code>print("Hello world!")</code>, your Console should show:
+  <div class="highlight"><pre><span></span><code>&gt; print(&quot;Hello world!&quot;)
+[1] &quot;Hello world!&quot;
+</code></pre></div>
+  The <code>[1]</code> is R telling you this is the first element of the result — not an error.</li>
+<li>The script file appears in the Files pane once saved.</li>
+<li>The Help page for <code>print</code> shows the function signature, arguments, and examples. You will use this pattern constantly as you learn R.</li>
+</ul>
+</details>
+</details>
+<hr />
+<h2 id="part-1-r-as-a-calculator-objects">Part 1: R as a Calculator &amp; Objects</h2>
+<h3 id="r-as-a-calculator">R as a Calculator</h3>
+<p>At its core, R is a calculator. You can type any arithmetic expression and R evaluates it immediately.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic arithmetic</span>
+<span class="m">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="w">       </span><span class="c1"># addition</span>
+<span class="m">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w">      </span><span class="c1"># subtraction</span>
+<span class="m">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">7</span><span class="w">       </span><span class="c1"># multiplication</span>
+<span class="m">100</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="w">     </span><span class="c1"># division</span>
+<span class="m">2</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="m">3</span><span class="w">       </span><span class="c1"># exponentiation (2 to the power of 3)</span>
+<span class="m">17</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">5</span><span class="w">     </span><span class="c1"># modulo (remainder after division)</span>
+</code></pre></div>
+<p>Parentheses control order of operations exactly as in math:</p>
+<div class="highlight"><pre><span></span><code><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">4</span><span class="w">    </span><span class="c1"># 14 — multiplication happens first</span>
+<span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># 20 — parentheses evaluated first</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise 1.1 — Dog years</summary>
+<p>Different species age at different rates. A common way to convert an animal's age into "human-equivalent years" is to use the <strong>lifespan ratio</strong>:</p>
+<div class="highlight"><pre><span></span><code>human-equivalent age = (animal age / animal max lifespan) × human max lifespan
+</code></pre></div>
+<p>Use these values:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Human maximum lifespan</td>
+<td>122.5 years</td>
+</tr>
+<tr>
+<td>Dog maximum lifespan</td>
+<td>24 years</td>
+</tr>
+<tr>
+<td>Dog's current age</td>
+<td>8 years</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Using only numbers and arithmetic operators</strong> (no objects yet), type the formula into R and calculate: <strong>how old is an 8-year-old dog in human years?</strong></p>
+<details class="success">
+<summary>Solution</summary>
+<p><div class="highlight"><pre><span></span><code><span class="m">8</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">122.5</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[1] 40.83333
+</code></pre></div></p>
+<p>An 8-year-old dog is approximately <strong>41 human years</strong> old.</p>
+<p>Notice that the formula works, but it is hard to read — what does <code>8</code> mean? What does <code>24</code> represent? If you needed to change the dog's age, you would have to hunt through the expression to find the right number. In the next section we solve this with <strong>objects</strong>.</p>
+</details>
+</details>
+<h3 id="objects-saving-values-for-later">Objects: Saving Values for Later</h3>
+<p>Typing raw numbers is tedious when you want to reuse values across many calculations. <strong>Objects</strong> let you give a value a name and recall it whenever you need it.</p>
+<p>Create an object with the <strong>assignment operator</strong> <code>&lt;-</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">human_max</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">122.5</span>
+<span class="n">dog_max</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">24</span>
+<span class="n">dog_age</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span>
+</code></pre></div>
+<p>After running these lines, check the <strong>Environment pane</strong> (top-right) — you will see all three objects listed with their values.</p>
+<p>Now use them:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dog_age</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dog_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_max</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[1] 40.83333
+</code></pre></div>
+<p>An 8-year-old dog is equivalent to about 41 human years.</p>
+<div class="admonition tip">
+<p class="admonition-title">Why <code>&lt;-</code> and not <code>=</code>?</p>
+<p>R accepts <code>=</code> for assignment, but <code>&lt;-</code> is the convention almost all R programmers use. The reason: <code>=</code> is also used inside function calls to name arguments (e.g., <code>mean(x, na.rm = TRUE)</code>). Using <code>&lt;-</code> for assignment keeps the two uses visually distinct.</p>
+</div>
+<h3 id="object-types">Object Types</h3>
+<p>Objects can hold different kinds of data. The three you will encounter most:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Also called</th>
+<th>Example</th>
+<th>What it stores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>numeric</code></td>
+<td>double, integer</td>
+<td><code>42</code>, <code>3.14</code></td>
+<td>Numbers — mathematical operators work here</td>
+</tr>
+<tr>
+<td><code>character</code></td>
+<td>string</td>
+<td><code>"Neotoma albigula"</code></td>
+<td>Text — always wrapped in quotes</td>
+</tr>
+<tr>
+<td><code>logical</code></td>
+<td>boolean</td>
+<td><code>TRUE</code>, <code>FALSE</code></td>
+<td>Binary values — the result of any comparison</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Numeric</span>
+<span class="n">body_weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">47.3</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">body_weight</span><span class="p">)</span><span class="w">   </span><span class="c1"># &quot;numeric&quot;</span>
+
+<span class="c1"># Character</span>
+<span class="n">species_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Neotoma albigula&quot;</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w">  </span><span class="c1"># &quot;character&quot;</span>
+
+<span class="c1"># Logical</span>
+<span class="n">is_nocturnal</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">is_nocturnal</span><span class="p">)</span><span class="w">  </span><span class="c1"># &quot;logical&quot;</span>
+</code></pre></div>
+<p><strong><code>NA</code> is a special value</strong> meaning "missing" or "not available". It is not zero, not blank, not <code>"NA"</code> — it is R's explicit representation of absent data. Many real datasets contain NAs, and how you handle them matters (we return to this in Part 5).</p>
+<div class="highlight"><pre><span></span><code><span class="n">unknown_weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<span class="nf">is.na</span><span class="p">(</span><span class="n">unknown_weight</span><span class="p">)</span><span class="w">  </span><span class="c1"># TRUE</span>
+</code></pre></div>
+<h3 id="naming-objects">Naming Objects</h3>
+<p>Object names can be almost anything, but a few rules apply:</p>
+<ul>
+<li>Names are <strong>case-sensitive</strong>: <code>Weight</code> and <code>weight</code> are different objects</li>
+<li>Names must <strong>start with a letter</strong> (not a number or symbol)</li>
+<li>Use <strong>underscores</strong> to separate words: <code>body_weight</code>, not <code>body.weight</code> or <code>bodyWeight</code> (though all three work)</li>
+<li>Make names <strong>informative</strong>: <code>dog_age</code> is better than <code>x</code> because it tells you what the value represents</li>
+</ul>
+<details class="question" open="open">
+<summary>Exercise 1.2 — Objects and the dog-years formula</summary>
+<p>Reminder of the formula for converting an animal's age to an equivalent human age is:</p>
+<div class="highlight"><pre><span></span><code>human-equivalent age = (animal age / animal max lifespan) × human max lifespan
+</code></pre></div>
+<p>Using your existing objects <code>human_max &lt;- 122.5</code> and <code>dog_max &lt;- 24</code>:</p>
+<ol>
+<li>How old is a 3-year-old dog in human years?</li>
+<li>How old is a 15-year-old dog in human years?</li>
+<li>Make a new object for the maximum lifespan of a cat which is 38, and recalculate both ages.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">human_max</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">122.5</span>
+<span class="n">dog_max</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">24</span>
+
+<span class="c1"># 1. 3-year-old dog</span>
+<span class="m">3</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dog_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_max</span><span class="w">    </span><span class="c1"># 15.3125</span>
+
+<span class="c1"># 2. 15-year-old dog</span>
+<span class="m">15</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dog_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_max</span><span class="w">   </span><span class="c1"># 76.5625</span>
+
+<span class="c1"># 3. Same ages, but for a cat (max lifespan = 38 years)</span>
+<span class="n">cat_max</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">38</span>
+<span class="m">3</span><span class="w">  </span><span class="o">/</span><span class="w"> </span><span class="n">cat_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_max</span><span class="w">   </span><span class="c1"># 9.6...</span>
+<span class="m">15</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">cat_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_max</span><span class="w">   </span><span class="c1"># 48.3...</span>
+</code></pre></div>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Objects</p>
+<ul>
+<li>Use <code>&lt;-</code> to assign a value to a named object.</li>
+<li>Object names are case-sensitive and should be informative.</li>
+<li>The three main types are <code>numeric</code>, <code>character</code>, and <code>logical</code>.</li>
+<li><code>NA</code> represents missing data — it is not zero and not blank.</li>
+<li>Check the <strong>Environment pane</strong> to see all objects currently in memory.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-2-vectors">Part 2: Vectors</h2>
+<p>So far every object has held a single value. R's real power comes from working on <strong>collections of values</strong> all at once.</p>
+<h3 id="what-is-a-vector">What is a Vector?</h3>
+<p>A <strong>vector</strong> is an ordered sequence of values of the same type. It is the most fundamental data structure in R — nearly everything else is built from vectors.</p>
+<p>Create vectors with <code>c()</code>, which stands for "combine":</p>
+<div class="highlight"><pre><span></span><code><span class="n">weights</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="m">32</span><span class="p">,</span><span class="w"> </span><span class="m">28</span><span class="p">,</span><span class="w"> </span><span class="m">51</span><span class="p">,</span><span class="w"> </span><span class="m">37</span><span class="p">)</span><span class="w">      </span><span class="c1"># numeric vector</span>
+<span class="n">taxa</span><span class="w">     </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bird&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Rabbit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># character</span>
+<span class="n">captured</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">  </span><span class="c1"># logical</span>
+</code></pre></div>
+<p>Each of these creates a vector of five elements.</p>
+<h3 id="type-coercion">Type Coercion</h3>
+<p>All values in a vector must be the same type. If you mix types, R silently converts everything to the most flexible type that fits — this is called <strong>coercion</strong>.</p>
+<p>The hierarchy (from least to most flexible): <code>logical</code> → <code>integer</code> → <code>numeric</code> → <code>character</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">mixed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">mixed</span><span class="p">)</span><span class="w">   </span><span class="c1"># &quot;character&quot;</span>
+<span class="n">mixed</span><span class="w">          </span><span class="c1"># &quot;1&quot;  &quot;2&quot;  &quot;three&quot;  — numbers became strings</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">mixed2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">mixed2</span><span class="p">)</span><span class="w">   </span><span class="c1"># &quot;numeric&quot;</span>
+<span class="n">mixed2</span><span class="w">          </span><span class="c1"># 1 2 1 0  — TRUE becomes 1, FALSE becomes 0</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Silent coercion is a common bug</p>
+<p>R will not warn you when it coerces values. If your numeric column suddenly becomes character, check whether a stray text value (like <code>"unknown"</code> or <code>"N/A"</code>) snuck into your data.</p>
+</div>
+<h3 id="inspecting-vectors">Inspecting Vectors</h3>
+<p>Three functions give you quick information about any vector:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">length</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="w">   </span><span class="c1"># number of elements: 5</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="w">    </span><span class="c1"># data type: &quot;numeric&quot;</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="w">      </span><span class="c1"># compact summary: num [1:5] 45 32 28 51 37</span>
+</code></pre></div>
+<p><code>str()</code> (structure) is especially useful for complex objects — it tells you the type, dimensions, and the first few values all at once.</p>
+<h3 id="indexing-vectors">Indexing Vectors</h3>
+<p>Access specific elements with square brackets <code>[]</code>. R uses <strong>1-based indexing</strong> — the first element is at position 1, not 0.</p>
+<div class="highlight"><pre><span></span><code><span class="n">weights</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">        </span><span class="c1"># first element: 45</span>
+<span class="n">weights</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w">        </span><span class="c1"># third element: 28</span>
+<span class="n">weights</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)]</span><span class="w">  </span><span class="c1"># first and third: 45 28</span>
+<span class="n">weights</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">]</span><span class="w">      </span><span class="c1"># elements 2 through 4: 32 28 51</span>
+</code></pre></div>
+<p><code>2:4</code> creates the integer sequence <code>2, 3, 4</code> — a shortcut for <code>c(2, 3, 4)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">weights</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w">       </span><span class="c1"># all elements EXCEPT the first: 32 28 51 37</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise 2.1 — Predict the class</summary>
+<p>Before running these in R, predict what <code>class()</code> will return for each vector. Then run them to check.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vector A</span>
+<span class="n">v_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># Vector B</span>
+<span class="n">v_b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span><span class="w"> </span><span class="m">3L</span><span class="p">)</span><span class="w"> </span>
+<span class="n">v_b2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+
+<span class="c1"># Vector C</span>
+<span class="n">v_c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Vector D</span>
+<span class="n">v_d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">)</span>
+
+<span class="c1"># Vector E</span>
+<span class="n">v_e</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># Vector F</span>
+<span class="n">v_f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;mouse&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rat&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+<details class="success">
+<summary>Solution</summary>
+<table>
+<thead>
+<tr>
+<th>Vector</th>
+<th>Class</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v_a</code></td>
+<td><code>"numeric"</code></td>
+<td>Plain numbers are stored as 64-bit doubles by default</td>
+</tr>
+<tr>
+<td><code>v_b</code> / <code>v_b2</code></td>
+<td><code>"integer"</code></td>
+<td><code>L</code> suffix and <code>as.integer()</code> both produce integer storage</td>
+</tr>
+<tr>
+<td><code>v_c</code></td>
+<td><code>"logical"</code></td>
+<td>All logical</td>
+</tr>
+<tr>
+<td><code>v_d</code></td>
+<td><code>"character"</code></td>
+<td>One string forces all to character</td>
+</tr>
+<tr>
+<td><code>v_e</code></td>
+<td><code>"numeric"</code></td>
+<td><code>TRUE</code>→1, <code>FALSE</code>→0; numeric wins over logical</td>
+</tr>
+<tr>
+<td><code>v_f</code></td>
+<td><code>"character"</code></td>
+<td>One string forces all to character; <code>TRUE</code> becomes <code>"TRUE"</code></td>
+</tr>
+</tbody>
+</table>
+<p>The coercion hierarchy is: <code>logical</code> &lt; <code>integer</code> &lt; <code>numeric</code> &lt; <code>character</code>.</p>
+<p><strong>Two ways to create an integer vector:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nf">c</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span><span class="w"> </span><span class="m">3L</span><span class="p">)</span><span class="w">         </span><span class="c1"># L suffix at definition</span>
+<span class="nf">as.integer</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">))</span><span class="w"> </span><span class="c1"># convert an existing numeric vector</span>
+</code></pre></div>
+<p>Both return <code>"integer"</code> from <code>class()</code>. <code>as.integer()</code> is part of a family of type-conversion functions — <code>as.numeric()</code>, <code>as.character()</code>, <code>as.logical()</code> — that let you explicitly change a vector's type. This is useful when a column comes in as the wrong type (e.g., a year read as character that needs to be numeric).</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 2.2 — Subsetting</summary>
+<p>Given this vector:
+<div class="highlight"><pre><span></span><code><span class="n">captures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Write a single line of R code to extract each of the following:</p>
+<ol>
+<li>The fourth element</li>
+<li>The first and last elements</li>
+<li>Elements 3 through 5</li>
+<li>All elements <strong>except</strong> the second</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">captures</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">)</span>
+
+<span class="n">captures</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="w">          </span><span class="c1"># 3</span>
+<span class="n">captures</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">)]</span><span class="w">    </span><span class="c1"># 12 14</span>
+<span class="n">captures</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">5</span><span class="p">]</span><span class="w">        </span><span class="c1"># 19 3 25</span>
+<span class="n">captures</span><span class="p">[</span><span class="m">-2</span><span class="p">]</span><span class="w">         </span><span class="c1"># 12 19 3 25 8 14</span>
+</code></pre></div>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Vectors</p>
+<ul>
+<li><code>c()</code> combines values into a vector. All elements must be the same type.</li>
+<li>If you mix types, R silently coerces to the most flexible type (<code>character</code> wins over everything).</li>
+<li>Index with <code>[]</code>: single position, <code>c()</code> for multiple, <code>:</code> for ranges, <code>-</code> to exclude.</li>
+<li><code>length()</code>, <code>class()</code>, and <code>str()</code> are your go-to inspection functions.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-3-loading-and-exploring-data">Part 3: Loading and Exploring Data</h2>
+<h3 id="what-is-a-data-frame">What is a Data Frame?</h3>
+<p>A <strong>data frame</strong> is R's representation of a table: rows are observations, columns are variables. Each column is a vector, which means all values in a column share the same type — but different columns can have different types.</p>
+<p>The dataset we will use for the rest of the workshop:</p>
+<p><strong>Portal Project Ecological Survey — Southern Arizona, 1977–1989</strong>
+A long-running study capturing small mammals across 24 experimental plots. Each row is one captured animal. The file <code>data/surveys_complete_77_89.csv</code> contains <strong>16,878 observations</strong> across 13 variables.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>record_id</code></td>
+<td>integer</td>
+<td>Unique observation ID</td>
+</tr>
+<tr>
+<td><code>month</code>, <code>day</code>, <code>year</code></td>
+<td>integer</td>
+<td>Date of capture</td>
+</tr>
+<tr>
+<td><code>plot_id</code></td>
+<td>integer</td>
+<td>Which of the 24 plots</td>
+</tr>
+<tr>
+<td><code>species_id</code></td>
+<td>character</td>
+<td>Two-letter species code</td>
+</tr>
+<tr>
+<td><code>sex</code></td>
+<td>character</td>
+<td>M / F</td>
+</tr>
+<tr>
+<td><code>hindfoot_length</code></td>
+<td>numeric</td>
+<td>Hind foot length in mm</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>numeric</td>
+<td>Body weight in grams</td>
+</tr>
+<tr>
+<td><code>genus</code>, <code>species</code></td>
+<td>character</td>
+<td>Full taxonomic name</td>
+</tr>
+<tr>
+<td><code>taxa</code></td>
+<td>character</td>
+<td>Rodent / Bird / Rabbit / Reptile</td>
+</tr>
+<tr>
+<td><code>plot_type</code></td>
+<td>character</td>
+<td>Experimental treatment applied to the plot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="loading-data">Loading Data</h3>
+<p><code>read.csv()</code> is the base R function for reading comma-separated files into a data frame:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/surveys_complete_77_89.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The <strong>file path</strong> tells R where to find the file relative to your working directory. Because you opened <code>introR.Rproj</code>, your working directory is the <code>introR/</code> folder — so <code>data/surveys_complete_77_89.csv</code> means "the file <code>surveys_complete_77_89.csv</code> inside the <code>data/</code> subfolder."</p>
+<div class="admonition tip">
+<p class="admonition-title">readr's <code>read_csv()</code> — a tidyverse alternative</p>
+<p>The <code>readr</code> package (part of tidyverse, already installed) provides <code>read_csv()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/surveys_complete_77_89.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Key differences from <code>read.csv()</code>:</p>
+<ul>
+<li>Faster for large files</li>
+<li>Automatically reads blank cells as <code>NA</code> (base R reads them as <code>""</code>)</li>
+<li>Displays a column type summary when loading</li>
+</ul>
+<p>Either function works for this workshop. We will use <code>read.csv()</code> so all code runs in base R without loading any packages.</p>
+</div>
+<h3 id="exploring-a-data-frame">Exploring a Data Frame</h3>
+<p>Once the data is loaded, resist the temptation to scroll through it. These functions give you a faster, more reliable picture:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nf">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">      </span><span class="c1"># structure: column count, types, first few values</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&#39;data.frame&#39;:   16878 obs. of  13 variables:
+ $ record_id      : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ month          : int  7 7 7 7 7 7 7 7 7 7 ...
+ $ day            : int  16 16 16 16 16 16 16 16 16 16 ...
+ $ year           : int  1977 1977 1977 1977 1977 ...
+ ...
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">  </span><span class="c1"># min, max, quartiles for numeric; counts for character</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">      </span><span class="c1"># c(16878, 13) — rows × columns</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">     </span><span class="c1"># 16878</span>
+<span class="nf">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">     </span><span class="c1"># 13</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">    </span><span class="c1"># column names as a character vector</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">     </span><span class="c1"># first 6 rows</span>
+<span class="nf">tail</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">     </span><span class="c1"># last 6 rows</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="c1"># first 10 rows</span>
+<span class="nf">View</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">     </span><span class="c1"># open spreadsheet-style viewer in RStudio</span>
+</code></pre></div>
+<p>For categorical columns, a frequency table is often more informative than a numeric summary:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="p">)</span><span class="w">   </span><span class="c1"># counts per taxa group</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="p">)</span><span class="w">    </span><span class="c1"># quick histogram of collection year</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise 3.1 — Explore the structure</summary>
+<p>Run <code>str(data)</code> and <code>summary(data)</code> in your script. Before looking up the answers, try to answer these questions from the output alone:</p>
+<ol>
+<li>How many columns contain numeric data? How many contain text?</li>
+<li>Which column has the most missing values (<code>NA</code>)?</li>
+<li>What is the range of years in this dataset?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nf">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li><strong>Numeric columns:</strong> <code>record_id</code>, <code>month</code>, <code>day</code>, <code>year</code>, <code>plot_id</code>, <code>hindfoot_length</code>, <code>weight</code> — 7 columns. Text (character) columns: <code>species_id</code>, <code>sex</code>, <code>genus</code>, <code>species</code>, <code>taxa</code>, <code>plot_type</code> — 6 columns.</li>
+<li><strong>Most NAs:</strong> <code>hindfoot_length</code> has the most missing values — visible in <code>summary(data)</code> as <code>NA's: &lt;count&gt;</code>.</li>
+<li><strong>Year range:</strong> <code>str(data)</code> shows years starting at 1977; <code>summary(data)</code> shows Min = 1977, Max = 1989.</li>
+</ol>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.2 — First look at the data</summary>
+<p>Answer these questions using only the exploration functions above (no manual scrolling):</p>
+<ol>
+<li>How many rows and columns does the dataset have?</li>
+<li>What are the column names?</li>
+<li>What taxa are present, and how many observations belong to each?</li>
+<li>What is the mean weight across all observations? (Watch out for NAs!)</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/surveys_complete_77_89.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Dimensions</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">          </span><span class="c1"># 16878 rows, 13 columns</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 2. Column names</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># record_id  month  day  year  plot_id  species_id  sex</span>
+<span class="c1"># hindfoot_length  weight  genus  species  taxa  plot_type</span>
+
+<span class="c1"># 3. Taxa counts</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="p">)</span>
+<span class="c1"># Bird    Rabbit    Reptile    Rodent</span>
+<span class="c1">#   300        69          4     16148</span>
+
+<span class="c1"># 4. Mean weight — na.rm removes NA values before calculating</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">   </span><span class="c1"># ~53.2 grams</span>
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 3.3 — Summary of the last 6 rows</summary>
+<p>Calculate summary statistics for <strong>only the last 6 rows</strong> of the dataset. There is more than one way to do this.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># Approach 1: two steps</span>
+<span class="n">last6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tail</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">last6</span><span class="p">)</span>
+
+<span class="c1"># Approach 2: one step using nrow()</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="p">])</span>
+
+<span class="c1"># Approach 3: indexing directly</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="m">16873</span><span class="o">:</span><span class="m">16878</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+</code></pre></div>
+<p><strong>Approach 1 is the most readable</strong>. Approach 2 is the most robust — it works even if the number of rows changes. Approach 3 works for now, but won't always work if the data structure changes. Approach 3 is called "hard-coding" and is <strong>not recommended.</strong></p>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Loading &amp; Exploring</p>
+<ul>
+<li><code>read.csv("path")</code> loads a CSV into a data frame. The path is relative to your working directory.</li>
+<li><code>str()</code> and <code>summary()</code> are the two most useful first-look functions.</li>
+<li><code>head()</code>, <code>tail()</code>, <code>dim()</code>, <code>nrow()</code>, <code>ncol()</code>, <code>names()</code>, and <code>table()</code> complete the exploration toolkit.</li>
+<li><code>View()</code> opens a spreadsheet viewer in RStudio — useful for exploration, but never use it inside automated scripts.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-4-indexing-data-frames">Part 4: Indexing Data Frames</h2>
+<p>Loading the data is only the start. Most analysis requires working with specific subsets: one column, a range of rows, or a particular cell.</p>
+<h3 id="accessing-columns-with">Accessing Columns with <code>$</code></h3>
+<p>The <code>$</code> operator extracts a single column by name and returns it as a vector:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="w">          </span><span class="c1"># all 16,878 weight values as a numeric vector</span>
+<span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w">            </span><span class="c1"># all taxa labels as a character vector</span>
+</code></pre></div>
+<p>Everything you know about vector operations applies to the result — you can pass it directly to <code>mean()</code>, <code>table()</code>, <code>hist()</code>, etc.</p>
+<h3 id="bracket-notation-row-column">Bracket Notation <code>[row, column]</code></h3>
+<p>Square brackets give you full control over rows and columns:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">      </span><span class="c1"># row 1, all columns</span>
+<span class="n">data</span><span class="p">[,</span><span class="w"> </span><span class="m">9</span><span class="p">]</span><span class="w">      </span><span class="c1"># all rows, column 9 (weight)</span>
+<span class="n">data</span><span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">]</span><span class="w">     </span><span class="c1"># row 3, column 5 — a single cell</span>
+<span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">    </span><span class="c1"># rows 1–6, all columns (same as head())</span>
+</code></pre></div>
+<p>The syntax is always <code>data[rows, columns]</code>. Leaving either side blank means "all of them."</p>
+<p>You can also index columns by name — often safer than by position:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;weight&quot;</span><span class="p">]</span><span class="w">             </span><span class="c1"># same as data$weight</span>
+<span class="n">data</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;genus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;species&quot;</span><span class="p">)]</span><span class="w">  </span><span class="c1"># two columns by name</span>
+</code></pre></div>
+<div class="admonition abstract">
+<p class="admonition-title">Stop and think — why won't <code>data[16]</code> work?</p>
+<p>Try running <code>data[16]</code>, <code>data[16, ]</code>, and <code>data[, 16]</code> in R. What does each return?</p>
+<details class="success">
+<summary>Explanation</summary>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="m">16</span><span class="p">]</span>
+<span class="n">Error</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">`[.data.frame`</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">undefined</span><span class="w"> </span><span class="n">columns</span><span class="w"> </span><span class="n">selected</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="w">   </span><span class="n">record_id</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="n">plot_id</span><span class="w"> </span><span class="n">species_id</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="n">hindfoot_length</span><span class="w"> </span><span class="n">weight</span><span class="w">     </span><span class="n">genus</span><span class="w">  </span><span class="n">species</span><span class="w">   </span><span class="n">taxa</span><span class="w"> </span><span class="n">plot_type</span>
+<span class="m">16</span><span class="w">        </span><span class="m">16</span><span class="w">     </span><span class="m">7</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">1977</span><span class="w">       </span><span class="m">4</span><span class="w">         </span><span class="n">DM</span><span class="w">   </span><span class="bp">F</span><span class="w">              </span><span class="m">36</span><span class="w">     </span><span class="kc">NA</span><span class="w"> </span><span class="n">Dipodomys</span><span class="w"> </span><span class="n">merriami</span><span class="w"> </span><span class="n">Rodent</span><span class="w">   </span><span class="n">Control</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">[,</span><span class="w"> </span><span class="m">16</span><span class="p">]</span>
+<span class="n">Error</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">`[.data.frame`</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">undefined</span><span class="w"> </span><span class="n">columns</span><span class="w"> </span><span class="n">selected</span>
+</code></pre></div>
+<p><code>data</code> only has 13 columns, so both <code>data[16]</code> and <code>data[, 16]</code> throw an error — there is no 16th column to select. The comma makes all the difference:</p>
+<ul>
+<li><code>data[16]</code> — treats the data frame like a list and tries to return column 16; errors because column 16 doesn't exist</li>
+<li><code>data[16, ]</code> — row 16, all columns ✓ (this is the one that works)</li>
+<li><code>data[, 16]</code> — all rows, column 16 — same error as <code>data[16]</code></li>
+</ul>
+<p>The syntax <code>[row, col]</code> is the correct way to index a data frame. When you omit the comma, R treats it as a column selector, not a row selector.</p>
+</details>
+</div>
+<h3 id="statistics-on-a-single-column">Statistics on a Single Column</h3>
+<p>Once you have a column, the full range of R's statistical functions is available:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">)</span><span class="w">                       </span><span class="c1"># min, Q1, median, mean, Q3, max</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">            </span><span class="c1"># mean, ignoring NAs</span>
+<span class="nf">median</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># median</span>
+<span class="nf">min</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">             </span><span class="c1"># minimum</span>
+<span class="nf">max</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">             </span><span class="c1"># maximum</span>
+</code></pre></div>
+<p>The <code>na.rm = TRUE</code> argument tells R to <strong>ignore NA values</strong> before calculating. Without it, any NA in the column returns <code>NA</code> as the result — R is being explicit that the answer cannot be known with certainty when data are missing.</p>
+<div class="highlight"><pre><span></span><code><span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">))</span><span class="w">             </span><span class="c1"># NA — missing data present</span>
+<span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">  </span><span class="c1"># 2.333... — NAs excluded</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise 4.1 — Indexing practice</summary>
+<p>Using bracket notation or <code>$</code>, answer these questions without <code>View()</code>-ing the full dataset:</p>
+<ol>
+<li>What are the values in row 100? (all columns)</li>
+<li>What is in row 50, column 8?</li>
+<li>Extract just the <code>plot_type</code> column. How many unique values does it have? (Hint: <code>unique()</code>)</li>
+<li>What is the median <code>hindfoot_length</code>? What about for just the first 2000 observations?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Row 100</span>
+<span class="n">data</span><span class="p">[</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="c1"># 2. Row 50, column 8 (hindfoot_length)</span>
+<span class="n">data</span><span class="p">[</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">]</span>
+<span class="c1"># or more readably:</span>
+<span class="n">data</span><span class="p">[</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hindfoot_length&quot;</span><span class="p">]</span>
+
+<span class="c1"># 3. Plot types</span>
+<span class="n">data</span><span class="o">$</span><span class="n">plot_type</span>
+<span class="nf">unique</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">plot_type</span><span class="p">)</span><span class="w">   </span><span class="c1"># 5 unique plot types</span>
+
+<span class="c1"># 4. Median hindfoot_length — full dataset vs. first 2000 rows</span>
+<span class="nf">median</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">hindfoot_length</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">median</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hindfoot_length&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 4.2 — Investigating the data</summary>
+<ol>
+<li>How many samples had a <code>plot_type</code> of <code>"Control"</code>? (Hint: <code>table()</code>)</li>
+<li>What was the minimum recorded <code>hindfoot_length</code>? What was the first quartile value?</li>
+<li>Excluding NA values, what are the minimum and maximum values from the first 2000 observations in the <code>weight</code> column?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Control samples</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">plot_type</span><span class="p">)</span>
+<span class="c1"># Control: 7213 samples</span>
+
+<span class="c1"># Or more directly:</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">plot_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Control&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Min and Q1 of hindfoot_length</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">hindfoot_length</span><span class="p">)</span>
+<span class="c1"># Min: 6 mm   1st Qu.: 21 mm</span>
+
+<span class="c1"># 3. Weight range in first 2000 rows (excluding NAs)</span>
+<span class="n">first2000_weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;weight&quot;</span><span class="p">]</span>
+<span class="nf">min</span><span class="p">(</span><span class="n">first2000_weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">   </span><span class="c1"># 4 g</span>
+<span class="nf">max</span><span class="p">(</span><span class="n">first2000_weight</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">   </span><span class="c1"># 239 g</span>
+</code></pre></div>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Indexing</p>
+<ul>
+<li><code>data$column</code> extracts a column as a vector.</li>
+<li><code>data[row, col]</code> selects by position. Leave either blank for "all."</li>
+<li>Use column names instead of positions where possible — they are more readable and won't break if columns are reordered.</li>
+<li>Always use <code>na.rm = TRUE</code> with <code>mean()</code>, <code>median()</code>, <code>min()</code>, <code>max()</code> to avoid NA propagation.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-5-logical-operators-filtering">Part 5: Logical Operators &amp; Filtering</h2>
+<p>The real power of a programming language over a spreadsheet is the ability to <strong>ask questions of your data</strong> and filter it based on the answers.</p>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<p>Comparison operators test a condition and return <code>TRUE</code> or <code>FALSE</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>equal to</td>
+<td><code>5 == 5</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>not equal to</td>
+<td><code>5 != 3</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>greater than</td>
+<td><code>10 &gt; 7</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>less than</td>
+<td><code>3 &lt; 1</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>greater than or equal</td>
+<td><code>5 &gt;= 5</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>less than or equal</td>
+<td><code>4 &lt;= 3</code></td>
+<td><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Assignment <code>&lt;-</code> vs. comparison <code>==</code></p>
+<p>This is one of the most common mistakes in R:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span><span class="w">   </span><span class="c1"># assignment — stores the value 10 in x</span>
+<span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">10</span><span class="w">   </span><span class="c1"># comparison — asks &quot;is x equal to 10?&quot; Returns TRUE</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w">    </span><span class="c1"># also assignment (works, but avoid inside function calls)</span>
+</code></pre></div>
+<p>If you write <code>data[data$taxa = "Rodent", ]</code> instead of <code>data[data$taxa == "Rodent", ]</code>, R will throw an error. Double the equals sign for comparisons.</p>
+</div>
+<h3 id="logical-operators">Logical Operators</h3>
+<p>Combine multiple conditions with logical operators:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>AND — both must be TRUE</td>
+<td><code>5 &gt; 3 &amp; 10 &lt; 20</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>\|</code></td>
+<td>OR — at least one must be TRUE</td>
+<td><code>5 &gt; 10 \| 3 &lt; 4</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>NOT — inverts TRUE/FALSE</td>
+<td><code>!(5 == 5)</code></td>
+<td><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span>
+<span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">15</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="w">    </span><span class="c1"># TRUE — both conditions met</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">20</span><span class="w">    </span><span class="c1"># FALSE — second condition fails</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="w">   </span><span class="c1"># TRUE — second condition met</span>
+<span class="o">!</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">        </span><span class="c1"># FALSE — x IS 10, so !TRUE = FALSE</span>
+</code></pre></div>
+<h3 id="logical-vectors">Logical Vectors</h3>
+<p>When you apply a comparison to a vector, R tests every element and returns a <strong>logical vector</strong> of the same length:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x_vec</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">)</span>
+<span class="n">x_vec</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">12</span><span class="w">        </span><span class="c1"># FALSE FALSE  TRUE  TRUE</span>
+</code></pre></div>
+<p>Use the logical vector inside <code>[]</code> to keep only the elements where the condition is <code>TRUE</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x_vec</span><span class="p">[</span><span class="n">x_vec</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">12</span><span class="p">]</span><span class="w">  </span><span class="c1"># 15 20</span>
+</code></pre></div>
+<p>This is the core mechanism behind all data filtering in R.</p>
+<h3 id="filtering-data-frames">Filtering Data Frames</h3>
+<p>Apply the same logic to filter rows of a data frame. The pattern is:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<p>The condition is tested for every row. Rows where it is <code>TRUE</code> are kept; rows where it is <code>FALSE</code> are dropped.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Keep only rows where taxa is &quot;Rodent&quot;</span>
+<span class="n">data_rodent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent</span><span class="p">)</span><span class="w">   </span><span class="c1"># 16505</span>
+
+<span class="c1"># Keep only observations from the 1980s</span>
+<span class="n">data_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_80s</span><span class="p">)</span>
+
+<span class="c1"># Combine: Rodents from the 1980s</span>
+<span class="n">data_rodent_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span>
+<span class="w">  </span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent_80s</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="which-row-numbers-instead-of-rows"><code>which()</code> — Row Numbers Instead of Rows</h3>
+<p><code>which()</code> returns the <strong>positions</strong> (row numbers) where a condition is TRUE, rather than the actual rows:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1985</span><span class="p">)</span><span class="w">    </span><span class="c1"># row numbers for year 1985 observations</span>
+<span class="nf">which</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w">    </span><span class="c1"># row numbers for heavy individuals</span>
+</code></pre></div>
+<p>This is useful when you need to know <em>where</em> something is, not just <em>what</em> it is.</p>
+<h3 id="handling-na-values">Handling NA Values</h3>
+<p>NAs require special attention in logical operations. Comparing anything to <code>NA</code> returns <code>NA</code> — not <code>TRUE</code> or <code>FALSE</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kc">NA</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100</span><span class="w">    </span><span class="c1"># NA — not FALSE, not TRUE</span>
+<span class="kc">NA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">5</span><span class="w">     </span><span class="c1"># NA</span>
+<span class="m">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">NA</span><span class="w">     </span><span class="c1"># NA</span>
+</code></pre></div>
+<p>This means a filter like <code>data[data$weight &gt; 100, ]</code> will include rows where <code>weight</code> is <code>NA</code> in an unpredictable way. Always check for NAs before filtering.</p>
+<p><strong>Detecting missing values:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">)</span><span class="w">              </span><span class="c1"># logical vector: TRUE where weight is NA</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">))</span><span class="w">         </span><span class="c1"># count of NAs in weight column</span>
+<span class="nf">colSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w">            </span><span class="c1"># NA count for every column</span>
+</code></pre></div>
+<p><strong>Rows with any NA:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">data_has_na</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="o">!</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="c1"># rows where at least one column is NA</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_has_na</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Blank strings are NOT NAs:</strong>
+Base R's <code>read.csv()</code> reads blank cells as empty strings <code>""</code>, not <code>NA</code>. After loading, convert them explicitly:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span><span class="w">    </span><span class="c1"># replace all blanks with NA</span>
+</code></pre></div>
+<p><strong>Removing rows with any NA:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">data_clean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">data_clean</span><span class="p">)</span><span class="w">   </span><span class="c1"># how many rows were removed?</span>
+</code></pre></div>
+<details class="question" open="open">
+<summary>Exercise 5.1 — Filtering practice</summary>
+<p>Using the Portal Project data:</p>
+<ol>
+<li>Create a subset containing only observations of <strong>female</strong> animals (<code>sex == "F"</code>). How many rows does it have?</li>
+<li>Create a subset of observations where <code>weight</code> is greater than 50 grams.</li>
+<li>Create a subset of <strong>male Rodents</strong> captured in <strong>plot 2</strong>. How many observations?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Female animals</span>
+<span class="n">data_female</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_female</span><span class="p">)</span><span class="w">   </span><span class="c1"># 7318</span>
+
+<span class="c1"># 2. Weight &gt; 50 g (includes some NA rows — see note below)</span>
+<span class="n">data_heavy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_heavy</span><span class="p">)</span><span class="w"> </span><span class="c1"># 4254</span>
+
+<span class="c1"># 3. Male Rodents in plot 2</span>
+<span class="n">data_m_rodent_p2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span>
+<span class="w">  </span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">plot_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_m_rodent_p2</span><span class="p">)</span><span class="w"> </span><span class="c1"># 529</span>
+</code></pre></div>
+<p>Note on question 2: <code>data[data$weight &gt; 50, ]</code> will include rows where <code>weight</code> is <code>NA</code> (because <code>NA &gt; 50</code> is <code>NA</code>, not <code>FALSE</code>). Adding <code>!is.na(data$weight) &amp;</code> ensures NAs are excluded.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Exercise 5.2 — NA investigation</summary>
+<ol>
+<li>How many observations have a missing <code>weight</code>?</li>
+<li>How many observations have a missing <code>hindfoot_length</code>?</li>
+<li>How many rows have <strong>no missing values in any column</strong>? (Use <code>complete.cases()</code>)</li>
+<li>After replacing blank strings with NA, how many additional NAs appear in the <code>sex</code> column?</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Missing weights</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">))</span><span class="w">           </span><span class="c1"># 1692</span>
+
+<span class="c1"># 2. Missing hindfoot_length</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">hindfoot_length</span><span class="p">))</span><span class="w">  </span><span class="c1"># 2733</span>
+
+<span class="c1"># 3. Complete rows (no NAs anywhere)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w">         </span><span class="c1"># 13797</span>
+
+<span class="c1"># 4. Blank strings in sex column</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">   </span><span class="c1"># count blanks before conversion</span>
+<span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="p">))</span><span class="w">               </span><span class="c1"># now includes both original NAs and converted blanks</span>
+</code></pre></div>
+</details>
+</details>
+<div class="admonition success">
+<p class="admonition-title">Key Points — Logical Filtering</p>
+<ul>
+<li>Comparison operators (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>) return <code>TRUE</code>/<code>FALSE</code>.</li>
+<li><code>&amp;</code> (AND) and <code>|</code> (OR) combine conditions. <code>!</code> inverts them.</li>
+<li><code>data[condition, ]</code> keeps rows where the condition is <code>TRUE</code>.</li>
+<li>NA propagates through comparisons — always check with <code>is.na()</code> before filtering on columns that have missing values.</li>
+<li><code>complete.cases()</code> identifies rows with no NAs; <code>na.omit()</code> removes them.</li>
+</ul>
+</div>
+<hr />
+<h2 id="challenges">Challenges</h2>
+<p><em>All three can be answered with a single line of R. Try them before opening the solutions.</em></p>
+<details class="question" open="open">
+<summary>Challenge 1 — Rodents from data_80s</summary>
+<p>You already created <code>data_80s</code> (observations from 1980–1989). How would you filter <code>data_80s</code> to keep only Rodents, using a <strong>single line</strong> that starts from <code>data_80s</code>?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">data_rodent_80s_v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data_80s</span><span class="p">[</span><span class="n">data_80s</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Rodent&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent_80s_v2</span><span class="p">)</span>
+</code></pre></div>
+<p>This is equivalent to the multi-condition filter on <code>data</code> from Part 5. When you already have a pre-filtered dataset, you only need to apply the additional condition.</p>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Challenge 2 — Neotoma albigula in 1980, plot 2</summary>
+<p>How many rows in the dataset are for <em>Neotoma albigula</em> captured in the year 1980 on plot 2?</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># approach 1: using genus &amp; species</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">genus</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Neotoma&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">species</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;albigula&quot;</span><span class="w"> </span><span class="o">&amp;</span>
+<span class="w">            </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">plot_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="p">])</span><span class="w">   </span><span class="c1"># 4</span>
+
+<span class="c1"># approach 2: using species_id</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">species_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;NL&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">plot_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="p">])</span><span class="w">   </span><span class="c1"># 4</span>
+</code></pre></div>
+</details>
+</details>
+<details class="question" open="open">
+<summary>Challenge 3 — Heaviest individual</summary>
+<p>Which single observation has the highest recorded <code>weight</code>? Return the <strong>entire row</strong> — species, location, date, and all — in one line.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="nf">which.max</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">weight</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  record_id month day year plot_id species_id sex hindfoot_length weight   genus  species   taxa plot_type
+  12871     5  28 1987       2         NL   M              32    278 Neotoma albigula Rodent   Control
+</code></pre></div>
+<p><code>which.max()</code> returns the <strong>index</strong> of the largest value. Passing that index to <code>data[row, ]</code> retrieves the full row — every column at once. This is the same indexing pattern from Part 4, combined with the <code>which()</code> family from Part 5. The heaviest individual (278 g) is a male <em>Neotoma albigula.</em></p>
+</details>
+</details>
+<hr />
+<div class="admonition danger">
+<p class="admonition-title">Before you leave — stop your Codespace</p>
+<ol>
+<li>Switch to the VS Code terminal tab where the keepalive loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
+<p>Closing the browser tab is <strong>not</strong> enough — a suspended Codespace still counts against your monthly storage quota.</p>
+</div>
+<hr />
+<h2 id="workshop-summary">Workshop Summary</h2>
+<h3 id="key-functions-reference">Key Functions Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;-</code></td>
+<td>Assign a value to an object</td>
+<td><code>x &lt;- 42</code></td>
+</tr>
+<tr>
+<td><code>c()</code></td>
+<td>Combine values into a vector</td>
+<td><code>c(1, 2, 3)</code></td>
+</tr>
+<tr>
+<td><code>class()</code></td>
+<td>Data type of an object</td>
+<td><code>class(x)</code></td>
+</tr>
+<tr>
+<td><code>length()</code></td>
+<td>Number of elements</td>
+<td><code>length(v)</code></td>
+</tr>
+<tr>
+<td><code>str()</code></td>
+<td>Compact structural summary</td>
+<td><code>str(data)</code></td>
+</tr>
+<tr>
+<td><code>read.csv()</code></td>
+<td>Load a CSV file into a data frame</td>
+<td><code>read.csv("file.csv")</code></td>
+</tr>
+<tr>
+<td><code>head()</code> / <code>tail()</code></td>
+<td>First / last 6 rows</td>
+<td><code>head(data)</code></td>
+</tr>
+<tr>
+<td><code>summary()</code></td>
+<td>Statistical summary</td>
+<td><code>summary(data$weight)</code></td>
+</tr>
+<tr>
+<td><code>dim()</code> / <code>nrow()</code> / <code>ncol()</code></td>
+<td>Data frame dimensions</td>
+<td><code>dim(data)</code></td>
+</tr>
+<tr>
+<td><code>names()</code></td>
+<td>Column names</td>
+<td><code>names(data)</code></td>
+</tr>
+<tr>
+<td><code>table()</code></td>
+<td>Frequency counts</td>
+<td><code>table(data$taxa)</code></td>
+</tr>
+<tr>
+<td><code>View()</code></td>
+<td>Spreadsheet viewer (RStudio only)</td>
+<td><code>View(data)</code></td>
+</tr>
+<tr>
+<td><code>mean()</code> / <code>median()</code></td>
+<td>Arithmetic mean / median</td>
+<td><code>mean(x, na.rm = TRUE)</code></td>
+</tr>
+<tr>
+<td><code>min()</code> / <code>max()</code></td>
+<td>Minimum / maximum</td>
+<td><code>max(x, na.rm = TRUE)</code></td>
+</tr>
+<tr>
+<td><code>is.na()</code></td>
+<td>Test for missing values</td>
+<td><code>is.na(data$weight)</code></td>
+</tr>
+<tr>
+<td><code>complete.cases()</code></td>
+<td>Rows with no NAs</td>
+<td><code>complete.cases(data)</code></td>
+</tr>
+<tr>
+<td><code>na.omit()</code></td>
+<td>Remove rows with any NA</td>
+<td><code>na.omit(data)</code></td>
+</tr>
+<tr>
+<td><code>which()</code></td>
+<td>Positions where condition is TRUE</td>
+<td><code>which(x &gt; 10)</code></td>
+</tr>
+<tr>
+<td><code>aggregate()</code></td>
+<td>Summary statistic by group</td>
+<td><code>aggregate(y ~ x, data, mean)</code></td>
+</tr>
+<tr>
+<td><code>unique()</code></td>
+<td>Unique values in a vector</td>
+<td><code>unique(data$taxa)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="operators-cheat-sheet">Operators Cheat Sheet</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;-</code></td>
+<td>Assignment</td>
+<td>Store value in a named object</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>Comparison</td>
+<td>Equal to</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Comparison</td>
+<td>Not equal to</td>
+</tr>
+<tr>
+<td><code>&gt;</code>, <code>&lt;</code></td>
+<td>Comparison</td>
+<td>Greater / less than</td>
+</tr>
+<tr>
+<td><code>&gt;=</code>, <code>&lt;=</code></td>
+<td>Comparison</td>
+<td>Greater / less than or equal</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>Logical</td>
+<td>AND — both conditions must be TRUE</td>
+</tr>
+<tr>
+<td><code>\|</code></td>
+<td>Logical</td>
+<td>OR — at least one condition must be TRUE</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical</td>
+<td>NOT — inverts TRUE/FALSE</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Indexing</td>
+<td>Select elements by position or condition</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Indexing</td>
+<td>Access a data frame column by name</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>Sequence</td>
+<td>Integer range, e.g. <code>1:10</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-mistakes-to-avoid">Common Mistakes to Avoid</h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using <code>=</code> instead of <code>==</code> in a filter</td>
+<td><code>data[data$taxa == "Rodent", ]</code> not <code>= "Rodent"</code></td>
+</tr>
+<tr>
+<td>Forgetting <code>na.rm = TRUE</code> in <code>mean()</code>, <code>max()</code>, etc.</td>
+<td>Always add <code>na.rm = TRUE</code> for numeric summaries</td>
+</tr>
+<tr>
+<td>Missing the comma in <code>data[row, col]</code></td>
+<td><code>data[1, ]</code> for row 1; never <code>data[1]</code></td>
+</tr>
+<tr>
+<td>Assuming blank strings are NA</td>
+<td>Run <code>data[data == ""] &lt;- NA</code> after loading with <code>read.csv()</code></td>
+</tr>
+<tr>
+<td>Filtering on a column that has NAs</td>
+<td>Add <code>!is.na(data$col) &amp;</code> before the condition</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Questions? Contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../genomics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Managing Data &amp; Projects for Genomics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Managing Data & Projects for Genomics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dataViz/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to Data Visualization in R">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction to Data Visualization in R
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

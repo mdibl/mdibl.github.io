@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="420" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">Cell × Gene Count Matrix</text>
+
+  <!-- Axis labels -->
+  <text x="30" y="62" font-size="14" fill="#4a5568">rows = genes (features.tsv)  ·  columns = cells (barcodes.tsv)</text>
+
+  <!-- Matrix grid: 12 cols x 8 rows -->
+  <g transform="translate(30,90)">
+    <!-- column header: cell barcodes -->
+    <text x="270" y="-14" font-size="13" fill="#718096" text-anchor="middle">cell barcodes →</text>
+    <text x="-14" y="150" font-size="13" fill="#718096" text-anchor="middle" transform="rotate(-90 -14,150)">genes ↓</text>
+
+    <!-- grid cells 12 x 8, size 36x30 -->
+    <!-- generate mostly empty (dot) cells with a handful of nonzero (colored, numbered) -->
+    <!-- Row/col loop simulated manually -->
+    <g font-size="13" fill="#a0aec0" text-anchor="middle">
+      <!-- background dots for zeros -->
+    </g>
+
+    <!-- draw 8 rows x 12 cols grid lines -->
+    <g stroke="#e2e8f0" stroke-width="1">
+      <rect x="0" y="0" width="432" height="240" fill="none" stroke="#cbd5e0"/>
+      <line x1="36" y1="0" x2="36" y2="240"/><line x1="72" y1="0" x2="72" y2="240"/><line x1="108" y1="0" x2="108" y2="240"/>
+      <line x1="144" y1="0" x2="144" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="216" y1="0" x2="216" y2="240"/>
+      <line x1="252" y1="0" x2="252" y2="240"/><line x1="288" y1="0" x2="288" y2="240"/><line x1="324" y1="0" x2="324" y2="240"/>
+      <line x1="360" y1="0" x2="360" y2="240"/><line x1="396" y1="0" x2="396" y2="240"/>
+      <line x1="0" y1="30" x2="432" y2="30"/><line x1="0" y1="60" x2="432" y2="60"/><line x1="0" y1="90" x2="432" y2="90"/>
+      <line x1="0" y1="120" x2="432" y2="120"/><line x1="0" y1="150" x2="432" y2="150"/><line x1="0" y1="180" x2="432" y2="180"/>
+      <line x1="0" y1="210" x2="432" y2="210"/>
+    </g>
+
+    <!-- zero markers: light dot in most cells -->
+    <g fill="#cbd5e0" font-size="14" text-anchor="middle">
+      <text x="18" y="20">·</text><text x="54" y="20">·</text><text x="90" y="20">·</text><text x="162" y="20">·</text>
+      <text x="198" y="20">·</text><text x="234" y="20">·</text><text x="270" y="20">·</text><text x="342" y="20">·</text>
+      <text x="378" y="20">·</text><text x="414" y="20">·</text>
+      <text x="18" y="50">·</text><text x="90" y="50">·</text><text x="126" y="50">·</text><text x="162" y="50">·</text>
+      <text x="234" y="50">·</text><text x="306" y="50">·</text><text x="342" y="50">·</text><text x="378" y="50">·</text>
+      <text x="18" y="80">·</text><text x="54" y="80">·</text><text x="126" y="80">·</text><text x="198" y="80">·</text>
+      <text x="270" y="80">·</text><text x="306" y="80">·</text><text x="414" y="80">·</text>
+      <text x="54" y="110">·</text><text x="90" y="110">·</text><text x="126" y="110">·</text><text x="162" y="110">·</text>
+      <text x="270" y="110">·</text><text x="342" y="110">·</text><text x="378" y="110">·</text>
+      <text x="18" y="140">·</text><text x="90" y="140">·</text><text x="198" y="140">·</text><text x="234" y="140">·</text>
+      <text x="306" y="140">·</text><text x="414" y="140">·</text>
+      <text x="18" y="170">·</text><text x="54" y="170">·</text><text x="126" y="170">·</text><text x="198" y="170">·</text>
+      <text x="270" y="170">·</text><text x="306" y="170">·</text><text x="342" y="170">·</text>
+      <text x="54" y="200">·</text><text x="126" y="200">·</text><text x="162" y="200">·</text><text x="234" y="200">·</text>
+      <text x="306" y="200">·</text><text x="378" y="200">·</text><text x="414" y="200">·</text>
+      <text x="18" y="230">·</text><text x="90" y="230">·</text><text x="162" y="230">·</text><text x="234" y="230">·</text>
+      <text x="270" y="230">·</text><text x="342" y="230">·</text>
+    </g>
+
+    <!-- nonzero highlighted values -->
+    <g font-size="13" font-weight="700" text-anchor="middle">
+      <rect x="108" y="0" width="36" height="30" fill="#c6f6d5"/><text x="126" y="20" fill="#22543d">3</text>
+      <rect x="216" y="30" width="36" height="30" fill="#bee3f8"/><text x="234" y="50" fill="#2a4365">1</text>
+      <rect x="360" y="30" width="36" height="30" fill="#c6f6d5"/><text x="378" y="50" fill="#22543d">7</text>
+      <rect x="36" y="60" width="36" height="30" fill="#feebc8"/><text x="54" y="80" fill="#7b341e">2</text>
+      <rect x="216" y="90" width="36" height="30" fill="#c6f6d5"/><text x="234" y="110" fill="#22543d">1</text>
+      <rect x="72" y="120" width="36" height="30" fill="#bee3f8"/><text x="90" y="140" fill="#2a4365">5</text>
+      <rect x="360" y="150" width="36" height="30" fill="#feebc8"/><text x="378" y="170" fill="#7b341e">1</text>
+      <rect x="108" y="180" width="36" height="30" fill="#c6f6d5"/><text x="126" y="200" fill="#22543d">4</text>
+      <rect x="288" y="210" width="36" height="30" fill="#bee3f8"/><text x="306" y="230" fill="#2a4365">2</text>
+    </g>
+  </g>
+
+  <!-- arrow to storage format -->
+  <g stroke="#a0aec0" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="475" y1="200" x2="520" y2="200"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#a0aec0"/>
+    </marker>
+  </defs>
+
+  <!-- storage box -->
+  <g transform="translate(535,90)">
+    <rect x="0" y="0" width="290" height="240" rx="8" fill="#1b365d"/>
+    <text x="16" y="30" font-size="14" font-weight="700" fill="#ffffff">matrix.mtx (sparse)</text>
+    <text x="16" y="52" font-size="12" fill="#90cdf4">only non-zero entries stored:</text>
+    <g font-family="Menlo, monospace" font-size="12" fill="#e2e8f0">
+      <text x="16" y="76">gene  cell  count</text>
+      <text x="16" y="96">  4     1     3</text>
+      <text x="16" y="114">  7     2     1</text>
+      <text x="16" y="132"> 11     2     7</text>
+      <text x="16" y="150">  2     3     2</text>
+      <text x="16" y="168">  7     4     1</text>
+      <text x="16" y="186">  3     5     5</text>
+      <text x="16" y="204">…     …     …</text>
+    </g>
+    <text x="16" y="228" font-size="11" fill="#90cdf4">everything else is implicitly 0</text>
+  </g>
+</svg>

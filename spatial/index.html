@@ -1,0 +1,2817 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../scRNAseq/">
+      
+      
+        <link rel="next" href="../workflows/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Spatial Transcriptomics - MDIBL Comparative Genomics and Data Science Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spatial-transcriptomics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDIBL Comparative Genomics and Data Science Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spatial Transcriptomics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../home/team/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../introDataScience/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Data Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introDataTypes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction to Genomics Data Types
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../bits/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bioinformatics Bits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../courseArchives/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Course Archives
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+
+    </a>
+    MDIBL Comparative Genomics and Data Science Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataScience/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Data Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataOrganization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Organization in Spreadsheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Data & Projects for Genomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to R & RStudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataViz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Data Visualization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introDataTypes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Genomics Data Types
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Genomics Data Types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bulkDGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Differential Gene Expression (Bulk RNAseq)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single Cell RNAseq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Transcriptomics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Transcriptomics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-spatial-transcriptomics-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Spatial Transcriptomics Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-loading-spatial-data-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Loading Spatial Data &amp; Pre-processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Loading Spatial Data &amp; Pre-processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-does-a-spatial-seurat-object-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What does a spatial Seurat object contain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qc-metrics-for-spatial-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QC metrics for spatial data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizing-spatial-data-with-sctransform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizing spatial data with SCTransform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-post-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Post-processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Post-processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca-elbow-plot-and-choosing-your-number-of-pcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCA, elbow plot, and choosing your number of PCs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clustering-and-umap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clustering and UMAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-spatially-variable-genes-region-annotation-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Spatially Variable Genes &amp; Region Annotation Assignment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Spatially Variable Genes &amp; Region Annotation Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-ways-to-find-genes-that-matter-markers-vs-spatially-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways to find genes that matter: markers vs. spatially variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-annotation-research-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Region annotation research assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalizing-the-annotation-as-a-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finalizing the annotation as a class
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computational Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../bits/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Bits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bioinformatics Bits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bits/bit2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bit 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Archives
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Archives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../introToCloudCourse/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud 2025
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introToCloudCourse/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/scrnaseq2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScRNAseq in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ScRNAseq in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/learning_resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/scrnaseq2024/loupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loupe Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../courseArchives/introCloud2024/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Workflows in the Cloud
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction to Workflows in the Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/instructors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/learningResources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/arrival/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrival
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../courseArchives/introCloud2024/sequin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-spatial-transcriptomics-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Spatial Transcriptomics Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Dataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-loading-spatial-data-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Loading Spatial Data &amp; Pre-processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Loading Spatial Data &amp; Pre-processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-does-a-spatial-seurat-object-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What does a spatial Seurat object contain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qc-metrics-for-spatial-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QC metrics for spatial data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizing-spatial-data-with-sctransform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizing spatial data with SCTransform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-post-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Post-processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Post-processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca-elbow-plot-and-choosing-your-number-of-pcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCA, elbow plot, and choosing your number of PCs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clustering-and-umap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clustering and UMAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-spatially-variable-genes-region-annotation-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Spatially Variable Genes &amp; Region Annotation Assignment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Spatially Variable Genes &amp; Region Annotation Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-ways-to-find-genes-that-matter-markers-vs-spatially-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two ways to find genes that matter: markers vs. spatially variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-annotation-research-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Region annotation research assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalizing-the-annotation-as-a-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finalizing the annotation as a class
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="spatial-transcriptomics">Spatial Transcriptomics</h1>
+<div class="admonition info">
+<p class="admonition-title">Coming soon: July 2026</p>
+<p>This workshop is under development and will be available for the July 2026 workshop series. Check back closer to the session date for the full course page.</p>
+</div>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this workshop you will be able to:</p>
+<ul>
+<li>Understand 10x Visium spatial transcriptomics technology and how it differs from single-cell sequencing</li>
+<li>Interpret a spot × gene expression matrix and understand how it relates to the tissue histology image</li>
+<li>Load a Visium dataset into a Seurat object and inspect its structure</li>
+</ul>
+<p><strong>QC / Pre-processing</strong></p>
+<ul>
+<li>Evaluate spatial QC metrics and recognize how tissue density (not just sequencing depth) drives spot-to-spot variation</li>
+<li>Normalize spatial expression data with <code>SCTransform()</code> and explain why it is preferred over <code>LogNormalize()</code> for spatial data</li>
+</ul>
+<p><strong>Post-processing</strong></p>
+<ul>
+<li>Reduce dimensionality with PCA, choose an appropriate number of principal components, and cluster spots with the Louvain algorithm</li>
+<li>Visualize clusters both in UMAP space and overlaid on the tissue image, and compare the two</li>
+</ul>
+<p><strong>Spatially Variable Genes &amp; Region Annotation</strong></p>
+<ul>
+<li>Distinguish "highly variable" from "spatially variable": identify genes whose expression clusters in space using Moran's I</li>
+<li>Research marker genes for an assigned cluster/region using primary literature and neuroanatomical references, and propose a tissue region identity with supporting evidence</li>
+</ul>
+</div>
+<p>Spatial transcriptomics captures gene expression while preserving the physical location of that expression within a tissue section, adding the dimension of space to a data type that scRNA-seq strips away. Where single-cell sequencing tells you <em>which</em> cell types exist, spatial transcriptomics tells you <em>where</em> they live relative to each other and to tissue architecture, information that is essential for understanding tumor microenvironments, developmental gradients, and organ structure.</p>
+<p>In this workshop you will work with a 10x Visium dataset, learn how a spot × gene matrix differs from both bulk and single-cell data, normalize and cluster spots, and identify genes whose expression is organized in space rather than scattered at random, all visualized both on a UMAP plot and directly on the tissue image itself.</p>
+<h2 id="how-spatial-transcriptomics-works">How Spatial Transcriptomics Works</h2>
+<p>The 10x Genomics Visium platform (the source of this workshop's dataset) captures gene expression by placing a tissue section directly onto a slide printed with thousands of <strong>barcoded capture spots</strong>, rather than isolating individual cells first.</p>
+<p>Each spot, about 55 µm across, carries millions of copies of a DNA oligo. Every oligo on a given spot shares the same <strong>spot barcode</strong>, but has a different random <strong>UMI</strong> and a poly(dT) tail that captures mRNA released from the tissue directly above it:</p>
+<figure>
+<img src="img/visium-spot-capture.svg" alt="Diagram of a 10x Visium slide: a grid of barcoded capture spots under a tissue section, with a zoomed view of one spot's oligo structure (Read 1, Spot Barcode, UMI, Poly(dT))" style="width:100%; max-width:900px;">
+<figcaption>A tissue section sits on a grid of barcoded spots. Every oligo on one spot shares the same Spot Barcode, tagging every transcript captured there with that spot's location. Fiducial markers around the capture area let downstream software align spots to the tissue image.</figcaption>
+</figure>
+
+<p>This is the key difference from droplet-based single-cell: a barcode here marks a <strong>location</strong>, not a <strong>cell</strong>. A 55 µm spot typically sits under several cells at once, so its expression profile is a mixture of whatever cell types happen to be present at that spot:</p>
+<figure>
+<img src="img/spot-vs-cell.svg" alt="Diagram contrasting a single-cell droplet (one barcode, one cell) with a Visium spot (one barcode, several pooled cells)" style="width:100%; max-width:800px;">
+<figcaption>A droplet's barcode corresponds to one cell's transcripts. A Visium spot's barcode corresponds to the pooled transcripts of every cell overlapping that spot, this is why spatial data is a spot × gene matrix, not a cell × gene matrix.</figcaption>
+</figure>
+
+<p>Downstream, Space Ranger uses the spot barcode to group reads by location, the UMI to collapse PCR duplicates, and the fiducial markers printed around the capture area to register every spot's exact pixel coordinates on the accompanying histology image, exactly what becomes the spatial coordinates behind every plot in Part 2.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completion of the <a href="../introDataScience/">Introduction to Data Science</a> series, or equivalent R experience</li>
+<li>Recommended: <a href="../scRNAseq/">Single Cell RNAseq</a>, this workshop assumes familiarity with Seurat objects, normalization, PCA, and graph-based clustering, and moves quickly through steps that work identically to single-cell data</li>
+</ul>
+<hr />
+<h2 id="launch-your-workspace">Launch Your Workspace</h2>
+<div class="admonition info">
+<p class="admonition-title">You need a free GitHub account to use this workshop</p>
+<p>This workshop runs in <strong>GitHub Codespaces</strong>, a cloud environment that requires a GitHub account. If you do not have one, create one for free at <a href="https://github.com">github.com</a> before the session. No paid plan is required.</p>
+<p><strong>GitHub Free quota (per account, per month):</strong></p>
+<ul>
+<li>120 core-hours of compute, equivalent to <strong>60 hours</strong> of run time on a standard 2-core Codespace</li>
+<li>15 GB of storage</li>
+</ul>
+<p>This is enough for workshops and occasional use, but is <strong>not intended to replace a local development environment</strong> for everyday work.</p>
+</div>
+<p>This workshop runs entirely in a cloud environment: no software installation required. One click opens a pre-configured RStudio session with Seurat, SeuratData, and the workshop's spatial dataset already installed.</p>
+<div style="margin: 1.2rem 0;">
+<a href="https://codespaces.new/mdibl/mdibl.github.io?devcontainer_path=.devcontainer%2Fspatial%2Fdevcontainer.json" target="_blank">
+  <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces" style="height:32px;">
+</a>
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">First launch takes several minutes</p>
+<p>The first time the Codespace builds, GitHub installs Seurat, its dependencies, and downloads the Visium mouse brain dataset (a few hundred MB). Subsequent launches are instant.</p>
+</div>
+<p><strong>What you'll see:</strong></p>
+<ol>
+<li>GitHub opens a VS Code editor in your browser, this is the Codespace container. You do not need to use VS Code for this workshop.</li>
+<li>A browser tab for <strong>RStudio</strong> will open automatically at port 8787. No login is required.</li>
+<li>If RStudio does not open automatically: in VS Code, click the <strong>Ports</strong> tab at the bottom panel, find port <code>8787</code>, and click the globe icon to open it in a new tab.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Keep your Codespace awake, and stop it when you're done</p>
+<p>Codespaces automatically pause after <strong>30 minutes of inactivity</strong>, but suspended Codespaces still consume your monthly storage quota. <strong>Closing the browser tab does not stop the Codespace.</strong></p>
+<p><strong>At the start of the workshop</strong>, open a new terminal tab in VS Code (<strong>Terminal → New Terminal</strong>) and run this keepalive loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;keepalive </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">300</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>This pings the Codespace every 5 minutes to prevent it from suspending during the session.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">How to stop your Codespace <em>when you're done</em></p>
+<ol>
+<li>Switch to the VS Code terminal tab where the <code>keepalive</code> loop is running.</li>
+<li>Press <strong>Ctrl+C</strong> to stop it.</li>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a>, find your Codespace, click <code>···</code>, and select <strong>Stop codespace</strong>.</li>
+</ol>
+<p><strong><em>Closing the browser tab is not enough: a suspended Codespace still counts against your monthly storage quota.</em></strong></p>
+</div>
+<p><strong>Getting oriented in RStudio:</strong></p>
+<p>Once RStudio is open, get the workshop files ready:</p>
+<ol>
+<li>In the <strong>Files</strong> pane (bottom-right), you will see the workshop directory. Click <code>spatial.Rproj</code> to open the project, this sets your working directory correctly.</li>
+<li>Open <code>workshop.Rmd</code> (File → Open File, or click it in the Files pane). This is the file you will work through during the workshop.</li>
+<li>Each grey block is a code chunk. Run a chunk by clicking the <strong>▶ Run Current Chunk</strong> button (green play icon at the top-right of the chunk), or press <strong>Ctrl+Shift+Enter</strong> (Windows/Linux) / <strong>Cmd+Shift+Return</strong> (Mac).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Save your work</p>
+<p>Press <strong>Ctrl+S</strong> / <strong>Cmd+S</strong> often. At the end of the session, use the <strong>Files</strong> pane → More → Export to download your completed notebook to your computer before closing the Codespace.</p>
+</div>
+<hr />
+<h2 id="about-this-dataset">About This Dataset</h2>
+<div class="admonition abstract">
+<p class="admonition-title">10x Genomics Visium Mouse Brain (Sagittal, Anterior): Seurat Spatial Vignette</p>
+<p><strong>Source:</strong> <a href="https://www.10xgenomics.com/">10x Genomics</a>, sagittal mouse brain section, Visium v1 chemistry, distributed through the <a href="https://github.com/satijalab/seurat-data"><code>SeuratData</code></a> package as <code>stxBrain</code>
+<strong>Template:</strong> This workshop follows the structure of the Seurat <a href="https://satijalab.org/seurat/articles/spatial_vignette"><strong>Spatial Transcriptomics Vignette</strong></a>, developed and maintained by the <strong>Satija Lab and collaborators</strong>.</p>
+</div>
+<p>This dataset pairs a spot × gene expression matrix with the H&amp;E histology image it was captured from, and is one of the most widely used entry points to spatial analysis. The workshop exercises mirror the vignette's structure (loading spatial data, regularized normalization, PCA, graph-based (Louvain) clustering, spatial visualization, identifying spatially variable genes), but the number of PCs, clustering resolution, and final region annotation are yours to determine, not given to you, just as in the single-cell workshop.</p>
+<p><strong>Citing Seurat:</strong> if you use Seurat in your own research, cite the paper corresponding to the version you use:</p>
+<ul>
+<li>Hao, Y. et al. <a href="https://doi.org/10.1038/s41587-023-01767-y">"Dictionary learning for integrative, multimodal and scalable single-cell analysis."</a> <em>Nature Biotechnology</em> (2023), Seurat v5</li>
+<li>Hao*, Hao*, et al. <a href="https://doi.org/10.1016/j.cell.2021.04.048">"Integrated analysis of multimodal single-cell data."</a> <em>Cell</em> (2021), Seurat v4</li>
+<li>Stuart*, Butler*, et al. <a href="https://doi.org/10.1016/j.cell.2019.05.031">"Comprehensive Integration of Single-Cell Data."</a> <em>Cell</em> (2019), Seurat v3</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Acknowledgement</p>
+<p>Dataset courtesy of 10x Genomics, distributed via <code>SeuratData</code>. Tutorial structure and analysis workflow adapted from the Seurat project (<a href="https://satijalab.org/seurat/">satijalab.org/seurat</a>), developed by the Satija Lab and collaborators.</p>
+</div>
+<hr />
+<h2 id="part-1-loading-spatial-data-pre-processing">Part 1: Loading Spatial Data &amp; Pre-processing</h2>
+<h3 id="load-packages">Load packages</h3>
+<p>Open <code>workshop.Rmd</code> and run the <strong>Setup</strong> chunk. This loads all packages and confirms the working directory is set correctly by <code>spatial.Rproj</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">SeuratData</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="nf">getwd</span><span class="p">()</span><span class="w">  </span><span class="c1"># should end in .../docs/spatial</span>
+</code></pre></div>
+<h3 id="what-does-a-spatial-seurat-object-contain">What does a spatial Seurat object contain?</h3>
+<p>A spatial Seurat object holds the same kind of <code>Spatial</code> assay you'd recognize from single-cell (a spot × gene count matrix), plus two things a single-cell object doesn't have: the <strong>histology image</strong> and each spot's <strong>pixel coordinates</strong> on that image, stored in the object's <code>images</code> slot. Every plotting function in this workshop that starts with <code>Spatial…</code> (<code>SpatialFeaturePlot()</code>, <code>SpatialDimPlot()</code>) uses that slot to draw directly on the tissue.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.1: Load the Visium dataset and inspect the Seurat object</summary>
+<p>Run the <strong>Exercise 1</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">InstallData</span><span class="p">(</span><span class="s">&quot;stxBrain&quot;</span><span class="p">)</span>
+<span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">LoadData</span><span class="p">(</span><span class="s">&quot;stxBrain&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;anterior1&quot;</span><span class="p">)</span>
+<span class="n">brain</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>How many spots and genes are in this object? How does that compare in order of magnitude to the pbmc3k dataset from the single-cell workshop (2,700 cells)?</li>
+<li>Run <code>names(brain@images)</code>, what does this slot hold that a single-cell Seurat object doesn't?</li>
+</ol>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">LoadData</span><span class="p">(</span><span class="s">&quot;stxBrain&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;anterior1&quot;</span><span class="p">)</span>
+<span class="n">brain</span>
+<span class="c1"># An object of class Seurat</span>
+<span class="c1"># 31053 features across 2696 samples within 1 assay</span>
+<span class="c1"># Active assay: Spatial (31053 features, 0 variable features)</span>
+<span class="c1"># 1 image present: anterior1</span>
+</code></pre></div>
+<p>This section has 2,696 spots, similar in order of magnitude to pbmc3k's 2,700 cells, but each "sample" here is a spot, not a cell. <code>brain@images</code> holds the histology image itself plus each spot's pixel coordinates and scale factors, this is what lets <code>SpatialFeaturePlot()</code> and <code>SpatialDimPlot()</code> draw expression directly onto the tissue picture.</p>
+</details>
+<hr />
+<h3 id="qc-metrics-for-spatial-data">QC metrics for spatial data</h3>
+<p>The same two count-based metrics from single-cell carry over directly, just renamed for the <code>Spatial</code> assay:</p>
+<ul>
+<li><strong><code>nCount_Spatial</code></strong>: total UMIs captured at a spot</li>
+<li><strong><code>nFeature_Spatial</code></strong>: number of unique genes detected at a spot</li>
+</ul>
+<p>But their <em>interpretation</em> changes. In single-cell, a low <code>nCount_RNA</code> often flags an empty droplet, and a high one can flag a doublet. A Visium spot is never empty of tissue (Space Ranger only keeps spots the software detects are under tissue) and a spot is never "two spots captured as one," so those particular explanations don't apply. Instead, spot-to-spot variation in these metrics is mostly driven by <strong>local cell density and tissue morphology</strong>: a spot sitting on dense gray matter or a cell body layer will show far higher counts than a spot on sparse white matter or ventricle space, independent of sequencing quality.</p>
+<p><code>SpatialFeaturePlot()</code> is the tool that makes this visible: instead of a violin plot alone, you can overlay a QC metric directly onto the tissue and see whether it tracks anatomy.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.2: Visualize QC metrics on the violin plot and on the tissue itself</summary>
+<p>Run the <strong>Exercise 2</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plot1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">VlnPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nCount_Spatial&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pt.size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">NoLegend</span><span class="p">()</span>
+<span class="n">plot2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SpatialFeaturePlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nCount_Spatial&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">plot1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">plot2</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>On the violin plot alone, <code>nCount_Spatial</code> looks like a wide, somewhat skewed distribution. Does that skew look like a QC problem, once you see the spatial plot next to it?</li>
+<li>Do the highest and lowest <code>nCount_Spatial</code> spots form a scattered, random pattern on the tissue, or do they trace out recognizable anatomical structures?</li>
+<li>Given what Exercise 1.2 shows you, would blindly applying a single-cell-style <code>nCount</code> cutoff (e.g. "remove anything below the 10th percentile") risk removing a real tissue region rather than removing noise? Why or why not?</li>
+</ol>
+</details>
+<details class="success">
+<summary>What to look for</summary>
+<p>The wide spread in the violin plot is almost entirely explained once you look at the spatial plot: high-count spots cluster tightly over what is visibly a dense cell body layer (a strip of tissue), while low-count spots sit over sparser tissue or the tissue's edges. This is the central lesson of spatial QC: variation that would look like a filtering problem in single-cell is often real anatomical signal here. A blind percentile-based cutoff could silently discard an entire tissue region rather than removing genuinely low-quality spots, this is why this workshop does not ask you to apply a hard QC filter the way the single-cell workshop did.</p>
+</details>
+<hr />
+<h3 id="normalizing-spatial-data-with-sctransform">Normalizing spatial data with SCTransform</h3>
+<p><code>LogNormalize()</code> (the single-cell default) uses one scale factor per cell/spot: divide by total counts, multiply by a constant, log-transform. That works when the main driver of a cell's total count is sequencing depth. In spatial data, as Exercise 1.2 just showed, a spot's total count is driven at least as much by <strong>how much tissue and how many cells sit under it</strong>, a source of variation <code>LogNormalize()</code>'s single scale factor doesn't distinguish from technical noise.</p>
+<p><code>SCTransform()</code> addresses this by fitting a <strong>regularized negative binomial model</strong> of each gene's counts as a function of sequencing depth, pooling information across genes with similar expression levels to stabilize the fit, then returning <strong>Pearson residuals</strong>: how far a spot's expression of a gene deviates from what its depth alone would predict.</p>
+<figure>
+<img src="img/sctransform-concept.svg" alt="Diagram comparing a spot in dense gray matter (high counts from many cells) against a spot in sparse white matter (low counts from few cells), both potentially the same biological signal at different local cell density" style="width:100%; max-width:900px;">
+<figcaption>Two spots can differ enormously in total counts for purely structural reasons (cell density, tissue thickness) that have nothing to do with sequencing quality. SCTransform models this relationship directly instead of applying one flat scale factor to every spot.</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SCTransform</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">assay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Spatial&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+<p>Unlike the single-cell workflow, <code>SCTransform()</code> replaces the separate <code>NormalizeData()</code> + <code>FindVariableFeatures()</code> + <code>ScaleData()</code> steps in one call, and by default also selects variable features for you.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 1.3: Run SCTransform and visualize marker genes on the tissue</summary>
+<p>Run the <strong>Exercise 3</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SCTransform</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">assay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Spatial&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="nf">SpatialFeaturePlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Hpca&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ttr&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><code>Hpca</code> is a hippocampal neuron marker; <code>Ttr</code> marks the choroid plexus (the tissue that produces cerebrospinal fluid). Both should light up small, specific, anatomically recognizable regions if normalization worked as intended.</p>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>Do <code>Hpca</code> and <code>Ttr</code> mark the same region of tissue, overlapping regions, or clearly distinct ones?</li>
+<li>Try adding <code>pt.size.factor</code> and <code>alpha = c(0.1, 1)</code> as extra arguments to <code>SpatialFeaturePlot()</code>. What does changing <code>alpha</code> do, and when would that be useful on a spot with subtle expression differences?</li>
+</ol>
+</details>
+<details class="success">
+<summary>What to look for</summary>
+<p><code>Hpca</code> should light up a curved band corresponding to the hippocampus, while <code>Ttr</code> marks a small, distinct region corresponding to the choroid plexus, these are two different, non-overlapping anatomical structures, and a correct normalization should make each marker's known biology visually obvious on the tissue. The <code>alpha</code> argument controls point transparency for the <em>minimum</em> and <em>maximum</em> expression values plotted; narrowing it (e.g. <code>alpha = c(0.1, 1)</code>) makes low-expression spots nearly invisible so that genuinely high-expression spots stand out more sharply against the tissue background.</p>
+</details>
+<hr />
+<h2 id="part-2-post-processing">Part 2: Post-processing</h2>
+<p>The dimensionality reduction and clustering steps below use the exact same functions as the single-cell workshop, <code>RunPCA()</code>, <code>FindNeighbors()</code>, <code>FindClusters()</code>, <code>RunUMAP()</code>, just running on the <code>SCT</code> assay instead of <code>RNA</code>. If you want a detailed walkthrough of what each of these does mechanically, see <a href="../scRNAseq/#part-2-post-processing">Part 2 of the Single Cell RNAseq workshop</a>; this section moves quickly through the mechanics and focuses on what's different when the underlying units are spots instead of cells.</p>
+<h3 id="pca-elbow-plot-and-choosing-your-number-of-pcs">PCA, elbow plot, and choosing your number of PCs</h3>
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunPCA</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">assay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SCT&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">ElbowPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">ndims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
+</code></pre></div>
+<figure>
+<img src="../scRNAseq/img/pca-concept.svg" alt="Diagram of PCA collapsing thousands of variable genes into a PC1 vs PC2 scatter plot with clusters" style="width:100%; max-width:900px;">
+<figcaption>PCA works identically here to single-cell: it compresses correlated gene expression into a handful of components. See the single-cell workshop for the full mechanical walkthrough.</figcaption>
+</figure>
+
+<hr />
+<details class="question" open="open">
+<summary>Exercise 2.1 &amp; 2.2: Run PCA and choose your number of PCs</summary>
+<p>Run the <strong>Exercise 4</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunPCA</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">assay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SCT&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">ElbowPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">ndims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
+
+<span class="n">n_pcs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>___<span class="w">   </span><span class="c1"># pick your own cutoff based on the elbow plot above</span>
+</code></pre></div>
+<p>Store your choice in <code>n_pcs</code>, exactly as in the single-cell workshop, every remaining step uses <code>dims = 1:n_pcs</code>.</p>
+<p><strong>Question:</strong> The Seurat spatial vignette's own example uses 30 PCs for this same dataset without much further justification, more than the ~9-10 PCs typically chosen for pbmc3k. Does your own elbow plot support using more PCs here, and if so, why might a tissue section need more PCs than a PBMC sample to capture its biological complexity?</p>
+</details>
+<details class="tip">
+<summary>No fixed answer, but a reference point</summary>
+<p>Brain tissue contains many more distinct, spatially organized cell populations and layered structures than PBMCs do, so it isn't surprising if your elbow plot flattens out later than pbmc3k's did. Pick a number you can justify from your own plot.</p>
+</details>
+<hr />
+<h3 id="clustering-and-umap">Clustering and UMAP</h3>
+<div class="highlight"><pre><span></span><code><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindNeighbors</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_pcs</span><span class="p">)</span>
+<span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindClusters</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunUMAP</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_pcs</span><span class="p">)</span>
+</code></pre></div>
+<figure>
+<img src="../scRNAseq/img/knn-graph.svg" alt="Diagram of a k-nearest-neighbor graph in PCA space" style="width:100%; max-width:900px;">
+<figcaption>FindNeighbors() and FindClusters() build the same KNN/Louvain graph-clustering pipeline used in the single-cell workshop, just clustering spots by their expression profile in PCA space, not their physical position on the slide.</figcaption>
+</figure>
+
+<p>This last point is worth pausing on: <strong>clustering here has no idea where a spot physically sits on the tissue.</strong> It only sees each spot's expression profile in PCA space, just like <code>FindClusters()</code> only sees a cell's expression profile in the single-cell workshop. Whether clusters end up anatomically contiguous is something you check afterward, not something the algorithm knows about.</p>
+<hr />
+<details class="question" open="open">
+<summary>Exercise 2.3: Cluster spots and compare UMAP to the tissue</summary>
+<p>Run the <strong>Exercise 5</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">p1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">DimPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;umap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">p2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SpatialDimPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">label.size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<span class="n">p1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p2</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>Pick two or three clusters from the UMAP plot. On the spatial plot, do those same clusters form compact, contiguous regions of tissue, or are they scattered across multiple disconnected areas?</li>
+<li>If a cluster is spatially scattered rather than contiguous, does that mean the clustering is "wrong"? What biological explanation could produce a cell type or state that's genuinely present in multiple separate tissue locations?</li>
+<li>Try <code>SpatialDimPlot(brain, cells.highlight = CellsByIdentities(object = brain))</code> (or highlight one cluster at a time with <code>cells.highlight = WhichCells(brain, idents = &lt;cluster&gt;)</code>) to isolate a single cluster's footprint on the tissue. Does isolating it change your answer to question 1?</li>
+</ol>
+</details>
+<details class="success">
+<summary>What to look for</summary>
+<p>Cortical layers and structures like the hippocampus and choroid plexus typically form clear, spatially contiguous clusters, since spots in the same layer share the same local cell composition. But some clusters (e.g. a scattered vascular or immune cell signature) can legitimately appear as small, disconnected patches across the tissue, that is not necessarily a clustering error; it can reflect a real cell state that is dispersed by biology rather than confined to one structure.</p>
+</details>
+<hr />
+<h2 id="part-3-spatially-variable-genes-region-annotation-assignment">Part 3: Spatially Variable Genes &amp; Region Annotation Assignment</h2>
+<p>Clusters are just numbers until you connect them to tissue anatomy, and unlike the earlier steps in this workshop, there's no shortcut here. Because everyone chose their own <code>n_pcs</code> and default clustering resolution, <strong>your clusters are not the same as your classmates'</strong>: this assignment is based on your own results.</p>
+<h3 id="two-ways-to-find-genes-that-matter-markers-vs-spatially-variable">Two ways to find genes that matter: markers vs. spatially variable</h3>
+<p>You already know one method from single-cell: <code>FindMarkers()</code> runs differential expression between clusters, finding genes that best distinguish a group of spots you've already defined via clustering.</p>
+<p>Spatial data offers a second, complementary approach that doesn't need cluster labels at all: <code>FindSpatiallyVariableFeatures()</code> measures <strong>Moran's I</strong>, a statistic of spatial autocorrelation, testing whether a gene's expression at one spot tends to resemble its expression at <em>neighboring</em> spots. A gene can vary a lot across all spots and still have low Moran's I if that variation is scattered randomly rather than organized into coherent regions.</p>
+<figure>
+<img src="img/moransi-concept.svg" alt="Diagram contrasting a gene with high Moran's I (expression organized into a contiguous spatial patch) against a gene with low Moran's I (expression scattered randomly across spots)" style="width:100%; max-width:900px;">
+<figcaption>Both genes shown here could have identical overall variance across spots. Only the one on the left, whose high- and low-expression spots cluster together in space, would score highly on Moran's I.</figcaption>
+</figure>
+
+<hr />
+<details class="question" open="open">
+<summary>Exercise 3.1: Find markers between two clusters, and find spatially variable genes</summary>
+<p>Run the <strong>Exercise 6</strong> chunk in <code>workshop.Rmd</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pick two clusters that looked spatially interesting to you in Exercise 2.3</span>
+<span class="n">de_markers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindMarkers</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">ident.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>___<span class="p">,</span><span class="w"> </span><span class="n">ident.2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>___<span class="p">)</span>
+<span class="nf">SpatialFeaturePlot</span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">de_markers</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1"># Now find genes whose expression is spatially organized, independent of cluster labels</span>
+<span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindSpatiallyVariableFeatures</span><span class="p">(</span>
+<span class="w">  </span><span class="n">brain</span><span class="p">,</span>
+<span class="w">  </span><span class="n">assay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SCT&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">VariableFeatures</span><span class="p">(</span><span class="n">brain</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">],</span>
+<span class="w">  </span><span class="n">selection.method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;moransi&quot;</span>
+<span class="p">)</span>
+<span class="n">top.features</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="nf">SpatiallyVariableFeatures</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;moransi&quot;</span><span class="p">),</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
+<span class="nf">SpatialFeaturePlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top.features</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<p><strong>Questions:</strong></p>
+<ol>
+<li>Do any genes show up in both your <code>de_markers</code> list and your top spatially variable features list? Would you expect overlap between these two gene lists, given that they're testing different things?</li>
+<li>Pick one of the top 6 spatially variable genes. Does its expression pattern trace a shape you recognize from the QC or clustering plots earlier in this workshop?</li>
+</ol>
+</details>
+<details class="tip">
+<summary>No fixed answer</summary>
+<p>Some overlap between the two lists is expected, a gene that sharply distinguishes two clusters is likely to also show strong spatial clustering, since your clusters themselves were often spatially contiguous. But <code>FindSpatiallyVariableFeatures()</code> can also surface genes with gradients or patterns that don't line up neatly with any single cluster boundary, that's the point of having a second, cluster-independent method.</p>
+</details>
+<h3 id="region-annotation-research-assignment">Region annotation research assignment</h3>
+<p><strong>Your instructor will assign you one cluster from your own results.</strong></p>
+<ol>
+<li>
+<p>Pull the top marker genes for your assigned cluster:</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_cluster</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>___<span class="w">   </span><span class="c1"># the cluster number your instructor assigned you</span>
+
+<span class="nf">FindMarkers</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">ident.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_cluster</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">pct.1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">avg_log2FC</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">15</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Pick the 3-5 genes with the highest <code>avg_log2FC</code> and lowest <code>p_val_adj</code>. Research each one using at least one of:</p>
+<ul>
+<li><a href="https://mouse.brain-map.org/">Allen Mouse Brain Atlas</a>: search a gene symbol to see its own in-situ spatial expression across a mouse brain section, useful for directly comparing against your <code>SpatialFeaturePlot()</code> results</li>
+<li><a href="https://www.genecards.org/">GeneCards</a></li>
+<li><a href="https://www.proteinatlas.org/">The Human Protein Atlas</a> (has a Brain section with mouse cross-references)</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a> (search the gene symbol plus "mouse brain" or the anatomical structure you suspect)</li>
+</ul>
+</li>
+<li>
+<p>Sanity-check your candidate genes against your cluster's location on the tissue:</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;GENE1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GENE2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GENE3&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># substitute your chosen genes</span>
+
+<span class="nf">SpatialFeaturePlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_genes</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+<span class="nf">SpatialDimPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">cells.highlight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">WhichCells</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">idents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_cluster</span><span class="p">))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Write a short paragraph (3-5 sentences) proposing a tissue region or structure identity for your cluster (e.g. hippocampus, a specific cortical layer, corpus callosum, choroid plexus, thalamus). Cite at least one source, and state your confidence: is this a well-known canonical marker for that structure, or a more ambiguous call?</p>
+</li>
+</ol>
+<p><strong>Come prepared to present:</strong> your cluster number, its location on the tissue, your top marker genes, your proposed region, and the evidence that convinced you.</p>
+<div class="admonition info">
+<p class="admonition-title">A sagittal mouse brain section contains a known, limited set of major structures</p>
+<p>To narrow your search: a sagittal section like this one typically shows cortex (in layers), hippocampus, thalamus, corpus callosum (white matter), ventricles, and choroid plexus. You don't need to identify a rare or exotic structure, but you do need to determine <em>which</em> of these your cluster corresponds to, and ideally which sub-layer or sub-region.</p>
+</div>
+<h3 id="finalizing-the-annotation-as-a-class">Finalizing the annotation as a class</h3>
+<p>Once everyone has presented, agree on a label for each cluster as a group and apply them together:</p>
+<div class="highlight"><pre><span></span><code><span class="n">new.cluster.ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;your&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;class&#39;s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;agreed&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;labels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cluster&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;order&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># extend/edit to match your clusters</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">new.cluster.ids</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">levels</span><span class="p">(</span><span class="n">brain</span><span class="p">)</span>
+<span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RenameIdents</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">new.cluster.ids</span><span class="p">)</span>
+
+<span class="nf">SpatialDimPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">label.size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://satijalab.org/seurat/articles/spatial_vignette">Seurat Spatial Transcriptomics Vignette</a>: the source tutorial this workshop is adapted from, and where you can find more advanced extensions not covered here</li>
+<li><a href="https://doi.org/10.1038/s41587-023-01767-y">Hao et al. 2023, <em>Nature Biotechnology</em></a>: the Seurat v5 paper</li>
+<li><a href="https://doi.org/10.1016/j.cell.2019.05.031">Stuart* &amp; Butler* et al. 2019, <em>Cell</em></a>: anchor-based integration methodology, used in the vignette's label-transfer section</li>
+<li><a href="https://www.10xgenomics.com/products/spatial-gene-expression">10x Genomics Visium</a>: platform documentation</li>
+<li><a href="https://mouse.brain-map.org/">Allen Mouse Brain Atlas</a>: reference in-situ gene expression data for mouse brain anatomy</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Beyond this workshop</p>
+<p>The full Seurat vignette goes further than this workshop does: transferring cell type labels from a single-cell reference onto spatial data (<code>FindTransferAnchors()</code> + <code>TransferData()</code>), working with multiple tissue sections at once, and deconvolving cell type mixtures at each spot with tools like <code>RCTD</code>. These build directly on the skills from this workshop and the <a href="../scRNAseq/">Single Cell RNAseq workshop</a> combined, worth exploring once you're comfortable with the basics here.</p>
+</div>
+<hr />
+<p><em>Questions? Contact the CGDS Core: <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../scRNAseq/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Single Cell RNAseq">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Single Cell RNAseq
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Computational Workflows">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Computational Workflows
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

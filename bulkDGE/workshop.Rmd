@@ -1,0 +1,339 @@
+---
+title: "Differential Gene Expression Analysis"
+subtitle: "Cortisol response in zebrafish embryos — Hartig et al. 2016"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+---
+
+## Setup
+
+Run this chunk first to load all packages and set your working directory.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(DESeq2)
+library(ggplot2)
+library(ggrepel)
+library(dplyr)
+library(tibble)
+library(readr)
+library(pheatmap)
+
+# Working directory is set automatically by bulkDGE.Rproj — verify it here:
+getwd()  # should end in .../docs/bulkDGE
+```
+
+---
+
+## Exercise 1 — Load and Inspect the Data
+
+Load the count matrix and the design table, then answer the questions below.
+
+```{r ex1-load, message=FALSE}
+# Load the count matrix
+counts_raw <- read_tsv("data/counts.tsv")
+
+# Load the design table
+design     <- read_tsv("data/design.txt")
+
+# ── Inspect ──────────────────────────────────────────────────────────────────
+dim(counts_raw)    # rows = genes, cols = gene_id + gene_name + 6 samples
+head(counts_raw)
+colnames(counts_raw)
+
+dim(design)
+head(design)
+```
+
+**Questions to discuss:**
+
+1. How many genes are in this dataset?
+2. What are the six sample names?
+3. What column in `design` tells us which treatment group each sample belongs to?
+
+---
+
+## Exercise 2 — Build the DESeqDataSet
+
+DESeq2 needs two things: (1) an integer count matrix with genes as rows and samples as columns, and (2) a `colData` table with sample metadata. Build both and verify they are aligned before proceeding.
+
+```{r ex2-build-dds}
+# Step 1: Save gene annotations separately (we'll use these later for gene names)
+gene_info <- counts_raw %>%
+  select(gene_id, gene_name)
+
+# Step 2: Build the count matrix
+#   - gene_id becomes row names
+#   - gene_name is removed (not a count column)
+#   - Salmon outputs fractional counts; DESeq2 needs integers, so we round
+cts <- counts_raw %>%
+  select(-gene_name) %>%
+  column_to_rownames("gene_id") %>%
+  mutate(across(everything(), ~ round(.x) %>% as.integer()))
+
+# Step 3: Build colData from the design table
+#   - Use the "name" column (matches count matrix column names) as row names
+#   - Set reference level: veh = vehicle (control), cort = cortisol (treatment)
+coldata <- design %>%
+  select(name, treatment) %>%
+  mutate(treatment = factor(treatment, levels = c("veh", "cort"))) %>%
+  column_to_rownames("name")
+
+# Step 4: Align column order — colnames(cts) must equal rownames(coldata)
+cts <- cts[, rownames(coldata)]
+all(colnames(cts) == rownames(coldata))  # must be TRUE before continuing
+
+# Step 5: Build DESeqDataSet
+dds <- DESeqDataSetFromMatrix(
+  countData = cts,
+  colData   = coldata,
+  design    = ~ treatment
+)
+dds
+```
+
+**Questions to discuss:**
+
+1. Why do we set `levels = c("veh", "cort")`? What would change if we reversed the order?
+2. Why do we check `all(colnames(cts) == rownames(coldata))` before building `dds`?
+3. What does a positive `log2FoldChange` mean for this comparison?
+
+---
+
+## Exercise 3 — Filter, Run DESeq2, and Extract Results
+
+Pre-filter very low-count genes, run DESeq2, then extract and explore the differential expression results.
+
+```{r ex3-run-deseq2, message=FALSE}
+# Pre-filter: keep genes with at least 10 total counts across all samples
+# (reduces computation and improves FDR control)
+keep <- rowSums(counts(dds)) >= 10
+dds  <- dds[keep, ]
+cat("Genes after filtering:", nrow(dds), "\n")
+
+# Run DESeq2
+# (estimates size factors, dispersions, and applies the Wald test)
+dds <- DESeq(dds)
+
+# Check available contrasts — use the name exactly as shown
+resultsNames(dds)
+
+# Extract results for the contrast: cortisol vs vehicle
+# Positive log2FoldChange = higher in cortisol
+res <- results(dds, name = "treatment_cort_vs_veh")
+summary(res)
+```
+
+```{r ex3-explore-results}
+# Convert to a tidy data frame and add gene names
+res_df <- as.data.frame(res) %>%
+  rownames_to_column("gene_id") %>%
+  left_join(gene_info, by = "gene_id") %>%
+  relocate(gene_name, .after = gene_id)
+
+head(res_df)
+
+# How many genes are significant at padj < 0.05?
+res_df %>% filter(!is.na(padj), padj < 0.05) %>% nrow()
+
+# Top 10 most significant genes
+res_df %>%
+  filter(!is.na(padj)) %>%
+  arrange(padj) %>%
+  select(gene_name, log2FoldChange, padj) %>%
+  head(10)
+```
+
+**Questions to discuss:**
+
+1. Look at the `summary()` output. How many genes are up-regulated? Down-regulated?
+2. What is `baseMean`? What does `lfcSE` represent?
+3. Why do we use `padj` rather than `pvalue` to call significance?
+
+---
+
+## Exercise 4 — PCA: Do Samples Cluster by Treatment?
+
+Use a variance-stabilizing transform and PCA to check that replicates cluster together and that the treatment groups separate.
+
+```{r ex4-pca, fig.width=6, fig.height=5}
+# Variance-stabilizing transform (for visualization only)
+vst_data <- vst(dds, blind = FALSE)
+
+# Quick built-in PCA
+plotPCA(vst_data, intgroup = "treatment")
+```
+
+Now build a polished version with ggplot2:
+
+```{r ex4-pca-ggplot, fig.width=6, fig.height=5}
+pca_data <- plotPCA(vst_data, intgroup = "treatment", returnData = TRUE)
+pct_var  <- round(attr(pca_data, "percentVar") * 100, 1)
+
+ggplot(pca_data, aes(x = PC1, y = PC2, color = treatment, label = name)) +
+  geom_point(size = 4) +
+  geom_text_repel(show.legend = FALSE, size = 3) +
+  scale_color_manual(values = c(veh = "steelblue", cort = "tomato")) +
+  labs(
+    title    = "PCA — zebrafish embryo RNA-seq",
+    subtitle = "Hartig et al. 2016 (jcoffman001)",
+    x        = paste0("PC1: ", pct_var[1], "% variance"),
+    y        = paste0("PC2: ", pct_var[2], "% variance"),
+    color    = "Treatment"
+  ) +
+  theme_minimal()
+```
+
+**Questions to discuss:**
+
+1. What percentage of variance does PC1 capture? Is that a good sign?
+2. Do the three replicates within each group cluster tightly?
+3. If one sample appeared as an outlier, what would you do?
+
+---
+
+## Exercise 5 — Volcano Plot: The DE Landscape
+
+Build a volcano plot to visualize all genes at once — significant genes stand out from the background.
+
+```{r ex5-volcano, fig.width=8, fig.height=6}
+# Prepare plotting data
+plot_df <- res_df %>%
+  filter(!is.na(padj), !is.na(log2FoldChange)) %>%
+  mutate(
+    direction = case_when(
+      padj < 0.05 & log2FoldChange > 0 ~ "up in cort",
+      padj < 0.05 & log2FoldChange < 0 ~ "down in cort",
+      TRUE                             ~ "not significant"
+    )
+  )
+
+# Label the 15 most significant genes
+top_genes <- plot_df %>% arrange(padj) %>% head(15)
+
+ggplot(plot_df, aes(x = log2FoldChange, y = -log10(padj), color = direction)) +
+  geom_point(alpha = 0.5, size = 1.2) +
+  scale_color_manual(values = c(
+    "up in cort"      = "tomato",
+    "down in cort"    = "steelblue",
+    "not significant" = "grey70"
+  )) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, linetype = "dotted") +
+  geom_text_repel(
+    data = top_genes, aes(label = gene_name),
+    size = 3, max.overlaps = 20, show.legend = FALSE
+  ) +
+  labs(
+    title    = "Differential Expression: Cortisol vs Vehicle",
+    subtitle = "Zebrafish embryos — Hartig et al. 2016",
+    x        = "log2 Fold Change (cort / veh)",
+    y        = expression(-log[10] ~ adjusted ~ italic(p)),
+    color    = NULL
+  ) +
+  theme_classic()
+```
+
+**Questions to discuss:**
+
+1. What pattern do you see in genes upregulated by cortisol?
+2. Are there more up- or down-regulated genes, or roughly symmetric?
+3. Look at the gene labels. Do any gene names suggest a biological pathway?
+
+---
+
+## Exercise 6 — MA Plot and Heatmap
+
+An MA plot shows the average expression level (x) against fold change (y). It helps identify whether fold change estimates are biased at low expression levels.
+
+```{r ex6-maplot, fig.width=6, fig.height=5}
+plotMA(res, ylim = c(-6, 6), alpha = 0.05,
+       main = "MA Plot: Cortisol vs Vehicle")
+abline(h = 0, col = "grey40", lty = 2)
+```
+
+---
+
+Heatmap of the 50 most significant DE genes, z-scored by row so all genes are on the same color scale.
+
+```{r ex6-heatmap, fig.width=7, fig.height=9}
+# Indices of the 50 most significant genes
+top50_ids <- res_df %>%
+  filter(!is.na(padj)) %>%
+  arrange(padj) %>%
+  head(50) %>%
+  pull(gene_id)
+
+# VST-normalized expression matrix for those genes
+mat <- assay(vst_data)[top50_ids, ]
+
+# Replace Ensembl IDs with readable gene names
+rownames(mat) <- gene_info$gene_name[match(rownames(mat), gene_info$gene_id)]
+
+# Annotation bar showing treatment group
+anno_col <- data.frame(
+  Treatment = coldata$treatment,
+  row.names = rownames(coldata)
+)
+anno_colors <- list(Treatment = c(veh = "steelblue", cort = "tomato"))
+
+pheatmap(
+  mat,
+  scale          = "row",
+  annotation_col = anno_col,
+  annotation_colors = anno_colors,
+  show_rownames  = TRUE,
+  fontsize_row   = 7,
+  cluster_cols   = TRUE,
+  main           = "Top 50 DE Genes — Cortisol vs Vehicle"
+)
+```
+
+---
+
+## Bonus — Gene Set Enrichment Analysis (GSEA)
+
+GSEA asks whether a predefined biological gene set (such as "inflammatory response") is enriched among genes that change with cortisol treatment, without imposing a significance cutoff.
+
+```{r bonus-gsea-setup, message=FALSE}
+library(clusterProfiler)
+library(msigdbr)
+
+# MSigDB Hallmark gene sets mapped to Danio rerio via orthology
+hallmarks  <- msigdbr(species = "Danio rerio", category = "H")
+TERM2GENE  <- hallmarks %>% select(gs_name, ensembl_gene)
+
+# Build a named vector: gene_id → log2FoldChange, sorted descending
+rank_vec <- res_df %>%
+  filter(!is.na(log2FoldChange), !is.na(gene_id)) %>%
+  arrange(desc(log2FoldChange)) %>%
+  pull(log2FoldChange, name = gene_id)
+
+head(rank_vec)
+tail(rank_vec)
+```
+
+```{r bonus-gsea-run, message=FALSE, warning=FALSE}
+set.seed(42)
+gsea_res <- GSEA(
+  geneList     = rank_vec,
+  TERM2GENE    = TERM2GENE,
+  pvalueCutoff = 0.05,
+  verbose      = FALSE
+)
+
+as.data.frame(gsea_res) %>%
+  select(ID, NES, pvalue, p.adjust) %>%
+  arrange(p.adjust)
+```
+
+```{r bonus-gsea-plot, fig.width=9, fig.height=6}
+dotplot(gsea_res, x = "NES", showCategory = 15, label_format = 50) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey40") +
+  labs(
+    title    = "GSEA: Cortisol vs Vehicle",
+    subtitle = "MSigDB Hallmark gene sets · Danio rerio"
+  )
+```
