@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="320" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">Why SCTransform Instead of LogNormalize?</text>
+  <text x="30" y="60" font-size="13" fill="#718096">Spot totals vary with local cell density and tissue thickness, not just sequencing depth.</text>
+
+  <!-- Spot 1: dense tissue -->
+  <g transform="translate(50,90)">
+    <rect x="0" y="0" width="230" height="170" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="115" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Spot A — dense gray matter</text>
+    <circle cx="115" cy="80" r="34" fill="#feebc8" stroke="#c05621"/>
+    <g fill="#7b341e" opacity="0.85">
+      <circle cx="100" cy="68" r="9"/><circle cx="128" cy="70" r="9"/><circle cx="108" cy="92" r="9"/>
+      <circle cx="130" cy="94" r="9"/><circle cx="118" cy="80" r="8"/><circle cx="95" cy="88" r="8"/>
+    </g>
+    <text x="115" y="130" font-size="12" fill="#4a5568" text-anchor="middle">many cells under the spot</text>
+    <text x="115" y="150" font-size="13" font-weight="700" fill="#22543d" text-anchor="middle">high total counts</text>
+  </g>
+
+  <!-- Spot 2: sparse tissue -->
+  <g transform="translate(320,90)">
+    <rect x="0" y="0" width="230" height="170" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="115" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Spot B — sparse white matter</text>
+    <circle cx="115" cy="80" r="34" fill="#bee3f8" stroke="#3182ce"/>
+    <g fill="#2a4365" opacity="0.85">
+      <circle cx="108" cy="76" r="9"/><circle cx="128" cy="88" r="9"/>
+    </g>
+    <text x="115" y="130" font-size="12" fill="#4a5568" text-anchor="middle">few cells under the spot</text>
+    <text x="115" y="150" font-size="13" font-weight="700" fill="#c05621" text-anchor="middle">low total counts</text>
+  </g>
+
+  <!-- takeaway -->
+  <g transform="translate(600,90)">
+    <rect x="0" y="0" width="210" height="170" rx="8" fill="#1b365d"/>
+    <text x="105" y="28" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Both spots could be</text>
+    <text x="105" y="46" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">the same tissue type</text>
+    <text x="105" y="76" font-size="12" fill="#90cdf4" text-anchor="middle">A simple size-factor scale</text>
+    <text x="105" y="94" font-size="12" fill="#90cdf4" text-anchor="middle">(like LogNormalize) treats</text>
+    <text x="105" y="112" font-size="12" fill="#90cdf4" text-anchor="middle">every gene's variance the</text>
+    <text x="105" y="130" font-size="12" fill="#90cdf4" text-anchor="middle">same way across counts.</text>
+    <text x="105" y="152" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="700">SCTransform models that</text>
+    <text x="105" y="168" font-size="11" fill="#e2e8f0" text-anchor="middle" font-weight="700">relationship per gene instead.</text>
+  </g>
+
+  <text x="30" y="285" font-size="12" fill="#4a5568">SCTransform() fits a regularized negative binomial model of counts vs. sequencing depth per gene, then returns</text>
+  <text x="30" y="303" font-size="12" fill="#4a5568">Pearson residuals — removing this technical variance while preserving genuine biological differences between spots.</text>
+</svg>

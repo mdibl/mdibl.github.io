@@ -1,0 +1,163 @@
+---
+title: "Spatial Transcriptomics Analysis"
+subtitle: "10x Genomics Visium Mouse Brain: Seurat Spatial Vignette"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+---
+
+## Setup
+
+Run this chunk first to load all packages and set your working directory.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(Seurat)
+library(SeuratData)
+library(patchwork)
+library(dplyr)
+library(ggplot2)
+
+# Working directory is set automatically by spatial.Rproj, verify it here:
+getwd()  # should end in .../docs/spatial
+```
+
+---
+
+## Part 1: Loading Spatial Data & Pre-processing
+
+## Exercise 1: Load the Visium Dataset and Inspect the Seurat Object
+
+```{r ex1-load}
+InstallData("stxBrain")
+brain <- LoadData("stxBrain", type = "anterior1")
+brain
+
+names(brain@images)
+```
+
+---
+
+## Exercise 2: Visualize QC Metrics on the Violin Plot and on the Tissue Itself
+
+```{r ex2-qc, fig.height=6, fig.width=12}
+plot1 <- VlnPlot(brain, features = "nCount_Spatial", pt.size = 0.1) + NoLegend()
+plot2 <- SpatialFeaturePlot(brain, features = "nCount_Spatial") + theme(legend.position = "right")
+plot1 + plot2
+```
+
+---
+
+## Exercise 3: Run SCTransform and Visualize Marker Genes on the Tissue
+
+```{r ex3-sctransform, fig.height=6, fig.width=12}
+brain <- SCTransform(brain, assay = "Spatial", verbose = FALSE)
+
+SpatialFeaturePlot(brain, features = c("Hpca", "Ttr"))
+```
+
+Try adjusting `alpha` to see how it changes the plot:
+
+```{r ex3-alpha, fig.height=6, fig.width=12}
+SpatialFeaturePlot(brain, features = c("Hpca", "Ttr"), alpha = c(0.1, 1))
+```
+
+---
+
+## Part 2: Post-processing
+
+## Exercise 4: Run PCA and Choose Your Number of PCs
+
+Inspect the elbow plot, then set `n_pcs` to whatever cutoff you decide on. Every remaining step uses `dims = 1:n_pcs`.
+
+```{r ex4-pca-elbow, fig.height=6, fig.width=10, results='hide'}
+brain <- RunPCA(brain, assay = "SCT", verbose = FALSE)
+ElbowPlot(brain, ndims = 30)
+
+n_pcs <- 30   # pick your own cutoff based on the elbow plot above
+```
+
+---
+
+## Exercise 5: Cluster Spots and Compare UMAP to the Tissue
+
+```{r ex5-cluster-umap, fig.height=7, fig.width=13}
+brain <- FindNeighbors(brain, reduction = "pca", dims = 1:n_pcs)
+brain <- FindClusters(brain, verbose = FALSE)
+brain <- RunUMAP(brain, reduction = "pca", dims = 1:n_pcs)
+
+p1 <- DimPlot(brain, reduction = "umap", label = TRUE)
+p2 <- SpatialDimPlot(brain, label = TRUE, label.size = 3)
+p1 + p2
+```
+
+Isolate a single cluster's footprint on the tissue:
+
+```{r ex5-highlight-cluster, fig.height=6, fig.width=8}
+my_explore_cluster <- 0   # try a few different cluster numbers here
+
+SpatialDimPlot(brain, cells.highlight = WhichCells(brain, idents = my_explore_cluster))
+```
+
+---
+
+## Part 3: Spatially Variable Genes & Region Annotation Assignment
+
+## Exercise 6: Find Markers Between Clusters, and Find Spatially Variable Genes
+
+```{r ex6-de-markers, fig.height=6, fig.width=12}
+# Pick two clusters that looked spatially interesting to you in Exercise 5
+de_markers <- FindMarkers(brain, ident.1 = 1, ident.2 = 2)
+SpatialFeaturePlot(object = brain, features = rownames(de_markers)[1:3], alpha = c(0.1, 1))
+```
+
+```{r ex6-spatially-variable, fig.height=8, fig.width=13}
+brain <- FindSpatiallyVariableFeatures(
+  brain,
+  assay = "SCT",
+  features = VariableFeatures(brain)[1:1000],
+  selection.method = "moransi"
+)
+
+top.features <- head(SpatiallyVariableFeatures(brain, method = "moransi"), 6)
+SpatialFeaturePlot(brain, features = top.features, ncol = 3, alpha = c(0.1, 1))
+```
+
+---
+
+## Exercise 7: Research Your Assigned Cluster's Region Identity
+
+Your instructor will assign you one cluster number from **your own** results.
+
+```{r ex7-my-cluster-markers}
+my_cluster <- 0   # replace with the cluster number your instructor assigned you
+
+FindMarkers(brain, ident.1 = my_cluster) %>%
+  filter(pct.1 > 0.25) %>%
+  arrange(desc(avg_log2FC)) %>%
+  head(15)
+```
+
+Once you've picked 3-5 candidate marker genes from that table and researched them, sanity-check them against your cluster's location on the tissue:
+
+```{r ex7-my-cluster-plots, fig.height=6, fig.width=12}
+my_genes <- c("GENE1", "GENE2", "GENE3")  # replace with your chosen marker genes
+
+SpatialFeaturePlot(brain, features = my_genes, alpha = c(0.1, 1))
+SpatialDimPlot(brain, cells.highlight = WhichCells(brain, idents = my_cluster))
+```
+
+---
+
+## Finalize the Annotation as a Class
+
+After everyone presents their assigned cluster, fill in the agreed-upon labels in cluster order and apply them together.
+
+```{r finalize-annotation, fig.height=6, fig.width=9}
+new.cluster.ids <- c("cluster0_label", "cluster1_label", "cluster2_label")  # extend/edit to match your class's clusters
+names(new.cluster.ids) <- levels(brain)
+brain <- RenameIdents(brain, new.cluster.ids)
+
+SpatialDimPlot(brain, label = TRUE, label.size = 3)
+```
