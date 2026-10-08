@@ -1,12 +1,11 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+      
+        <link rel="canonical" href="https://mdibl.github.io/genomics/">
       
       
         <link rel="prev" href="../dataOrganization/">
@@ -18,16 +17,19 @@
         
       
       
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../feed_rss_updated.xml">
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Managing Data & Projects for Genomics - MDIBL Comparative Genomics and Data Science Core</title>
+        <title>Managing Data &amp; Projects for Genomics - MDIBL Comparative Genomics and Data Science Core</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -43,8 +45,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -57,7 +59,17 @@
 
     
     
-  </head>
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -83,6 +95,23 @@
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+              </button>
+            
+            
+  Check out the new <a href="/blog/"><strong>CGDS Core Blog</strong></a> for news, workshop announcements, and tutorials!
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
     </div>
     
     
@@ -93,12 +122,12 @@
     <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-header__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -110,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Managing Data & Projects for Genomics
+              Managing Data &amp; Projects for Genomics
             
           </span>
         </div>
@@ -123,20 +152,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to Dark Mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to Light Mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
       </label>
     
   
@@ -152,24 +181,24 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -177,7 +206,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -195,7 +224,7 @@
         <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -348,6 +377,28 @@
   
 
       
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -359,7 +410,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -373,7 +424,7 @@
     <a href=".." title="MDIBL Comparative Genomics and Data Science Core" class="md-nav__button md-logo" aria-label="MDIBL Comparative Genomics and Data Science Core" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.182 0a2.18 2.18 0 0 0-2.18 2.114L0 2.182v6.545a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 2.182 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v13.09a2.182 2.182 0 0 0 4.364 0V2.183A2.18 2.18 0 0 0 8.727 0m6.546 0a2.18 2.18 0 0 0-2.182 2.182 2.18 2.18 0 0 0 2.182 2.182 2.18 2.18 0 0 0 2.182-2.182A2.18 2.18 0 0 0 15.273 0m6.545 0a2.18 2.18 0 0 0-2.18 2.114l-.002.068v19.636a2.182 2.182 0 0 0 4.364 0V2.182A2.18 2.18 0 0 0 21.818 0m-6.545 6.545c-1.183 0-2.145.94-2.181 2.114l-.001.068v13.091a2.182 2.182 0 0 0 4.364 0V8.728a2.18 2.18 0 0 0-2.182-2.183M2.182 13.091a2.18 2.18 0 0 0-2.18 2.114L0 15.273v6.545a2.182 2.182 0 0 0 4.364 0v-6.545a2.18 2.18 0 0 0-2.182-2.182m6.545 6.545a2.18 2.18 0 0 0-2.182 2.182A2.18 2.18 0 0 0 8.727 24a2.18 2.18 0 0 0 2.182-2.182 2.18 2.18 0 0 0-2.182-2.182"></path></svg>
 
     </a>
     MDIBL Comparative Genomics and Data Science Core
@@ -383,7 +434,7 @@
       <a href="https://github.com/mdibl/mdibl.github.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -391,7 +442,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -446,7 +497,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -476,7 +527,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -580,7 +631,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -617,7 +668,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -672,7 +723,7 @@
   <span class="md-ellipsis">
     
   
-    Managing Data & Projects for Genomics
+    Managing Data &amp; Projects for Genomics
   
 
     
@@ -690,7 +741,7 @@
   <span class="md-ellipsis">
     
   
-    Managing Data & Projects for Genomics
+    Managing Data &amp; Projects for Genomics
   
 
     
@@ -713,7 +764,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#why-this-matters" class="md-nav__link">
@@ -1037,7 +1088,7 @@
   <span class="md-ellipsis">
     
   
-    Introduction to R & RStudio
+    Introduction to R &amp; RStudio
   
 
     
@@ -1120,7 +1171,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1157,7 +1208,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1310,7 +1361,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1347,7 +1398,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1446,7 +1497,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1483,7 +1534,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1521,7 +1572,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1558,7 +1609,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1722,7 +1773,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1759,7 +1810,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2001,7 +2052,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2038,7 +2089,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2169,6 +2220,302 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3">
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4">
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2177,7 +2524,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2193,7 +2540,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#why-this-matters" class="md-nav__link">
@@ -2518,7 +2865,7 @@
 <blockquote>
 <p><strong>Workshop:</strong> ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.</p>
 </blockquote>
-<hr />
+<hr>
 <div class="admonition info">
 <p class="admonition-title">Learning Objectives</p>
 <p>By the end of this workshop you will be able to:</p>
@@ -2530,9 +2877,9 @@
 <li>Apply a consistent file and folder naming convention</li>
 </ul>
 </div>
-<hr />
+<hr>
 <h2 id="why-this-matters">Why This Matters</h2>
-<p><img align="right" alt="Computers Made Easy bookshelf cartoon" src="images/slide02_img00.jpg" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide02_img00.jpg" data-desc-position="bottom"><img align="right" alt="Computers Made Easy bookshelf cartoon" src="images/slide02_img00.jpg" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;"></a></p>
 <p>Computers are essential across all areas of modern science. We use them to collect, analyze, store, and share data — and to collaborate and write manuscripts. But most researchers are never taught the computational equivalent of <strong>basic lab skills</strong>: the everyday practices that keep data findable, interpretable, and reusable.</p>
 <p>The result is familiar to almost everyone who has done research:</p>
 <ul>
@@ -2542,7 +2889,7 @@
 <li>You finish a project and realize the analysis cannot be reproduced.</li>
 </ul>
 <p>These are not failures of intelligence — they are failures of systems. This workshop introduces practical, everyday practices to avoid them.</p>
-<p><img align="left" alt="Past Self, Present Self, Future Self cartoon" src="images/slide04_img00.jpg" style="width:210px; border-radius:6px; margin-right:1.5rem; margin-bottom:0.5rem;" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide04_img00.jpg" data-desc-position="bottom"><img align="left" alt="Past Self, Present Self, Future Self cartoon" src="images/slide04_img00.jpg" style="width:210px; border-radius:6px; margin-right:1.5rem; margin-bottom:0.5rem;"></a></p>
 <p>The collaborator who benefits most from good data practices is the one every researcher cares about: <strong>your future self</strong>.</p>
 <p><br style="clear:both;"></p>
 <div class="admonition abstract">
@@ -2553,7 +2900,7 @@
 <li>What part of your workflow — wet lab → sequencing → analysis → writing — loses track of information most easily?</li>
 </ol>
 </div>
-<hr />
+<hr>
 <h2 id="what-counts-as-data">What Counts as Data?</h2>
 <p>The word "data" often conjures up images of spreadsheets and measurement tables. In genomics, the reality is far broader.</p>
 <details class="question" open="open">
@@ -2618,15 +2965,15 @@
 <details class="success">
 <summary>Solution</summary>
 <p>You are responsible for knowing where your data lives, how it was generated, and what stage it is in.</p>
-<p><figure markdown="span">
-    <img alt="Smokey Bear: Only You Can Keep Track of Your Data" src="images/slide08_img00.png" style="width:380px; border-radius:6px;" />
-</figure></p>
+<p></p><figure markdown="span">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide08_img00.png" data-desc-position="bottom"><img alt="Smokey Bear: Only You Can Keep Track of Your Data" src="images/slide08_img00.png" style="width:380px; border-radius:6px;"></a>
+</figure><p></p>
 </details>
 </details>
-<hr />
+<hr>
 <h2 id="part-1-fair-data-principles">Part 1: FAIR Data Principles</h2>
 <figure>
-    <img alt="FAIR: Findable, Accessible, Interoperable, Reusable" src="images/slide29_img00.png" style="width:520px; border-radius:6px;" />
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide29_img00.png" data-desc-position="bottom"><img alt="FAIR: Findable, Accessible, Interoperable, Reusable" src="images/slide29_img00.png" style="width:520px; border-radius:6px;"></a>
 </figure>
 <p>The <strong>FAIR Guiding Principles</strong> (published in <em>Scientific Data</em>, 2016) define best practices for data management and stewardship. Originally aimed at published datasets, they are equally valuable for everyday project management.</p>
 <p>The goal: make data <strong>Findable, Accessible, Interoperable, and Reusable</strong> — by both humans and computers.</p>
@@ -2668,18 +3015,18 @@
 <li><strong>Tidy data structure</strong> — one variable per column, one observation per row, one value per cell</li>
 <li><strong>Clear, descriptive column headers</strong> — <code>weight_g</code> rather than <code>wt</code></li>
 </ul>
-<hr />
+<hr>
 <h3 id="what-happens-when-data-arent-fair">What Happens When Data Aren't FAIR?</h3>
 <p>The following three scenarios are adapted from real situations researchers encounter.</p>
 <details class="question" open="open">
 <summary>Exercise 1.1 — Uninterpretable file names</summary>
 <p>You receive a dataset from a collaborator:</p>
-<div class="highlight"><pre><span></span><code>/shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
-├── A1.fastq.gz
-├── A2.fastq.gz
-├── ...
-└── H12.fastq.gz
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── A1.fastq.gz
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── A2.fastq.gz
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── ...
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── H12.fastq.gz
+</span></code></pre></div>
 <ol>
 <li>Which biological samples are <code>A1.fastq.gz</code> and <code>H12.fastq.gz</code>?</li>
 <li>Is there a control group? How many replicates?</li>
@@ -2700,12 +3047,12 @@
 <details class="question" open="open">
 <summary>Exercise 1.2 — Mismatched gene identifiers</summary>
 <p>You compile a gene list from three papers:</p>
-<div class="highlight"><pre><span></span><code>TP53
-Actb
-MYC
-pax6
-Gapdh
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>TP53
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Actb
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>MYC
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>pax6
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Gapdh
+</span></code></pre></div>
 <p>You try to look these up in your RNA-seq results, and only 2 out of 5 match.</p>
 <ol>
 <li>Why might these names fail to match?</li>
@@ -2749,8 +3096,8 @@ Gapdh
 <details class="question" open="open">
 <summary>Exercise 1.3 — Undocumented analysis file</summary>
 <p>You receive <code>DEGs_table.csv</code> with 847 rows and columns:</p>
-<div class="highlight"><pre><span></span><code>gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
+</span></code></pre></div>
 <p>List everything you would need to correctly interpret, share, or reproduce this analysis.</p>
 <details class="success">
 <summary>Solution</summary>
@@ -2814,7 +3161,7 @@ Gapdh
 <li>Poor naming, missing metadata, and non-standard identifiers are the most common FAIR failures.</li>
 </ul>
 </div>
-<hr />
+<hr>
 <h2 id="part-2-metadata">Part 2: Metadata</h2>
 <h3 id="what-is-metadata">What Is Metadata?</h3>
 <p>Metadata is <strong>data about your data</strong> — information that describes what the data are and how they were generated. Without it, a file is often uninterpretable.</p>
@@ -2898,9 +3245,9 @@ Gapdh
 <li>What do the sample labels 6-BA, ABA, IAA, JA mean? </li>
 <li>What was the experimental question? How confident are you?</li>
 </ul>
-<p><figure markdown="span">
-    <img alt="Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA" src="images/slide24_sub3_0.png" style="width:540px; border-radius:6px;" />
-</figure></p>
+<p></p><figure markdown="span">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide24_sub3_0.png" data-desc-position="bottom"><img alt="Genomics figure with cryptic sample codes — 6-BA, ABA, IAA, JA" src="images/slide24_sub3_0.png" style="width:540px; border-radius:6px;"></a>
+</figure><p></p>
 </div>
 <h3 id="a-figure-without-metadata-is-incomplete-data">A figure without metadata is incomplete data</h3>
 <p>Even with axis labels, sample codes, and p-values, this figure is not interpretable without its metadata. You cannot tell what organism, what tissue, what the treatments are, who ran the analysis, or what reference genome was used. </p>
@@ -2980,9 +3327,9 @@ Gapdh
 <li>What information is missing that you would want for a complete metadata record?</li>
 <li>Below is the PCA generated from this dataset. Without the sample sheet, the sample IDs (<code>1A</code>, <code>2B</code>, etc.) are uninterpretable. With it, what can you now say about the biology?</li>
 </ol>
-<p><figure markdown="span">
-    <img alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" src="images/PCA_example.png" style="width:480px; border-radius:6px;" />
-</figure></p>
+<p></p><figure markdown="span">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/PCA_example.png" data-desc-position="bottom"><img alt="PCA of mouse RNA-seq — top 500 most variable genes, VST-transformed" src="images/PCA_example.png" style="width:480px; border-radius:6px;"></a>
+</figure><p></p>
 <details class="success">
 <summary>Solution</summary>
 <p><strong>1. What the sample names encode:</strong> </p>
@@ -3144,71 +3491,71 @@ Gapdh
 <details class="question" open="open">
 <summary>Exercise 2.2 — Evaluate a real README</summary>
 <p>Below is a README file as raw plain-text. Read through it and answer the questions.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Raw text (README.txt)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Raw text (README.txt)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>README – Example Genomics Project
-Project: Mouse bulk RNA-seq (agonist &amp; inhibitor study)
-Date created: 2025-11-10
-Project owner: C. Nobrega (cnobrega@mdibl.org)
-Collaborators: J. Smith
-Raw Data location: /projects/JohnSmith_mouse_bulk/data/
-Last updated: 2025-11-11
-
-───────────────────────────────────────────────
-1. PROJECT OVERVIEW
-───────────────────────────────────────────────
-This project examines transcriptional changes in mouse macrophage-like
-J774A.1 cells exposed to an inflammatory agonist and a chemical inhibitor
-that modulates the cellular stress response.
-
-Two treatment factors:
-    - Agonist (poly IC): induces intracellular inflammatory response.
-    - Inhibitor (4u8C): blocks IRE1 endonuclease activity of the UPR.
-Four experimental conditions:
-    - Baseline:          Mock &amp; DMSO
-    - Inflammation:      poly_IC &amp; DMSO
-    - Inhibitor only:    Mock &amp; 4u8C
-    - Combined:          poly_IC &amp; 4u8C
-
-───────────────────────────────────────────────
-2. DIRECTORY STRUCTURE
-───────────────────────────────────────────────
-.
-├── README.txt
-├── data/    → sample sheet, raw FASTQs, reference files
-└── analysis/
-    ├── full_mouse_deseq.Rmd
-    ├── input/
-    │   ├── design.tsv
-    │   ├── tx2gene.tsv
-    │   └── salmon.merged.gene_counts.tsv
-    └── output/
-        ├── PCA.png
-        ├── agonist_main_volcano.png
-        ├── results_agonist_main.csv
-        └── results_inhibitor_main.csv
-
-───────────────────────────────────────────────
-3. DATA AND METADATA
-───────────────────────────────────────────────
-Sequencing metadata: data/samplesheet.csv
-  - Replicates: 4 per condition (total = 16)
-  - Library prep: standard polyA-selected RNA-seq
-  - File naming: {SampleID}_{S###}_{Lane}_{Read}_001.fastq.gz
-
-───────────────────────────────────────────────
-4. ANALYSIS DETAILS
-───────────────────────────────────────────────
-nf-core/rnaseq pipeline:
-  - version 3.19.0
-  - GTF:   Mus_musculus.GRCm39.114.gtf.gz
-  - FASTA: Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
-
-DESeq2 analysis:
-  - Script:  analysis/full_mouse_deseq.Rmd
-  - Outputs: analysis/output/
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">README.txt</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>README – Example Genomics Project
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Project: Mouse bulk RNA-seq (agonist &amp; inhibitor study)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Date created: 2025-11-10
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Project owner: C. Nobrega (cnobrega@mdibl.org)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Collaborators: J. Smith
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Raw Data location: /projects/JohnSmith_mouse_bulk/data/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Last updated: 2025-11-11
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>───────────────────────────────────────────────
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>1. PROJECT OVERVIEW
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>───────────────────────────────────────────────
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>This project examines transcriptional changes in mouse macrophage-like
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>J774A.1 cells exposed to an inflammatory agonist and a chemical inhibitor
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>that modulates the cellular stress response.
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>Two treatment factors:
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    - Agonist (poly IC): induces intracellular inflammatory response.
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    - Inhibitor (4u8C): blocks IRE1 endonuclease activity of the UPR.
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>Four experimental conditions:
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    - Baseline:          Mock &amp; DMSO
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    - Inflammation:      poly_IC &amp; DMSO
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    - Inhibitor only:    Mock &amp; 4u8C
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    - Combined:          poly_IC &amp; 4u8C
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>───────────────────────────────────────────────
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>2. DIRECTORY STRUCTURE
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>───────────────────────────────────────────────
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>.
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>├── README.txt
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>├── data/    → sample sheet, raw FASTQs, reference files
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>└── analysis/
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    ├── full_mouse_deseq.Rmd
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    ├── input/
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>    │   ├── design.tsv
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    │   ├── tx2gene.tsv
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    │   └── salmon.merged.gene_counts.tsv
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    └── output/
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>        ├── PCA.png
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>        ├── agonist_main_volcano.png
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>        ├── results_agonist_main.csv
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>        └── results_inhibitor_main.csv
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>───────────────────────────────────────────────
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>3. DATA AND METADATA
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>───────────────────────────────────────────────
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>Sequencing metadata: data/samplesheet.csv
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>  - Replicates: 4 per condition (total = 16)
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>  - Library prep: standard polyA-selected RNA-seq
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>  - File naming: {SampleID}_{S###}_{Lane}_{Read}_001.fastq.gz
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>───────────────────────────────────────────────
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>4. ANALYSIS DETAILS
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>───────────────────────────────────────────────
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>nf-core/rnaseq pipeline:
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>  - version 3.19.0
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>  - GTF:   Mus_musculus.GRCm39.114.gtf.gz
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>  - FASTA: Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>DESeq2 analysis:
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>  - Script:  analysis/full_mouse_deseq.Rmd
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>  - Outputs: analysis/output/
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -3246,7 +3593,7 @@ DESeq2 analysis:
 <li>Keep all metadata files in the same folder as the data they describe — always.</li>
 </ul>
 </div>
-<hr />
+<hr>
 <h2 id="part-3-project-organization">Part 3: Project Organization</h2>
 <p>Good metadata tells you what your data is. Good project organization tells you where it lives. The two work together.</p>
 <div class="admonition abstract">
@@ -3258,7 +3605,7 @@ DESeq2 analysis:
 </ul>
 </div>
 <h3 id="file-naming-what-makes-a-good-name">File Naming: What Makes a Good Name?</h3>
-<p><img align="right" alt="XKCD comic: Untitled 138.docx" src="images/slide31_img03.png" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide31_img03.png" data-desc-position="bottom"><img align="right" alt="XKCD comic: Untitled 138.docx" src="images/slide31_img03.png" style="width:210px; border-radius:6px; margin-left:1.5rem; margin-bottom:0.5rem;"></a></p>
 <p>Before collecting or analyzing data, decide how you will name and organize files. Establishing a convention at the start is far easier than cleaning up a folder of inconsistently named files.</p>
 <p>The main goals:</p>
 <ul>
@@ -3319,32 +3666,32 @@ DESeq2 analysis:
 <li><strong>Date</strong>: <code>YYYY-MM-DD</code></li>
 <li><strong>Data type</strong>: <code>.raw</code> or <code>.norm</code></li>
 </ul>
-<hr />
+<hr>
 <details class="question" open="open">
 <summary>Exercise 3.1 — Messy Fie Names</summary>
 <p>Look at the messy file list above. Before reading the analysis, write down every problem you can spot. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Messy Files</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Messy Files</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>2020-07-14_s12_phyB_on_SD_t04.raw.txt
-2020-07-14_s1_phyA_on_LD_t05.raw.txt
-2020-07-14_s2_phyB_on_SD_t11.raw.txt
-2020-08-12_s03_phyA_on_LD_t03.raw.txt
-2020-08-12_s12_phyB_on_LD_t01.raw.txt
-2020-08-13_s01_phyB_on_SD_t02.raw.txt
-2020-7-12_s2_phyB_on_SD_t01.raw.txt
-AUG-13_phyB_on_LD_s1_t11.raw.txt
-JUL-31_phyB_on_LD_s1_t03.raw.txt
-LD_phyA_off_t04_2020-08-12.norm.txt
-LD_phyA_on_t04_2020-07-14.norm.txt
-LD_phyB_off_t04_2020-08-12.norm.txt
-LD_phyB_on_t04_2020-07-14.norm.txt
-SD_phyB_off_t04_2020-08-13.norm.txt
-SD_phyB_on_t04_2020-07-12.norm.txt
-SD_phya_off_t04_2020-08-13.norm.txt
-SD_phya_ons_t04_2020-07-12.norm.txt
-ld_phyA_ons_t04_2020-08-12.norm.txt
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>2020-07-14_s12_phyB_on_SD_t04.raw.txt
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>2020-07-14_s1_phyA_on_LD_t05.raw.txt
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>2020-07-14_s2_phyB_on_SD_t11.raw.txt
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>2020-08-12_s03_phyA_on_LD_t03.raw.txt
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>2020-08-12_s12_phyB_on_LD_t01.raw.txt
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>2020-08-13_s01_phyB_on_SD_t02.raw.txt
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>2020-7-12_s2_phyB_on_SD_t01.raw.txt
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>AUG-13_phyB_on_LD_s1_t11.raw.txt
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>JUL-31_phyB_on_LD_s1_t03.raw.txt
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>LD_phyA_off_t04_2020-08-12.norm.txt
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>LD_phyA_on_t04_2020-07-14.norm.txt
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>LD_phyB_off_t04_2020-08-12.norm.txt
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>LD_phyB_on_t04_2020-07-14.norm.txt
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>SD_phyB_off_t04_2020-08-13.norm.txt
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>SD_phyB_on_t04_2020-07-12.norm.txt
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>SD_phya_off_t04_2020-08-13.norm.txt
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>SD_phya_ons_t04_2020-07-12.norm.txt
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>ld_phyA_ons_t04_2020-08-12.norm.txt
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -3359,7 +3706,7 @@ ld_phyA_ons_t04_2020-08-12.norm.txt
 </ol>
 <details class="success">
 <summary>Step-by-step analysis</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Problem 1: Date placed first</label><label for="__tabbed_3_2">Problem 2: Inconsistent date formats</label><label for="__tabbed_3_3">Problem 3: Missing zero-padding</label><label for="__tabbed_3_4">Problem 4: Case inconsistencies</label><label for="__tabbed_3_5">Problem 5: Typo in field value</label><label for="__tabbed_3_6">Problem 6: Multiple conventions</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><input id="__tabbed_3_4" name="__tabbed_3" type="radio"><input id="__tabbed_3_5" name="__tabbed_3" type="radio"><input id="__tabbed_3_6" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Problem 1: Date placed first</label><label for="__tabbed_3_2">Problem 2: Inconsistent date formats</label><label for="__tabbed_3_3">Problem 3: Missing zero-padding</label><label for="__tabbed_3_4">Problem 4: Case inconsistencies</label><label for="__tabbed_3_5">Problem 5: Typo in field value</label><label for="__tabbed_3_6">Problem 6: Multiple conventions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Files prefixed with a date (<code>2020-07-14_...</code>, <code>AUG-13_...</code>) sort by <strong>date of collection</strong>, not by <strong>experimental condition</strong>. All <code>2020-07-14</code> files appear together — regardless of light condition, genotype, or media. Finding all <code>LD phyA on</code> samples requires scanning the entire folder.</p>
@@ -3476,28 +3823,28 @@ ld_phyA_ons_t04_2020-08-12.norm.txt
 <details class="success">
 <summary>Cleaned file names</summary>
 <p>After stepping through each problem and each fix, the cleaned files should be names as follows: </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Clean Files</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Clean Files</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
-LD_phyA_on_t04_2020-07-14.norm.txt
-LD_phyA_on_t04_2020-08-12.norm.txt
-LD_phyA_on_t03_s03_2020-08-12.raw.txt
-LD_phyA_on_t05_s01_2020-07-14.raw.txt
-LD_phyB_off_t04_2020-08-12.norm.txt
-LD_phyB_on_t04_2020-07-14.norm.txt
-LD_phyB_on_t01_s12_2020-08-12.raw.txt
-LD_phyB_on_t03_s01_2020-07-31.raw.txt
-LD_phyB_on_t11_s01_2020-08-13.raw.txt
-SD_phyA_off_t04_2020-08-13.norm.txt
-SD_phyA_on_t04_2020-07-12.norm.txt
-SD_phyB_off_t04_2020-08-13.norm.txt
-SD_phyB_on_t04_2020-07-12.norm.txt
-SD_phyB_on_t01_s02_2020-07-12.raw.txt
-SD_phyB_on_t02_s01_2020-08-13.raw.txt
-SD_phyB_on_t04_s12_2020-07-14.raw.txt
-SD_phyB_on_t11_s02_2020-07-14.raw.txt
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>LD_phyA_off_t04_2020-08-12.norm.txt
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>LD_phyA_on_t04_2020-07-14.norm.txt
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>LD_phyA_on_t04_2020-08-12.norm.txt
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>LD_phyA_on_t03_s03_2020-08-12.raw.txt
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>LD_phyA_on_t05_s01_2020-07-14.raw.txt
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>LD_phyB_off_t04_2020-08-12.norm.txt
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>LD_phyB_on_t04_2020-07-14.norm.txt
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>LD_phyB_on_t01_s12_2020-08-12.raw.txt
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>LD_phyB_on_t03_s01_2020-07-31.raw.txt
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>LD_phyB_on_t11_s01_2020-08-13.raw.txt
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>SD_phyA_off_t04_2020-08-13.norm.txt
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>SD_phyA_on_t04_2020-07-12.norm.txt
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>SD_phyB_off_t04_2020-08-13.norm.txt
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>SD_phyB_on_t04_2020-07-12.norm.txt
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>SD_phyB_on_t01_s02_2020-07-12.raw.txt
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>SD_phyB_on_t02_s01_2020-08-13.raw.txt
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>SD_phyB_on_t04_s12_2020-07-14.raw.txt
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>SD_phyB_on_t11_s02_2020-07-14.raw.txt
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -3513,28 +3860,28 @@ SD_phyB_on_t11_s02_2020-07-14.raw.txt
 </ul>
 <details class="success">
 <summary>Datatype subfolders</summary>
-<div class="highlight"><pre><span></span><code>phytochrome_light_response/
-├── raw/
-│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
-│   ├── LD_phyA_on_t05_s01_2020-07-14.raw.txt
-│   ├── LD_phyB_on_t01_s12_2020-08-12.raw.txt
-│   ├── LD_phyB_on_t03_s01_2020-07-31.raw.txt
-│   ├── LD_phyB_on_t11_s01_2020-08-13.raw.txt
-│   ├── SD_phyB_on_t01_s02_2020-07-12.raw.txt
-│   ├── SD_phyB_on_t02_s01_2020-08-13.raw.txt
-│   ├── SD_phyB_on_t04_s12_2020-07-14.raw.txt
-│   └── SD_phyB_on_t11_s02_2020-07-14.raw.txt
-└── norm/
-    ├── LD_phyA_off_t04_2020-08-12.norm.txt
-    ├── LD_phyA_on_t04_2020-07-14.norm.txt
-    ├── LD_phyA_on_t04_2020-08-12.norm.txt
-    ├── LD_phyB_off_t04_2020-08-12.norm.txt
-    ├── LD_phyB_on_t04_2020-07-14.norm.txt
-    ├── SD_phyA_off_t04_2020-08-13.norm.txt
-    ├── SD_phyA_on_t04_2020-07-12.norm.txt
-    ├── SD_phyB_off_t04_2020-08-13.norm.txt
-    └── SD_phyB_on_t04_2020-07-12.norm.txt
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>phytochrome_light_response/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── raw/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│   ├── LD_phyA_on_t05_s01_2020-07-14.raw.txt
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│   ├── LD_phyB_on_t01_s12_2020-08-12.raw.txt
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>│   ├── LD_phyB_on_t03_s01_2020-07-31.raw.txt
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>│   ├── LD_phyB_on_t11_s01_2020-08-13.raw.txt
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>│   ├── SD_phyB_on_t01_s02_2020-07-12.raw.txt
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>│   ├── SD_phyB_on_t02_s01_2020-08-13.raw.txt
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>│   ├── SD_phyB_on_t04_s12_2020-07-14.raw.txt
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>│   └── SD_phyB_on_t11_s02_2020-07-14.raw.txt
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>└── norm/
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    ├── LD_phyA_off_t04_2020-08-12.norm.txt
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    ├── LD_phyA_on_t04_2020-07-14.norm.txt
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    ├── LD_phyA_on_t04_2020-08-12.norm.txt
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    ├── LD_phyB_off_t04_2020-08-12.norm.txt
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    ├── LD_phyB_on_t04_2020-07-14.norm.txt
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    ├── SD_phyA_off_t04_2020-08-13.norm.txt
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    ├── SD_phyA_on_t04_2020-07-12.norm.txt
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    ├── SD_phyB_off_t04_2020-08-13.norm.txt
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    └── SD_phyB_on_t04_2020-07-12.norm.txt
+</span></code></pre></div>
 </details>
 </details>
 <details class="question" open="open">
@@ -3542,16 +3889,16 @@ SD_phyB_on_t11_s02_2020-07-14.raw.txt
 <p>A samplesheet is a structured table that records the metadata for every file in a dataset — the same information as the filename, but in a form that analysis code can query, filter, and join directly.</p>
 <p>Given the 9 normalized phytochrome files in <code>norm/</code>, design a samplesheet that fully describes each sample.</p>
 <p><strong>Files in <code>norm/</code>:</strong></p>
-<div class="highlight"><pre><span></span><code>LD_phyA_off_t04_2020-08-12.norm.txt
-LD_phyA_on_t04_2020-07-14.norm.txt
-LD_phyA_on_t04_2020-08-12.norm.txt
-LD_phyB_off_t04_2020-08-12.norm.txt
-LD_phyB_on_t04_2020-07-14.norm.txt
-SD_phyA_off_t04_2020-08-13.norm.txt
-SD_phyA_on_t04_2020-07-12.norm.txt
-SD_phyB_off_t04_2020-08-13.norm.txt
-SD_phyB_on_t04_2020-07-12.norm.txt
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>LD_phyA_off_t04_2020-08-12.norm.txt
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>LD_phyA_on_t04_2020-07-14.norm.txt
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>LD_phyA_on_t04_2020-08-12.norm.txt
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>LD_phyB_off_t04_2020-08-12.norm.txt
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>LD_phyB_on_t04_2020-07-14.norm.txt
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>SD_phyA_off_t04_2020-08-13.norm.txt
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>SD_phyA_on_t04_2020-07-12.norm.txt
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>SD_phyB_off_t04_2020-08-13.norm.txt
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>SD_phyB_on_t04_2020-07-12.norm.txt
+</span></code></pre></div>
 <p><strong>Questions:</strong></p>
 <ol>
 <li>What columns should the samplesheet include?</li>
@@ -3688,55 +4035,55 @@ SD_phyB_on_t04_2020-07-12.norm.txt
 <p>The project now has consistently named files, organized into <code>raw/</code> and <code>norm/</code> subfolders, and a <code>samplesheet.txt</code>. Write the key sections of a README that completes the documentation. Think about what a new lab member would need to understand and use this dataset.</p>
 <details class="success">
 <summary>README</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Raw text (README.txt)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Raw text (README.txt)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>README: Phytochrome Light Response Data
-========================================
-
-Project Description
--------------------
-Expression measurements from experiments investigating light-dependent
-responses of phyA and phyB genotypes under long-day (LD) and short-day
-(SD) conditions. Samples collected at multiple timepoints and media
-states (on sucrose / off sucrose).
-
-File Naming Convention
-----------------------
-{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt
-
-  light:     LD (Long Day) or SD (Short Day)
-  genotype:  phyA or phyB
-  media:     on (sucrose) or off (no sucrose)
-  timepoint: tXX — two-digit zero-padded timepoint number
-  sample:    sXX — two-digit zero-padded replicate ID (omitted when unspecified)
-  date:      YYYY-MM-DD — collection or processing date
-  datatype:  raw or norm (also indicated by subfolder)
-
-Directory Structure
--------------------
-.
-├── raw/     — unprocessed measurements from acquisition pipeline
-├── norm/    — normalized data for downstream analysis
-├── README.txt
-└── samplesheet.txt
-
-Samplesheet
------------
-samplesheet.txt (tab-separated) contains one row per normalized file.
-Columns: filename, light, genotype, media, timepoint, date, datatype.
-See samplesheet.txt for sample-level details.
-
-Notes
------
-Raw and normalized files should remain unmodified.
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">README.txt</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>README: Phytochrome Light Response Data
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>========================================
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Project Description
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>-------------------
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Expression measurements from experiments investigating light-dependent
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>responses of phyA and phyB genotypes under long-day (LD) and short-day
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>(SD) conditions. Samples collected at multiple timepoints and media
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>states (on sucrose / off sucrose).
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>File Naming Convention
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>----------------------
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>{light}_{genotype}_{media}_{timepoint}_{sample}_{date}.{datatype}.txt
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>  light:     LD (Long Day) or SD (Short Day)
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>  genotype:  phyA or phyB
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>  media:     on (sucrose) or off (no sucrose)
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>  timepoint: tXX — two-digit zero-padded timepoint number
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>  sample:    sXX — two-digit zero-padded replicate ID (omitted when unspecified)
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>  date:      YYYY-MM-DD — collection or processing date
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  datatype:  raw or norm (also indicated by subfolder)
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>Directory Structure
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>-------------------
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>.
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>├── raw/     — unprocessed measurements from acquisition pipeline
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>├── norm/    — normalized data for downstream analysis
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>├── README.txt
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>└── samplesheet.txt
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>Samplesheet
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>-----------
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>samplesheet.txt (tab-separated) contains one row per normalized file.
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>Columns: filename, light, genotype, media, timepoint, date, datatype.
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>See samplesheet.txt for sample-level details.
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>Notes
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>-----
+</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>Raw and normalized files should remain unmodified.
+</span></code></pre></div>
 </div>
 </div>
 </div>
 </details>
 </details>
-<hr />
+<hr>
 <div class="admonition success">
 <p class="admonition-title">Key Points</p>
 <ul>
@@ -3756,15 +4103,15 @@ Raw and normalized files should remain unmodified.
 <li><strong>Document the structure</strong> in the README</li>
 </ul>
 <p><strong>A widely-used template</strong> from <em>Good Enough Practices in Scientific Computing</em> (Wilson et al., 2017):</p>
-<div class="highlight"><pre><span></span><code>project_name/
-├── data/          ← raw data and metadata (read-only)
-├── results/       ← files generated during analysis
-├── doc/           ← project documentation
-├── src/           ← code and analysis scripts
-└── README.txt     ← project overview and directory guide
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>project_name/
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├── data/          ← raw data and metadata (read-only)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>├── results/       ← files generated during analysis
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>├── doc/           ← project documentation
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>├── src/           ← code and analysis scripts
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>└── README.txt     ← project overview and directory guide
+</span></code></pre></div>
 <div style="text-align: center; margin: 1rem 0 1.5rem;">
-  <img src="images/slide41_img00.png" alt="Examples of good project directory structures A, B, C, D" style="max-width: 580px; border-radius: 6px;">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/slide41_img00.png" data-desc-position="bottom"><img src="images/slide41_img00.png" alt="Examples of good project directory structures A, B, C, D" style="max-width: 580px; border-radius: 6px;"></a>
   <p style="font-size: 0.85rem; color: #666; margin-top: 0.4rem;"><em>Four examples of well-organized genomics project directories. All separate raw data, analysis code, and outputs. All include a README. Each adapts the structure to the specific project.</em></p>
 </div>
 
@@ -3775,27 +4122,27 @@ Raw and normalized files should remain unmodified.
 <details class="question" open="open">
 <summary>Exercise 3.5 — Reorganize a messy project</summary>
 <p>Look at the directory structure below. Write down every issue you can identify. Then think about what the improved structure would look like.</p>
-<div class="highlight"><pre><span></span><code>smith_lab_rna/
-├── final analysis.R
-├── Final_analysis_v2.R
-├── Copy of Final_analysis_v2.R
-├── A1.fastq.gz
-├── A2.fastq.gz
-├── B1.fastq.gz
-├── B2.fastq.gz
-├── DEGs.xlsx
-├── figure 1.png
-├── figure 1 FINAL.png
-├── Figure1_revised.png
-├── misc/
-│   └── notes May.docx
-├── OLD/
-│   ├── results_old.csv
-│   └── analysis_backup.R
-└── refs/
-    ├── genome.fa.gz
-    └── annotation.gtf.gz
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>smith_lab_rna/
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>├── final analysis.R
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>├── Final_analysis_v2.R
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>├── Copy of Final_analysis_v2.R
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>├── A1.fastq.gz
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>├── A2.fastq.gz
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>├── B1.fastq.gz
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>├── B2.fastq.gz
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>├── DEGs.xlsx
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>├── figure 1.png
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>├── figure 1 FINAL.png
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>├── Figure1_revised.png
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>├── misc/
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>│   └── notes May.docx
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>├── OLD/
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>│   ├── results_old.csv
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>│   └── analysis_backup.R
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>└── refs/
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>    ├── genome.fa.gz
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>    └── annotation.gtf.gz
+</span></code></pre></div>
 <p><strong>Step through each problem:</strong></p>
 <ol>
 <li>What is wrong with the raw data files (<code>A1.fastq.gz</code>, etc.)?</li>
@@ -3807,7 +4154,7 @@ Raw and normalized files should remain unmodified.
 </ol>
 <details class="success">
 <summary>Step-by-step analysis</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Problem 1: Ambiguous raw data</label><label for="__tabbed_6_2">Problem 2: Version-control chaos in scripts</label><label for="__tabbed_6_3">Problem 3: Three versions of figure 1</label><label for="__tabbed_6_4">Problem 4: DEGs.xlsx instead of .csv</label><label for="__tabbed_6_5">Problem 5: OLD/ and misc/ folders</label><label for="__tabbed_6_6">Problem 6: What is missing?</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><input id="__tabbed_6_3" name="__tabbed_6" type="radio"><input id="__tabbed_6_4" name="__tabbed_6" type="radio"><input id="__tabbed_6_5" name="__tabbed_6" type="radio"><input id="__tabbed_6_6" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Problem 1: Ambiguous raw data</label><label for="__tabbed_6_2">Problem 2: Version-control chaos in scripts</label><label for="__tabbed_6_3">Problem 3: Three versions of figure 1</label><label for="__tabbed_6_4">Problem 4: DEGs.xlsx instead of .csv</label><label for="__tabbed_6_5">Problem 5: OLD/ and misc/ folders</label><label for="__tabbed_6_6">Problem 6: What is missing?</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><code>A1.fastq.gz</code>, <code>A2.fastq.gz</code>, <code>B1.fastq.gz</code>, <code>B2.fastq.gz</code> — these are plate-well identifiers with no biological meaning. Without a sample sheet, there is no way to know what organism, condition, or replicate each file represents.</p>
@@ -3846,28 +4193,28 @@ Raw and normalized files should remain unmodified.
 </details>
 <details class="success">
 <summary>Improved structure</summary>
-<div class="highlight"><pre><span></span><code>smith_lab_rna/
-├── README.txt                    ← who, what, when, where, how
-├── data/
-│   ├── samplesheet.csv           ← A1 → Control_rep1 → condition → rep
-│   ├── A1.fastq.gz               ← raw FASTQs (read-only)
-│   ├── A2.fastq.gz
-│   ├── B1.fastq.gz
-│   ├── B2.fastq.gz
-│   ├── genome.fa.gz              ← reference files with data
-│   └── annotation.gtf.gz
-├── analysis/
-│   ├── deseq_analysis.Rmd        ← single canonical script
-│   ├── input/
-│   │   ├── design.tsv
-│   │   └── gene_counts.tsv
-│   └── output/
-│       ├── PCA_all_samples.png
-│       ├── volcano_A_vs_B.png
-│       └── DEGs_A_vs_B.csv
-└── doc/
-    └── notes_alignment_issues.md
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>smith_lab_rna/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── README.txt                    ← who, what, when, where, how
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├── data/
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>│   ├── samplesheet.csv           ← A1 → Control_rep1 → condition → rep
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>│   ├── A1.fastq.gz               ← raw FASTQs (read-only)
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>│   ├── A2.fastq.gz
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>│   ├── B1.fastq.gz
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>│   ├── B2.fastq.gz
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>│   ├── genome.fa.gz              ← reference files with data
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>│   └── annotation.gtf.gz
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>├── analysis/
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>│   ├── deseq_analysis.Rmd        ← single canonical script
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>│   ├── input/
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>│   │   ├── design.tsv
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>│   │   └── gene_counts.tsv
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>│   └── output/
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>│       ├── PCA_all_samples.png
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>│       ├── volcano_A_vs_B.png
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>│       └── DEGs_A_vs_B.csv
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>└── doc/
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    └── notes_alignment_issues.md
+</span></code></pre></div>
 <p><strong>What changed:</strong></p>
 <ul>
 <li>One README at the top level</li>
@@ -3888,10 +4235,10 @@ Raw and normalized files should remain unmodified.
 <li>Always include a README.</li>
 </ul>
 </div>
-<hr />
+<hr>
 <h2 id="workshop-summary-quick-reference">Workshop Summary — Quick Reference</h2>
 <p>Use this as a cheat sheet for your own projects. A one-page visual reference is available to download and print:</p>
-<p><a href="quickref.pdf" download class="md-button md-button--primary"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Quick Reference (PDF)</a></p>
+<p><a href="quickref.pdf" download="" class="md-button md-button--primary"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"></path></svg></span> Download Quick Reference (PDF)</a></p>
 <h3 id="fair-data-principles">FAIR Data Principles</h3>
 <table>
 <thead>
@@ -3953,8 +4300,8 @@ Raw and normalized files should remain unmodified.
 </table>
 <p><strong>Always document:</strong> organism + strain, genome build + annotation version, pipeline name + version, statistical cutoffs used.</p>
 <h3 id="file-naming-rules">File Naming Rules</h3>
-<div class="highlight"><pre><span></span><code>{variable1}_{variable2}_{variable3}_{YYYY-MM-DD}.{ext}
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>{variable1}_{variable2}_{variable3}_{YYYY-MM-DD}.{ext}
+</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3997,18 +4344,18 @@ Raw and normalized files should remain unmodified.
 </tbody>
 </table>
 <h3 id="project-directory-template">Project Directory Template</h3>
-<div class="highlight"><pre><span></span><code>project_name/
-├── README.txt          ← who/what/when/where/how; directory guide
-├── data/               ← raw data + metadata (READ-ONLY)
-│   ├── samplesheet.csv
-│   └── *.fastq.gz
-├── analysis/           ← code, intermediate inputs, outputs
-│   ├── script.Rmd
-│   ├── input/
-│   └── output/
-├── doc/                ← notes, protocols, documentation
-└── results/            ← final figures and tables for the paper
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>project_name/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── README.txt          ← who/what/when/where/how; directory guide
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>├── data/               ← raw data + metadata (READ-ONLY)
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│   ├── samplesheet.csv
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>│   └── *.fastq.gz
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>├── analysis/           ← code, intermediate inputs, outputs
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>│   ├── script.Rmd
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>│   ├── input/
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>│   └── output/
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>├── doc/                ← notes, protocols, documentation
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>└── results/            ← final figures and tables for the paper
+</span></code></pre></div>
 <h3 id="one-thing-to-fix-this-week">One Thing to Fix This Week</h3>
 <table>
 <thead>
@@ -4040,7 +4387,7 @@ Raw and normalized files should remain unmodified.
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p><em>Questions? Contact the CGDS Core — <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></em></p>
 
 
@@ -4049,6 +4396,27 @@ Raw and normalized files should remain unmodified.
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 17:05:03 UTC">October 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -4064,9 +4432,9 @@ Raw and normalized files should remain unmodified.
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -4076,13 +4444,13 @@ Raw and normalized files should remain unmodified.
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../dataOrganization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Organization in Spreadsheets">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -4102,12 +4470,12 @@ Raw and normalized files should remain unmodified.
                 Next
               </span>
               <div class="md-ellipsis">
-                Introduction to R & RStudio
+                Introduction to R &amp; RStudio
               </div>
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -4139,11 +4507,13 @@ Raw and normalized files should remain unmodified.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["announce.dismiss", "navigation.indexes", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
