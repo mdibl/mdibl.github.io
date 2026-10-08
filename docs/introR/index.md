@@ -18,15 +18,7 @@
 
 ## Launch Your Workspace
 
-!!! info "You need a free GitHub account to use this workshop"
-    This workshop runs in **GitHub Codespaces** — a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
-
-    **GitHub Free quota (per account, per month):**
-
-    - 120 core-hours of compute — equivalent to **60 hours** of run time on a standard 2-core Codespace
-    - 15 GB of storage
-
-    This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
+--8<-- "codespaces-account.md"
 
 This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.
 
@@ -45,25 +37,7 @@ This workshop runs entirely in a cloud environment — no software installation 
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
 
-!!! tip "Keep your Codespace awake — and stop it when you're done"
-    Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
-
-    **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
-
-    ```bash
-    while true; do echo "keepalive $(date)"; sleep 300; done
-    ```
-
-    This pings the Codespace every 5 minutes to prevent it from suspending during the session.
-
-	!!! danger "How to stop your codespace *when you're done*"
-	
-		1. Switch to the VS Code terminal tab where the `keepalive` loop is running.
-		2. Press **Ctrl+C** to stop it.
-		3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
-	
-		***Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.***
-
+--8<-- "codespaces-keepalive.md"
 
 **Getting oriented in RStudio:**
 
@@ -71,10 +45,10 @@ Once RStudio is open, get the workshop files ready:
 
 1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `introR.Rproj` to open the project — this sets your working directory correctly so data paths in the script will resolve.
 2. Open `workshop.R` (File → Open File, or click it in the Files pane). This is the script you will work through during the workshop.
-3. Run lines by placing your cursor on them and pressing **Ctrl+Enter** (Windows/Linux) or **Cmd+Return** (Mac).
+3. Run lines by placing your cursor on them and pressing ++ctrl+enter++ (Windows/Linux) or ++cmd+enter++ (Mac).
 
 !!! tip "Save your work"
-    Press **Ctrl+S** / **Cmd+S** often. At the end of the session, use the **Files** pane → More → Export to download your completed script to your computer before closing the Codespace.
+    Press ++ctrl+s++ / ++cmd+s++ often. At the end of the session, use the **Files** pane → More → Export to download your completed script to your computer before closing the Codespace.
 
 ---
 
@@ -125,21 +99,21 @@ RStudio is divided into four panes. Understanding what lives where will save you
 | **Files / Plots / Help** | Bottom-right | A file browser, a viewer for plots, and built-in help documentation. |
 
 !!! tip "Running code from the Script Editor"
-    Place your cursor anywhere on a line and press **Ctrl+Enter** (Windows) or **Cmd+Return** (Mac) to run that line. Select multiple lines to run them all at once. Output appears in the Console below.
+    Place your cursor anywhere on a line and press ++ctrl+enter++ (Windows) or ++cmd+enter++ (Mac) to run that line. Select multiple lines to run them all at once. Output appears in the Console below.
 
 ???+ question "Exercise — Get oriented in RStudio"
 
     Complete these steps to get comfortable with the RStudio interface:
 
     1. **Create a new script:** File → New File → R Script. A blank editor tab opens.
-    2. **Type and run a line:** In the script, type `print("Hello world!")`. Press Ctrl+Enter / Cmd+Return. The result (`[1] "Hello world!"`) appears in the Console.
+    2. **Type and run a line:** In the script, type `print("Hello world!")`. Press ++ctrl+enter++ / ++cmd+enter++. The result (`[1] "Hello world!"`) appears in the Console.
     3. **Save the script:** File → Save As. Name it `practice.R`. Notice it appears in the Files pane.
     4. **Find the Help tab:** In the bottom-right pane, click the Help tab. Type `print` in the search box and read the documentation that appears.
 
     ??? success "What to expect"
 
         - After running `print("Hello world!")`, your Console should show:
-          ```
+          ```text title="Output"
           > print("Hello world!")
           [1] "Hello world!"
           ```
@@ -176,7 +150,7 @@ Parentheses control order of operations exactly as in math:
 
     Different species age at different rates. A common way to convert an animal's age into "human-equivalent years" is to use the **lifespan ratio**:
 
-    ```
+    ```text
     human-equivalent age = (animal age / animal max lifespan) × human max lifespan
     ```
 
@@ -195,7 +169,7 @@ Parentheses control order of operations exactly as in math:
         ```r
         8 / 24 * 122.5
         ```
-        ```
+        ```text title="Output"
         [1] 40.83333
         ```
 
@@ -223,7 +197,7 @@ Now use them:
 dog_age / dog_max * human_max
 ```
 
-```
+```text title="Output"
 [1] 40.83333
 ```
 
@@ -276,7 +250,7 @@ Object names can be almost anything, but a few rules apply:
 
     Reminder of the formula for converting an animal's age to an equivalent human age is:
 
-    ```
+    ```text
     human-equivalent age = (animal age / animal max lifespan) × human max lifespan
     ```
 
@@ -368,7 +342,7 @@ str(weights)      # compact summary: num [1:5] 45 32 28 51 37
 
 Access specific elements with square brackets `[]`. R uses **1-based indexing** — the first element is at position 1, not 0.
 
-```r
+```r hl_lines="4"
 weights[1]        # first element: 45
 weights[3]        # third element: 28
 weights[c(1, 3)]  # first and third: 45 28
@@ -385,7 +359,7 @@ weights[-1]       # all elements EXCEPT the first: 32 28 51 37
 
     Before running these in R, predict what `class()` will return for each vector. Then run them to check.
 
-    ```r
+    ```r linenums="1"
     # Vector A
     v_a <- c(1, 2, 3)
 
@@ -518,7 +492,7 @@ Once the data is loaded, resist the temptation to scroll through it. These funct
 ```r
 str(data)      # structure: column count, types, first few values
 ```
-```
+```text title="Output"
 'data.frame':	16878 obs. of  13 variables:
  $ record_id      : int  1 2 3 4 5 6 7 8 9 10 ...
  $ month          : int  7 7 7 7 7 7 7 7 7 7 ...
@@ -576,7 +550,7 @@ hist(data$year)    # quick histogram of collection year
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         data <- read.csv("data/surveys_complete_77_89.csv")
 
         # 1. Dimensions
@@ -699,7 +673,7 @@ max(data$weight, na.rm = TRUE)             # maximum
 
 The `na.rm = TRUE` argument tells R to **ignore NA values** before calculating. Without it, any NA in the column returns `NA` as the result — R is being explicit that the answer cannot be known with certainty when data are missing.
 
-```r
+```r hl_lines="2"
 mean(c(1, 2, NA, 4))             # NA — missing data present
 mean(c(1, 2, NA, 4), na.rm = TRUE)  # 2.333... — NAs excluded
 ```
@@ -715,7 +689,7 @@ mean(c(1, 2, NA, 4), na.rm = TRUE)  # 2.333... — NAs excluded
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         # 1. Row 100
         data[100, ]
 
@@ -741,7 +715,7 @@ mean(c(1, 2, NA, 4), na.rm = TRUE)  # 2.333... — NAs excluded
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         # 1. Control samples
         table(data$plot_type)
         # Control: 7213 samples
@@ -842,7 +816,7 @@ data[condition, ]
 
 The condition is tested for every row. Rows where it is `TRUE` are kept; rows where it is `FALSE` are dropped.
 
-```r
+```r linenums="1"
 # Keep only rows where taxa is "Rodent"
 data_rodent <- data[data$taxa == "Rodent", ]
 nrow(data_rodent)   # 16505
@@ -922,7 +896,7 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1" hl_lines="6"
         # 1. Female animals
         data_female <- data[data$sex == "F", ]
         nrow(data_female)   # 7318
@@ -1018,7 +992,7 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
         data[which.max(data$weight), ]
         ```
 
-        ```
+        ```text title="Output"
           record_id month day year plot_id species_id sex hindfoot_length weight   genus  species   taxa plot_type
           12871     5  28 1987       2         NL   M              32    278 Neotoma albigula Rodent   Control
         ```
@@ -1028,7 +1002,7 @@ nrow(data) - nrow(data_clean)   # how many rows were removed?
 
 !!! danger "Before you leave — stop your Codespace"
     1. Switch to the VS Code terminal tab where the keepalive loop is running.
-    2. Press **Ctrl+C** to stop it.
+    2. Press ++ctrl+c++ to stop it.
     3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
 
     Closing the browser tab is **not** enough — a suspended Codespace still counts against your monthly storage quota.

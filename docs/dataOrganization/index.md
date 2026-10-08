@@ -129,7 +129,7 @@ Before you touch the data, there is one non-negotiable rule: **never edit your o
 
 Duplicate `survey_data_messy.xlsx` and rename the copy `survey_data_clean.xlsx`. All of your work happens in the copy — the original stays closed.
 
-```
+```text
 survey_data_messy.xlsx    ← original; close it, never open it again
 survey_data_clean.xlsx    ← working copy; all edits happen here
 ```
@@ -139,7 +139,7 @@ survey_data_clean.xlsx    ← working copy; all edits happen here
 
 **Keeping track of your changes:** Document every cleaning step like a lab procedure. Keep a plain-text file (e.g., `cleaning_notes.txt`) in the same folder as your data and write down what you changed and why. This makes your work reproducible and helps any future collaborator understand what happened to the original file.
 
-```
+```text title="cleaning_notes.txt"
 # cleaning_notes.txt
 2024-11-01
 - Made working copy: survey_data_clean.xlsx
@@ -230,7 +230,7 @@ The dataset uses two-letter shorthand codes for species and integer IDs for plot
 - Row 6: Sub-table labels — **"Species: DM"**, **"Species: DO"**, **"Species: DS"**
 - Row 7: Each sub-table's own header row — Date Collected, Plot, M/F (or Sex), Weight
 
-```
+```text
         | Species: DM                      |   | Species: DO                   |   | Species: DS
 Row 7:  | Date Collected | Plot | M/F | Wt |   | Date Collected | Plot | Sex | Wt |   | Date Collected | Plot | Sex    | Wt
 Row 8:  | 7/16/2013      |  2   |  F  |  0 |   | 8/19/2013      |  8   |  F  | 52 |   | 11/12/2013     |  9   | Female | 117
@@ -634,7 +634,7 @@ The calibration status is now tracked in the `Calibrated` column from Step 5. Th
 
 ???+ question "Exercise 6.1 — Clean the Weight column"
     1. Select the `Weight` column only.
-    2. Use **Ctrl+H** (Find & Replace): find `g` and replace with nothing to strip the unit suffix from the DM rows.
+    2. Use ++ctrl+h++ (Find & Replace): find `g` and replace with nothing to strip the unit suffix from the DM rows.
     3. For the DS rows with embedded calibration notes, delete everything after the number — leave only the integer value.
     4. Confirm those rows already have `N` in the `Calibrated` column.
     5. Verify the entire `Weight` column contains only numbers or empty cells — no text.
@@ -1046,7 +1046,7 @@ A data dictionary covers column-level detail, but your dataset also deserves a b
 - What do abbreviations mean?
 - Are there known issues or limitations?
 
-```
+```markdown title="README.md"
 # Portal Project Rodent Survey — Cleaned Data
 
 ## Overview
@@ -1108,7 +1108,7 @@ To export from Excel:
     4. Open the CSV in a text editor (TextEdit, Notepad, VS Code) and confirm it looks like plain comma-separated text.
 
     ??? success "What you should see"
-        ```
+        ```csv title="survey_data_clean.csv"
         Year,Month,Day,Plot,Sex,Weight,Species,Calibrated
         2013,7,16,1,M,,DM,Y
         2013,7,16,2,F,,DM,Y

@@ -66,15 +66,7 @@ Downstream, Cell Ranger uses the shared barcode to group reads by cell of origin
 
 ## Launch Your Workspace
 
-!!! info "You need a free GitHub account to use this workshop"
-    This workshop runs in **GitHub Codespaces**, a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
-
-    **GitHub Free quota (per account, per month):**
-
-    - 120 core-hours of compute, equivalent to **60 hours** of run time on a standard 2-core Codespace
-    - 15 GB of storage
-
-    This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
+--8<-- "codespaces-account.md"
 
 This workshop runs entirely in a cloud environment: no software installation required. One click opens a pre-configured RStudio session with Seurat and all required packages installed.
 
@@ -93,24 +85,7 @@ This workshop runs entirely in a cloud environment: no software installation req
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
 
-!!! tip "Keep your Codespace awake, and stop it when you're done"
-    Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
-
-    **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
-
-    ```bash
-    while true; do echo "keepalive $(date)"; sleep 300; done
-    ```
-
-    This pings the Codespace every 5 minutes to prevent it from suspending during the session.
-
-!!! danger "How to stop your Codespace *when you're done*"
-
-    1. Switch to the VS Code terminal tab where the `keepalive` loop is running.
-    2. Press **Ctrl+C** to stop it.
-    3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
-
-    ***Closing the browser tab is not enough: a suspended Codespace still counts against your monthly storage quota.***
+--8<-- "codespaces-keepalive.md"
 
 **Getting oriented in RStudio:**
 
@@ -118,10 +93,10 @@ Once RStudio is open, get the workshop files ready:
 
 1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `scRNAseq.Rproj` to open the project, this sets your working directory correctly so data paths in the script will resolve.
 2. Open `workshop.Rmd` (File → Open File, or click it in the Files pane). This is the file you will work through during the workshop.
-3. Each grey block is a code chunk. Run a chunk by clicking the **▶ Run Current Chunk** button (green play icon at the top-right of the chunk), or press **Ctrl+Shift+Enter** (Windows/Linux) / **Cmd+Shift+Return** (Mac).
+3. Each grey block is a code chunk. Run a chunk by clicking the **▶ Run Current Chunk** button (green play icon at the top-right of the chunk), or press ++ctrl+shift+enter++ (Windows/Linux) / ++cmd+shift+enter++ (Mac).
 
 !!! tip "Save your work"
-    Press **Ctrl+S** / **Cmd+S** often. At the end of the session, use the **Files** pane → More → Export to download your completed notebook to your computer before closing the Codespace.
+    Press ++ctrl+s++ / ++cmd+s++ often. At the end of the session, use the **Files** pane → More → Export to download your completed notebook to your computer before closing the Codespace.
 
 ---
 
@@ -183,7 +158,7 @@ The `Read10X()` function expects a directory containing three files, the standar
 
     Run the **Exercise 1** chunk in `workshop.Rmd`:
 
-    ```r
+    ```r hl_lines="2"
     pbmc.data <- Read10X(data.dir = "data/pbmc3k/filtered_gene_bc_matrices/hg19/")
     pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc3k", min.cells = 3, min.features = 200)
     pbmc
@@ -275,7 +250,7 @@ There is no universal cutoff for `nFeature_RNA` or `percent.mt`. Every dataset's
 
     Run the **Exercise 3** chunk in `workshop.Rmd`, but first replace the placeholder values with your own, chosen from the Exercise 1.2 plots:
 
-    ```r
+    ```r hl_lines="1 2 3"
     min_features   <- ___   # lower bound on nFeature_RNA
     max_features   <- ___   # upper bound on nFeature_RNA (your doublet proxy)
     max_percent_mt <- ___   # upper bound on percent.mt
@@ -471,7 +446,7 @@ Not every PC captures real signal; later PCs are increasingly dominated by noise
 
     Run the **Exercise 8** chunk in `workshop.Rmd`:
 
-    ```r
+    ```r hl_lines="3"
     ElbowPlot(pbmc, ndims = 30)
 
     n_pcs <- ___   # pick your own cutoff based on the elbow plot above

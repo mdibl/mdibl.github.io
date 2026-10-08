@@ -17,15 +17,7 @@
 
 ## Launch Your Workspace
 
-!!! info "You need a free GitHub account to use this workshop"
-    This workshop runs in **GitHub Codespaces** — a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
-
-    **GitHub Free quota (per account, per month):**
-
-    - 120 core-hours of compute — equivalent to **60 hours** of run time on a standard 2-core Codespace
-    - 15 GB of storage
-
-    This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
+--8<-- "codespaces-account.md"
 
 This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.
 
@@ -44,24 +36,7 @@ This workshop runs entirely in a cloud environment — no software installation 
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
 
-!!! tip "Keep your Codespace awake — and stop it when you're done"
-    Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
-
-    **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
-
-    ```bash
-    while true; do echo "keepalive $(date)"; sleep 300; done
-    ```
-
-    This pings the Codespace every 5 minutes to prevent it from suspending during the session.
-
-	!!! danger "How to stop your Codespace *when you're done*"
-
-		1. Switch to the VS Code terminal tab where the `keepalive` loop is running.
-		2. Press **Ctrl+C** to stop it.
-		3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
-
-		***Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.***
+--8<-- "codespaces-keepalive.md"
 
 **Getting oriented in RStudio:**
 
@@ -69,10 +44,10 @@ Once RStudio is open, get the workshop files ready:
 
 1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `dataViz.Rproj` to open the project — this sets your working directory correctly so data paths in the script will resolve.
 2. Open `workshop.R` (File → Open File, or click it in the Files pane). This is the script you will work through during the workshop.
-3. Run lines by placing your cursor on them and pressing **Ctrl+Enter** (Windows/Linux) or **Cmd+Return** (Mac).
+3. Run lines by placing your cursor on them and pressing ++ctrl+enter++ (Windows/Linux) or ++cmd+enter++ (Mac).
 
 !!! tip "Save your work"
-    Press **Ctrl+S** / **Cmd+S** often. At the end of the session, use the **Files** pane → More → Export to download your completed script to your computer before closing the Codespace.
+    Press ++ctrl+s++ / ++cmd+s++ often. At the end of the session, use the **Files** pane → More → Export to download your completed script to your computer before closing the Codespace.
 
 ---
 
@@ -328,7 +303,7 @@ surveys %>%
   count(taxa, sort = TRUE)
 ```
 
-```
+```text title="Output"
 # A tibble: 5 × 2
   taxa        n
   <chr>   <int>
@@ -353,7 +328,7 @@ surveys %>%
   )
 ```
 
-```
+```text title="Output"
   taxa    n_total n_with_weight pct_weight
   Rodent    16148         15186       94.0
   Bird        300             0        0.0
@@ -370,7 +345,7 @@ surveys %>%
   count(taxa)
 ```
 
-```
+```text title="Output"
   taxa       n
   Rodent 13797
 ```
@@ -393,7 +368,7 @@ ggplot(surveys_clean, aes(x = weight)) +
   geom_histogram()
 ```
 
-```r
+```r hl_lines="3"
 # Control bin count and colors
 ggplot(surveys_clean, aes(x = weight)) +
   geom_histogram(bins = 40, fill = "steelblue", color = "white")
@@ -509,7 +484,7 @@ ggplot(surveys_clean, aes(x = hindfoot_length, y = weight)) +
 
 `geom_col()` draws bars where the height is a value already in your data (as opposed to `geom_bar()`, which counts rows for you). The typical workflow is to summarise first, then plot.
 
-```r
+```r hl_lines="4"
 surveys %>%
   filter(!is.na(taxa)) %>%
   count(taxa) %>%
@@ -706,7 +681,7 @@ surveys_clean %>%
 
 Add `scales = "free_y"` to let each panel choose its own y-axis range — essential here because body size differs so much across species:
 
-```r
+```r hl_lines="6"
 surveys_clean %>%
   filter(species_id %in% top6) %>%
   ggplot(aes(x = hindfoot_length, y = weight)) +
@@ -747,7 +722,7 @@ ggplot(heatmap_data, aes(x = year, y = species_id, fill = n_obs)) +
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         top6 <- surveys_clean %>% count(species_id, sort = TRUE) %>% head(6) %>% pull(species_id)
 
         weight_by_year_spp <- surveys_clean %>%
@@ -776,7 +751,7 @@ ggplot(heatmap_data, aes(x = year, y = species_id, fill = n_obs)) +
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         surveys_clean %>%
           filter(species_id %in% top6) %>%
           group_by(plot_type, species_id) %>%
@@ -800,7 +775,7 @@ ggplot(heatmap_data, aes(x = year, y = species_id, fill = n_obs)) +
 
 Store the plot in a variable, then save it to a file:
 
-```r
+```r hl_lines="8"
 my_plot <- ggplot(surveys_clean, aes(x = hindfoot_length, y = weight, color = species_id)) +
   geom_point(alpha = 0.4) +
   geom_smooth(method = "lm", se = FALSE) +
@@ -886,7 +861,7 @@ nrow(surveys_clean)   # 13,797 rows
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         weight_by_year_sci <- surveys_clean %>%
           group_by(year, scientific_name) %>%
           summarise(avg_weight = mean(weight), .groups = "drop")
@@ -967,7 +942,7 @@ nrow(surveys_clean)   # 13,797 rows
 
     ??? success "Solution"
 
-        ```r
+        ```r linenums="1"
         top6_ids <- surveys_clean %>%
           count(species_id, sort = TRUE) %>%
           head(6) %>%
@@ -1021,7 +996,7 @@ ggsave("my_favorite_plot.png", my_plot, width = 8, height = 6, dpi = 300)
 
 !!! danger "Before you leave — stop your Codespace"
     1. Switch to the VS Code terminal tab where the keepalive loop is running.
-    2. Press **Ctrl+C** to stop it.
+    2. Press ++ctrl+c++ to stop it.
     3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
 
     Closing the browser tab is **not** enough — a suspended Codespace still counts against your monthly storage quota.

@@ -1,0 +1,21 @@
+authors:
+  joel:
+    name: Joel Graber
+    description: Director, Senior Staff Scientist
+    avatar: /home/images/joel.png
+  celeste:
+    name: Celeste Nobrega
+    description: Bioinformatician II
+    avatar: /home/images/celeste.png
+  riley:
+    name: Riley Grindle
+    description: Bioinformatician I
+    avatar: /home/images/riley.png
+  matt:
+    name: Matthew Cox
+    description: Bioinformatician I
+    avatar: /home/images/matt.png
+  markus:
+    name: Markus Sujansky
+    description: Bioinformatician I
+    avatar: /home/images/markus.png

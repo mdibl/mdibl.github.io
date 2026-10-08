@@ -18,15 +18,7 @@
 
 ## Launch Your Workspace
 
-!!! info "You need a free GitHub account to use this workshop"
-    This workshop runs in **GitHub Codespaces** — a cloud environment that requires a GitHub account. If you do not have one, create one for free at [github.com](https://github.com) before the session. No paid plan is required.
-
-    **GitHub Free quota (per account, per month):**
-
-    - 120 core-hours of compute — equivalent to **60 hours** of run time on a standard 2-core Codespace
-    - 15 GB of storage
-
-    This is enough for workshops and occasional use, but is **not intended to replace a local development environment** for everyday work.
+--8<-- "codespaces-account.md"
 
 This workshop runs entirely in a cloud environment — no software installation required. One click opens a pre-configured RStudio session with all packages installed and the workshop data ready to use.
 
@@ -45,24 +37,7 @@ This workshop runs entirely in a cloud environment — no software installation 
 2. A browser tab for **RStudio** will open automatically at port 8787. No login is required.
 3. If RStudio does not open automatically: in VS Code, click the **Ports** tab at the bottom panel, find port `8787`, and click the globe icon to open it in a new tab.
 
-!!! tip "Keep your Codespace awake — and stop it when you're done"
-    Codespaces automatically pause after **30 minutes of inactivity**, but suspended Codespaces still consume your monthly storage quota. **Closing the browser tab does not stop the Codespace.**
-
-    **At the start of the workshop**, open a new terminal tab in VS Code (**Terminal → New Terminal**) and run this keepalive loop:
-
-    ```bash
-    while true; do echo "keepalive $(date)"; sleep 300; done
-    ```
-
-    This pings the Codespace every 5 minutes to prevent it from suspending during the session.
-
-	!!! danger "How to stop your Codespace *when you're done*"
-
-		1. Switch to the VS Code terminal tab where the `keepalive` loop is running.
-		2. Press **Ctrl+C** to stop it.
-		3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
-
-		***Closing the browser tab is not enough — a suspended Codespace still counts against your monthly storage quota.***
+--8<-- "codespaces-keepalive.md"
 
 **Getting oriented in RStudio:**
 
@@ -70,10 +45,10 @@ Once RStudio is open, get the workshop files ready:
 
 1. In the **Files** pane (bottom-right), you will see the workshop directory. Click `bulkDGE.Rproj` to open the project — this sets your working directory correctly so data paths in the script will resolve.
 2. Open `workshop.Rmd` (File → Open File, or click it in the Files pane). This is the file you will work through during the workshop.
-3. Each grey block is a code chunk. Run a chunk by clicking the **▶ Run Current Chunk** button (green play icon at the top-right of the chunk), or press **Ctrl+Shift+Enter** (Windows/Linux) / **Cmd+Shift+Return** (Mac).
+3. Each grey block is a code chunk. Run a chunk by clicking the **▶ Run Current Chunk** button (green play icon at the top-right of the chunk), or press ++ctrl+shift+enter++ (Windows/Linux) / ++cmd+shift+enter++ (Mac).
 
 !!! tip "Save your work"
-    Press **Ctrl+S** / **Cmd+S** often. At the end of the session, use the **Files** pane → More → Export to download your completed notebook to your computer before closing the Codespace.
+    Press ++ctrl+s++ / ++cmd+s++ often. At the end of the session, use the **Files** pane → More → Export to download your completed notebook to your computer before closing the Codespace.
 
 ---
 
@@ -150,7 +125,7 @@ With genome parameters:
 
 And the samplesheet linking each sample name to its FASTQ files:
 
-```
+```csv title="samplesheet.csv"
 sample,fastq_1,fastq_2,strandedness
 wt_veh1_jcoffman001,SL94881_R1.fastq.gz,SL94881_R2.fastq.gz,auto
 wt_veh2_jcoffman001,SL94882_R1.fastq.gz,SL94882_R2.fastq.gz,auto
@@ -167,7 +142,7 @@ wt_cort3_jcoffman001,SL94885_R1.fastq.gz,SL94885_R2.fastq.gz,auto
 
 The pipeline produced **245 files across 73 directories**. The annotated tree below collapses the per-sample repetition to show structure:
 
-```
+```text
 nf-core/rnaseq output/
 │
 ├── fastqc/                        # Read quality reports (FastQC)
@@ -361,7 +336,7 @@ The critical constraint: **`colnames(countData)` must exactly match `rownames(co
     4. Reorder the count matrix columns to match `coldata` row order.
     5. Verify alignment, then build the `DESeqDataSet`.
 
-    ```r
+    ```r linenums="1"
     gene_info <- counts_raw %>% select(gene_id, gene_name)
 
     cts <- counts_raw %>%
@@ -393,7 +368,7 @@ The critical constraint: **`colnames(countData)` must exactly match `rownames(co
 
 ??? success "Solution"
 
-    ```r
+    ```r linenums="1"
     gene_info <- counts_raw %>% select(gene_id, gene_name)
 
     cts <- counts_raw %>%
@@ -550,7 +525,7 @@ We use a **variance-stabilizing transform (VST)** before PCA. Raw counts are not
 
     Then build the polished ggplot2 version:
 
-    ```r
+    ```r linenums="1"
     pca_data <- plotPCA(vst_data, intgroup = "treatment", returnData = TRUE)
     pct_var  <- round(attr(pca_data, "percentVar") * 100, 1)
 
@@ -576,7 +551,7 @@ We use a **variance-stabilizing transform (VST)** before PCA. Raw counts are not
 
 ??? success "Solution"
 
-    ```r
+    ```r linenums="1"
     vst_data <- vst(dds, blind = FALSE)
 
     pca_data <- plotPCA(vst_data, intgroup = "treatment", returnData = TRUE)
@@ -617,7 +592,7 @@ Significant genes (padj < 0.05) with large fold changes appear in the upper-left
 
     Run the **Exercise 5** chunk in `workshop.Rmd`:
 
-    ```r
+    ```r linenums="1"
     plot_df <- res_df %>%
       filter(!is.na(padj), !is.na(log2FoldChange)) %>%
       mutate(
@@ -661,7 +636,7 @@ Significant genes (padj < 0.05) with large fold changes appear in the upper-left
 
 ??? success "Solution"
 
-    ```r
+    ```r linenums="1"
     plot_df <- res_df %>%
       filter(!is.na(padj), !is.na(log2FoldChange)) %>%
       mutate(
@@ -728,7 +703,7 @@ A heatmap of the top differentially expressed genes shows the expression pattern
 
     **Heatmap of top 50 DE genes:**
 
-    ```r
+    ```r linenums="1"
     top50_ids <- res_df %>%
       filter(!is.na(padj)) %>%
       arrange(padj) %>%
@@ -770,7 +745,7 @@ A heatmap of the top differentially expressed genes shows the expression pattern
     # a systematic upward or downward bias at low counts indicates a normalization issue.
     ```
 
-    ```r
+    ```r linenums="1"
     top50_ids <- res_df %>%
       filter(!is.na(padj)) %>%
       arrange(padj) %>%
@@ -813,7 +788,7 @@ We use **MSigDB Hallmark gene sets** — 50 curated, biologically coherent gene 
 !!! info "This section requires additional packages"
     The bonus section uses `clusterProfiler` and `msigdbr`, which are installed by the devcontainer. If the Setup chunk ran without errors, these packages are available.
 
-```r
+```r linenums="1"
 library(clusterProfiler)
 library(msigdbr)
 

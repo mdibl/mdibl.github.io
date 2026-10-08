@@ -9,7 +9,7 @@ The command line interface (CLI) is a text-based way to interact with your compu
 
 ### Mac/Unix
 
-- Open Terminal (Mac: Press Cmd + Space, type "Terminal")
+- Open Terminal (Mac: Press ++cmd+space++, type "Terminal")
 - Terminal comes pre-installed on all Mac/Unix systems
 
 ### Windows
@@ -133,11 +133,11 @@ Purpose: Finding and filtering content
 
 ## Practical Tips
 
-1. Use Tab for auto-completion (works in all shells)
-2. Use up/down arrows to cycle through command history
-3. Use ```clear``` (```cls``` in PowerShell) to clear the screen
-4. Use ```ctrl + c``` to stop a running command
-5. Use ```man``` (Mac/Unix/WSL/Git Bash) or ```Get-Help``` (PowerShell) for documentation
+1. Use ++tab++ for auto-completion (works in all shells)
+2. Use ++arrow-up++ / ++arrow-down++ to cycle through command history
+3. Use `clear` (`cls` in PowerShell) to clear the screen
+4. Use ++ctrl+c++ to stop a running command
+5. Use `man` (Mac/Unix/WSL/Git Bash) or `Get-Help` (PowerShell) for documentation
 
 ## Common Mistakes to Avoid
 

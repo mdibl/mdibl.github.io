@@ -22,33 +22,33 @@ Poor sample naming can lead to confusion, errors in analysis, and difficulties i
 ## **Zero Padding: Why It Matters**
 
 Without zero padding, computer sorting can give unexpected results:
-```
+```text
 sample_1
 sample_10
 sample_2
 sample_3
 ```
 With zero padding, files sort naturally:
-```
+```text
 sample_01
 sample_02
 sample_03
 sample_10
 ```
 ## **Example Structure**
-```
+```text
 [Condition]_[Replicate]_[TimePoint]
 ```
 Good Examples:
 
-```
+```text
 WT_rep01_D00
 KO_rep02_D07
 treated_rep01_02h
 control_rep02_24h
 ```
 Bad Examples:
-```
+```text
 Sample 1                  # Contains space
 2nd-replicate             # Starts with number
 RNA-seq@timepoint2        # Contains special character

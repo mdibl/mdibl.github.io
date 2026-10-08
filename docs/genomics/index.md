@@ -154,7 +154,7 @@ The following three scenarios are adapted from real situations researchers encou
 
     You receive a dataset from a collaborator:
 
-    ```
+    ```text
     /shared/Misc_Stuff/new/old/backup2/FASTQs/SeqData2/RNAseq_Run1/
     ├── A1.fastq.gz
     ├── A2.fastq.gz
@@ -182,7 +182,7 @@ The following three scenarios are adapted from real situations researchers encou
 
     You compile a gene list from three papers:
 
-    ```
+    ```text
     TP53
     Actb
     MYC
@@ -211,7 +211,7 @@ The following three scenarios are adapted from real situations researchers encou
 
     You receive `DEGs_table.csv` with 847 rows and columns:
 
-    ```
+    ```text
     gene  baseMean  log2FC  lfcSE  stat  pvalue  padj
     ```
 
@@ -415,7 +415,7 @@ A sample sheet records per-file metadata. A **README file** gives any reader the
 
     === "Raw text (README.txt)"
 
-        ```
+        ```text title="README.txt"
         README – Example Genomics Project
         Project: Mouse bulk RNA-seq (agonist & inhibitor study)
         Date created: 2025-11-10
@@ -575,7 +575,7 @@ The intended naming convention encodes:
 	
 	=== "Messy Files"
 	
-		```
+		```text
 		2020-07-14_s12_phyB_on_SD_t04.raw.txt
 		2020-07-14_s1_phyA_on_LD_t05.raw.txt
 		2020-07-14_s2_phyB_on_SD_t11.raw.txt
@@ -684,7 +684,7 @@ The intended naming convention encodes:
 		
 		=== "Clean Files"
 		
-			``` 
+			```text
 			LD_phyA_off_t04_2020-08-12.norm.txt
 			LD_phyA_on_t04_2020-07-14.norm.txt
 			LD_phyA_on_t04_2020-08-12.norm.txt
@@ -714,7 +714,7 @@ The intended naming convention encodes:
 	
 	??? success "Datatype subfolders" 
 		
-		```
+		```text
 		phytochrome_light_response/
 		├── raw/
 		│   ├── LD_phyA_on_t03_s03_2020-08-12.raw.txt
@@ -746,7 +746,7 @@ The intended naming convention encodes:
 
     **Files in `norm/`:**
 
-    ```
+    ```text
     LD_phyA_off_t04_2020-08-12.norm.txt
     LD_phyA_on_t04_2020-07-14.norm.txt
     LD_phyA_on_t04_2020-08-12.norm.txt
@@ -802,7 +802,7 @@ The intended naming convention encodes:
 
         === "Raw text (README.txt)"
 
-            ```
+            ```text title="README.txt"
             README: Phytochrome Light Response Data
             ========================================
 
@@ -865,7 +865,7 @@ Once you have good file names, folder structure determines how easy it is to fin
 
 **A widely-used template** from *Good Enough Practices in Scientific Computing* (Wilson et al., 2017):
 
-```
+```text
 project_name/
 ├── data/          ← raw data and metadata (read-only)
 ├── results/       ← files generated during analysis
@@ -886,7 +886,7 @@ project_name/
 
     Look at the directory structure below. Write down every issue you can identify. Then think about what the improved structure would look like.
     
-    ```
+    ```text
     smith_lab_rna/
     ├── final analysis.R
     ├── Final_analysis_v2.R
@@ -962,7 +962,7 @@ project_name/
 
     ??? success "Improved structure"
 
-        ```
+        ```text
         smith_lab_rna/
         ├── README.txt                    ← who, what, when, where, how
         ├── data/
@@ -1030,7 +1030,7 @@ Use this as a cheat sheet for your own projects. A one-page visual reference is 
 
 ### File Naming Rules
 
-```
+```text
 {variable1}_{variable2}_{variable3}_{YYYY-MM-DD}.{ext}
 ```
 
@@ -1045,7 +1045,7 @@ Use this as a cheat sheet for your own projects. A one-page visual reference is 
 
 ### Project Directory Template
 
-```
+```text
 project_name/
 ├── README.txt          ← who/what/when/where/how; directory guide
 ├── data/               ← raw data + metadata (READ-ONLY)
