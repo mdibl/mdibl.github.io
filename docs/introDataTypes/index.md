@@ -32,9 +32,9 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Combine gene expression with tissue context. Learn how spatial transcriptomics data is structured, how to visualize gene expression overlaid on tissue sections, and how spatial patterns connect to tissue architecture.
 
-    **~90 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Learn more](../spatial/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../spatial/index.md){ .md-button .md-button--primary}
 
 -   :material-pipe:{ .lg .middle } **Computational Workflows**
 
@@ -42,7 +42,7 @@ This series of workshops is designed for undergraduate researchers and students 
 
     Learn how bioinformatics pipelines connect raw sequencing reads to analysis-ready outputs. Covers workflow concepts, running nf-core pipelines, and moving between local, cloud, and HPC environments.
 
-    **~90 minutes &nbsp;·&nbsp; Coming July 2026**
+    **~90 minutes &nbsp;·&nbsp; Coming Soon**
 
     [:octicons-arrow-right-24: Learn more](../workflows/index.md){ .md-button }
 

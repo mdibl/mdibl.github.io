@@ -1,7 +1,7 @@
 # Computational Workflows
 
-!!! info "Coming soon — July 2026"
-    This workshop is under development and will be available for the July 2026 workshop series. Check back closer to the session date for the full course page.
+!!! info "Coming soon"
+    This workshop is under development. Check back regularly for updates.
 
 Bioinformatics analyses are rarely a single script — they are pipelines: sequences of tools that each transform data from one format to another, from raw sequencing reads all the way to count matrices or variant calls. Workflow management systems like Nextflow make these pipelines reproducible, portable, and scalable across laptops, HPC clusters, and cloud environments.
 

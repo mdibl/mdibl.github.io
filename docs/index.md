@@ -1,15 +1,6 @@
-???+ info "Upcoming Workshops — Introductions to Genomics Data Types Series"
+???+ info "Upcoming Workshops"
 
-    Join us this July for Wednesday workshops, **3:30 - 5 PM in the Davis Classroom**, at MDI Biological Laboratory.
-
-    | Date | Workshop |
-    |------|----------|
-    | <s>July 1, 2026</s>  | [Differential Gene Expression (Bulk RNAseq)](bulkDGE/index.md) |
-    | <s>July 8, 2026</s> | [Single Cell RNAseq](scRNAseq/index.md) |
-    | July 22, 2026** | [Spatial Transcriptomics](spatial/index.md) |
-    | July 29, 2026 | [Computational Workflows ](workflows/index.md) |
-
-    [Learn More :octicons-arrow-right-24:](introDataTypes/index.md){ .md-button .md-button--primary }
+    None currently scheduled. Feel free to use this site for asynchronous learning and check back soon for in-person and hybrid events! 
 
 # MDIBL Comparative Genomics and Data Science Core
 
