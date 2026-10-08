@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="380" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">RunUMAP(): 10 PCs → a 2D Layout for Visualization</text>
+
+  <!-- Panel 1: 10-D PC space -->
+  <g transform="translate(90,210)">
+    <text x="0" y="-140" font-size="13" fill="#718096" text-anchor="middle">10 PCs</text>
+    <text x="0" y="-124" font-size="13" fill="#718096" text-anchor="middle">(clustering space)</text>
+    <g stroke="#cbd5e0" stroke-width="1.5">
+      <line x1="0" y1="0" x2="0" y2="-100"/>
+      <line x1="0" y1="0" x2="87" y2="-50"/>
+      <line x1="0" y1="0" x2="87" y2="50"/>
+      <line x1="0" y1="0" x2="0" y2="100"/>
+      <line x1="0" y1="0" x2="-87" y2="50"/>
+      <line x1="0" y1="0" x2="-87" y2="-50"/>
+    </g>
+    <!-- scattered colored dots near center representing cluster identity carried over -->
+    <g opacity="0.85">
+      <circle cx="10" cy="-10" r="5" fill="#c05621"/><circle cx="-15" cy="5" r="5" fill="#c05621"/>
+      <circle cx="20" cy="15" r="5" fill="#2c5282"/><circle cx="-10" cy="-20" r="5" fill="#2c5282"/>
+      <circle cx="5" cy="20" r="5" fill="#2f855a"/><circle cx="-20" cy="-5" r="5" fill="#805ad5"/>
+    </g>
+  </g>
+
+  <!-- Arrow -->
+  <g stroke="#a0aec0" stroke-width="2" fill="none" marker-end="url(#arrow4)">
+    <line x1="240" y1="210" x2="330" y2="210"/>
+  </g>
+  <text x="285" y="195" font-size="12" fill="#718096" text-anchor="middle">RunUMAP()</text>
+  <defs>
+    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#a0aec0"/>
+    </marker>
+  </defs>
+
+  <!-- Panel 2: UMAP embedding, nonlinear islands -->
+  <g transform="translate(400,80)">
+    <text x="230" y="-15" font-size="13" fill="#718096" text-anchor="middle">2D UMAP embedding — similar cells stay close together</text>
+    <line x1="0" y1="230" x2="460" y2="230" stroke="#a0aec0" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="230" stroke="#a0aec0" stroke-width="1.5"/>
+    <text x="230" y="255" font-size="13" fill="#4a5568" text-anchor="middle">UMAP 1</text>
+    <text x="-20" y="115" font-size="13" fill="#4a5568" text-anchor="middle" transform="rotate(-90 -20,115)">UMAP 2</text>
+
+    <!-- Naive/Memory CD4 T + CD8 T + NK: touching crescent islands -->
+    <path d="M 60,140 C 40,100 70,60 120,55 C 160,50 190,75 185,110 C 180,145 140,160 100,155 Z" fill="#2c5282" opacity="0.55"/>
+    <path d="M 175,100 C 190,70 230,60 260,80 C 285,98 280,130 250,145 C 220,158 185,140 175,100 Z" fill="#3182ce" opacity="0.5"/>
+    <path d="M 240,150 C 260,130 300,130 315,155 C 328,178 310,205 280,205 C 252,205 228,178 240,150 Z" fill="#805ad5" opacity="0.55"/>
+
+    <!-- Monocyte island, clearly separate -->
+    <path d="M 60,190 C 50,170 75,150 105,155 C 130,160 140,185 120,205 C 100,222 72,215 60,190 Z" fill="#c05621" opacity="0.6"/>
+
+    <!-- B cell island -->
+    <circle cx="360" cy="60" r="38" fill="#2f855a" opacity="0.55"/>
+
+    <!-- DC / Platelet tiny outlier islands -->
+    <circle cx="420" cy="190" r="14" fill="#d69e2e" opacity="0.7"/>
+    <circle cx="410" cy="30" r="11" fill="#718096" opacity="0.7"/>
+
+    <text x="105" y="185" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="700">Mono</text>
+    <text x="120" y="100" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="700">CD4 T</text>
+    <text x="278" y="170" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="700">NK</text>
+    <text x="360" y="64" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="700">B</text>
+  </g>
+
+  <text x="30" y="345" font-size="12" fill="#4a5568">UMAP preserves local neighborhoods, not global distances — it's a layout for exploring cluster structure,</text>
+  <text x="30" y="363" font-size="12" fill="#4a5568">not a source of statistical truth on its own.</text>
+</svg>

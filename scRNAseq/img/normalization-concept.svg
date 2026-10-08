@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="300" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">NormalizeData(): LogNormalize</text>
+  <text x="30" y="60" font-size="13" fill="#718096">Worked example — Gene A in two cells with different total sequencing depth</text>
+
+  <!-- Cell 1 -->
+  <g transform="translate(50,90)">
+    <rect x="0" y="0" width="230" height="160" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="115" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Cell 1</text>
+    <text x="115" y="50" font-size="12" fill="#4a5568" text-anchor="middle">Gene A count: 100</text>
+    <text x="115" y="68" font-size="12" fill="#4a5568" text-anchor="middle">Total counts: 350</text>
+    <line x1="15" y1="80" x2="215" y2="80" stroke="#cbd5e0"/>
+    <text x="115" y="100" font-family="Menlo, monospace" font-size="12" fill="#2c5282" text-anchor="middle">100 / 350 × 10,000</text>
+    <text x="115" y="120" font-family="Menlo, monospace" font-size="12" fill="#2c5282" text-anchor="middle">= 2,857</text>
+    <text x="115" y="144" font-family="Menlo, monospace" font-size="13" font-weight="700" fill="#22543d" text-anchor="middle">log1p(2,857) = 7.96</text>
+  </g>
+
+  <!-- Cell 2 -->
+  <g transform="translate(320,90)">
+    <rect x="0" y="0" width="230" height="160" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="115" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Cell 2</text>
+    <text x="115" y="50" font-size="12" fill="#4a5568" text-anchor="middle">Gene A count: 100</text>
+    <text x="115" y="68" font-size="12" fill="#c05621" text-anchor="middle">Total counts: 700 (2× deeper)</text>
+    <line x1="15" y1="80" x2="215" y2="80" stroke="#cbd5e0"/>
+    <text x="115" y="100" font-family="Menlo, monospace" font-size="12" fill="#2c5282" text-anchor="middle">100 / 700 × 10,000</text>
+    <text x="115" y="120" font-family="Menlo, monospace" font-size="12" fill="#2c5282" text-anchor="middle">= 1,429</text>
+    <text x="115" y="144" font-family="Menlo, monospace" font-size="13" font-weight="700" fill="#22543d" text-anchor="middle">log1p(1,429) = 7.27</text>
+  </g>
+
+  <!-- takeaway -->
+  <g transform="translate(600,90)">
+    <rect x="0" y="0" width="210" height="160" rx="8" fill="#1b365d"/>
+    <text x="105" y="30" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Same raw count (100),</text>
+    <text x="105" y="50" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">different depth</text>
+    <text x="105" y="90" font-size="12" fill="#90cdf4" text-anchor="middle">Without normalization, Cell 2</text>
+    <text x="105" y="108" font-size="12" fill="#90cdf4" text-anchor="middle">would look like it expresses</text>
+    <text x="105" y="126" font-size="12" fill="#90cdf4" text-anchor="middle">Gene A the same as Cell 1 —</text>
+    <text x="105" y="144" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="700">normalization corrects this.</text>
+  </g>
+
+  <text x="30" y="280" font-size="12" fill="#4a5568">count ÷ total counts per cell × scale.factor (10,000 default), then natural-log(x + 1) transformed.</text>
+</svg>

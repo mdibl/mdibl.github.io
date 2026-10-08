@@ -1,0 +1,7 @@
+sample	experiment_id	replicate	genotype	treatment	tissue	name
+SL94881	jcoffman001	1	wt	veh	embryo	wt_veh1_jcoffman001
+SL94882	jcoffman001	2	wt	veh	embryo	wt_veh2_jcoffman001
+SL94883	jcoffman001	1	wt	cort	embryo	wt_cort1_jcoffman001
+SL94884	jcoffman001	2	wt	cort	embryo	wt_cort2_jcoffman001
+SL94885	jcoffman001	3	wt	cort	embryo	wt_cort3_jcoffman001
+SL94886	jcoffman001	3	wt	veh	embryo	wt_veh3_jcoffman001

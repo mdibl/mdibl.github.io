@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="380" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">Moran's I: Does Expression Cluster in Space?</text>
+  <text x="30" y="60" font-size="13" fill="#718096">FindSpatiallyVariableFeatures() ranks genes by spatial autocorrelation, not just overall variance.</text>
+
+  <!-- Panel 1: high Moran's I -->
+  <g transform="translate(50,90)">
+    <rect x="0" y="0" width="360" height="250" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="180" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Gene A — spatially restricted</text>
+
+    <g stroke="#cbd5e0" stroke-width="1">
+      <!-- 8x6 grid of spots, colored by a smooth patch -->
+    </g>
+    <g transform="translate(30,45)">
+      <!-- rows of spots; darker green = higher expression, forming a contiguous patch (e.g. hippocampus) -->
+      <g font-size="0">
+        <!-- row 1 -->
+        <circle cx="15" cy="15" r="12" fill="#e2e8f0"/><circle cx="45" cy="15" r="12" fill="#e2e8f0"/><circle cx="75" cy="15" r="12" fill="#e2e8f0"/><circle cx="105" cy="15" r="12" fill="#e2e8f0"/><circle cx="135" cy="15" r="12" fill="#e2e8f0"/><circle cx="165" cy="15" r="12" fill="#e2e8f0"/><circle cx="195" cy="15" r="12" fill="#e2e8f0"/><circle cx="225" cy="15" r="12" fill="#e2e8f0"/><circle cx="255" cy="15" r="12" fill="#e2e8f0"/><circle cx="285" cy="15" r="12" fill="#e2e8f0"/>
+        <!-- row 2 -->
+        <circle cx="15" cy="45" r="12" fill="#e2e8f0"/><circle cx="45" cy="45" r="12" fill="#e2e8f0"/><circle cx="75" cy="45" r="12" fill="#c6f6d5"/><circle cx="105" cy="45" r="12" fill="#9ae6b4"/><circle cx="135" cy="45" r="12" fill="#68d391"/><circle cx="165" cy="45" r="12" fill="#9ae6b4"/><circle cx="195" cy="45" r="12" fill="#c6f6d5"/><circle cx="225" cy="45" r="12" fill="#e2e8f0"/><circle cx="255" cy="45" r="12" fill="#e2e8f0"/><circle cx="285" cy="45" r="12" fill="#e2e8f0"/>
+        <!-- row 3 -->
+        <circle cx="15" cy="75" r="12" fill="#e2e8f0"/><circle cx="45" cy="75" r="12" fill="#c6f6d5"/><circle cx="75" cy="75" r="12" fill="#68d391"/><circle cx="105" cy="75" r="12" fill="#2f855a"/><circle cx="135" cy="75" r="12" fill="#22543d"/><circle cx="165" cy="75" r="12" fill="#2f855a"/><circle cx="195" cy="75" r="12" fill="#68d391"/><circle cx="225" cy="75" r="12" fill="#c6f6d5"/><circle cx="255" cy="75" r="12" fill="#e2e8f0"/><circle cx="285" cy="75" r="12" fill="#e2e8f0"/>
+        <!-- row 4 -->
+        <circle cx="15" cy="105" r="12" fill="#e2e8f0"/><circle cx="45" cy="105" r="12" fill="#c6f6d5"/><circle cx="75" cy="105" r="12" fill="#68d391"/><circle cx="105" cy="105" r="12" fill="#2f855a"/><circle cx="135" cy="105" r="12" fill="#22543d"/><circle cx="165" cy="105" r="12" fill="#2f855a"/><circle cx="195" cy="105" r="12" fill="#68d391"/><circle cx="225" cy="105" r="12" fill="#c6f6d5"/><circle cx="255" cy="105" r="12" fill="#e2e8f0"/><circle cx="285" cy="105" r="12" fill="#e2e8f0"/>
+        <!-- row 5 -->
+        <circle cx="15" cy="135" r="12" fill="#e2e8f0"/><circle cx="45" cy="135" r="12" fill="#e2e8f0"/><circle cx="75" cy="135" r="12" fill="#c6f6d5"/><circle cx="105" cy="135" r="12" fill="#9ae6b4"/><circle cx="135" cy="135" r="12" fill="#68d391"/><circle cx="165" cy="135" r="12" fill="#9ae6b4"/><circle cx="195" cy="135" r="12" fill="#c6f6d5"/><circle cx="225" cy="135" r="12" fill="#e2e8f0"/><circle cx="255" cy="135" r="12" fill="#e2e8f0"/><circle cx="285" cy="135" r="12" fill="#e2e8f0"/>
+        <!-- row 6 -->
+        <circle cx="15" cy="165" r="12" fill="#e2e8f0"/><circle cx="45" cy="165" r="12" fill="#e2e8f0"/><circle cx="75" cy="165" r="12" fill="#e2e8f0"/><circle cx="105" cy="165" r="12" fill="#e2e8f0"/><circle cx="135" cy="165" r="12" fill="#e2e8f0"/><circle cx="165" cy="165" r="12" fill="#e2e8f0"/><circle cx="195" cy="165" r="12" fill="#e2e8f0"/><circle cx="225" cy="165" r="12" fill="#e2e8f0"/><circle cx="255" cy="165" r="12" fill="#e2e8f0"/><circle cx="285" cy="165" r="12" fill="#e2e8f0"/>
+      </g>
+    </g>
+    <text x="180" y="235" font-size="13" font-weight="700" fill="#2f855a" text-anchor="middle">high Moran's I — neighboring spots agree</text>
+  </g>
+
+  <!-- Panel 2: low Moran's I -->
+  <g transform="translate(450,90)">
+    <rect x="0" y="0" width="360" height="250" rx="8" fill="#eef2f7" stroke="#cbd5e0"/>
+    <text x="180" y="26" font-size="14" font-weight="700" fill="#1b365d" text-anchor="middle">Gene B — no spatial pattern</text>
+
+    <g transform="translate(30,45)">
+      <g font-size="0">
+        <circle cx="15" cy="15" r="12" fill="#9ae6b4"/><circle cx="45" cy="15" r="12" fill="#e2e8f0"/><circle cx="75" cy="15" r="12" fill="#68d391"/><circle cx="105" cy="15" r="12" fill="#e2e8f0"/><circle cx="135" cy="15" r="12" fill="#c6f6d5"/><circle cx="165" cy="15" r="12" fill="#e2e8f0"/><circle cx="195" cy="15" r="12" fill="#68d391"/><circle cx="225" cy="15" r="12" fill="#e2e8f0"/><circle cx="255" cy="15" r="12" fill="#9ae6b4"/><circle cx="285" cy="15" r="12" fill="#e2e8f0"/>
+        <circle cx="15" cy="45" r="12" fill="#e2e8f0"/><circle cx="45" cy="45" r="12" fill="#68d391"/><circle cx="75" cy="45" r="12" fill="#e2e8f0"/><circle cx="105" cy="45" r="12" fill="#c6f6d5"/><circle cx="135" cy="45" r="12" fill="#e2e8f0"/><circle cx="165" cy="45" r="12" fill="#9ae6b4"/><circle cx="195" cy="45" r="12" fill="#e2e8f0"/><circle cx="225" cy="45" r="12" fill="#68d391"/><circle cx="255" cy="45" r="12" fill="#e2e8f0"/><circle cx="285" cy="45" r="12" fill="#c6f6d5"/>
+        <circle cx="15" cy="75" r="12" fill="#68d391"/><circle cx="45" cy="75" r="12" fill="#e2e8f0"/><circle cx="75" cy="75" r="12" fill="#9ae6b4"/><circle cx="105" cy="75" r="12" fill="#e2e8f0"/><circle cx="135" cy="75" r="12" fill="#68d391"/><circle cx="165" cy="75" r="12" fill="#e2e8f0"/><circle cx="195" cy="75" r="12" fill="#c6f6d5"/><circle cx="225" cy="75" r="12" fill="#e2e8f0"/><circle cx="255" cy="75" r="12" fill="#68d391"/><circle cx="285" cy="75" r="12" fill="#e2e8f0"/>
+        <circle cx="15" cy="105" r="12" fill="#e2e8f0"/><circle cx="45" cy="105" r="12" fill="#c6f6d5"/><circle cx="75" cy="105" r="12" fill="#e2e8f0"/><circle cx="105" cy="105" r="12" fill="#68d391"/><circle cx="135" cy="105" r="12" fill="#e2e8f0"/><circle cx="165" cy="105" r="12" fill="#68d391"/><circle cx="195" cy="105" r="12" fill="#e2e8f0"/><circle cx="225" cy="105" r="12" fill="#9ae6b4"/><circle cx="255" cy="105" r="12" fill="#e2e8f0"/><circle cx="285" cy="105" r="12" fill="#68d391"/>
+        <circle cx="15" cy="135" r="12" fill="#c6f6d5"/><circle cx="45" cy="135" r="12" fill="#e2e8f0"/><circle cx="75" cy="135" r="12" fill="#68d391"/><circle cx="105" cy="135" r="12" fill="#e2e8f0"/><circle cx="135" cy="135" r="12" fill="#9ae6b4"/><circle cx="165" cy="135" r="12" fill="#e2e8f0"/><circle cx="195" cy="135" r="12" fill="#68d391"/><circle cx="225" cy="135" r="12" fill="#e2e8f0"/><circle cx="255" cy="135" r="12" fill="#c6f6d5"/><circle cx="285" cy="135" r="12" fill="#e2e8f0"/>
+        <circle cx="15" cy="165" r="12" fill="#e2e8f0"/><circle cx="45" cy="165" r="12" fill="#68d391"/><circle cx="75" cy="165" r="12" fill="#e2e8f0"/><circle cx="105" cy="165" r="12" fill="#c6f6d5"/><circle cx="135" cy="165" r="12" fill="#e2e8f0"/><circle cx="165" cy="165" r="12" fill="#9ae6b4"/><circle cx="195" cy="165" r="12" fill="#e2e8f0"/><circle cx="225" cy="165" r="12" fill="#68d391"/><circle cx="255" cy="165" r="12" fill="#e2e8f0"/><circle cx="285" cy="165" r="12" fill="#c6f6d5"/>
+      </g>
+    </g>
+    <text x="180" y="235" font-size="13" font-weight="700" fill="#c05621" text-anchor="middle">low Moran's I — expression looks like noise</text>
+  </g>
+
+  <text x="30" y="345" font-size="12" fill="#4a5568">A gene can have high overall variance across spots and still score low on Moran's I if that variance is scattered</text>
+  <text x="30" y="363" font-size="12" fill="#4a5568">randomly rather than organized into coherent regions, which is why spatially variable genes need their own metric.</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="380" fill="#fbfcfd" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="30" y="38" font-size="20" font-weight="700" fill="#1b365d">RunPCA(): 2,000 Genes → a Few Principal Components</text>
+
+  <!-- Panel 1: high-dimensional gene space -->
+  <g transform="translate(90,200)">
+    <text x="0" y="-135" font-size="13" fill="#718096" text-anchor="middle">2,000 variable genes</text>
+    <text x="0" y="-118" font-size="13" fill="#718096" text-anchor="middle">(high-dimensional space)</text>
+    <!-- starburst of axes -->
+    <g stroke="#cbd5e0" stroke-width="1.5">
+      <line x1="0" y1="0" x2="0" y2="-100"/>
+      <line x1="0" y1="0" x2="95" y2="-31"/>
+      <line x1="0" y1="0" x2="59" y2="81"/>
+      <line x1="0" y1="0" x2="-59" y2="81"/>
+      <line x1="0" y1="0" x2="-95" y2="-31"/>
+      <line x1="0" y1="0" x2="35" y2="-95"/>
+      <line x1="0" y1="0" x2="-35" y2="-95"/>
+      <line x1="0" y1="0" x2="80" y2="60"/>
+      <line x1="0" y1="0" x2="-80" y2="60"/>
+      <line x1="0" y1="0" x2="100" y2="10"/>
+      <line x1="0" y1="0" x2="-100" y2="10"/>
+    </g>
+    <text x="0" y="4" font-size="24" fill="#a0aec0" text-anchor="middle">⋯</text>
+  </g>
+
+  <!-- Arrow -->
+  <g stroke="#a0aec0" stroke-width="2" fill="none" marker-end="url(#arrow3)">
+    <line x1="240" y1="200" x2="330" y2="200"/>
+  </g>
+  <text x="285" y="185" font-size="12" fill="#718096" text-anchor="middle">RunPCA()</text>
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#a0aec0"/>
+    </marker>
+  </defs>
+
+  <!-- Panel 2: PCA scatter -->
+  <g transform="translate(400,80)">
+    <text x="230" y="-15" font-size="13" fill="#718096" text-anchor="middle">PCA space — top principal components capture the signal</text>
+    <line x1="0" y1="230" x2="460" y2="230" stroke="#a0aec0" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="230" stroke="#a0aec0" stroke-width="1.5"/>
+    <text x="230" y="255" font-size="13" fill="#4a5568" text-anchor="middle">PC1</text>
+    <text x="-20" y="115" font-size="13" fill="#4a5568" text-anchor="middle" transform="rotate(-90 -20,115)">PC2</text>
+
+    <!-- myeloid cluster (top-left-ish) -->
+    <g fill="#c05621" opacity="0.8">
+      <circle cx="70" cy="60" r="6"/><circle cx="90" cy="80" r="6"/><circle cx="60" cy="90" r="6"/>
+      <circle cx="100" cy="55" r="6"/><circle cx="80" cy="40" r="6"/><circle cx="110" cy="75" r="6"/>
+      <circle cx="50" cy="70" r="6"/><circle cx="95" cy="95" r="6"/>
+    </g>
+    <!-- T/NK lymphocyte cluster (bottom center) -->
+    <g fill="#2c5282" opacity="0.8">
+      <circle cx="230" cy="150" r="6"/><circle cx="255" cy="170" r="6"/><circle cx="210" cy="175" r="6"/>
+      <circle cx="270" cy="145" r="6"/><circle cx="245" cy="190" r="6"/><circle cx="280" cy="175" r="6"/>
+      <circle cx="215" cy="150" r="6"/><circle cx="260" cy="200" r="6"/><circle cx="235" cy="130" r="6"/>
+    </g>
+    <!-- B cell cluster -->
+    <g fill="#2f855a" opacity="0.8">
+      <circle cx="370" cy="60" r="6"/><circle cx="390" cy="80" r="6"/><circle cx="355" cy="85" r="6"/>
+      <circle cx="400" cy="65" r="6"/><circle cx="380" cy="45" r="6"/>
+    </g>
+    <!-- small platelet outlier group -->
+    <g fill="#805ad5" opacity="0.8">
+      <circle cx="420" cy="200" r="6"/><circle cx="430" cy="215" r="6"/>
+    </g>
+  </g>
+
+  <text x="30" y="345" font-size="12" fill="#4a5568">Each PC is a weighted combination of correlated genes. The first several PCs capture most of the true biological</text>
+  <text x="30" y="363" font-size="12" fill="#4a5568">signal (here, immune cell type); later PCs are increasingly dominated by technical noise.</text>
+</svg>
