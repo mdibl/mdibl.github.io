@@ -9,7 +9,7 @@ categories:
 
 # Welcome to the CGDS Core Blog
 
-This is the new home for news, workshop announcements, and tutorials from the MDIBL Comparative Genomics and Data Science Core.
+This is the new home for news, workshop announcements, and tutorials from the MDI Biological Laboratory's Comparative Genomics and Data Science Core.
 
 <!-- more -->
 

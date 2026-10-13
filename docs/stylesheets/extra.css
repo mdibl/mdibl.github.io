@@ -1,6 +1,151 @@
+/* ── MDI Bio Lab brand (see _source/MDIBL_style_guide.pdf) ─────────────────
+   Colors: blue PMS 7468, gray PMS 7540, green PMS 576, tan PMS 454,
+           cyan PMS 3125, orange (tertiary).
+   Fonts:  Proxima Nova / Tisa Pro via an Adobe Fonts kit if one is added;
+           otherwise the style guide's desktop substitutes (Helvetica/Arial,
+           Georgia/Times New Roman). */
 :root {
-    --md-primary-fg-color:        #007299;
-    --md-accent-fg-color:        #799c4b;
+    --brand-blue:   #007398;
+    --brand-gray:   #4B4F54;
+    --brand-green:  #799C4B;
+    --brand-tan:    #CDC5A7;
+    --brand-cyan:   #00AEC7;
+    --brand-orange: #D96929;
+
+    --brand-sans:  "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --brand-serif: "tisa-pro", Georgia, "Times New Roman", serif;
+
+    --md-text-font: var(--brand-sans);
+    --md-code-font: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --md-primary-fg-color:          var(--brand-blue);
+    --md-primary-fg-color--light:   #3391b0;
+    --md-primary-fg-color--dark:    #005c7a;
+    --md-accent-fg-color:           var(--brand-green);
+    --md-accent-fg-color--transparent: rgba(121, 156, 75, 0.1);
+}
+
+/* Footer in brand gray (set per scheme so it overrides Material's defaults) */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+    --md-footer-bg-color:           var(--brand-gray);
+    --md-footer-bg-color--dark:     #3c3f43;
+}
+
+/* Light mode: brand gray text and headings */
+[data-md-color-scheme="default"] {
+    --md-typeset-color: var(--brand-gray);
+    --md-typeset-a-color: var(--brand-blue);
+}
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] .md-typeset h2,
+[data-md-color-scheme="default"] .md-typeset h3,
+[data-md-color-scheme="default"] .md-typeset h4 {
+    color: var(--brand-gray);
+}
+
+/* Dark mode: brand blue is too dark for links on slate, so use cyan */
+[data-md-color-scheme="slate"] {
+    --md-typeset-a-color: var(--brand-cyan);
+}
+
+/* Serif headings, sans body and UI */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+    font-family: var(--brand-serif);
+}
+
+/* Header logo: the horizontal logo sits on its own white box, sized above
+   the style guide's 1.5" minimum width */
+.md-header__button.md-logo {
+    padding: 0.2rem;
+    margin: 0.1rem 0.4rem;
+}
+.md-header__button.md-logo img {
+    height: 1.8rem;
+    width: auto;
+    border-radius: 0.1rem;
+}
+
+/* Header title: keep the full site name visible next to the logo by using a
+   slightly smaller title and letting the GitHub link take only the width it needs */
+.md-header__title {
+    font-size: 0.85rem;
+}
+@media screen and (min-width: 60em) {
+    .md-header__source {
+        width: auto;
+        flex-shrink: 0;
+        margin-left: 0.8rem;
+    }
+    .md-header__source .md-source__repository {
+        max-width: none;
+    }
+}
+
+/* Announcement bar */
+.md-banner {
+    background-color: var(--brand-orange);
+    color: #fff;
+}
+.md-banner a,
+.md-banner a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Table headers: light tan in light mode */
+[data-md-color-scheme="default"] .md-typeset table:not([class]) th {
+    background-color: rgba(205, 197, 167, 0.35);
+}
+
+/* Admonitions in brand colors (danger keeps the default red) */
+.md-typeset .admonition.note, .md-typeset details.note,
+.md-typeset .admonition.info, .md-typeset details.info {
+    border-color: var(--brand-cyan);
+}
+.md-typeset .note > .admonition-title, .md-typeset .note > summary,
+.md-typeset .info > .admonition-title, .md-typeset .info > summary {
+    background-color: rgba(0, 174, 199, 0.1);
+}
+.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before,
+.md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before {
+    background-color: var(--brand-cyan);
+}
+
+.md-typeset .admonition.tip, .md-typeset details.tip,
+.md-typeset .admonition.success, .md-typeset details.success {
+    border-color: var(--brand-green);
+}
+.md-typeset .tip > .admonition-title, .md-typeset .tip > summary,
+.md-typeset .success > .admonition-title, .md-typeset .success > summary {
+    background-color: rgba(121, 156, 75, 0.1);
+}
+.md-typeset .tip > .admonition-title::before, .md-typeset .tip > summary::before,
+.md-typeset .success > .admonition-title::before, .md-typeset .success > summary::before {
+    background-color: var(--brand-green);
+}
+
+.md-typeset .admonition.warning, .md-typeset details.warning {
+    border-color: var(--brand-orange);
+}
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
+    background-color: rgba(217, 105, 41, 0.1);
+}
+.md-typeset .warning > .admonition-title::before, .md-typeset .warning > summary::before {
+    background-color: var(--brand-orange);
+}
+
+.md-typeset .admonition.question, .md-typeset details.question {
+    border-color: var(--brand-blue);
+}
+.md-typeset .question > .admonition-title, .md-typeset .question > summary {
+    background-color: rgba(0, 115, 152, 0.1);
+}
+.md-typeset .question > .admonition-title::before, .md-typeset .question > summary::before {
+    background-color: var(--brand-blue);
 }
 
 /* ── Print / Save as PDF ───────────────────────────────────────────────── */

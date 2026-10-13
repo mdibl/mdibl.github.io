@@ -2,7 +2,7 @@
 
     None currently scheduled. Feel free to use this site for asynchronous learning and check back soon for in-person and hybrid events! 
 
-# MDIBL Comparative Genomics and Data Science Core
+# Comparative Genomics and Data Science Core
 
 ## Welcome 
 
@@ -10,6 +10,6 @@ The MDI Biological Laboratory's Comparative Genomics and Data Science Core is fo
 
 1. Providing our collaborating research groups with experimental data analysis/management and computational resources.
 
-2. Providing training in computational biology both within MDIBL and also as part of the Maine INBRE (IDeA Networks of Biomedical Research Excellence) research program.
+2. Providing training in computational biology both within MDI Bio Lab and also as part of the Maine INBRE (IDeA Networks of Biomedical Research Excellence) research program.
 
 Biomedical research is dependent on data management and increasingly sophisticated analysis workflows that are both rigorous and reproducible. The Core has the experience and knowledge to provide training, analysis, and infrastructure that enable our collaborating researchers to accomplish their research goals.

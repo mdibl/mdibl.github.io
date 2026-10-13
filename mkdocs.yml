@@ -1,4 +1,4 @@
-site_name: MDIBL Comparative Genomics and Data Science Core 
+site_name: Comparative Genomics and Data Science Core
 site_url: https://mdibl.github.io/
 nav:
   - Home: index.md
@@ -50,8 +50,9 @@ nav:
 theme:
   name: material
   custom_dir: overrides
-  icon:
-    logo: simple/mediapipe
+  logo: assets/images/mdibl-logo.jpg
+  favicon: assets/images/favicon.png
+  font: false
   features:
     - announce.dismiss
     - navigation.indexes
@@ -80,6 +81,9 @@ theme:
       primary: custom
       accent: custom
 repo_url: https://github.com/mdibl/mdibl.github.io
+copyright: 'Copyright &copy; 2026 <a href="https://mdibl.org">MDI Biological Laboratory</a>'
+hooks:
+  - hooks/ap_dates.py
 plugins:
   - search
   - blog:
