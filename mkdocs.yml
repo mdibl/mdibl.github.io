@@ -99,6 +99,7 @@ plugins:
         - News
         - Workshops
         - Tutorials
+        - Tips
   - tags
   - rss:
       match_path: "blog/posts/.*"

@@ -5,6 +5,7 @@ tags:
   - announcements
 categories:
   - News
+pin: true
 ---
 
 # Welcome to the CGDS Core Blog
