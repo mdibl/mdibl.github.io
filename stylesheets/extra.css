@@ -148,6 +148,13 @@
     background-color: var(--brand-blue);
 }
 
+/* Center Images */ 
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ── Print / Save as PDF ───────────────────────────────────────────────── */
 @media print {
     /* Hide site chrome */
