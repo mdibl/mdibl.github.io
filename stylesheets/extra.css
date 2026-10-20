@@ -155,6 +155,11 @@ img.center {
   margin-right: auto;
 }
 
+/* Center buttons and other inline content: <div class="center" markdown> */
+div.center {
+  text-align: center;
+}
+
 /* ── Print / Save as PDF ───────────────────────────────────────────────── */
 @media print {
     /* Hide site chrome */

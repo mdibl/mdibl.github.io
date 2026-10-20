@@ -101,7 +101,7 @@
               </button>
             
             
-  Check out the new <a href="/blog/"><strong>CGDS Core Blog</strong></a> for news, workshop announcements, and tutorials!
+  <b>Upcoming Course:</b> Full day training: Intro to R &amp; Data Visualization in R. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/764" target="_blank">Register here</a>.
 
           </div>
           
@@ -2877,19 +2877,19 @@
 <p>Before any analysis begins, individual cells have to be physically isolated and tagged so that every read can be traced back to the cell it came from. The 10x Genomics Chromium platform (the source of this workshop's dataset) does this with <strong>droplet microfluidics</strong>.</p>
 <p>Each cell is paired with a single <strong>gel bead</strong> carrying millions of copies of a DNA oligo. Every oligo on a given bead shares the same <strong>10x cell barcode</strong>, but has a different random <strong>UMI (Unique Molecular Identifier)</strong> and a poly(dT) tail that captures mRNA:</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/10x-v3-gel-beads.png" data-desc-position="bottom"><img src="img/10x-v3-gel-beads.png" alt="10x Genomics gel bead oligo structure: TruSeq Read 1, 10x Barcode, UMI, Poly(dT)" style="width:100%; max-width:800px;"></a>
+
 <figcaption>Every oligo on one gel bead shares the same 10x Barcode but a unique UMI. This is what lets reads be traced back to their cell of origin and de-duplicated to individual RNA molecules. Source: 10x Genomics.</figcaption>
 </figure>
 
 <p>A microfluidic chip then merges one cell, one gel bead, and oil at a T-junction, encapsulating them together in a nanoliter droplet called a <strong>GEM</strong> (Gel bead-in-EMulsion):</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/gem-droplet-capture.png" data-desc-position="bottom"><img src="img/gem-droplet-capture.png" alt="10x Genomics GEM generation: barcoded gel beads and cells merge with oil into single-cell droplets" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Barcoded gel beads, cells, and oil meet at a microfluidic junction. Poisson loading keeps most droplets empty or single-occupancy; a small fraction end up with two cells, which is where doublets come from (see QC below). Source: 10x Genomics.</figcaption>
 </figure>
 
 <p>The clip below is real microscopy footage of that junction: each droplet pinching off is one GEM, and (ideally) one cell, forming in real time:</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/microfluidics-capture.gif" data-desc-position="bottom"><img src="img/microfluidics-capture.gif" alt="Microscopy footage of droplets forming at a microfluidic junction" style="width:100%; max-width:700px;"></a>
+
 <figcaption>Droplet generation at the microfluidic junction. Once a cell lyses inside its droplet, its mRNA hybridizes to the bead's oligos, tagging every transcript with that cell's barcode before sequencing.</figcaption>
 </figure>
 
@@ -2989,7 +2989,7 @@
 <h3 id="what-is-a-single-cell-expression-matrix">What is a single-cell expression matrix?</h3>
 <p>Instead of one column per sample (as in bulk RNA-seq), a single-cell count matrix has <strong>one column per cell</strong> and <strong>one row per gene</strong>, thousands of columns instead of a handful. Each value is the number of UMIs (unique molecular identifiers) for that gene detected in that cell. The vast majority of entries are zero, since any one cell only expresses a fraction of the genome, so Seurat stores the matrix in <strong>sparse format</strong> to save memory.</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/sparse-matrix.svg" data-desc-position="bottom"><img src="img/sparse-matrix.svg" alt="Diagram of a sparse cell by gene count matrix stored as MatrixMarket (gene, cell, count) triplets" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Most cell/gene pairs are zero, so only the non-zero entries are stored, as (gene, cell, count) triplets; this is the MatrixMarket (.mtx) format Cell Ranger outputs.</figcaption>
 </figure>
 
@@ -3153,7 +3153,7 @@
 <div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">NormalizeData</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">normalization.method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"LogNormalize"</span><span class="p">,</span><span class="w"> </span><span class="n">scale.factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1e4</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/normalization-concept.svg" data-desc-position="bottom"><img src="img/normalization-concept.svg" alt="Worked example of LogNormalize: dividing a gene's count by total counts per cell, multiplying by the scale factor, then log-transforming" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Two cells can have the identical raw count for a gene and still differ purely because one was sequenced more deeply. Dividing by each cell's total counts before comparing removes that technical difference.</figcaption>
 </figure>
 
@@ -3193,7 +3193,7 @@
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ScaleData</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">all.genes</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/scaling-before-after.svg" data-desc-position="bottom"><img src="img/scaling-before-after.svg" alt="Before and after ScaleData: genes at different means and scales are transformed to mean 0, variance 1" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Before scaling, genes sit at very different means and spreads; after scaling, every gene is centered at 0 with unit variance, so no single gene can dominate PCA just by being highly expressed.</figcaption>
 </figure>
 
@@ -3221,7 +3221,7 @@
 <div class="language-r highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunPCA</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">VariableFeatures</span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pbmc</span><span class="p">))</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/pca-concept.svg" data-desc-position="bottom"><img src="img/pca-concept.svg" alt="Diagram of PCA collapsing 2,000 variable genes into a PC1 vs PC2 scatter plot with cell type clusters" style="width:100%; max-width:900px;"></a>
+
 <figcaption>PCA compresses thousands of correlated gene measurements down to a handful of components. Cell type identity is already visible along the first couple of PCs, well before clustering or UMAP.</figcaption>
 </figure>
 
@@ -3245,7 +3245,7 @@
 <h3 id="determining-the-dimensionality-of-the-dataset">Determining the dimensionality of the dataset</h3>
 <p>Not every PC captures real signal; later PCs are increasingly dominated by noise. An <strong>elbow plot</strong> ranks PCs by the percentage of variance they explain; the "elbow" (where the curve flattens) is a heuristic for how many PCs carry real signal. Exactly where that elbow is, and how many PCs you decide to carry forward, is your call.</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/elbow-plot.png" data-desc-position="bottom"><img src="img/elbow-plot.png" alt="Elbow plot of principal component standard deviation, flattening out after around PC 9-10" style="width:100%; max-width:600px;"></a>
+
 <figcaption>Standard deviation explained per PC. Diminishing biological signal in later PCs shows up as the curve flattening out (the "elbow"). This example is output from the CGDS Core's internal scRNA-seq pipeline; your own elbow plot will look similar but not identical, since it depends on your QC thresholds from Part 1.</figcaption>
 </figure>
 
@@ -3278,12 +3278,12 @@
 </ol>
 <p>The <code>resolution</code> parameter controls granularity, higher values produce more, smaller clusters. <code>0.4–1.2</code> is the typical useful range for a dataset of a few thousand cells.</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/knn-graph.svg" data-desc-position="bottom"><img src="img/knn-graph.svg" alt="Diagram of a k-nearest-neighbor graph in PCA space, showing one focal cell connected to its 5 nearest neighbors" style="width:100%; max-width:900px;"></a>
+
 <figcaption>FindNeighbors() connects each cell to its nearest neighbors in PCA space, forming the graph that Louvain clustering will later partition.</figcaption>
 </figure>
 
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/louvain-clusters.svg" data-desc-position="bottom"><img src="img/louvain-clusters.svg" alt="Diagram of Louvain community detection: densely connected clusters of nodes with sparse edges between clusters" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Louvain clustering finds communities with dense internal connections and sparse connections to other communities: each community becomes a numbered cluster.</figcaption>
 </figure>
 
@@ -3320,7 +3320,7 @@
 <div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunUMAP</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_pcs</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/umap-concept.svg" data-desc-position="bottom"><img src="img/umap-concept.svg" alt="Diagram of UMAP collapsing 10 PCs into a 2D layout with distinct cell type islands" style="width:100%; max-width:900px;"></a>
+
 <figcaption>UMAP folds the high-dimensional PCA space down to 2D, keeping cells that were close neighbors near each other: related T cell subsets sit close together while monocytes, B cells, and other distinct types form separate islands.</figcaption>
 </figure>
 

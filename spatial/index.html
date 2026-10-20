@@ -101,7 +101,7 @@
               </button>
             
             
-  Check out the new <a href="/blog/"><strong>CGDS Core Blog</strong></a> for news, workshop announcements, and tutorials!
+  <b>Upcoming Course:</b> Full day training: Intro to R &amp; Data Visualization in R. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/764" target="_blank">Register here</a>.
 
           </div>
           
@@ -2767,13 +2767,13 @@
 <p>The 10x Genomics Visium platform (the source of this workshop's dataset) captures gene expression by placing a tissue section directly onto a slide printed with thousands of <strong>barcoded capture spots</strong>, rather than isolating individual cells first.</p>
 <p>Each spot, about 55 µm across, carries millions of copies of a DNA oligo. Every oligo on a given spot shares the same <strong>spot barcode</strong>, but has a different random <strong>UMI</strong> and a poly(dT) tail that captures mRNA released from the tissue directly above it:</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/visium-spot-capture.svg" data-desc-position="bottom"><img src="img/visium-spot-capture.svg" alt="Diagram of a 10x Visium slide: a grid of barcoded capture spots under a tissue section, with a zoomed view of one spot's oligo structure (Read 1, Spot Barcode, UMI, Poly(dT))" style="width:100%; max-width:900px;"></a>
+
 <figcaption>A tissue section sits on a grid of barcoded spots. Every oligo on one spot shares the same Spot Barcode, tagging every transcript captured there with that spot's location. Fiducial markers around the capture area let downstream software align spots to the tissue image.</figcaption>
 </figure>
 
 <p>This is the key difference from droplet-based single-cell: a barcode here marks a <strong>location</strong>, not a <strong>cell</strong>. A 55 µm spot typically sits under several cells at once, so its expression profile is a mixture of whatever cell types happen to be present at that spot:</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/spot-vs-cell.svg" data-desc-position="bottom"><img src="img/spot-vs-cell.svg" alt="Diagram contrasting a single-cell droplet (one barcode, one cell) with a Visium spot (one barcode, several pooled cells)" style="width:100%; max-width:800px;"></a>
+
 <figcaption>A droplet's barcode corresponds to one cell's transcripts. A Visium spot's barcode corresponds to the pooled transcripts of every cell overlapping that spot, this is why spatial data is a spot × gene matrix, not a cell × gene matrix.</figcaption>
 </figure>
 
@@ -2930,7 +2930,7 @@
 <p><code>LogNormalize()</code> (the single-cell default) uses one scale factor per cell/spot: divide by total counts, multiply by a constant, log-transform. That works when the main driver of a cell's total count is sequencing depth. In spatial data, as Exercise 1.2 just showed, a spot's total count is driven at least as much by <strong>how much tissue and how many cells sit under it</strong>, a source of variation <code>LogNormalize()</code>'s single scale factor doesn't distinguish from technical noise.</p>
 <p><code>SCTransform()</code> addresses this by fitting a <strong>regularized negative binomial model</strong> of each gene's counts as a function of sequencing depth, pooling information across genes with similar expression levels to stabilize the fit, then returning <strong>Pearson residuals</strong>: how far a spot's expression of a gene deviates from what its depth alone would predict.</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/sctransform-concept.svg" data-desc-position="bottom"><img src="img/sctransform-concept.svg" alt="Diagram comparing a spot in dense gray matter (high counts from many cells) against a spot in sparse white matter (low counts from few cells), both potentially the same biological signal at different local cell density" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Two spots can differ enormously in total counts for purely structural reasons (cell density, tissue thickness) that have nothing to do with sequencing quality. SCTransform models this relationship directly instead of applying one flat scale factor to every spot.</figcaption>
 </figure>
 
@@ -2964,7 +2964,7 @@
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">ElbowPlot</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">ndims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../scRNAseq/img/pca-concept.svg" data-desc-position="bottom"><img src="../scRNAseq/img/pca-concept.svg" alt="Diagram of PCA collapsing thousands of variable genes into a PC1 vs PC2 scatter plot with clusters" style="width:100%; max-width:900px;"></a>
+
 <figcaption>PCA works identically here to single-cell: it compresses correlated gene expression into a handful of components. See the single-cell workshop for the full mechanical walkthrough.</figcaption>
 </figure>
 
@@ -2991,7 +2991,7 @@
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">brain</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunUMAP</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"pca"</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_pcs</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../scRNAseq/img/knn-graph.svg" data-desc-position="bottom"><img src="../scRNAseq/img/knn-graph.svg" alt="Diagram of a k-nearest-neighbor graph in PCA space" style="width:100%; max-width:900px;"></a>
+
 <figcaption>FindNeighbors() and FindClusters() build the same KNN/Louvain graph-clustering pipeline used in the single-cell workshop, just clustering spots by their expression profile in PCA space, not their physical position on the slide.</figcaption>
 </figure>
 
@@ -3022,7 +3022,7 @@
 <p>You already know one method from single-cell: <code>FindMarkers()</code> runs differential expression between clusters, finding genes that best distinguish a group of spots you've already defined via clustering.</p>
 <p>Spatial data offers a second, complementary approach that doesn't need cluster labels at all: <code>FindSpatiallyVariableFeatures()</code> measures <strong>Moran's I</strong>, a statistic of spatial autocorrelation, testing whether a gene's expression at one spot tends to resemble its expression at <em>neighboring</em> spots. A gene can vary a lot across all spots and still have low Moran's I if that variation is scattered randomly rather than organized into coherent regions.</p>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/moransi-concept.svg" data-desc-position="bottom"><img src="img/moransi-concept.svg" alt="Diagram contrasting a gene with high Moran's I (expression organized into a contiguous spatial patch) against a gene with low Moran's I (expression scattered randomly across spots)" style="width:100%; max-width:900px;"></a>
+
 <figcaption>Both genes shown here could have identical overall variance across spots. Only the one on the left, whose high- and low-expression spots cluster together in space, would score highly on Moran's I.</figcaption>
 </figure>
 
