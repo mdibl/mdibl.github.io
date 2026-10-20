@@ -1,6 +1,18 @@
 ???+ info "Upcoming Workshops"
 
-    None currently scheduled. Feel free to use this site for asynchronous learning and check back soon for in-person and hybrid events! 
+    **November 2nd, 2026: 10 AM - 3 PM**
+    
+    **Learn to use R**: Basic R, data manipulation, visualization, and analysis.
+
+    * **Details**  
+        * In person @ MDI Bio Lab, Bar Harbor, ME     
+        * Open to INBRE network institution members. 
+    * **Schedule** 
+        * Morning session: Intro to R
+        * Lunch available in the Dining Hall
+        * Afternoon session: Data Visualization
+        * Hang out after the course for networking and open office hours
+    * [Register here](https://labcentral.mdibl.org/programs/view/764)
 
 # Comparative Genomics and Data Science Core
 
