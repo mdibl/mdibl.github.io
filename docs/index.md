@@ -1,6 +1,6 @@
 ???+ info "Upcoming Workshops"
 
-    **November 2nd, 2026: 10 AM - 3 PM**
+    **November 7th, 2026: 10 AM - 3 PM**
     
     **Learn to use R**: Basic R, data manipulation, visualization, and analysis.
 
