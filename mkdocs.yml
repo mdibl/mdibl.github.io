@@ -17,7 +17,12 @@ nav:
     - Single Cell RNAseq: scRNAseq/index.md
     - Spatial Transcriptomics: spatial/index.md
     - Computational Workflows: workflows/index.md
-  - Prompting LLMs for Biology: llmPrompting/index.md
+  - Prompting LLMs for Biology:
+    - llmPrompting/index.md
+    - Glossary: llmPromptingGlossary/index.md
+    - Prompt Components: llmPromptingComponents/index.md
+    - Prompt Examples: llmPromptingExamples/index.md
+    - Checking and Verification: llmPromptingVerification/index.md
   - Bioinformatics Bits:
     - bits/index.md
     - Bit 1: bits/bit1.md
