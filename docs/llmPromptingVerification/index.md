@@ -1,5 +1,14 @@
 # Checking and Verification
 
+One of the most important tasks of any scientist is ensuring reproducibility of experiments. 
+There is no difference when it comes to using LLMs for research or generation. 
+
+Determinism is the term to describe the ability to produce the same output from the same input every time. 
+A calculator is deterministic, every time you check 2+2, it will report the answer as 4. 
+LLMs are probabilistic by nature, not following a rigid set of instructions, instead predicting the next most likely token from a probability distribution. 
+
+Therefore, every output needs to be verified or checked. It says so at the bottom of the LLM web UI at all times, "__ is AI and can make mistakes. Please double-check responses."
+
 ## Verifying Output
 
 A well-written prompt makes output *checkable*. You still have to check it.
@@ -77,6 +86,12 @@ Version and archive these like code. They define what the tool was designed to d
 ### Citing LLM use
 
 Follow your target journal's policy and see CMU Libraries' guide to citing generative AI: <https://guides.library.cmu.edu/CitationManagement/GenerativeAI>
+
+
+!!! tip "Takeaways"
+	Any miscomunication to an LLM may lead to misinformation being generated. 
+	
+	If that miscomunication isn't recorded, there will be no way to know how to fix any problem that arises because of it!
 
 ---
 
