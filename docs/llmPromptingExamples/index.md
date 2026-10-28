@@ -19,56 +19,17 @@ The tags under each heading list the components used. The improved versions use 
 
 `TASK` `CONTEXT` `FRAME` `CONSTRAINTS` `OUTPUT FORMAT` `FALLBACK`
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    Here are my top upregulated genes from old vs young fish heart.
-    What's going on biologically?
-    [gene list]
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - Group the upregulated genes below into biological themes and
-      assess how strongly each theme is supported.
-
-    __CONTEXT__
-    - Organism: Nothobranchius furzeri (turquoise killifish).
-    - Tissue: whole heart; bulk RNA-seq.
-    - Comparison: 20-week vs. 6-week males, n = 5 per group; DESeq2,
-      padj < 0.05, |log2FC| > 1. 212 genes up; the 40 with largest
-      log2FC are listed with values.
-    - Symbols are human orthologs from a sequence-similarity mapping;
-      "_dup" marks genes with two killifish paralogs mapping to one symbol.
-
-    __FRAME__
-    - Distinguish what the gene list shows from what is inferred.
-    - Treat mammalian functional knowledge as a hypothesis for killifish,
-      not a fact.
-
-    __CONSTRAINTS__
-    - At most 5 themes; each must contain at least 3 listed genes.
-    - For each theme, give one alternative explanation (e.g., change in
-      cell-type composition rather than per-cell expression).
-    - Do not cite literature.
-    - Do not use the words "clearly" or "demonstrates".
-
-    __OUTPUT_FORMAT__
-    - Markdown table: theme | genes | support (strong/moderate/weak) |
-      alternative explanation.
-    - Then a list titled "Not assigned" with genes you could not
-      confidently place.
-
-    __FALLBACK__
-    - If fewer than 3 genes support a theme, do not create the theme.
-
-    <genes>
-    GENE    log2FC   padj
-    ...
-    </genes>
-    ```
+```text
+Here are my top upregulated genes from old vs young fish heart.
+What's going on biologically?
+[gene list]
+```
 
 ??? warning "What typically goes wrong"
     - Assumes human or mouse biology.
@@ -77,10 +38,61 @@ The tags under each heading list the components used. The improved versions use 
     - Doesn't separate strong from weak evidence.
     - May mention "studies have shown" with no basis.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- Group the upregulated genes below into biological themes and
+  assess how strongly each theme is supported.
+
+__CONTEXT__
+- Organism: Nothobranchius furzeri (turquoise killifish).
+- Tissue: whole heart; bulk RNA-seq.
+- Comparison: 20-week vs. 6-week males, n = 5 per group; DESeq2,
+  padj < 0.05, |log2FC| > 1. 212 genes up; the 40 with largest
+  log2FC are listed with values.
+- Symbols are human orthologs from a sequence-similarity mapping;
+  "_dup" marks genes with two killifish paralogs mapping to one symbol.
+
+__FRAME__
+- Distinguish what the gene list shows from what is inferred.
+- Treat mammalian functional knowledge as a hypothesis for killifish,
+  not a fact.
+
+__CONSTRAINTS__
+- At most 5 themes; each must contain at least 3 listed genes.
+- For each theme, give one alternative explanation (e.g., change in
+  cell-type composition rather than per-cell expression).
+- Do not cite literature.
+- Do not use the words "clearly" or "demonstrates".
+
+__OUTPUT_FORMAT__
+- Markdown table: theme | genes | support (strong/moderate/weak) |
+  alternative explanation.
+- Then a list titled "Not assigned" with genes you could not
+  confidently place.
+
+__FALLBACK__
+- If fewer than 3 genes support a theme, do not create the theme.
+
+<genes>
+GENE    log2FC   padj
+...
+</genes>
+```
+
 ??? success "Why it's better"
     - The organism, mapping caveat, and thresholds are on the record.
     - Alternatives (like composition shifts, a common confound in bulk tissue) are required.
     - Unassignable genes are surfaced instead of hidden.
+
+</div>
+
+</div>
 
 ---
 
@@ -88,45 +100,15 @@ The tags under each heading list the components used. The improved versions use 
 
 `TASK` `CONTEXT` `CONSTRAINTS` `OUTPUT FORMAT` `FALLBACK`
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    Write DESeq2 code to compare treatment vs control.
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - Write an R script that runs DESeq2 on the count matrix and sample
-      table described below and exports results for treated vs. control.
-
-    __CONTEXT__
-    - counts.tsv: genes x samples, first column "gene_id" (Ensembl), integers.
-    - samples.tsv: columns sample_id, condition (control/treated),
-      batch (A/B), animal_id. Each animal contributes one control and one
-      treated sample (paired design).
-    - Environment: R 4.4, DESeq2 1.44, apeglm installed. (sessionInfo below.)
-
-    __CONSTRAINTS__
-    - Design must account for the pairing; explain your design formula
-      in one comment line.
-    - Reference level for condition is "control".
-    - Stop with an informative error if sample IDs don't match between files.
-    - Use lfcShrink with apeglm for the exported fold changes.
-    - No tidyverse; base R plus DESeq2 only.
-
-    __OUTPUT_FORMAT__
-    - One R code block, then a short list of any assumptions you made.
-
-    __FALLBACK__
-    - If the design as described is not full rank, say so and explain why
-      instead of writing code that will fail.
-
-    <sessionInfo>
-    ...
-    </sessionInfo>
-    ```
+```text
+Write DESeq2 code to compare treatment vs control.
+```
 
 ??? warning "What typically goes wrong"
     - Guesses file formats and column names.
@@ -135,10 +117,52 @@ The tags under each heading list the components used. The improved versions use 
     - May use functions or arguments from a different package version.
     - Includes no checks.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- Write an R script that runs DESeq2 on the count matrix and sample
+  table described below and exports results for treated vs. control.
+
+__CONTEXT__
+- counts.tsv: genes x samples, first column "gene_id" (Ensembl), integers.
+- samples.tsv: columns sample_id, condition (control/treated),
+  batch (A/B), animal_id. Each animal contributes one control and one
+  treated sample (paired design).
+- Environment: R 4.4, DESeq2 1.44, apeglm installed. (sessionInfo below.)
+
+__CONSTRAINTS__
+- Design must account for the pairing; explain your design formula
+  in one comment line.
+- Reference level for condition is "control".
+- Stop with an informative error if sample IDs don't match between files.
+- Use lfcShrink with apeglm for the exported fold changes.
+- No tidyverse; base R plus DESeq2 only.
+
+__OUTPUT_FORMAT__
+- One R code block, then a short list of any assumptions you made.
+
+__FALLBACK__
+- If the design as described is not full rank, say so and explain why
+  instead of writing code that will fail.
+
+<sessionInfo>
+...
+</sessionInfo>
+```
+
 ??? success "Why it's better"
     - The pairing, reference level, and versions are explicit.
     - The script fails loudly on mismatched IDs.
     - The model is told to object rather than silently "fix" a bad design (for instance, if `batch` is nested within `animal_id`).
+
+</div>
+
+</div>
 
 ---
 
@@ -148,53 +172,65 @@ The tags under each heading list the components used. The improved versions use 
 
 This example omits CONTEXT, AUDIENCE, and STYLE: it's a machine-readable extraction, so format and rules do the work.
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    Summarize the methods of these papers.
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - For each paper below, extract the fields listed in OUTPUT FORMAT.
-
-    __CONSTRAINTS__
-    - Use only information stated in the provided text.
-    - If a field is not stated, use null. Never infer or use typical values.
-    - Copy organism and tissue names as written.
-
-    __OUTPUT_FORMAT__
-    - JSON array; one object per paper with keys:
-      paper_id, organism, tissue, assay, platform, read_length,
-      n_per_group, aligner, de_method
-    - No text outside the JSON.
-
-    __EXAMPLES__
-    Input: "...libraries were sequenced on a NovaSeq 6000 (2x150 bp) and
-            aligned with STAR; differential expression used edgeR..."
-    Output: {"paper_id": "1", "organism": null, "tissue": null,
-             "assay": "RNA-seq", "platform": "NovaSeq 6000",
-             "read_length": "2x150", "n_per_group": null,
-             "aligner": "STAR", "de_method": "edgeR"}
-
-    __FALLBACK__
-    - If a document is not a primary research article, return
-      {"paper_id": "<id>", "error": "not_primary_research"}.
-
-    <paper id="1"> ... </paper>
-    <paper id="2"> ... </paper>
-    ```
+```text
+Summarize the methods of these papers.
+```
 
 ??? warning "What typically goes wrong"
     - Inconsistent detail per paper.
     - Fills gaps with "typical" values (e.g., assumes a read length).
     - Merges papers together.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- For each paper below, extract the fields listed in OUTPUT FORMAT.
+
+__CONSTRAINTS__
+- Use only information stated in the provided text.
+- If a field is not stated, use null. Never infer or use typical values.
+- Copy organism and tissue names as written.
+
+__OUTPUT_FORMAT__
+- JSON array; one object per paper with keys:
+  paper_id, organism, tissue, assay, platform, read_length,
+  n_per_group, aligner, de_method
+- No text outside the JSON.
+
+__EXAMPLES__
+Input: "...libraries were sequenced on a NovaSeq 6000 (2x150 bp) and
+        aligned with STAR; differential expression used edgeR..."
+Output: {"paper_id": "1", "organism": null, "tissue": null,
+         "assay": "RNA-seq", "platform": "NovaSeq 6000",
+         "read_length": "2x150", "n_per_group": null,
+         "aligner": "STAR", "de_method": "edgeR"}
+
+__FALLBACK__
+- If a document is not a primary research article, return
+  {"paper_id": "<id>", "error": "not_primary_research"}.
+
+<paper id="1"> ... </paper>
+<paper id="2"> ... </paper>
+```
+
 ??? success "Why it's better"
     - Null-instead-of-guess is explicit and demonstrated.
     - Output can go straight into a spreadsheet for comparison and be spot-checked.
+
+</div>
+
+</div>
 
 ---
 
@@ -202,68 +238,80 @@ This example omits CONTEXT, AUDIENCE, and STYLE: it's a machine-readable extract
 
 `TASK` `CONTEXT` `FRAME` `CONSTRAINTS` `OUTPUT FORMAT`
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    My qPCR isn't working. What should I do?
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - Rank the most likely causes of the result below and suggest a test
-      for each.
-
-    __CONTEXT__
-    - SYBR Green qPCR, 20 µL reactions, 40 cycles.
-    - Target gene: Cq 33–36 in all samples, including the positive
-      control cDNA that gave Cq ~24 last month.
-    - Reference gene on the same plate: normal Cq (~18).
-    - No-template control: no amplification.
-    - Same primer aliquot as last month; new cDNA synthesis kit lot.
-    - Melt curve: single peak for both genes.
-
-    __FRAME__
-    - Reason from the observations given; explain which observation
-      supports or rules out each cause.
-
-    __CONSTRAINTS__
-    - At most 5 causes, ranked by likelihood.
-    - Each test must be doable in one day with standard lab equipment.
-    - Do not suggest redesigning primers unless the evidence points there.
-
-    __OUTPUT_FORMAT__
-    - Numbered list: cause — evidence for/against — test.
-    ```
-
-=== "After (prose)"
-
-    ```text
-    I'm running SYBR Green qPCR (20 µL reactions, 40 cycles), and my
-    target gene is coming up late: Cq 33–36 in every sample, including
-    the positive control cDNA that gave a Cq of about 24 last month. The
-    reference gene on the same plate looks normal (Cq ~18), the
-    no-template control shows no amplification, and both genes give a
-    single melt peak. I'm using the same primer aliquot as last month,
-    but this is a new lot of the cDNA synthesis kit.
-
-    Based on those observations, what are the most likely causes? Rank
-    up to five. For each one, tell me which observations support or
-    argue against it, and suggest a test I can do in a day with standard
-    lab equipment. Please don't suggest redesigning primers unless the
-    evidence actually points there.
-    ```
+```text
+My qPCR isn't working. What should I do?
+```
 
 ??? warning "What typically goes wrong"
     - A generic list of every possible cause.
     - No prioritization.
     - Nothing specific to what you observed.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- Rank the most likely causes of the result below and suggest a test
+  for each.
+
+__CONTEXT__
+- SYBR Green qPCR, 20 µL reactions, 40 cycles.
+- Target gene: Cq 33–36 in all samples, including the positive
+  control cDNA that gave Cq ~24 last month.
+- Reference gene on the same plate: normal Cq (~18).
+- No-template control: no amplification.
+- Same primer aliquot as last month; new cDNA synthesis kit lot.
+- Melt curve: single peak for both genes.
+
+__FRAME__
+- Reason from the observations given; explain which observation
+  supports or rules out each cause.
+
+__CONSTRAINTS__
+- At most 5 causes, ranked by likelihood.
+- Each test must be doable in one day with standard lab equipment.
+- Do not suggest redesigning primers unless the evidence points there.
+
+__OUTPUT_FORMAT__
+- Numbered list: cause — evidence for/against — test.
+```
+
+**After, written as prose**
+
+```text
+I'm running SYBR Green qPCR (20 µL reactions, 40 cycles), and my
+target gene is coming up late: Cq 33–36 in every sample, including
+the positive control cDNA that gave a Cq of about 24 last month. The
+reference gene on the same plate looks normal (Cq ~18), the
+no-template control shows no amplification, and both genes give a
+single melt peak. I'm using the same primer aliquot as last month,
+but this is a new lot of the cDNA synthesis kit.
+
+Based on those observations, what are the most likely causes? Rank
+up to five. For each one, tell me which observations support or
+argue against it, and suggest a test I can do in a day with standard
+lab equipment. Please don't suggest redesigning primers unless the
+evidence actually points there.
+```
+
 ??? success "Why it's better"
     - The details that discriminate between causes are in the prompt: reference gene is fine, NTC is clean, primer aliquot is unchanged, the RT kit lot changed.
     - The model can reason about them instead of listing everything.
     - The structured and prose versions carry the same information and should get comparable answers. The prose version is how most people would naturally describe the problem to a colleague.
+
+</div>
+
+</div>
 
 ---
 
@@ -271,51 +319,63 @@ This example omits CONTEXT, AUDIENCE, and STYLE: it's a machine-readable extract
 
 `TASK` `CONTEXT` `FRAME` `OUTPUT FORMAT` `FALLBACK` `NEGATIVE EXAMPLE`
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    What cell types are these clusters?
-    [marker table]
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - Propose a cell type for each cluster from its top markers.
-
-    __CONTEXT__
-    - Single-nucleus RNA-seq, adult fish heart, 10x Chromium.
-    - Top 15 markers per cluster (avg_log2FC, pct.1, pct.2) below.
-    - Nuclear transcriptomes: expect more intronic signal and lower
-      detection of some cytoplasmic markers than in single-cell data.
-
-    __FRAME__
-    - Base each call on the markers given; name the specific markers used.
-    - Consider doublets, ambient RNA, and low-quality nuclei as
-      possibilities for every cluster, not only odd ones.
-
-    __OUTPUT_FORMAT__
-    - TSV: cluster | proposed_type | key_markers | confidence | concern
-
-    __FALLBACK__
-    - If markers point to two lineages, label "possible doublet: A/B".
-    - If markers are mostly mitochondrial or ribosomal, label "low quality".
-    - If unsure, label "unresolved". Do not force a label.
-
-    __NEGATIVE_EXAMPLE__
-    - Bad: "Cluster 7: Cardiomyocytes (high confidence)" when the top
-      markers include both cardiomyocyte and endothelial genes.
-    ```
+```text
+What cell types are these clusters?
+[marker table]
+```
 
 ??? warning "What typically goes wrong"
     - Every cluster gets a confident label, including doublets, low-quality cells, and ambient-RNA artifacts.
     - Labels use mammalian marker logic that may not transfer.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- Propose a cell type for each cluster from its top markers.
+
+__CONTEXT__
+- Single-nucleus RNA-seq, adult fish heart, 10x Chromium.
+- Top 15 markers per cluster (avg_log2FC, pct.1, pct.2) below.
+- Nuclear transcriptomes: expect more intronic signal and lower
+  detection of some cytoplasmic markers than in single-cell data.
+
+__FRAME__
+- Base each call on the markers given; name the specific markers used.
+- Consider doublets, ambient RNA, and low-quality nuclei as
+  possibilities for every cluster, not only odd ones.
+
+__OUTPUT_FORMAT__
+- TSV: cluster | proposed_type | key_markers | confidence | concern
+
+__FALLBACK__
+- If markers point to two lineages, label "possible doublet: A/B".
+- If markers are mostly mitochondrial or ribosomal, label "low quality".
+- If unsure, label "unresolved". Do not force a label.
+
+__NEGATIVE_EXAMPLE__
+- Bad: "Cluster 7: Cardiomyocytes (high confidence)" when the top
+  markers include both cardiomyocyte and endothelial genes.
+```
+
 ??? success "Why it's better"
     - Unresolved clusters stay unresolved.
     - Nucleus-specific caveats are part of the reasoning.
     - Every label points to the evidence behind it.
+
+</div>
+
+</div>
 
 ---
 
@@ -323,47 +383,59 @@ This example omits CONTEXT, AUDIENCE, and STYLE: it's a machine-readable extract
 
 `TASK` `CONTEXT` `AUDIENCE` `STYLE` `CONSTRAINTS`
 
-=== "Before"
+<div class="grid" markdown>
 
-    ```text
-    Write a methods section for my RNA-seq analysis.
-    ```
+<div markdown>
 
-=== "After"
+**Before**
 
-    ```text
-    __TASK__
-    - Write a methods paragraph from the analysis notes below.
-
-    __CONTEXT__
-    - My notes (complete; nothing else was done):
-    <notes>
-    - Trimmed with fastp 0.23.4, default settings
-    - Salmon 1.10.2 against Ensembl 110 transcriptome, --validateMappings
-    - tximport -> DESeq2 1.44, design ~ batch + condition
-    - padj < 0.05 (BH); apeglm shrinkage
-    - fgsea on shrunken LFC ranks, MSigDB Hallmark v2024.1
-    </notes>
-
-    __AUDIENCE__
-    - Reviewers at a molecular biology journal.
-
-    __STYLE__
-    - Past tense; one paragraph; software names with versions in parentheses.
-
-    __CONSTRAINTS__
-    - Include only steps and parameters present in my notes.
-    - Where a reviewer would expect a detail that's missing (e.g., read
-      QC thresholds), insert [MISSING: description] rather than filling it.
-    ```
+```text
+Write a methods section for my RNA-seq analysis.
+```
 
 ??? warning "What typically goes wrong"
     - Invents steps, parameters, and software versions you never used.
     - Reads plausibly enough to slip through review.
 
+</div>
+
+<div markdown>
+
+**After**
+
+```text
+__TASK__
+- Write a methods paragraph from the analysis notes below.
+
+__CONTEXT__
+- My notes (complete; nothing else was done):
+<notes>
+- Trimmed with fastp 0.23.4, default settings
+- Salmon 1.10.2 against Ensembl 110 transcriptome, --validateMappings
+- tximport -> DESeq2 1.44, design ~ batch + condition
+- padj < 0.05 (BH); apeglm shrinkage
+- fgsea on shrunken LFC ranks, MSigDB Hallmark v2024.1
+</notes>
+
+__AUDIENCE__
+- Reviewers at a molecular biology journal.
+
+__STYLE__
+- Past tense; one paragraph; software names with versions in parentheses.
+
+__CONSTRAINTS__
+- Include only steps and parameters present in my notes.
+- Where a reviewer would expect a detail that's missing (e.g., read
+  QC thresholds), insert [MISSING: description] rather than filling it.
+```
+
 ??? success "Why it's better"
     - The model is restricted to what you actually did.
     - Gaps become visible placeholders instead of fabricated detail.
+
+</div>
+
+</div>
 
 ---
 

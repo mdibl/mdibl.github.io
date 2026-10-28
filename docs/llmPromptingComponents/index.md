@@ -5,6 +5,10 @@
 - Each one is something you can save and review later.
 - Any of them can be written as an ordinary sentence instead of a labeled section.
 
+!!! tip "Explain like I'm five"
+	Imagine the LLM you prompt as a student with years of experience behind them, but none of the specifics you know. 
+	What information would they need to search for an answer that you trust?
+
 ## Components at a glance
 
 The table turns each component into a question to ask yourself before sending a prompt, with a prose version of each.
@@ -21,7 +25,9 @@ The table turns each component into a question to ask yourself before sending a 
 | EXAMPLES | Would one worked example save a paragraph of explanation? | "For instance, 'S7 WT 72' should become..." |
 | FALLBACK | Have I said what to do when the input doesn't fit? | "If you can't identify a gene, say so rather than guessing." |
 
-## TASK (required)
+## TASK
+
+**Required**
 
 What you want done, starting with a verb and naming the output type.
 
@@ -33,7 +39,9 @@ __TASK__
 
 Useful verbs: *Summarize, Extract, Classify, Compare, Annotate, Draft, Debug, Critique, Propose.*
 
-## CONTEXT (required whenever the model couldn't guess it)
+## CONTEXT
+
+**Required whenever the model couldn't guess it**
 
 Background facts about your system. For biology, this is where most quality gains come from.
 
@@ -52,7 +60,9 @@ __ORGANISM__      __TISSUE__       __ASSAY__
 __GENOME_BUILD__  __SOFTWARE_ENV__ __DESIGN__
 ```
 
-## FRAME (optional; use instead of "act as a...")
+## FRAME 
+
+**Optional**
 
 How to reason, rather than who to pretend to be.
 
@@ -70,7 +80,13 @@ __FRAME__
 
 Self-check: if the line describes a *character*, rewrite it as a *rule*.
 
-## AUDIENCE (often required)
+!!! warning "Act as a..."
+	Giving instructions to an LLM on how to act may help sometimes. 
+	However, this line of prompt engineering may be most useful for agentic workflows rather than one-shot prompting.
+
+## AUDIENCE 
+
+**Optional - framing device**
 
 Who will read the output. The same correct content fails if pitched at the wrong level.
 
@@ -80,11 +96,14 @@ __AUDIENCE__
 - Explain statistical terms (shrinkage, padj) in one plain sentence each.
 ```
 
-## STYLE and TONE (for anything a person reads)
+## STYLE and TONE 
+
+**Optional - framing device**
 
 - **Style** covers structure and vocabulary.
 - **Tone** covers register.
 - Specify them separately.
+- Both can be replaced or supplemented by providing examples.
 
 ```text
 __STYLE__
@@ -93,7 +112,9 @@ __TONE__
 - Neutral. Report; do not advocate for the hypothesis.
 ```
 
-## CONSTRAINTS (required for anything you'll reuse)
+## CONSTRAINTS 
+
+**Required for anything you'll reuse**
 
 Rules for content.
 
@@ -110,7 +131,9 @@ __CONSTRAINTS__
 - Length: under 250 words.
 ```
 
-## OUTPUT FORMAT (required when the output goes into code or a spreadsheet)
+## OUTPUT FORMAT 
+
+**Required when the output goes into code or a spreadsheet**
 
 The shape of the response. Name fields and types.
 
@@ -121,7 +144,9 @@ __OUTPUT_FORMAT__
 - No text before or after the table.
 ```
 
-## EXAMPLES (strongly recommended)
+## EXAMPLES 
+
+**Strongly recommended**
 
 One or more input/output pairs.
 
@@ -140,7 +165,9 @@ Output: {"timepoint": "72hpf", "genotype": "WT", "rin": null,
          "notes": null}
 ```
 
-## FALLBACK (required for pipelines and agents)
+## FALLBACK 
+
+**Required for pipelines and agents**
 
 What to do when the input doesn't fit. Without it, the model invents something that fits the format.
 
@@ -152,7 +179,9 @@ __FALLBACK__
 - Prefer "unknown" over a guess.
 ```
 
-## NEGATIVE EXAMPLE (optional)
+## NEGATIVE EXAMPLE 
+
+**Optional**
 
 Show a bad output to rule out a failure mode precisely.
 
@@ -209,6 +238,9 @@ me that rather than guessing.
 
 [pasted data]
 ```
+
+!!! tip "Takeaways"
+	Structuring prompts is helpful for individuals to ensure they include all the necessary information an LLM needs to avoid guessing as much as possible.
 
 ---
 

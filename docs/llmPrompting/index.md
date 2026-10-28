@@ -111,12 +111,11 @@ The split-brain experiments of Roger Sperry and Michael Gazzaniga (1960s–70s) 
 
 !!! tip "Your defense is the prompt"
     Supply the information the model lacks, and explicitly allow it to say "unknown."
+    Out of bounds predictions can be commonly found in biological questions!
 
 ---
 
 ## What LLMs Can and Cannot Do in Biology
-
-The long tail is where biology lives
 
 Models are reliable on things that appear often in their training data and unreliable on things that appear rarely [\[1\]](#references). Biology is full of rarely-written-about things:
 
@@ -139,8 +138,6 @@ Models are reliable on things that appear often in their training data and unrel
 
     - Asking a model to summarize a paper you pasted is far more reliable than asking what that paper says from memory.
     - Giving it your actual `sessionInfo()` produces better code than letting it guess your package versions.
-
-The rest of this guide is about how to do that systematically.
 
 ---
 
@@ -167,7 +164,8 @@ Most bad outputs come from one of three problems. Each is also a record-keeping 
 | **Unclear output expectations** | You get the model's favorite format: a long essay when you wanted a table, or a table with invented columns. | There's no standard to judge the output against. |
 | **Uncheckable quality criteria** | Instructions like "be thorough" or "be accurate" can't be tested. | Neither the model nor a reviewer can verify they were met. |
 
-A prompt that covers each of these explicitly fixes all three at once.
+!!! tip "Fill in ALL the blanks"
+	A prompt that covers each of these explicitly fixes all three at once.
 
 ### Structure is a checklist, not a syntax
 
@@ -176,7 +174,7 @@ Many prompts in this guide use labeled sections like `__TASK__`, `__CONTEXT__`, 
 - **The labels are for you, not the model.** They are an organizing tool to make sure nothing is left out.
 - **The model doesn't require them.** Current models read ordinary prose just as well.
 - **The information is what counts.** A labeled prompt and a prose prompt with the same content should get comparable answers.
-- **Each label is a component.** All of them are defined on the [Prompt Components](../llmPromptingComponents/index.md).
+- **Each label is a component.** All of them are defined on the [Prompt Components](../llmPromptingComponents/index.md) page.
 
 ### A first comparison
 
