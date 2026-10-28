@@ -19,10 +19,6 @@ The tags under each heading list the components used. The improved versions use 
 
 `TASK` `CONTEXT` `FRAME` `CONSTRAINTS` `OUTPUT FORMAT` `FALLBACK`
 
-<div class="grid" markdown>
-
-<div markdown>
-
 **Before**
 
 ```text
@@ -37,10 +33,6 @@ What's going on biologically?
     - Invents functions for poorly characterized genes.
     - Doesn't separate strong from weak evidence.
     - May mention "studies have shown" with no basis.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -90,19 +82,11 @@ GENE    log2FC   padj
     - Alternatives (like composition shifts, a common confound in bulk tissue) are required.
     - Unassignable genes are surfaced instead of hidden.
 
-</div>
-
-</div>
-
 ---
 
 ### Example 2: Writing analysis code
 
 `TASK` `CONTEXT` `CONSTRAINTS` `OUTPUT FORMAT` `FALLBACK`
-
-<div class="grid" markdown>
-
-<div markdown>
 
 **Before**
 
@@ -116,10 +100,6 @@ Write DESeq2 code to compare treatment vs control.
     - Picks a contrast direction you didn't intend.
     - May use functions or arguments from a different package version.
     - Includes no checks.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -160,10 +140,6 @@ __FALLBACK__
     - The script fails loudly on mismatched IDs.
     - The model is told to object rather than silently "fix" a bad design (for instance, if `batch` is nested within `animal_id`).
 
-</div>
-
-</div>
-
 ---
 
 ### Example 3: Extracting methods from papers into a table
@@ -171,10 +147,6 @@ __FALLBACK__
 `TASK` `CONSTRAINTS` `OUTPUT FORMAT` `EXAMPLES` `FALLBACK`
 
 This example omits CONTEXT, AUDIENCE, and STYLE: it's a machine-readable extraction, so format and rules do the work.
-
-<div class="grid" markdown>
-
-<div markdown>
 
 **Before**
 
@@ -186,10 +158,6 @@ Summarize the methods of these papers.
     - Inconsistent detail per paper.
     - Fills gaps with "typical" values (e.g., assumes a read length).
     - Merges papers together.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -228,19 +196,11 @@ __FALLBACK__
     - Null-instead-of-guess is explicit and demonstrated.
     - Output can go straight into a spreadsheet for comparison and be spot-checked.
 
-</div>
-
-</div>
-
 ---
 
 ### Example 4: Troubleshooting a bench protocol
 
 `TASK` `CONTEXT` `FRAME` `CONSTRAINTS` `OUTPUT FORMAT`
-
-<div class="grid" markdown>
-
-<div markdown>
 
 **Before**
 
@@ -252,10 +212,6 @@ My qPCR isn't working. What should I do?
     - A generic list of every possible cause.
     - No prioritization.
     - Nothing specific to what you observed.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -309,19 +265,11 @@ evidence actually points there.
     - The model can reason about them instead of listing everything.
     - The structured and prose versions carry the same information and should get comparable answers. The prose version is how most people would naturally describe the problem to a colleague.
 
-</div>
-
-</div>
-
 ---
 
 ### Example 5: Annotating single-cell clusters
 
 `TASK` `CONTEXT` `FRAME` `OUTPUT FORMAT` `FALLBACK` `NEGATIVE EXAMPLE`
-
-<div class="grid" markdown>
-
-<div markdown>
 
 **Before**
 
@@ -333,10 +281,6 @@ What cell types are these clusters?
 ??? warning "What typically goes wrong"
     - Every cluster gets a confident label, including doublets, low-quality cells, and ambient-RNA artifacts.
     - Labels use mammalian marker logic that may not transfer.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -373,19 +317,11 @@ __NEGATIVE_EXAMPLE__
     - Nucleus-specific caveats are part of the reasoning.
     - Every label points to the evidence behind it.
 
-</div>
-
-</div>
-
 ---
 
 ### Example 6: Drafting a methods paragraph
 
 `TASK` `CONTEXT` `AUDIENCE` `STYLE` `CONSTRAINTS`
-
-<div class="grid" markdown>
-
-<div markdown>
 
 **Before**
 
@@ -396,10 +332,6 @@ Write a methods section for my RNA-seq analysis.
 ??? warning "What typically goes wrong"
     - Invents steps, parameters, and software versions you never used.
     - Reads plausibly enough to slip through review.
-
-</div>
-
-<div markdown>
 
 **After**
 
@@ -432,10 +364,6 @@ __CONSTRAINTS__
 ??? success "Why it's better"
     - The model is restricted to what you actually did.
     - Gaps become visible placeholders instead of fabricated detail.
-
-</div>
-
-</div>
 
 ---
 

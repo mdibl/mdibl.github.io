@@ -34,7 +34,7 @@ If an LLM touches your research, the prompt is part of your methods. Treat it li
 - interpreting enrichment results
 
 !!! warning "The prompt-hacking problem"
-    - Rewording a prompt until the output says what you hoped, then reporting only the final version, is the LLM equivalent of trying analyses until p \< 0.05.
+    - Rewording a prompt until the output says what you hoped, then reporting only the final version, is the LLM equivalent of trying analyses until p < 0.05.
     - If you iterated, record the iterations.
 
 ### Minimum record for any research use
