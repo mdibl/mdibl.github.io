@@ -1,242 +1,158 @@
 # Prompting LLMs for Biological Research
 
-This guide aims to instruct individuals on best practices to using the burgeoning technology of Large Language Models effectively and safely. 
-Tere is deliberately little information on the specific mathematical opperations underlaying how LLMs function. 
-Instead, topics discussed include:
+> **Workshop:** ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
-- How LLMs work.
-- What information LLMs are confident about.
-- What that means for LLM usage in biological research.
-- How best to avoid misinformation.
+This workshop is for researchers and students who use, or want to use, large language models (LLMs) in biological research. No programming experience is needed. You'll work through one running case study, an RNA-seq experiment on the aging killifish heart, and practice writing, checking, and recording prompts.
 
-!!! info "Orignial Resources"
+---
+
+!!! info "Learning Objectives"
+    By the end of this workshop you will be able to:
+
+    - Explain why LLMs confabulate, and when biology questions are most at risk
+    - Identify missing components in a prompt
+    - Rewrite a vague prompt so its output can be checked
+    - Verify LLM output against primary databases
+    - Record a prompt as part of your research methods
+
+!!! info "Original Resources"
 	The structure of this guide is modeled on Carnegie Mellon University Libraries' *LLM Documentation Guide* (Gonzalez-Espinoza & Lan, 2026; 
 	<https://guides.library.cmu.edu/LLMDocumentationGuide>). The content has been rewritten and adapted for biological research: bench work, genomics and transcriptomics, literature review, and analysis code. 
 	It deliberately spends little time on how LLMs work internally and most of its time on what to include in prompts.
 
 ---
 
+## Workshop Outline
+
+The Hook and Part 1 are on this page. Each card opens the next part.
+
 <div class="grid cards" markdown>
 
--   :material-book-alphabet:{ .lg .middle } **Glossary**
+-   :material-puzzle-outline:{ .lg .middle } **Part 2: Anatomy of a Prompt**
 
     ---
 
-    Definitions of the terms used throughout this guide: how models are trained, how you talk to them, the tools they use, and the ways they fail.
+    The components of a good prompt, a rubric for checking your own, and your first case-study prompt.
 
-    [:octicons-arrow-right-24: Read the glossary](../llmPromptingGlossary/index.md){ .md-button .md-button--primary }
+    **~25 minutes**
 
--   :material-puzzle-outline:{ .lg .middle } **Prompt Components**
+    [:octicons-arrow-right-24: Go to Part 2](../llmPromptingComponents/index.md){ .md-button .md-button--primary }
 
-    ---
-
-    The building blocks of a good prompt (task, context, frame, audience, constraints, output format, examples, and fallback), plus a reusable prompt skeleton.
-
-    [:octicons-arrow-right-24: Read about components](../llmPromptingComponents/index.md){ .md-button .md-button--primary }
-
--   :material-compare-horizontal:{ .lg .middle } **Prompt Examples**
+-   :material-dna:{ .lg .middle } **Part 3: Biology-Specific Pitfalls**
 
     ---
 
-    Before-and-after rewrites of six common biology prompts, what goes wrong with each first attempt, and a table of common pitfalls.
+    Spot common prompt pitfalls, watch the model agree with a leading question, and rewrite weak case-study prompts.
 
-    [:octicons-arrow-right-24: See the examples](../llmPromptingExamples/index.md){ .md-button .md-button--primary }
+    **~25 minutes**
 
--   :material-check-decagram:{ .lg .middle } **Checking and Verification**
+    [:octicons-arrow-right-24: Go to Part 3](../llmPromptingExamples/index.md){ .md-button .md-button--primary }
+
+-   :material-check-decagram:{ .lg .middle } **Parts 4–5: Verify & Document**
 
     ---
 
-    How to verify LLM output against trusted sources, and how to record prompts as part of your research methods.
+    Check an LLM answer with planted errors against primary databases, log your prompt, and finish with a capstone on your own research question.
 
-    [:octicons-arrow-right-24: Check and record](../llmPromptingVerification/index.md){ .md-button .md-button--primary }
+    **~45 minutes**
+
+    [:octicons-arrow-right-24: Go to Parts 4–5](../llmPromptingVerification/index.md){ .md-button .md-button--primary }
+
+-   :material-book-alphabet:{ .lg .middle } **Quick Reference & Glossary**
+
+    ---
+
+    The prompt skeleton, rubric, pitfall tables, and glossary in one place, plus a printable one-page PDF.
+
+    **Use any time**
+
+    [:octicons-arrow-right-24: Open the Quick Reference](../llmPromptingGlossary/index.md){ .md-button .md-button--primary }
 
 </div>
 
 ---
 
-## How LLMs Produce Answers
+## Before the Workshop
 
-LLMs are versatile tools for generating text, especially:
+- **Get access to an LLM** your institution has approved for research use. You'll run prompts throughout the session.
+- **Check your institution's AI and data-sharing policy**, and any data use agreements that cover your data. Never paste patient identifiers, clinical metadata, or a collaborator's unpublished results into a hosted AI tool unless you've confirmed it's allowed. Prompt quality doesn't matter if the data shouldn't have been shared.
+- **Download the case-study files.** They are simulated for teaching, so they're safe to paste anywhere:
+    - [`killifish_heart_DEGs.csv`](data/killifish_heart_DEGs.csv): upregulated genes, *Nothobranchius furzeri* heart, 20-week vs 6-week males
+    - [`samples.tsv`](data/samples.tsv): the sample sheet
+    - [`methods_notes.txt`](data/methods_notes.txt): the analysis notes
+    - [`llm_answer_to_verify.txt`](data/llm_answer_to_verify.txt): used in Part 4
+    - [`README.txt`](data/README.txt): what each file contains
 
-- Code generation.
-- Literature review.
-- Text formatting.
+---
 
-Their strengths come from their **training data**. Code, optimization strategies, bug fixes, and package documentation are among the most abundant, freely available text on the internet. 
-Biological literature is the opposite: vast in total, but any one topic may be covered by only a handful of papers.
+## Why This Matters
 
-!!! tip "Takeaway"
-	Prompts about biology need more care than prompts about more common topics, because the model has less to draw on.
+!!! abstract ":material-timer-outline: 10 minutes — Before reading on..."
+    Open [`killifish_heart_DEGs.csv`](data/killifish_heart_DEGs.csv) and pick `LOC_SIM_001`, or a poorly characterized gene from the organism you study. Ask your LLM:
 
-### A working model of how answers are generated
+    ```text
+    What does LOC_SIM_001 do in the turquoise killifish heart?
+    ```
 
-- An LLM produces the **most plausible continuation** of your prompt, based on patterns in its training data.
-- Your prompt steers it toward the right part of what it has learned.
+    - How confident does the answer sound?
+    - Does it say "unknown" anywhere?
+    - Can you verify any of it?
+
+    Keep the answer open. We'll come back to it at the end of Part 1.
+
+---
+
+## Part 1: How LLMs Produce Answers
+
+> ~15 minutes
+
+An LLM produces the **most plausible continuation** of your prompt, based on patterns in its training data.
+
 - It does **not** look things up unless it has a search or database tool.
 - It does **not** know when it has drifted outside what it knows well.
+- At that edge, the drive to produce an answer wins out over admitting it doesn't know. It fills the gap with a confident, fluent **confabulation** (often called a **hallucination**).
 
-### Hallucinations
+Models are reliable on things that appear often in their training data and unreliable on things that appear rarely [\[1\]](#references). Code and package documentation are abundant online. Any one biology topic may be covered by only a handful of papers.
 
-- A **hallucination** is confident, fluent output that is wrong or invented.
-- They happen when a question reaches the edge of the model's training data.
-- At that edge, the model's priority, producing an answer, wins out over admitting it doesn't know. It fills the gap with a plausible **confabulation**.
+| Where LLMs are weak in biology | Where they are genuinely strong |
+|---|---|
+| **Non-model organisms:** a killifish gene is described as if it were the human ortholog | Summarizing and extracting from text **you provide** |
+| **Poorly characterized genes:** an uncharacterized ORF or `LOC` gene gets an invented function | Drafting and debugging analysis code for widely used packages |
+| **Recent findings:** anything after the training cutoff is missing | Explaining well-established concepts and methods |
+| **Specific numbers:** fold changes, primer sequences, Ensembl IDs, coordinates | Brainstorming alternative explanations and controls |
+| **Citations:** references that look real but don't exist or don't say what's claimed [\[2\]](#references) | Converting between formats (notes to a sample sheet, prose to a table) |
 
 ### An analogy: split-brain confabulation
 
-The split-brain experiments of Roger Sperry and Michael Gazzaniga (1960s–70s) show the same behavior in people [\[8\]](#references).
+In split-brain patients, the bundle of nerves connecting the two brain hemispheres has been cut, so each hemisphere works largely on its own and speech comes mostly from the left [\[8\]](#references). In one experiment, the left hemisphere was shown a **chicken claw** and the right a **snow shovel**. The patient's hands pointed to a chicken and a shovel. Asked why the left hand chose the shovel, the speaking hemisphere, which never saw the shovel, didn't say "I don't know." It confidently invented a reason: *"The chicken claw goes with the chicken, and you need a shovel to clean out the chicken shed."*
 
-**The setup**
+!!! abstract "Discussion — The speaking hemisphere and the LLM"
+    Talk about these with a partner or think through them on your own:
 
-- A last-resort treatment for severe epilepsy is to cut the *corpus callosum*, the bundle of nerves connecting the two brain hemispheres (a corpus callosotomy).
-- Afterward, each hemisphere works largely on its own. Speech is handled mostly by the **left** hemisphere.
-- Each hemisphere sees the opposite half of the visual field and controls the opposite hand.
+    1. In what way is an LLM in the same position as the speaking hemisphere?
+    2. Why might a model be rewarded for guessing rather than saying "I don't know"? (Think of a standardized test.)
+    3. Go back to your answer from the Hook. **Whose LLM got the killifish gene wrong? What did it assume?**
 
-**The experiment**
-
-- The left hemisphere (right visual field) was shown a **chicken claw**.
-- The right hemisphere (left visual field) was shown a **snow shovel**.
-- Asked to point to matching picture cards, the patient's right hand pointed to a chicken and the left hand pointed to a shovel.
-
-**The confabulation**
-
-- The experimenter asked, "Why is your left hand pointing to the shovel?"
-- The speaking left hemisphere never saw the shovel, so it had no real answer.
-- Instead of saying "I don't know," the patient confidently invented one: *"Oh, that's simple. The chicken claw goes with the chicken, and you need a shovel to clean out the chicken shed."*
-
-**The parallel to LLMs**
-
-- Like the speaking hemisphere, an LLM is expected to explain things it has no information about.
-- LLMs are asked to answer *any* question. As on a standardized test, a wrong guess usually costs less than a blank answer.
-- So models tend to confabulate details they couldn't possibly know rather than admit they've reached the end of their knowledge.
+    ??? success "Discussion points"
+        - Both are asked to explain something they have no information about, and both produce a fluent, confident story instead of admitting the gap.
+        - As on a standardized test, a wrong guess usually costs less than a blank answer, so models learn to answer *any* question.
+        - `LOC_SIM_001` is a simulated gene with no ortholog, so any specific function is invented. Answers often borrow a human or mouse gene's function, or describe a plausible-sounding cardiac protein.
 
 !!! tip "Your defense is the prompt"
-    Supply the information the model lacks, and explicitly allow it to say "unknown."
-    Out of bounds predictions can be commonly found in biological questions!
+    **The more of the answer you put in the context, the more you can trust the output.** Supply the information the model lacks, and explicitly allow it to say "unknown."
 
----
+???+ question "Check Your Understanding"
+    Which is more reliable, and why: asking the model what a paper says, or pasting the abstract and asking for a summary?
 
-## What LLMs Can and Cannot Do in Biology
+    ??? success "Answer"
+        Pasting the abstract. A summary of text in the prompt (in context) draws on information the model can see. Asking what a paper says relies on recall from training data, where the paper may be absent, confused with another, or invented outright.
 
-Models are reliable on things that appear often in their training data and unreliable on things that appear rarely [\[1\]](#references). Biology is full of rarely-written-about things:
+!!! success "Key Points — How LLMs Produce Answers"
+    - An LLM predicts plausible text; it doesn't look things up or know when it's guessing.
+    - Biology is full of rare topics (non-model organisms, uncharacterized genes, specific numbers), which is exactly where confabulation happens.
+    - Put the information in the prompt instead of relying on the model's memory.
 
-- **Non-model organisms.** A killifish, axolotl, or planarian gene will often be described as if it were the human ortholog, with human-specific functions, tissue expression, or disease links carried over.
-- **Poorly characterized genes.** For an uncharacterized ORF, lncRNA, or `LOC` identifier, the model may invent a function rather than say "unknown."
-- **Recent findings.** Anything after the training cutoff is missing, and the model won't flag the gap unless asked.
-- **Specific numbers.** Fold changes, concentrations, primer sequences, Ensembl IDs, and coordinates are easy to generate plausibly and wrongly.
-- **Citations.** Models produce references that look real (right journal, plausible authors and year) but do not exist or do not say what's claimed [\[2\]](#references). Never use an LLM-provided citation you haven't opened.
-
-### Where they are genuinely strong
-
-- Restructuring, summarizing, and extracting from text **you provide** (papers, protocols, notes)
-- Drafting and debugging analysis code in R, Python, and shell, especially for widely used packages
-- Explaining well-established concepts and methods
-- Brainstorming alternative explanations, controls, and experimental designs
-- Converting between formats (free-text notes to a structured sample sheet, prose to a table)
-
-!!! tip "The practical rule"
-    **The more of the answer you put in the context, the more you can trust the output.**
-
-    - Asking a model to summarize a paper you pasted is far more reliable than asking what that paper says from memory.
-    - Giving it your actual `sessionInfo()` produces better code than letting it guess your package versions.
-
----
-
-## Why Prompts Matter
-
-### The model fills gaps with defaults
-
-An LLM only knows what it has been trained on or given explicitly. It has not seen:
-
-- Your sample sheet
-- Which organism you work in
-- Which genome build your counts came from
-- Whether "the treated group" means drug, knockout, or age
-
-When those details are missing, the model fills them in with whatever is most typical in its training data. For biology that usually means **human, mouse, or a generic textbook case**.
-
-### Three failure modes
-
-Most bad outputs come from one of three problems. Each is also a record-keeping problem.
-
-| Failure mode | What happens | Why it is also a documentation problem |
-|--------------|--------------|----------------------------------------|
-| **Missing information** | The model assumes defaults (human, latest genome build, standard protocol) that may not match your system. | If the assumption isn't in the prompt, nobody reviewing the work can see it was made. |
-| **Unclear output expectations** | You get the model's favorite format: a long essay when you wanted a table, or a table with invented columns. | There's no standard to judge the output against. |
-| **Uncheckable quality criteria** | Instructions like "be thorough" or "be accurate" can't be tested. | Neither the model nor a reviewer can verify they were met. |
-
-!!! tip "Fill in ALL the blanks"
-	A prompt that covers each of these explicitly fixes all three at once.
-
-### Structure is a checklist, not a syntax
-
-Many prompts in this guide use labeled sections like `__TASK__`, `__CONTEXT__`, and `__CONSTRAINTS__`. Before you see one, know how to read them:
-
-- **The labels are for you, not the model.** They are an organizing tool to make sure nothing is left out.
-- **The model doesn't require them.** Current models read ordinary prose just as well.
-- **The information is what counts.** A labeled prompt and a prose prompt with the same content should get comparable answers.
-- **Each label is a component.** All of them are defined on the [Prompt Components](../llmPromptingComponents/index.md) page.
-
-### A first comparison
-
-The same question asked two ways can produce answers that differ more in *correctness* than in polish.
-
-=== "Vague"
-
-    ```text
-    What pathways are enriched in this list of genes?
-    ```
-
-=== "Specific (labeled)"
-
-    ```text
-    __TASK__
-    - Summarize the biological themes in the 40 upregulated genes below.
-
-    __CONTEXT__
-    - Organism: Zebrafish (Danio rerio).
-    - Tissue: Kidney
-    - Comparison: Treated (drug) vs. Control (vehicle) males.
-    - Gene symbols are human orthologs mapped by sequence similarity;
-      some mappings are one-to-many.
-
-    __CONSTRAINTS__
-    - Group genes into at most 5 functional pathways; name the genes in each.
-    - Do not claim a function for any gene you are not confident about;
-      list those under "uncertain" instead.
-    - Cite papers with evidence for claims made.
-    - Cite papers with evidence in the contrary of claims made if any exist.
-    ```
-
-=== "Specific (prose)"
-
-    ```text
-    Below are 40 genes upregulated in kidney from treated (drug) versus
-    control (vehicle) male zebrafish (Danio rerio). The gene symbols are
-    human orthologs mapped by sequence similarity, so some mappings are
-    one-to-many. Please group the genes into no more than five biological
-    functional pathways and name the genes in each. If you aren't confident about a
-    gene's function, don't assign it to a theme; list it under
-    "uncertain" instead. Cite papers with evidence for the claims you
-    make, and cite papers with contrary evidence if any exist.
-    ```
-
-**What you get back**
-
-- The vague prompt gets a confident, generic paragraph.
-- Both specific versions get an answer that is scoped to the right organism and tissue, states what it doesn't know, and can be checked line by line.
-- The two specific versions carry the same information: organism, tissue, how the genes were mapped, and what "uncertain" should look like. These are exactly the details that are rare or absent in training data, and that the model would otherwise fill in with defaults.
-
-### Prose or labeled sections?
-
-Use whichever form you find easier to write and read. As a rough guide:
-
-| Write it as prose when... | Use labeled sections when... |
-|---------------------------|------------------------------|
-| You're asking a one-off question in a chat window | The prompt is long, or mixes instructions with pasted data |
-| The request is conversational or iterative | The prompt will be reused, shared, or run in a pipeline |
-| Your readers aren't used to structured prompts | You want to compare versions of a prompt in a log or diff |
-
-Either way, run through the components in the next section before you send a prompt and ask whether each one is covered.
+[:octicons-arrow-right-24: Continue to Part 2: Anatomy of a Prompt](../llmPromptingComponents/index.md){ .md-button .md-button--primary }
 
 ---
 

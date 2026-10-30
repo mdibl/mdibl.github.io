@@ -19,10 +19,10 @@ nav:
     - Computational Workflows: workflows/index.md
   - Prompting LLMs for Biology:
     - llmPrompting/index.md
-    - Glossary: llmPromptingGlossary/index.md
-    - Prompt Components: llmPromptingComponents/index.md
-    - Prompt Examples: llmPromptingExamples/index.md
-    - Checking and Verification: llmPromptingVerification/index.md
+    - "Part 2: Anatomy of a Prompt": llmPromptingComponents/index.md
+    - "Part 3: Biology-Specific Pitfalls": llmPromptingExamples/index.md
+    - "Parts 4–5: Verify & Document": llmPromptingVerification/index.md
+    - Quick Reference & Glossary: llmPromptingGlossary/index.md
   - Bioinformatics Bits:
     - bits/index.md
     - Bit 1: bits/bit1.md
