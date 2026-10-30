@@ -22,8 +22,8 @@ Most bad outputs come from one of three gaps. Each is also a record-keeping prob
 
 A prompt is built from components. Each one makes one part of your request explicit, and each is something you can save and review later. Use the ones the task needs.
 
-!!! tip "Think of it as a new colleague"
-    Imagine the LLM as an experienced colleague who knows none of the specifics of your project. What would they need from you to give an answer you can trust?
+!!! tip "Think of it as a student"
+    Imagine the LLM as an experienced student who knows none of the specifics of your project. What would they need from you to give an answer you can trust?
 
 Labels like `__TASK__` and `__CONTEXT__` are a checklist **for you**, not a syntax the model needs. A labeled prompt and a plain-prose prompt with the same information should get comparable answers, so write whichever you find easier.
 
@@ -128,7 +128,7 @@ Open any component to see an example.
     - Prefer "unknown" over a guess.
     ```
 
-!!! note "What about \"think step by step\"?"
+!!! note "What about 'think step by step'?"
     Asking for step-by-step reasoning helped older models [\[4\]](../llmPrompting/index.md#references), but current frontier models reason internally and gain little from it [\[5\]](../llmPrompting/index.md#references). It can still help smaller or locally run models. Either way, record which you did.
 
 ---
@@ -188,6 +188,8 @@ Open any component to see an example.
     - Components are a checklist for you; the model reads plain prose just as well.
     - CONTEXT and FALLBACK do the most work for biology prompts.
     - Structuring your prompts helps you include everything the model needs, so it has to guess as little as possible.
+
+[:octicons-arrow-right-24: Continue to Part 3: Biology-Specific Pitfalls](../llmPromptingExamples/index.md){ .md-button .md-button--primary }
 
 ---
 

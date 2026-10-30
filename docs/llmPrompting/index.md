@@ -124,7 +124,7 @@ Models are reliable on things that appear often in their training data and unrel
 
 ### An analogy: split-brain confabulation
 
-In split-brain patients, the bundle of nerves connecting the two brain hemispheres has been cut, so each hemisphere works largely on its own and speech comes mostly from the left [\[8\]](#references). In one experiment, the left hemisphere was shown a **chicken claw** and the right a **snow shovel**. The patient's hands pointed to a chicken and a shovel. Asked why the left hand chose the shovel, the speaking hemisphere, which never saw the shovel, didn't say "I don't know." It confidently invented a reason: *"The chicken claw goes with the chicken, and you need a shovel to clean out the chicken shed."*
+In split-brain patients, the bundle of nerves connecting the two brain hemispheres has been cut, so each hemisphere works largely on its own and speech comes mostly from the left [\[8\]](#references). In one experiment, the left hemisphere was shown a **chicken claw** and the right a **snow shovel**. The patients were asked to point to images of what they saw, and their hands pointed to a chicken and a shovel. When asked why the left hand chose the shovel, the speaking hemisphere, which never saw the shovel, didn't say "I don't know." It confidently invented a reason: *"The chicken claw goes with the chicken, and you need a shovel to clean out the chicken shed."*
 
 !!! abstract "Discussion — The speaking hemisphere and the LLM"
     Talk about these with a partner or think through them on your own:

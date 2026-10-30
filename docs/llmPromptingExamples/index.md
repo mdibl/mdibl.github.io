@@ -233,8 +233,6 @@ Each exercise shows a typical first attempt. Write your own version, run **both*
     - Phrase questions neutrally, or ask the model to challenge your premise.
     - Think carefully about each prompt you write. LLMs are neither omniscient nor telepathic: misinformation is a symptom of miscommunication!
 
-[:octicons-arrow-right-24: Continue to Parts 4–5: Verify & Document](../llmPromptingVerification/index.md){ .md-button .md-button--primary }
-
 ---
 
 ## Extra Practice (optional)
@@ -402,6 +400,8 @@ More before-and-after prompts from other areas of biology, for independent study
         - Unresolved clusters stay unresolved.
         - Nucleus-specific caveats are part of the reasoning.
         - Every label points to the evidence behind it.
+
+[:octicons-arrow-right-24: Continue to Part 4-5: Verify & Document](../llmPromptingVerification/index.md){ .md-button .md-button--primary }
 
 ---
 
