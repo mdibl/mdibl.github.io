@@ -5,10 +5,8 @@
   <link rel="apple-touch-icon" href="{{ 'assets/images/mdibl-icon-512.png' | url }}">
 {% endblock %}
 
-{#- Announcement banner: OFF. An empty block hides the banner entirely.
-    To turn it on, move the line below (without the comment markers)
-    between the announce block tags, and update the text and link.
-
-  <b>Upcoming Course:</b> Full day training: Intro to R & Data Visualization in R. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/764" target="_blank">Register here</a>.
--#}
-{% block announce %}{% endblock %}
+{#- Announcement banner. To turn it off, empty the block:
+    {% block announce %}{% endblock %} -#}
+{% block announce %}
+  <b>Upcoming Course:</b> Introduction to Workflows and Nextflow Pipelines, Nov. 16. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/781" target="_blank">Register here</a>.
+{% endblock %}
