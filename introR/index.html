@@ -92,6 +92,23 @@
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+              </button>
+            
+            
+  <b>Upcoming Course:</b> Introduction to Workflows and Nextflow Pipelines, Nov. 16. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/781" target="_blank">Register here</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
     </div>
     
     
@@ -3471,6 +3488,11 @@ No licensing costs. Runs on laptops, HPC clusters, and cloud platforms. Because 
 <li>Use <strong>underscores</strong> to separate words: <code>body_weight</code>, not <code>body.weight</code> or <code>bodyWeight</code> (though all three work)</li>
 <li>Make names <strong>informative</strong>: <code>dog_age</code> is better than <code>x</code> because it tells you what the value represents</li>
 </ul>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/naming_cases.jpg" data-desc-position="bottom"><img alt="Illustration of naming styles: SCREAMING_SNAKE_CASE, kebab-case, snake_case, and camelCase" src="images/naming_cases.jpg" width="650"></a>
+<br>
+<figcaption>Common naming styles. In R, use snake_case or camelCase; kebab-case won't work because R reads <code>-</code> as subtraction. Artwork by <a href="https://allisonhorst.com/">@allison_horst</a> (CC BY 4.0).</figcaption>
+</figure>
 <details class="question" open="open">
 <summary>Exercise 1.2 — Objects and the dog-years formula</summary>
 <p>Reminder of the formula for converting an animal's age to an equivalent human age is:</p>
@@ -4114,9 +4136,9 @@ A long-running study capturing small mammals across 24 experimental plots. Each 
 <td><code>TRUE</code></td>
 </tr>
 <tr>
-<td><code>\|</code></td>
+<td><code>|</code></td>
 <td>OR — at least one must be TRUE</td>
-<td><code>5 &gt; 10 \| 3 &lt; 4</code></td>
+<td><code>5 &gt; 10 | 3 &lt; 4</code></td>
 <td><code>TRUE</code></td>
 </tr>
 <tr>
@@ -4163,21 +4185,31 @@ A long-running study capturing small mammals across 24 experimental plots. Each 
 <span class="normal"><a href="#__codelineno-46-12">12</a></span>
 <span class="normal"><a href="#__codelineno-46-13">13</a></span>
 <span class="normal"><a href="#__codelineno-46-14">14</a></span>
-<span class="normal"><a href="#__codelineno-46-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="c1"># Keep only rows where taxa is "Rodent"</span>
+<span class="normal"><a href="#__codelineno-46-15">15</a></span>
+<span class="normal"><a href="#__codelineno-46-16">16</a></span>
+<span class="normal"><a href="#__codelineno-46-17">17</a></span>
+<span class="normal"><a href="#__codelineno-46-18">18</a></span>
+<span class="normal"><a href="#__codelineno-46-19">19</a></span>
+<span class="normal"><a href="#__codelineno-46-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="c1"># Keep only rows where taxa is "Rodent"</span>
 </span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="n">data_rodent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Rodent"</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent</span><span class="p">)</span><span class="w">   </span><span class="c1"># 16505</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent</span><span class="p">)</span><span class="w">   </span><span class="c1"># 16505 -- more than the 16148 Rodents from table()!</span>
 </span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4"></a>
-</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5"></a><span class="c1"># Keep only observations from the 1980s</span>
-</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6"></a><span class="n">data_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_80s</span><span class="p">)</span>
-</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8"></a>
-</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9"></a><span class="c1"># Combine: Rodents from the 1980s</span>
-</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10"></a><span class="n">data_rodent_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span>
-</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11"></a><span class="w">  </span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Rodent"</span><span class="w"> </span><span class="o">&amp;</span>
-</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12"></a><span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span>
-</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13"></a><span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span>
-</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14"></a><span class="p">]</span>
-</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent_80s</span><span class="p">)</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5"></a><span class="c1"># 357 rows have NA for taxa. NA == "Rodent" is NA (not FALSE),</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6"></a><span class="c1"># so those rows come back as blank NA rows. Exclude them explicitly:</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7"></a><span class="n">data_rodent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Rodent"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent</span><span class="p">)</span><span class="w">   </span><span class="c1"># 16148 -- matches table(data$taxa)</span>
+</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9"></a>
+</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10"></a><span class="c1"># Keep only observations from the 1980s</span>
+</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11"></a><span class="n">data_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_80s</span><span class="p">)</span>
+</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13"></a>
+</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14"></a><span class="c1"># Combine: Rodents from the 1980s</span>
+</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15"></a><span class="n">data_rodent_80s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span>
+</span><span id="__span-46-16"><a id="__codelineno-46-16" name="__codelineno-46-16"></a><span class="w">  </span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Rodent"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">taxa</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span>
+</span><span id="__span-46-17"><a id="__codelineno-46-17" name="__codelineno-46-17"></a><span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">1980</span><span class="w"> </span><span class="o">&amp;</span>
+</span><span id="__span-46-18"><a id="__codelineno-46-18" name="__codelineno-46-18"></a><span class="w">    </span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">1989</span><span class="p">,</span>
+</span><span id="__span-46-19"><a id="__codelineno-46-19" name="__codelineno-46-19"></a><span class="p">]</span>
+</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20"></a><span class="nf">nrow</span><span class="p">(</span><span class="n">data_rodent_80s</span><span class="p">)</span><span class="w">   </span><span class="c1"># 14013</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="which-row-numbers-instead-of-rows"><code>which()</code> — Row Numbers Instead of Rows</h3>
 <p><code>which()</code> returns the <strong>positions</strong> (row numbers) where a condition is TRUE, rather than the actual rows:</p>
@@ -4573,7 +4605,7 @@ Base R's <code>read.csv()</code> reads blank cells as empty strings <code>""</co
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 17:05:03 UTC">Oct. 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 2, 2026 23:09:40 UTC">Nov. 2, 2026</span>
   </span>
 
     
