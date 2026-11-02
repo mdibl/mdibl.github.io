@@ -24,7 +24,7 @@ This workshop is for researchers and students who use, or want to use, large lan
 
 ## Workshop Outline
 
-The Hook and Part 1 are on this page. Each card opens the next part.
+Part 1 is on this page. Each card opens the next part.
 
 <div class="grid cards" markdown>
 
@@ -148,7 +148,7 @@ In split-brain patients, the bundle of nerves connecting the two brain hemispher
         Pasting the abstract. A summary of text in the prompt (in context) draws on information the model can see. Asking what a paper says relies on recall from training data, where the paper may be absent, confused with another, or invented outright.
 
 !!! success "Key Points — How LLMs Produce Answers"
-    - An LLM predicts plausible text; it doesn't look things up or know when it's guessing.
+    - An LLM predicts plausible text; It doesn't look things up or know when it's guessing.
     - Biology is full of rare topics (non-model organisms, uncharacterized genes, specific numbers), which is exactly where confabulation happens.
     - Put the information in the prompt instead of relying on the model's memory.
 

@@ -130,8 +130,6 @@ Each row pairs a weak prompt with a stronger one. The notes column explains what
 
 Terms that come up throughout this workshop and in most discussions of LLM best practices.
 
-Terms that come up throughout this guide and in most discussions of LLM best practices.
-
 ### The model and how it is trained
 
 | Term | Meaning |
