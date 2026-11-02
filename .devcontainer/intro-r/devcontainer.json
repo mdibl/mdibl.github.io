@@ -12,6 +12,7 @@
       "onAutoForward": "ignore"
     }
   },
+  "postCreateCommand": "sudo chown -R rstudio:rstudio /var/lib/rstudio-server /var/run/rstudio-server",
   "postAttachCommand": { "rstudio-start": "rserver" },
   "workspaceFolder": "/workspaces/mdibl.github.io/docs/introR"
 }
