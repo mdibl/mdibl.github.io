@@ -74,6 +74,14 @@
 .md-header__title {
     font-size: 0.85rem;
 }
+/* Site name links home (overrides/partials/header.html); keep the header text color */
+.md-header__home,
+.md-header__home:hover {
+    color: inherit;
+}
+.md-header__home:hover {
+    text-decoration: underline;
+}
 @media screen and (min-width: 60em) {
     .md-header__source {
         width: auto;
