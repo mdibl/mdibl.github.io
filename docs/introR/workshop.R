@@ -363,17 +363,21 @@ x_vec[x_vec > 12]       # 15 20 — keeps only where TRUE
 data_rodent <- data[data$taxa == "Rodent", ]
 nrow(data_rodent)   # 16505 — includes 357 NA-taxa rows (NA != FALSE)
 
+# Exclude the NA-taxa rows so the count matches table(data$taxa)
+data_rodent <- data[data$taxa == "Rodent" & !is.na(data$taxa), ]
+nrow(data_rodent)   # 16148
+
 # Range condition
 data_80s <- data[data$year >= 1980 & data$year <= 1989, ]
 nrow(data_80s)
 
 # Multi-condition
 data_rodent_80s <- data[
-  data$taxa == "Rodent" &
+  data$taxa == "Rodent" & !is.na(data$taxa) &
     data$year >= 1980 &
     data$year <= 1989,
 ]
-nrow(data_rodent_80s)
+nrow(data_rodent_80s)   # 14013
 
 
 # ── which() — row numbers instead of rows ────────────────────────────────────

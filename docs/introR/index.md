@@ -246,6 +246,11 @@ Object names can be almost anything, but a few rules apply:
 - Use **underscores** to separate words: `body_weight`, not `body.weight` or `bodyWeight` (though all three work)
 - Make names **informative**: `dog_age` is better than `x` because it tells you what the value represents
 
+<figure markdown="span">
+  ![Illustration of naming styles: SCREAMING_SNAKE_CASE, kebab-case, snake_case, and camelCase](images/naming_cases.jpg){ width="650" }
+  <figcaption>Common naming styles. In R, use snake_case or camelCase; kebab-case won't work because R reads <code>-</code> as subtraction. Artwork by <a href="https://allisonhorst.com/">@allison_horst</a> (CC BY 4.0).</figcaption>
+</figure>
+
 ???+ question "Exercise 1.2 — Objects and the dog-years formula"
 
     Reminder of the formula for converting an animal's age to an equivalent human age is:
@@ -776,7 +781,7 @@ Combine multiple conditions with logical operators:
 | Operator | Meaning | Example | Result |
 |----------|---------|---------|--------|
 | `&` | AND — both must be TRUE | `5 > 3 & 10 < 20` | `TRUE` |
-| `\|` | OR — at least one must be TRUE | `5 > 10 \| 3 < 4` | `TRUE` |
+| `|` | OR — at least one must be TRUE | `5 > 10 | 3 < 4` | `TRUE` |
 | `!` | NOT — inverts TRUE/FALSE | `!(5 == 5)` | `FALSE` |
 
 ```r
@@ -819,7 +824,12 @@ The condition is tested for every row. Rows where it is `TRUE` are kept; rows wh
 ```r linenums="1"
 # Keep only rows where taxa is "Rodent"
 data_rodent <- data[data$taxa == "Rodent", ]
-nrow(data_rodent)   # 16505
+nrow(data_rodent)   # 16505 -- more than the 16148 Rodents from table()!
+
+# 357 rows have NA for taxa. NA == "Rodent" is NA (not FALSE),
+# so those rows come back as blank NA rows. Exclude them explicitly:
+data_rodent <- data[data$taxa == "Rodent" & !is.na(data$taxa), ]
+nrow(data_rodent)   # 16148 -- matches table(data$taxa)
 
 # Keep only observations from the 1980s
 data_80s <- data[data$year >= 1980 & data$year <= 1989, ]
@@ -827,11 +837,11 @@ nrow(data_80s)
 
 # Combine: Rodents from the 1980s
 data_rodent_80s <- data[
-  data$taxa == "Rodent" &
+  data$taxa == "Rodent" & !is.na(data$taxa) &
     data$year >= 1980 &
     data$year <= 1989,
 ]
-nrow(data_rodent_80s)
+nrow(data_rodent_80s)   # 14013
 ```
 
 ### `which()` — Row Numbers Instead of Rows

@@ -88,6 +88,8 @@ theme:
       accent: custom
 repo_url: https://github.com/mdibl/mdibl.github.io
 copyright: 'Copyright &copy; 2026 <a href="https://mdibl.org">MDI Biological Laboratory</a>'
+extra:
+  homepage: https://mdibl.org/
 hooks:
   - hooks/ap_dates.py
 plugins:
