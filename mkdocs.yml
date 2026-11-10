@@ -19,6 +19,7 @@ nav:
     - Computational Workflows: workflows/index.md
   - Prompting LLMs for Biology:
     - llmPrompting/index.md
+    - "Part 1: How LLMs Produce Answers": llmPromptingFoundations/index.md
     - "Part 2: Anatomy of a Prompt": llmPromptingComponents/index.md
     - "Part 3: Biology-Specific Pitfalls": llmPromptingExamples/index.md
     - "Parts 4–5: Verify & Document": llmPromptingVerification/index.md

@@ -166,7 +166,7 @@ Terms that come up throughout this workshop and in most discussions of LLM best 
 
 | Term | Meaning |
 |------|---------|
-| **Hallucination / confabulation** | Confident, fluent output that is wrong or invented. See [How LLMs Produce Answers](../llmPrompting/index.md#part-1-how-llms-produce-answers). |
+| **Hallucination / confabulation** | Confident, fluent output that is wrong or invented. See [How LLMs Produce Answers](../llmPromptingFoundations/index.md). |
 | **Sycophancy** | The model's tendency to agree with the user, including with a wrong premise. See [Common Pitfalls](#common-pitfalls). |
 | **Prompt hacking** | Rewording a prompt until the output says what you hoped, then reporting only the final version. See [Documenting Prompts](../llmPromptingVerification/index.md#part-5-documenting-prompts). |
 
