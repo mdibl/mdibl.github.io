@@ -1,0 +1,15 @@
+SIMULATED FOR TEACHING. This "LLM answer" was written by the workshop authors and contains deliberate errors.
+
+Prompt given to the LLM: "Summarize the biology of the upregulated genes in killifish_heart_DEGs.csv."
+
+LLM answer:
+
+The aging killifish heart shows a clear shift toward inflammation, fibrosis, and cardiac stress.
+
+1. Cardiac stress. The natriuretic peptides are the strongest signal. NPPB is the top gene (log2FC = 6.8) and NPPA is also strongly induced, consistent with increased wall stress in the older heart.
+2. Complement and inflammation. C1QA, C1QB, and C3 are upregulated. Gene set enrichment analysis shows significant enrichment of the Hallmark Inflammatory Response pathway (padj = 0.003), confirming that inflammation drives cardiac aging in killifish.
+3. Fibrosis. COL1A1, POSTN, LUM, and FN1 point to extracellular matrix remodeling. COL1A1 behaves as a single gene in killifish, just as in humans, where COL1A1 mutations cause osteogenesis imperfecta; the older fish are therefore likely to have more fragile bones.
+4. Senescence. CDKN1A (p21; Ensembl ENSG00000141510) is upregulated, a classic marker of cellular senescence.
+5. Uncharacterized genes. LOC_SIM_001 encodes a fish-specific cardiac troponin variant that compensates for reduced contractility with age.
+
+These findings agree with a recent study of the turquoise killifish heart (Kowalczyk, R., Brandt, M., & Osei, K. (2021). Complement activation drives cardiac aging in the turquoise killifish. Aging Cell, 20(7), e13399).
