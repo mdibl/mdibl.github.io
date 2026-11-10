@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompting LLMs for Biological Research — Quick Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --teal:   #007299;
+    --teal-l: #e6f3f8;
+    --green:  #799c4b;
+    --green-l:#f1f5ea;
+    --gray:   #4a5568;
+    --gray-l: #f7f8fa;
+    --border: #dee2e9;
+    --text:   #1a202c;
+    --fair-f: #007299;
+    --fair-a: #2e7d32;
+    --fair-i: #6a1b9a;
+    --fair-r: #c66000;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 8pt;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.35;
+  }
+
+  .page {
+    width: 8.5in;
+    padding: 0.02in 0.3in 0.02in;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+  }
+
+  /* ── Header ───────────────────────────────────── */
+  header {
+    border-bottom: 2.5pt solid var(--teal);
+    padding-bottom: 5px;
+    margin-bottom: 9px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.3px;
+  }
+  header .sub {
+    font-size: 7pt;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  header .brand {
+    text-align: right;
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  header .brand strong {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  /* ── Two-column grid ───────────────────────────── */
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .col { display: flex; flex-direction: column; gap: 9px; }
+
+  /* ── Section card ─────────────────────────────── */
+  .card {
+    border: 1pt solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .card-head {
+    padding: 4px 9px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-head .icon { font-size: 9pt; }
+  .card-body { padding: 7px 9px; }
+
+  .teal-head  { background: var(--teal);   color: #fff; }
+  .green-head { background: var(--green);  color: #fff; }
+  .gray-head  { background: #2d3748;       color: #fff; }
+  .amber-head { background: #c66000;       color: #fff; }
+
+  /* ── FAIR pills ───────────────────────────────── */
+  .fair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .fair-pill {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1pt solid var(--border);
+  }
+  .fair-letter {
+    display: block;
+    font-size: 15pt;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px 0 2px;
+    line-height: 1;
+  }
+  .fair-pill .pill-body {
+    padding: 4px 7px 5px;
+    background: #fff;
+  }
+  .fair-pill strong {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .fair-pill p {
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.35;
+  }
+
+  .fair-f .fair-letter { background: #dbeeff; color: var(--fair-f); }
+  .fair-a .fair-letter { background: #d7f0d9; color: var(--fair-a); }
+  .fair-i .fair-letter { background: #ede7f6; color: var(--fair-i); }
+  .fair-r .fair-letter { background: #fde8d1; color: var(--fair-r); }
+
+  /* ── Tables ───────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.8pt;
+  }
+  th {
+    background: var(--gray-l);
+    font-weight: 600;
+    padding: 3px 6px;
+    text-align: left;
+    border-bottom: 1pt solid var(--border);
+    color: var(--gray);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1pt solid #eef0f3;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--gray-l); }
+
+  .good { color: #2e7d32; font-weight: 500; }
+  .bad  { color: #c62828; }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 7.5pt;
+    background: #f0f4f8;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #2d3748;
+  }
+
+  /* ── Directory tree ───────────────────────────── */
+  .tree {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 7pt;
+    background: #1a202c;
+    color: #e2e8f0;
+    border-radius: 4px;
+    padding: 7px 10px;
+    line-height: 1.55;
+  }
+  .tree .dir  { color: #63b3ed; font-weight: 600; }
+  .tree .note { color: #68d391; font-style: italic; }
+  .tree .root { color: #fbd38d; font-weight: 700; }
+
+  /* ── Samplesheet example ──────────────────────── */
+  .sample-table th { background: #2d3748; color: #e2e8f0; }
+  .sample-table td { font-family: 'JetBrains Mono', monospace; font-size: 7pt; }
+  .sample-table tr:nth-child(even) td { background: #f0f4f8; }
+
+  /* ── Checklist ────────────────────────────────── */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 2.5px 0;
+    padding-left: 16px;
+    position: relative;
+    font-size: 7.5pt;
+    border-bottom: 1pt solid #eef0f3;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 1px;
+    color: var(--teal);
+    font-size: 8.5pt;
+    line-height: 1.1;
+  }
+  .checklist-2col {
+    columns: 2;
+    column-gap: 14px;
+  }
+  .checklist-2col li { break-inside: avoid; }
+  .checklist-3col {
+    columns: 3;
+    column-gap: 14px;
+  }
+  .checklist-3col li { break-inside: avoid; }
+
+  /* ── Fix-this-week ────────────────────────────── */
+  .fix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .fix-card {
+    border: 1pt solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .fix-card .fix-label {
+    background: var(--teal-l);
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 7pt;
+    padding: 3px 6px;
+    border-bottom: 1pt solid #c5dce8;
+  }
+  .fix-card .fix-action {
+    padding: 4px 6px;
+    font-size: 7pt;
+    color: var(--gray);
+    line-height: 1.35;
+  }
+
+  /* ── Footer ───────────────────────────────────── */
+  footer {
+    border-top: 1pt solid var(--border);
+    margin-top: 10px;
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7pt;
+    color: #a0aec0;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  /* ── Naming rule badges ───────────────────────── */
+  .rule-badge {
+    display: inline-block;
+    background: var(--teal-l);
+    color: var(--teal);
+    border: 1pt solid #c5dce8;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 7pt;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── Section divider between cards ───────────────*/
+  .section-label {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a0aec0;
+    padding: 0 0 3px 0;
+    border-bottom: 1pt solid var(--border);
+    margin-bottom: 5px;
+  }
+
+  .tip {
+    background: var(--green-l);
+    border-left: 3pt solid var(--green);
+    border-radius: 0 4px 4px 0;
+    padding: 4px 8px;
+    font-size: 7pt;
+    color: #3d5a1a;
+    margin-top: 6px;
+  }
+  .tip strong { color: var(--green); }
+
+
+  @page { size: letter; margin: 0.25in 0; }
+  pre.skel {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 6.6pt; line-height: 1.3;
+    background: var(--gray-l); border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px 8px; white-space: pre-wrap; margin: 0;
+  }
+  .skel-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 9px; }
+  td.comp { font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <h1>Prompting LLMs for Biological Research</h1>
+      <div class="sub">Quick Reference &nbsp;·&nbsp; Write it, check it, verify it, log it</div>
+    </div>
+    <div class="brand">
+      <strong>MDIBL CGDS Core</strong><br>
+      CGDS@mdibl.org
+    </div>
+  </header>
+
+  <!-- Prompt skeleton (full width) -->
+  <div class="card" style="margin-bottom:9px;">
+    <div class="card-head teal-head"><span class="icon">✎</span> Prompt Skeleton &nbsp;·&nbsp; labeled or prose, same information</div>
+    <div class="card-body">
+      <div class="skel-grid">
+<pre class="skel">__TASK__
+-
+__CONTEXT__
+- Organism:
+- Sample / tissue:
+- Assay / data type:
+- Genome build / software versions:
+__CONSTRAINTS__
+- Do:
+- Do not:
+__OUTPUT_FORMAT__
+-
+__FALLBACK__
+- If ..., return ... rather than guessing.
+&lt;data&gt; ... &lt;/data&gt;</pre>
+<pre class="skel">I'd like you to [task, and what form the answer
+should take]. This is from [organism], [tissue or
+sample type], measured by [assay], using [genome
+build / software versions]. Please [rules it should
+follow], and don't [things it should avoid]. If
+[something doesn't fit], tell me that rather than
+guessing.
+
+[pasted data]</pre>
+      </div>
+      <div class="tip" style="margin-top:7px;">
+        <strong>Labels are a checklist for you,</strong> not a syntax the model needs. Paste the source material instead of relying on the model's memory, and explicitly allow it to say "unknown."
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+
+    <div class="col">
+      <div class="card">
+        <div class="card-head green-head"><span class="icon">☑</span> Rubric — check every prompt</div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Component</th><th>Ask yourself</th></tr></thead>
+            <tbody>
+              <tr><td class="comp">TASK</td><td>Did I say what I want done, starting with a verb?</td></tr>
+              <tr><td class="comp">CONTEXT</td><td>Every fact the model couldn't guess: organism, tissue, assay, versions?</td></tr>
+              <tr><td class="comp">FRAME</td><td>Did I say how it should reason?</td></tr>
+              <tr><td class="comp">AUDIENCE</td><td>Did I say who will read it?</td></tr>
+              <tr><td class="comp">STYLE / TONE</td><td>Did I say how it should read?</td></tr>
+              <tr><td class="comp">CONSTRAINTS</td><td>Rules it would otherwise break? Measurable, ~8 or fewer.</td></tr>
+              <tr><td class="comp">OUTPUT FORMAT</td><td>Exact shape, if it goes into code or a spreadsheet?</td></tr>
+              <tr><td class="comp">EXAMPLES</td><td>Would one worked example save a paragraph?</td></tr>
+              <tr><td class="comp">FALLBACK</td><td>What to do when input doesn't fit? "Unknown" over a guess?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head amber-head"><span class="icon">⚠</span> Biology pitfalls to avoid</div>
+        <div class="card-body">
+          <table>
+            <tbody>
+              <tr><td class="comp">Unstated organism</td><td>You'll get human biology.</td></tr>
+              <tr><td class="comp">Paralog collapse</td><td>Say symbols are mapped orthologs; flag merged paralogs.</td></tr>
+              <tr><td class="comp">Symbols only</td><td>Use stable IDs (Ensembl) and name the convention.</td></tr>
+              <tr><td class="comp">No build / versions</td><td>State genome build and package versions.</td></tr>
+              <tr><td class="comp">Memory recall</td><td>Never ask for citations or numbers from memory.</td></tr>
+              <tr><td class="comp">Story as analysis</td><td>Run the enrichment test first, then interpret.</td></tr>
+              <tr><td class="comp">Leading question</td><td>"If my interpretation isn't supported, say so first."</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-head teal-head"><span class="icon">✓</span> Match the check to the claim</div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Output</th><th>Check against</th></tr></thead>
+            <tbody>
+              <tr><td class="comp">Gene identity, function</td><td>Ensembl, NCBI Gene, UniProt, ZFIN / FlyBase / WormBase / MGI</td></tr>
+              <tr><td class="comp">Citations</td><td>Open via PubMed or DOI; confirm it says what's claimed</td></tr>
+              <tr><td class="comp">Enrichment claims</td><td>A formal enrichment test on your data</td></tr>
+              <tr><td class="comp">Code</td><td>Run on a small known dataset; check package docs</td></tr>
+              <tr><td class="comp">Numbers</td><td>Your data, protocol, datasheet, primer database</td></tr>
+              <tr><td class="comp">Extractions</td><td>Spot-check a random sample against the source</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head gray-head"><span class="icon">☰</span> Log every research prompt</div>
+        <div class="card-body">
+          <table>
+            <tbody>
+              <tr><td class="comp">Model + version</td><td>e.g. name, version, date accessed</td></tr>
+              <tr><td class="comp">Interface</td><td>Web chat / API / coding agent / local</td></tr>
+              <tr><td class="comp">Full prompt</td><td>Verbatim, version-controlled</td></tr>
+              <tr><td class="comp">Inputs</td><td>Exact file, version, or md5</td></tr>
+              <tr><td class="comp">Iterations</td><td>What changed and why, not just the final version</td></tr>
+              <tr><td class="comp">Validation</td><td>How the output was checked</td></tr>
+            </tbody>
+          </table>
+          <div class="tip" style="margin-top:7px;">
+            <strong>Same prompt, different answer:</strong> LLMs sample each token, so outputs vary between runs. Treat every output as a draft to verify.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Prompting LLMs for Biological Research &nbsp;·&nbsp; MDIBL Comparative Genomics and Data Science Core</span>
+    <span>mdibl.org &nbsp;·&nbsp; <a href="mailto:CGDS@mdibl.org">CGDS@mdibl.org</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

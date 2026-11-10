@@ -1,0 +1,11 @@
+SIMULATED NOTES FOR TEACHING - killifish heart aging RNA-seq analysis
+(These notes are complete: nothing else was done.)
+
+- Samples: whole hearts, Nothobranchius furzeri males, 6 weeks (n = 5) and 20 weeks (n = 5); sample sheet in samples.tsv
+- Libraries sequenced in two batches (A, B), balanced across ages
+- Trimmed with fastp 0.23.4, default settings
+- Salmon 1.10.2 against the Ensembl release 110 N. furzeri transcriptome, --validateMappings
+- tximport -> DESeq2 1.44, design ~ batch + age, reference level 6 weeks
+- padj < 0.05 (BH) and log2FoldChange > 1; apeglm shrinkage for reported fold changes
+- Human orthologs assigned by BLASTP (e-value < 1e-10); "_dup" marks two killifish paralogs mapping to one human symbol
+- No enrichment analysis performed yet
