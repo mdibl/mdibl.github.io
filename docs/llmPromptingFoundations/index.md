@@ -4,6 +4,19 @@
 
 ---
 
+## Before the Workshop
+
+- **Get access to an LLM** your institution has approved for research use. You'll run prompts throughout the session.
+- **Check your institution's AI and data-sharing policy**, and any data use agreements that cover your data. Never paste patient identifiers, clinical metadata, or a collaborator's unpublished results into a hosted AI tool unless you've confirmed it's allowed. Prompt quality doesn't matter if the data shouldn't have been shared.
+- **Download the case-study files.** They are simulated for teaching, so they're safe to paste anywhere:
+    - [`killifish_heart_DEGs.csv`](../llmPrompting/data/killifish_heart_DEGs.csv): upregulated genes, *Nothobranchius furzeri* heart, 20-week vs 6-week males
+    - [`samples.tsv`](../llmPrompting/data/samples.tsv): the sample sheet
+    - [`methods_notes.txt`](../llmPrompting/data/methods_notes.txt): the analysis notes
+    - [`llm_answer_to_verify.txt`](../llmPrompting/data/llm_answer_to_verify.txt): used in Part 4
+    - [`README.txt`](../llmPrompting/data/README.txt): what each file contains
+
+---
+
 ## Why This Matters
 
 !!! abstract ":material-timer-outline: 10 minutes — Before reading on..."
