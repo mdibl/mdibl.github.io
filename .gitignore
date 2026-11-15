@@ -5,3 +5,10 @@ CLAUDE.md
 memory/
 .Rproj.user
 .venv/
+
+# Computational Workflows workshop outputs
+docs/workflows/data/
+docs/workflows/work/
+docs/workflows/results/
+docs/workflows/.nextflow/
+docs/workflows/.nextflow.log*

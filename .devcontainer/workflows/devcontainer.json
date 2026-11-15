@@ -1,0 +1,17 @@
+{
+  "name": "Computational Workflows",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb"
+  },
+  "containerEnv": {
+    "NXF_VER": "25.10.4",
+    "NXF_ANSI_LOG": "true"
+  },
+  "postCreateCommand": "bash /workspaces/mdibl.github.io/docs/workflows/setup.sh",
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/workflows"
+}

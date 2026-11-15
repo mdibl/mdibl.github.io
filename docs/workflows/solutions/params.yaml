@@ -1,0 +1,9 @@
+# params.yaml
+# Settings about YOUR ANALYSIS: what goes in, where results go,
+# and which options to use.
+
+input:  'samplesheet.csv'   # the sample sheet you wrote
+outdir: 'results'           # where finished results are saved
+
+aligner: 'star_salmon'      # align reads with STAR, count them with Salmon
+skip_bbsplit: true          # skip a contamination-screening step we do not need today

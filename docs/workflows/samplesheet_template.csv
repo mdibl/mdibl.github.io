@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2,strandedness
+WT_REP1,data/fastq/SRR6357070_1.fastq.gz,data/fastq/SRR6357070_2.fastq.gz,auto
