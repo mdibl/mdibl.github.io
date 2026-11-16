@@ -40,11 +40,11 @@ This series of workshops is designed for undergraduate researchers and students 
 
     ---
 
-    Learn how bioinformatics pipelines connect raw sequencing reads to analysis-ready outputs. Covers workflow concepts, running nf-core pipelines, and moving between local, cloud, and HPC environments.
+    Learn how bioinformatics pipelines connect raw sequencing reads to analysis-ready outputs. Prepare a sample sheet, run the nf-core/rnaseq pipeline with containers, troubleshoot common errors, and read the results in MultiQC. No programming experience needed.
 
-    **~90 minutes &nbsp;·&nbsp; Coming Soon**
+    **~2 hours &nbsp;·&nbsp; Available now**
 
-    [:octicons-arrow-right-24: Learn more](../workflows/index.md){ .md-button }
+    [:octicons-arrow-right-24: Start the workshop](../workflows/index.md){ .md-button .md-button--primary }
 
 </div>
 
