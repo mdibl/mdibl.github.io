@@ -7,3 +7,10 @@ memory/
 .venv/
 .DS_Store
 __pycache__/
+
+# Computational Workflows workshop outputs
+docs/workflows/data/
+docs/workflows/work/
+docs/workflows/results/
+docs/workflows/.nextflow/
+docs/workflows/.nextflow.log*
