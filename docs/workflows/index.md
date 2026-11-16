@@ -236,11 +236,22 @@ On an HPC cluster or in the cloud, this is the file where you would say "send jo
 ??? success "Check your work"
     You should now have three new files next to `samplesheet_template.csv`:
 
+    Run this in the **terminal**, not in one of your files:
+
     ```bash
     ls samplesheet.csv params.yaml codespaces.config
     ```
 
     Finished copies are in the `solutions/` folder if you need them: `cp solutions/* .`
+
+!!! warning "Only settings go in these files"
+    If a command gets pasted into `params.yaml` or `codespaces.config` by mistake, the pipeline will not start. For example, a stray `ls` line in `codespaces.config` gives:
+
+    ```text
+    ERROR ~ Unknown method invocation `ls` on _parse_closure5 type
+    ```
+
+    Open the file, delete anything that isn't part of the example above, and save.
 
 ---
 
