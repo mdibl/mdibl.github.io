@@ -436,6 +436,41 @@ The command to run the pipeline looks like this. We will go through each piece i
 ??? success "Answer"
     Without `-profile docker`, Nextflow tries to run each tool directly on our computer, where none of them are installed. That is exactly what happened in Exercise 3.1. The error shows `Command exit status: 127` (the code for "command not found") and points to a **work directory**, where all the details are kept. We will look inside one in Part 7.
 
+???+ question "Exercise 5.4: An error the sample sheet check can't catch"
+    Containers are back on, and every column of this sample sheet is valid:
+
+    ```bash
+    nextflow run nf-core/rnaseq -r 3.27.0 \
+        -profile test,docker \
+        -params-file params.yaml \
+        -c codespaces.config \
+        --input errors/samplesheet_error4.csv
+    ```
+
+    This time the pipeline starts working: you will see steps finish with a green ✔. Then, a few minutes in, one step fails. Read the error and answer:
+
+    - Which step failed? (Look at the line starting `Error executing process`.)
+    - What did the tool itself say? (Look under `Command error:`.)
+    - Which sample is affected, and what is wrong with its rows in `errors/samplesheet_error4.csv`?
+
+??? success "Answer"
+    The step `FQ_LINT` failed. It is a module that checks FASTQ files are valid before anything else uses them. Under `Command error:` it says:
+
+    ```text
+    WT_REP1_1.merged.fastq.gz:200001:1: [S007] DuplicateNameValidator: duplicate name: '@SRR6357070.25017281 25017281/1'
+    ```
+
+    The two `WT_REP1` rows both point to `SRR6357070`. The second row should be `SRR6357071`. The pipeline merged the file with itself, so every read appears twice. The clues:
+
+    - `merged.fastq.gz`: the problem appeared when the two runs for `WT_REP1` were combined.
+    - `200001`: the first repeated read is on line 200,001. Each file has 50,000 reads × 4 lines = 200,000 lines, so the repeat starts exactly where the second file begins.
+    - `SRR6357070`: the duplicated read comes from that run.
+
+    This is the most common sample sheet mistake there is: copying a row and forgetting to change the file names. Every column was a valid value, so the sample sheet check passed, and the pipeline only found the problem once it looked inside the files.
+
+    !!! tip "If this happens with your own data"
+        You do not need to start over. Fix the sample sheet and run the same command again with `-resume`. Steps that don't depend on the fixed rows are reused, and only the affected steps run again.
+
 !!! tip "How to read any pipeline error"
     1. **Scroll up** to the first red text. Later errors are often just side effects of the first one.
     2. Look for a **file name, row, or column**. The error usually names exactly what is wrong.
@@ -539,7 +574,7 @@ WT_REP1_1_fastqc.html  ← the output files
     Nextflow filled in the file names and settings for you. This is the same command you would have had to type by hand, for every sample, for every tool.
 
 !!! tip "Debugging with the work directory"
-    When a step fails, Nextflow prints its `Work dir:`. Go there and read `.command.err` to see the tool's own error, and `.command.sh` to see exactly what was run. You can find the failed run from Exercise 5.3 this way:
+    When a step fails, Nextflow prints its `Work dir:`. Go there and read `.command.err` to see the tool's own error, and `.command.sh` to see exactly what was run. You can find the failed `FQ_LINT` step from Exercise 5.4 this way:
 
     ```bash
     nextflow log
