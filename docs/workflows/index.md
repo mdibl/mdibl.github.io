@@ -227,7 +227,15 @@ The **config file** describes the computer, not the analysis. Our Codespace has 
 process {
     resourceLimits = [
         cpus:   4,
-        memory: '12.GB!!! success "Check your work: look at what's saved"
+        memory: '12.GB',
+        time:   '2.h'
+    ]
+}
+```
+
+On an HPC cluster or in the cloud, this is the file where you would say "send jobs to the SLURM scheduler" or "run on AWS". The sample sheet and parameters file would not change at all.
+
+!!! success "Check your work: look at what's saved"
     The pipeline reads the files **as they are saved on disk**, so check them from the terminal, not the editor. Run each of these in the **terminal**:
 
     ```bash
@@ -258,14 +266,6 @@ process {
     ```
 
     Run `cat` on the file to find the extra line, delete it in the editor, and `cat` it again to make sure it's gone.
-
-le, a stray `ls` line in `codespaces.config` gives:
-
-    ```text
-    ERROR ~ Unknown method invocation `ls` on _parse_closure5 type
-    ```
-
-    Open the file, delete anything that isn't part of the example above, and save.
 
 ---
 
