@@ -1145,6 +1145,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#part-3-dependency-hell-and-how-containers-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Dependency Hell, and How Containers Fix It
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Dependency Hell, and How Containers Fix It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency-hell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency hell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#part-4-how-a-nextflow-pipeline-is-built" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2887,6 +2926,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#part-3-dependency-hell-and-how-containers-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Dependency Hell, and How Containers Fix It
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Dependency Hell, and How Containers Fix It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency-hell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency hell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#part-4-how-a-nextflow-pipeline-is-built" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3339,86 +3417,62 @@
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">process</span><span class="w"> </span><span class="o">{</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">resourceLimits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nl">cpus:</span><span class="w">   </span><span class="mi">4</span><span class="o">,</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nl">memory:</span><span class="w"> </span><span class="s1">'12.GB!!! success "Check your work: look at what'</span><span class="n">s</span><span class="w"> </span><span class="n">saved</span><span class="s2">"</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s2">    The pipeline reads the files **as they are saved on disk**, so check them from the terminal, not the editor. Run each of these in the **terminal**:</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s2">    ```bash</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="s2">    cat samplesheet.csv</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="s2">    ```</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="s2">    ```bash</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="s2">    cat params.yaml</span>
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="s2">    ```</span>
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="s2">    ```bash</span>
-</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="s2">    cat codespaces.config</span>
-</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="s2">    ```</span>
-</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
-</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="s2">    Each one should match the examples above **exactly**, with nothing extra at the end. If something is wrong, fix it in the editor, check the tab shows **×**, and `cat` the file again.</span>
-</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
-</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="s2">    Finished copies are in the `solutions/` folder if you need them. This replaces all three files with the correct versions:</span>
-</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
-</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="s2">    ```bash</span>
-</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="s2">    cp solutions/* .</span>
-</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="s2">    ```</span>
-</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>
-</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="s2">!!! warning "</span><span class="n">Only</span><span class="w"> </span><span class="n">settings</span><span class="w"> </span><span class="n">go</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">files</span><span class="s2">"</span>
-</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="s2">    If a command gets pasted into `params.yaml` or `codespaces.config` by mistake, the pipeline will not start. For example, a stray `ls` line in `codespaces.config` gives:</span>
-</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>
-</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="s2">    ```text</span>
-</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="s2">    ERROR ~ Unknown method invocation `ls` on _parse_closure5 type</span>
-</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="s2">    ```</span>
-</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>
-</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="s2">    Run `cat` on the file to find the extra line, delete it in the editor, and `cat` it again to make sure it's gone.</span>
-</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>
-</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="s2">le, a stray `ls` line in `codespaces.config` gives:</span>
-</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a>
-</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="s2">    ```text</span>
-</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="s2">    ERROR ~ Unknown method invocation `ls` on _parse_closure5 type</span>
-</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="s2">    ```</span>
-</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a>
-</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="s2">    Open the file, delete anything that isn't part of the example above, and save.</span>
-</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a>
-</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="s2">---</span>
-</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a>
-</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="s2">## Part 3: Dependency Hell, and How Containers Fix It</span>
-</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a>
-</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="s2">Our pipeline uses more than 20 different programs: FastQC, Trim Galore, STAR, Salmon, SAMtools, Picard, MultiQC, and more. Each one has to be installed, and each one depends on other software being installed in just the right versions.</span>
-</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a>
-</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="s2">???+ question "</span><span class="n">Exercise</span><span class="w"> </span><span class="mf">3.1</span><span class="o">:</span><span class="w"> </span><span class="n">Try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tool</span><span class="s2">"</span>
-</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a><span class="s2">    SAMtools is one of the most common tools in genomics. Try to check its version:</span>
-</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a>
-</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="s2">    ```bash</span>
-</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="s2">    samtools --version</span>
-</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a><span class="s2">    ```</span>
-</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a>
-</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a><span class="s2">??? success "</span><span class="n">What</span><span class="w"> </span><span class="n">happened</span><span class="o">?</span><span class="s2">"</span>
-</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a><span class="s2">    ```text</span>
-</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a><span class="s2">    bash: samtools: command not found</span>
-</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a><span class="s2">    ```</span>
-</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a>
-</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a><span class="s2">    It is not installed. You could install it, and then do the same for 20 more tools. That is where the trouble starts.</span>
-</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a>
-</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a><span class="s2">### Dependency hell</span>
-</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a>
-</span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a><span class="s2">Imagine you need two tools:</span>
-</span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a>
-</span><span id="__span-9-71"><a id="__codelineno-9-71" name="__codelineno-9-71" href="#__codelineno-9-71"></a><span class="s2">- **Tool A** was written years ago and only works with **SAMtools 1.9**</span>
-</span><span id="__span-9-72"><a id="__codelineno-9-72" name="__codelineno-9-72" href="#__codelineno-9-72"></a><span class="s2">- **Tool B** is brand new and needs **SAMtools 1.21**</span>
-</span><span id="__span-9-73"><a id="__codelineno-9-73" name="__codelineno-9-73" href="#__codelineno-9-73"></a>
-</span><span id="__span-9-74"><a id="__codelineno-9-74" name="__codelineno-9-74" href="#__codelineno-9-74"></a><span class="s2">A computer normally has only one `samtools`. Install one version and you break the other tool. Multiply this across dozens of tools, each with its own requirements, and you get **dependency hell**: hours spent installing and uninstalling software, and an analysis that works on your laptop but nowhere else. Even worse, if a colleague runs "</span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="err">"</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">versions</span><span class="o">,</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">slightly</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">results</span><span class="o">.</span>
-</span><span id="__span-9-75"><a id="__codelineno-9-75" name="__codelineno-9-75" href="#__codelineno-9-75"></a>
-</span><span id="__span-9-76"><a id="__codelineno-9-76" name="__codelineno-9-76" href="#__codelineno-9-76"></a><span class="err">###</span><span class="w"> </span><span class="n">Containers</span>
-</span><span id="__span-9-77"><a id="__codelineno-9-77" name="__codelineno-9-77" href="#__codelineno-9-77"></a>
-</span><span id="__span-9-78"><a id="__codelineno-9-78" name="__codelineno-9-78" href="#__codelineno-9-78"></a><span class="n">A</span><span class="w"> </span><span class="o">**</span><span class="n">container</span><span class="o">**</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">sealed</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">holds</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="o">**</span><span class="n">plus</span><span class="w"> </span><span class="n">everything</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">run</span><span class="o">**,</span><span class="w"> </span><span class="n">frozen</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">version</span><span class="o">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tool</span><span class="o">;</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">just</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">box</span><span class="o">.</span><span class="w"> </span><span class="n">Each</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">isolated</span><span class="o">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">conflict</span><span class="o">.</span>
-</span><span id="__span-9-79"><a id="__codelineno-9-79" name="__codelineno-9-79" href="#__codelineno-9-79"></a>
-</span><span id="__span-9-80"><a id="__codelineno-9-80" name="__codelineno-9-80" href="#__codelineno-9-80"></a><span class="n">Our</span><span class="w"> </span><span class="n">Codespace</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="o">**</span><span class="n">Docker</span><span class="o">**,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">runs</span><span class="w"> </span><span class="n">containers</span><span class="o">.</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">SAMtools</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nl">container:</span>
-</span><span id="__span-9-81"><a id="__codelineno-9-81" name="__codelineno-9-81" href="#__codelineno-9-81"></a>
-</span><span id="__span-9-82"><a id="__codelineno-9-82" name="__codelineno-9-82" href="#__codelineno-9-82"></a><span class="err">```</span><span class="n">bash</span>
-</span><span id="__span-9-83"><a id="__codelineno-9-83" name="__codelineno-9-83" href="#__codelineno-9-83"></a><span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">rm</span><span class="w"> </span><span class="n">quay</span><span class="o">.</span><span class="na">io</span><span class="s">/biocontainers/</span><span class="nl">samtools:</span><span class="mf">1.9</span><span class="o">--</span><span class="n">h91753b0_8</span><span class="w"> </span><span class="n">samtools</span><span class="w"> </span><span class="o">--</span><span class="n">version</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nl">memory:</span><span class="w"> </span><span class="s1">'12.GB'</span><span class="o">,</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="nl">time:</span><span class="w">   </span><span class="s1">'2.h'</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="o">]</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="o">}</span>
+</span></code></pre></div>
+<p>On an HPC cluster or in the cloud, this is the file where you would say "send jobs to the SLURM scheduler" or "run on AWS". The sample sheet and parameters file would not change at all.</p>
+<div class="admonition success">
+<p class="admonition-title">Check your work: look at what's saved</p>
+<p>The pipeline reads the files <strong>as they are saved on disk</strong>, so check them from the terminal, not the editor. Run each of these in the <strong>terminal</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span>samplesheet.csv
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span>params.yaml
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cat<span class="w"> </span>codespaces.config
+</span></code></pre></div>
+<p>Each one should match the examples above <strong>exactly</strong>, with nothing extra at the end. If something is wrong, fix it in the editor, check the tab shows <strong>×</strong>, and <code>cat</code> the file again.</p>
+<p>Finished copies are in the <code>solutions/</code> folder if you need them. This replaces all three files with the correct versions:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cp<span class="w"> </span>solutions/*<span class="w"> </span>.
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Only settings go in these files</p>
+<p>If a command gets pasted into <code>params.yaml</code> or <code>codespaces.config</code> by mistake, the pipeline will not start. For example, a stray <code>ls</code> line in <code>codespaces.config</code> gives:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ERROR ~ Unknown method invocation `ls` on _parse_closure5 type
+</span></code></pre></div>
+<p>Run <code>cat</code> on the file to find the extra line, delete it in the editor, and <code>cat</code> it again to make sure it's gone.</p>
+</div>
+<hr>
+<h2 id="part-3-dependency-hell-and-how-containers-fix-it">Part 3: Dependency Hell, and How Containers Fix It</h2>
+<p>Our pipeline uses more than 20 different programs: FastQC, Trim Galore, STAR, Salmon, SAMtools, Picard, MultiQC, and more. Each one has to be installed, and each one depends on other software being installed in just the right versions.</p>
+<details class="question" open="open">
+<summary>Exercise 3.1: Try to run a tool</summary>
+<p>SAMtools is one of the most common tools in genomics. Try to check its version:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>samtools<span class="w"> </span>--version
+</span></code></pre></div>
+</details>
+<details class="success">
+<summary>What happened?</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>bash: samtools: command not found
+</span></code></pre></div>
+<p>It is not installed. You could install it, and then do the same for 20 more tools. That is where the trouble starts.</p>
+</details>
+<h3 id="dependency-hell">Dependency hell</h3>
+<p>Imagine you need two tools:</p>
+<ul>
+<li><strong>Tool A</strong> was written years ago and only works with <strong>SAMtools 1.9</strong></li>
+<li><strong>Tool B</strong> is brand new and needs <strong>SAMtools 1.21</strong></li>
+</ul>
+<p>A computer normally has only one <code>samtools</code>. Install one version and you break the other tool. Multiply this across dozens of tools, each with its own requirements, and you get <strong>dependency hell</strong>: hours spent installing and uninstalling software, and an analysis that works on your laptop but nowhere else. Even worse, if a colleague runs "the same" analysis with different tool versions, they may get slightly different results.</p>
+<h3 id="containers">Containers</h3>
+<p>A <strong>container</strong> is a sealed box that holds one tool <strong>plus everything it needs to run</strong>, frozen at a specific version. You do not install the tool; you just run the box. Each box is isolated, so different versions never conflict.</p>
+<p>Our Codespace has <strong>Docker</strong>, a program that runs containers. Run SAMtools 1.9 from a container:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>quay.io/biocontainers/samtools:1.9--h91753b0_8<span class="w"> </span>samtools<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span></code></pre></div>
 <p>Now run SAMtools 1.21 from a different container, on the same computer:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>quay.io/biocontainers/samtools:1.21--h50ea8bc_0<span class="w"> </span>samtools<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>quay.io/biocontainers/samtools:1.21--h50ea8bc_0<span class="w"> </span>samtools<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">The first run of each command is slow</p>
@@ -3459,7 +3513,7 @@
 <details class="question" open="open">
 <summary>Exercise 3.2: Check what's on your computer</summary>
 <p>List the containers Docker has downloaded so far:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>images
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker<span class="w"> </span>images
 </span></code></pre></div>
 <p>Run this again after the pipeline finishes. How many containers did the pipeline download for you?</p>
 </details>
@@ -3511,11 +3565,11 @@
 <details class="question" open="open">
 <summary>Exercise 4.1: Look inside the pipeline</summary>
 <p>The Codespace already downloaded the pipeline code. Look at its top-level folders:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq
 </span></code></pre></div>
 <p>Now list the modules and subworkflows:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/modules/nf-core
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/subworkflows/nf-core
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/modules/nf-core
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>ls<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/subworkflows/nf-core
 </span></code></pre></div>
 <p>Can you spot modules for tools mentioned in Part 3 (<code>fastqc</code>, <code>samtools</code>, <code>salmon</code>, <code>star</code>, <code>multiqc</code>)?</p>
 </details>
@@ -3527,11 +3581,11 @@
 <p>The command to run the pipeline looks like this. We will go through each piece in Part 6.</p>
 <details class="question" open="open">
 <summary>Exercise 5.1: A broken sample sheet</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span>--input<span class="w"> </span>errors/samplesheet_error1.csv
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span>--input<span class="w"> </span>errors/samplesheet_error1.csv
 </span></code></pre></div>
 <p>Nextflow checks the sample sheet <em>before</em> doing any work, so this fails in seconds. Read the red text. Which row and which column is the problem? Open <code>errors/samplesheet_error1.csv</code> and compare it to your own sample sheet.</p>
 <div class="admonition note">
@@ -3555,10 +3609,10 @@
 <details class="question" open="open">
 <summary>Exercise 5.3: Forgetting the containers</summary>
 <p>This time the sample sheet is correct, but we "forget" to tell Nextflow to use Docker:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span>-profile<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span>-profile<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config
 </span></code></pre></div>
 <p>This one gets further before it fails. Read the error. What does <code>command not found</code> remind you of?</p>
 </details>
@@ -3569,11 +3623,11 @@
 <details class="question" open="open">
 <summary>Exercise 5.4: An error the sample sheet check can't catch</summary>
 <p>Containers are back on, and every column of this sample sheet is valid:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span>--input<span class="w"> </span>errors/samplesheet_error4.csv
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span>--input<span class="w"> </span>errors/samplesheet_error4.csv
 </span></code></pre></div>
 <p>This time the pipeline starts working: you will see steps finish with a green ✔. Then, a few minutes in, one step fails. Read the error and answer:</p>
 <ul>
@@ -3585,7 +3639,7 @@
 <details class="success">
 <summary>Answer</summary>
 <p>The step <code>FQ_LINT</code> failed. It is a module that checks FASTQ files are valid before anything else uses them. Under <code>Command error:</code> it says:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>WT_REP1_1.merged.fastq.gz:200001:1: [S007] DuplicateNameValidator: duplicate name: '@SRR6357070.25017281 25017281/1'
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>WT_REP1_1.merged.fastq.gz:200001:1: [S007] DuplicateNameValidator: duplicate name: '@SRR6357070.25017281 25017281/1'
 </span></code></pre></div>
 <p>The two <code>WT_REP1</code> rows both point to <code>SRR6357070</code>. The second row should be <code>SRR6357071</code>. The pipeline merged the file with itself, so every read appears twice. The clues:</p>
 <ul>
@@ -3611,11 +3665,11 @@
 <hr>
 <h2 id="part-6-run-the-pipeline">Part 6: Run the Pipeline</h2>
 <p>Now run it for real, with your sample sheet and containers turned on:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span>-resume
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.27.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span>-profile<span class="w"> </span>test,docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span>-params-file<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span>-c<span class="w"> </span>codespaces.config<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span>-resume
 </span></code></pre></div>
 <table>
 <thead>
@@ -3656,8 +3710,8 @@
 <p>Options with <strong>one dash</strong> (<code>-profile</code>, <code>-resume</code>) are settings for <strong>Nextflow</strong> itself. Options with <strong>two dashes</strong> (<code>--input</code>, <code>--outdir</code>) are <strong>pipeline parameters</strong>, the same settings you put in <code>params.yaml</code>.</p>
 </div>
 <p>This takes <strong>about 15 to 30 minutes</strong> the first time, mostly to download containers. While it runs, watch the screen:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[a1/b2c3d4] NFC…:FASTQ_QC_TRIM_FILTER_SETSTRANDEDNESS:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC (WT_REP1)  [100%] 5 of 5 ✔
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>[e5/f6a7b8] NFC…:FASTQ_QC_TRIM_FILTER_SETSTRANDEDNESS:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE (WT_REP2) [ 60%] 3 of 5
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>[a1/b2c3d4] NFC…:FASTQ_QC_TRIM_FILTER_SETSTRANDEDNESS:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC (WT_REP1)  [100%] 5 of 5 ✔
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>[e5/f6a7b8] NFC…:FASTQ_QC_TRIM_FILTER_SETSTRANDEDNESS:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE (WT_REP2) [ 60%] 3 of 5
 </span></code></pre></div>
 <p>Each line is one <strong>module</strong>. Read the long name from right to left and you will see the nesting from Part 4: the module (<code>FASTQC</code>) inside its subworkflows inside the workflow. The counter shows how many samples have finished that step, and the code at the start (<code>a1/b2c3d4</code>) tells you where that step's work directory is.</p>
 <details class="question" open="open">
@@ -3672,7 +3726,7 @@
 <p><code>FASTQC</code> runs once per <strong>sample</strong>, not per row: 5 samples, not 7, because the two <code>WT_REP1</code> rows and the two <code>RAP1_UNINDUCED_REP2</code> rows were merged first (by a module called <code>CAT_FASTQ</code>). <code>STAR_ALIGN</code> runs inside the <code>ALIGN_STAR</code> subworkflow.</p>
 </details>
 <p>When it finishes you will see a green summary:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>-[nf-core/rnaseq] Pipeline completed successfully -
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>-[nf-core/rnaseq] Pipeline completed successfully -
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">What <code>-resume</code> saves you</p>
@@ -3681,36 +3735,36 @@
 <hr>
 <h2 id="part-7-inside-the-work-directory">Part 7: Inside the <code>work/</code> Directory</h2>
 <p>Every single task (one module, run on one sample) gets its own private folder inside <code>work/</code>. This is where the tool actually ran.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls<span class="w"> </span>work
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ls<span class="w"> </span>work
 </span></code></pre></div>
 <p>You will see dozens of folders with two-character names like <code>a1</code>. Each one holds folders with long random names. That code is the same one printed at the start of each line in Part 6.</p>
 <p>To find the work directory for a particular step, ask Nextflow for a list of every task from the last run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>nextflow<span class="w"> </span>log<span class="w"> </span>last<span class="w"> </span>-f<span class="w"> </span>name,status,workdir<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>FASTQC
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>nextflow<span class="w"> </span>log<span class="w"> </span>last<span class="w"> </span>-f<span class="w"> </span>name,status,workdir<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>FASTQC
 </span></code></pre></div>
 <p>Copy one of the paths and look inside, including the hidden files (<code>-a</code>):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ls<span class="w"> </span>-a<span class="w"> </span>&lt;paste-the-path-here&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ls<span class="w"> </span>-a<span class="w"> </span>&lt;paste-the-path-here&gt;
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>.command.sh      ← the exact command that was run
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>.command.run     ← the wrapper Nextflow used to run it (sets up the container)
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>.command.out     ← what the tool printed while it ran
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>.command.err     ← error messages from the tool
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>.command.log     ← .command.out and .command.err together
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>.exitcode        ← 0 means success; anything else means failure
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>SRR...fastq.gz   ← the input files (links, not copies)
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>WT_REP1_1_fastqc.html  ← the output files
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>.command.sh      ← the exact command that was run
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>.command.run     ← the wrapper Nextflow used to run it (sets up the container)
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>.command.out     ← what the tool printed while it ran
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>.command.err     ← error messages from the tool
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>.command.log     ← .command.out and .command.err together
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>.exitcode        ← 0 means success; anything else means failure
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>SRR...fastq.gz   ← the input files (links, not copies)
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>WT_REP1_1_fastqc.html  ← the output files
 </span></code></pre></div>
 <details class="question" open="open">
 <summary>Exercise 7.1: What actually ran?</summary>
 <p>Look at the command and the exit code:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cat<span class="w"> </span>&lt;paste-the-path-here&gt;/.command.sh
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>cat<span class="w"> </span>&lt;paste-the-path-here&gt;/.exitcode
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>cat<span class="w"> </span>&lt;paste-the-path-here&gt;/.command.sh
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>cat<span class="w"> </span>&lt;paste-the-path-here&gt;/.exitcode
 </span></code></pre></div>
 <p>Nextflow filled in the file names and settings for you. This is the same command you would have had to type by hand, for every sample, for every tool.</p>
 </details>
 <div class="admonition tip">
 <p class="admonition-title">Debugging with the work directory</p>
 <p>When a step fails, Nextflow prints its <code>Work dir:</code>. Go there and read <code>.command.err</code> to see the tool's own error, and <code>.command.sh</code> to see exactly what was run. You can find the failed <code>FQ_LINT</code> step from Exercise 5.4 this way:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>nextflow<span class="w"> </span>log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>nextflow<span class="w"> </span>log
 </span></code></pre></div>
 <p>Pick the run name with status <code>ERR</code>, then run <code>nextflow log &lt;run-name&gt; -f name,status,workdir | grep FAILED</code>.</p>
 </div>
@@ -3722,21 +3776,21 @@
 <h2 id="part-8-results-and-multiqc">Part 8: Results and MultiQC</h2>
 <h3 id="the-output-directory">The output directory</h3>
 <p>Finished files are copied from <code>work/</code> into the <code>results/</code> folder you named in <code>params.yaml</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ls<span class="w"> </span>results
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>ls<span class="w"> </span>results
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>results/
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>├── fastqc/              ← read quality, before trimming
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>├── trimgalore/          ← trimming reports
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>├── star_salmon/         ← alignment and gene counts
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>│   ├── salmon.merged.gene_counts.tsv   ← the gene count table
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>│   ├── salmon.merged.gene_tpm.tsv      ← normalized expression (TPM)
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>│   ├── WT_REP1/ …                      ← one folder per sample
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>│   └── …
-</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>├── salmon/              ← counts from Salmon run directly on the reads
-</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>├── multiqc/
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>│   └── star_salmon/
-</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>│       └── multiqc_report.html         ← START HERE
-</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>└── pipeline_info/       ← what ran, when, with which versions
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>results/
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>├── fastqc/              ← read quality, before trimming
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>├── trimgalore/          ← trimming reports
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>├── star_salmon/         ← alignment and gene counts
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>│   ├── salmon.merged.gene_counts.tsv   ← the gene count table
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>│   ├── salmon.merged.gene_tpm.tsv      ← normalized expression (TPM)
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>│   ├── WT_REP1/ …                      ← one folder per sample
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>│   └── …
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>├── salmon/              ← counts from Salmon run directly on the reads
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>├── multiqc/
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>│   └── star_salmon/
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>│       └── multiqc_report.html         ← START HERE
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>└── pipeline_info/       ← what ran, when, with which versions
 </span></code></pre></div>
 <p>Your folder will contain a few more folders than this, one for each quality-control tool.</p>
 <div class="admonition success">
@@ -3747,7 +3801,7 @@
 <p>The gene count table is what you take into differential expression analysis. See our <a href="../bulkDGE/">Bulk RNA-seq workshop</a>.</p>
 <details class="question" open="open">
 <summary>Exercise 8.1: Look at your gene counts</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>head<span class="w"> </span>-5<span class="w"> </span>results/star_salmon/salmon.merged.gene_counts.tsv
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>head<span class="w"> </span>-5<span class="w"> </span>results/star_salmon/salmon.merged.gene_counts.tsv
 </span></code></pre></div>
 <p>How many sample columns are there? Do the column names match your sample sheet?</p>
 </details>
@@ -3811,29 +3865,29 @@
 <hr>
 <h2 id="part-9-if-time-how-a-module-works">Part 9 (if time): How a Module Works</h2>
 <p>Let's open the FastQC module and see how one step is built:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>code<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/modules/nf-core/fastqc/main.nf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>code<span class="w"> </span>~/.nextflow/assets/nf-core/rnaseq/modules/nf-core/fastqc/main.nf
 </span></code></pre></div>
 <p>You do not need to understand every line. Look for these parts:</p>
-<div class="language-groovy highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">process</span><span class="w"> </span><span class="n">FASTQC</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="n">tag</span><span class="w"> </span><span class="s2">"${meta.id}"</span><span class="w">                                        </span><span class="c1">// ① label shown on screen: the sample name</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="n">label</span><span class="w"> </span><span class="s1">'process_low'</span><span class="w">                                     </span><span class="c1">// ② how much CPU and memory to ask for</span>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">    </span><span class="n">container</span><span class="w"> </span><span class="s2">"... 'quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0' }"</span><span class="w">  </span><span class="c1">// ③ the exact container</span>
-</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
-</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="nl">input:</span>
-</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="n">reads</span><span class="o">,</span><span class="w"> </span><span class="nl">stageAs:</span><span class="w"> </span><span class="s1">'?/*'</span><span class="o">)</span><span class="w">            </span><span class="c1">// ④ what comes in: sample info + FASTQ files</span>
-</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
-</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">    </span><span class="nl">output:</span>
-</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="s2">"*.html"</span><span class="o">),</span><span class="w"> </span><span class="nl">emit:</span><span class="w"> </span><span class="n">html</span><span class="w">             </span><span class="c1">// ⑤ what goes out: the reports</span>
-</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="s2">"*.zip"</span><span class="o">),</span><span class="w">  </span><span class="nl">emit:</span><span class="w"> </span><span class="n">zip</span>
-</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>
-</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">    </span><span class="nl">script:</span>
-</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">    </span><span class="s2">"""</span>
-</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="s2">    fastqc \\</span>
-</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="s2">        --threads ${task.cpus} \\</span>
-</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="s2">        ${renamed_files}                                     // ⑥ the actual command</span>
-</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="s2">    """</span>
-</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="o">}</span>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">process</span><span class="w"> </span><span class="n">FASTQC</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="n">tag</span><span class="w"> </span><span class="s2">"${meta.id}"</span><span class="w">                                        </span><span class="c1">// ① label shown on screen: the sample name</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">    </span><span class="n">label</span><span class="w"> </span><span class="s1">'process_low'</span><span class="w">                                     </span><span class="c1">// ② how much CPU and memory to ask for</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="n">container</span><span class="w"> </span><span class="s2">"... 'quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0' }"</span><span class="w">  </span><span class="c1">// ③ the exact container</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">    </span><span class="nl">input:</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="n">reads</span><span class="o">,</span><span class="w"> </span><span class="nl">stageAs:</span><span class="w"> </span><span class="s1">'?/*'</span><span class="o">)</span><span class="w">            </span><span class="c1">// ④ what comes in: sample info + FASTQ files</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">    </span><span class="nl">output:</span>
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="s2">"*.html"</span><span class="o">),</span><span class="w"> </span><span class="nl">emit:</span><span class="w"> </span><span class="n">html</span><span class="w">             </span><span class="c1">// ⑤ what goes out: the reports</span>
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="n">val</span><span class="o">(</span><span class="n">meta</span><span class="o">),</span><span class="w"> </span><span class="n">path</span><span class="o">(</span><span class="s2">"*.zip"</span><span class="o">),</span><span class="w">  </span><span class="nl">emit:</span><span class="w"> </span><span class="n">zip</span>
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>
+</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w">    </span><span class="nl">script:</span>
+</span><span id="__span-39-15"><a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="w">    </span><span class="s2">"""</span>
+</span><span id="__span-39-16"><a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a><span class="s2">    fastqc \\</span>
+</span><span id="__span-39-17"><a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="s2">        --threads ${task.cpus} \\</span>
+</span><span id="__span-39-18"><a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="s2">        ${renamed_files}                                     // ⑥ the actual command</span>
+</span><span id="__span-39-19"><a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a><span class="s2">    """</span>
+</span><span id="__span-39-20"><a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a><span class="o">}</span>
 </span></code></pre></div>
 <ol>
 <li><strong>tag</strong>: the sample name you saw on screen while the pipeline ran</li>
@@ -3885,7 +3939,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 16, 2026 01:20:55 UTC">Nov. 16, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 16, 2026 02:10:02 UTC">Nov. 16, 2026</span>
   </span>
 
     
