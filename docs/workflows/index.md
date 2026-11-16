@@ -152,7 +152,9 @@ A pipeline needs answers to three questions before it can start:
 Keeping these separate is what makes a pipeline reusable: you can run the same analysis on new data by changing only the sample sheet, or move to a bigger computer by changing only the config file.
 
 !!! tip "Creating a new file in VS Code"
-    In the Explorer, right-click on the `workflows` folder (the top level) → **New File...**, type the file name, and press ++enter++. The file opens in the editor. Save with ++ctrl+s++ / ++cmd+s++.
+    In the Explorer, right-click on the `workflows` folder (the top level) → **New File...**, type the file name, and press ++enter++. The file opens in the editor.
+
+    This Codespace **saves files automatically**. Before running the pipeline, wait a moment after typing and check that the file's tab shows an **×**, not a **●**. A ● means there are unsaved changes, and the pipeline will read the old version of the file.
 
 ### 2.1 The sample sheet
 
@@ -225,27 +227,39 @@ The **config file** describes the computer, not the analysis. Our Codespace has 
 process {
     resourceLimits = [
         cpus:   4,
-        memory: '12.GB',
-        time:   '2.h'
-    ]
-}
-```
-
-On an HPC cluster or in the cloud, this is the file where you would say "send jobs to the SLURM scheduler" or "run on AWS". The sample sheet and parameters file would not change at all.
-
-??? success "Check your work"
-    You should now have three new files next to `samplesheet_template.csv`:
-
-    Run this in the **terminal**, not in one of your files:
+        memory: '12.GB!!! success "Check your work: look at what's saved"
+    The pipeline reads the files **as they are saved on disk**, so check them from the terminal, not the editor. Run each of these in the **terminal**:
 
     ```bash
-    ls samplesheet.csv params.yaml codespaces.config
+    cat samplesheet.csv
     ```
 
-    Finished copies are in the `solutions/` folder if you need them: `cp solutions/* .`
+    ```bash
+    cat params.yaml
+    ```
+
+    ```bash
+    cat codespaces.config
+    ```
+
+    Each one should match the examples above **exactly**, with nothing extra at the end. If something is wrong, fix it in the editor, check the tab shows **×**, and `cat` the file again.
+
+    Finished copies are in the `solutions/` folder if you need them. This replaces all three files with the correct versions:
+
+    ```bash
+    cp solutions/* .
+    ```
 
 !!! warning "Only settings go in these files"
     If a command gets pasted into `params.yaml` or `codespaces.config` by mistake, the pipeline will not start. For example, a stray `ls` line in `codespaces.config` gives:
+
+    ```text
+    ERROR ~ Unknown method invocation `ls` on _parse_closure5 type
+    ```
+
+    Run `cat` on the file to find the extra line, delete it in the editor, and `cat` it again to make sure it's gone.
+
+le, a stray `ls` line in `codespaces.config` gives:
 
     ```text
     ERROR ~ Unknown method invocation `ls` on _parse_closure5 type

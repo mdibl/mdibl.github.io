@@ -13,5 +13,13 @@
     "NXF_ANSI_LOG": "true"
   },
   "postCreateCommand": "bash /workspaces/mdibl.github.io/docs/workflows/setup.sh",
-  "workspaceFolder": "/workspaces/mdibl.github.io/docs/workflows"
+  "workspaceFolder": "/workspaces/mdibl.github.io/docs/workflows",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 500
+      }
+    }
+  }
 }
