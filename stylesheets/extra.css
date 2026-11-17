@@ -168,6 +168,36 @@ div.center {
   text-align: center;
 }
 
+/* Course feedback banner: <div class="feedback-banner" markdown> on course pages */
+.md-typeset .feedback-banner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    margin: 1.2rem 0;
+    padding: 0.8rem 1rem;
+    border-left: 0.3rem solid var(--brand-blue);
+    border-radius: 0.2rem;
+    background-color: rgba(205, 197, 167, 0.35);   /* brand tan */
+}
+[data-md-color-scheme="slate"] .md-typeset .feedback-banner {
+    border-left-color: var(--brand-cyan);
+    background-color: rgba(205, 197, 167, 0.12);
+}
+.md-typeset .feedback-banner p {
+    flex: 1 1 18rem;
+    margin: 0;
+}
+.md-typeset .feedback-banner .twemoji {
+    color: var(--brand-blue);
+}
+[data-md-color-scheme="slate"] .md-typeset .feedback-banner .twemoji {
+    color: var(--brand-cyan);
+}
+.md-typeset .feedback-banner .md-button {
+    margin: 0;
+}
+
 /* ── Print / Save as PDF ───────────────────────────────────────────────── */
 @media print {
     /* Hide site chrome */
