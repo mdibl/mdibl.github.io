@@ -175,6 +175,8 @@ If an LLM touches your research, the prompt is part of your methods. Treat it li
 
 [:octicons-arrow-right-24: Open the Quick Reference](../llmPromptingGlossary/index.md){ .md-button .md-button--primary }
 
+--8<-- "course-feedback.md"
+
 ---
 
 *Questions? Contact the CGDS Core — [CGDS@mdibl.org](mailto:CGDS@mdibl.org)*

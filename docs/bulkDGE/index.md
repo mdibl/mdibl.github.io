@@ -2,6 +2,8 @@
 
 > **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -820,6 +822,10 @@ dotplot(gsea_res, x = "NES", showCategory = 15, label_format = 50) +
 
 !!! tip "What to look for"
     Given that `klf9` and `fkbp5` dominate the top hits, Hallmark gene sets related to **glucocorticoid signaling** or **TNF-alpha signaling via NF-kB** with a positive NES would be consistent with GR activation. Gene sets for **IL-6/JAK/STAT3 signaling** or **interferon response** in the significant list would connect the GR program to the immune modulation Hartig et al. described.
+
+---
+
+--8<-- "course-feedback.md"
 
 ---
 

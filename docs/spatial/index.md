@@ -3,6 +3,8 @@
 
 > **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -413,6 +415,12 @@ brain <- RenameIdents(brain, new.cluster.ids)
 
 SpatialDimPlot(brain, label = TRUE, label.size = 3)
 ```
+
+---
+
+--8<-- "course-feedback.md"
+
+---
 
 ## Further Reading
 

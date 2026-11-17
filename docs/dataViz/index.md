@@ -2,6 +2,8 @@
 
 > **Workshop:** ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -1000,6 +1002,10 @@ ggsave("my_favorite_plot.png", my_plot, width = 8, height = 6, dpi = 300)
     3. Go to [github.com/codespaces](https://github.com/codespaces), find your Codespace, click `···`, and select **Stop codespace**.
 
     Closing the browser tab is **not** enough — a suspended Codespace still counts against your monthly storage quota.
+
+---
+
+--8<-- "course-feedback.md"
 
 ---
 

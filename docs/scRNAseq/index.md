@@ -2,6 +2,8 @@
 
 > **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -622,6 +624,12 @@ pbmc <- RenameIdents(pbmc, new.cluster.ids)
 
 DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 ```
+
+---
+
+--8<-- "course-feedback.md"
+
+---
 
 ## Further Reading
 

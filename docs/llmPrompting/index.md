@@ -2,6 +2,8 @@
 
 > **Workshop:** ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 This workshop is for researchers and students who use, or want to use, large language models (LLMs) in biological research. No programming experience is needed. You'll work through one running case study, an RNA-seq experiment on the aging killifish heart, and practice writing, checking, and recording prompts.
 
 ---

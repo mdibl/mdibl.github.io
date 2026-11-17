@@ -2,6 +2,8 @@
 
 > **Workshop:** ~2 hours hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -707,6 +709,12 @@ To run nf-core/rnaseq on your own experiment, you change only two of the three f
 1. **Sample sheet:** one row per FASTQ pair, with good sample names.
 2. **Parameters file:** remove `-profile test` and give the pipeline your organism's reference, either with `genome:` or with `fasta:` and `gtf:`. Check the [usage documentation](https://nf-co.re/rnaseq/usage) for the right options.
 3. **Config file:** real data needs a bigger computer than a Codespace. At MDIBL, talk to the CGDS Core about running on our cluster or in the cloud.
+
+---
+
+--8<-- "course-feedback.md"
+
+---
 
 ## Further Reading
 

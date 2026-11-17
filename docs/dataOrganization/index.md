@@ -2,6 +2,8 @@
 
 > **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -1154,6 +1156,10 @@ A preview of the first rows:
 
 [:fontawesome-solid-file-excel: Download Clean Data (.xlsx)](survey_data_clean.xlsx){ .md-button .md-button--primary }
 [:fontawesome-solid-file-csv: Download Clean Data (.csv)](survey_data_clean.csv){ .md-button }
+
+---
+
+--8<-- "course-feedback.md"
 
 ---
 

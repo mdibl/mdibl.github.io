@@ -2,6 +2,8 @@
 
 > **Workshop:** ~90 minutes hands-on &nbsp;·&nbsp; This page stays open for independent study and office-hours follow-up.
 
+--8<-- "course-feedback.md"
+
 ---
 
 !!! info "Learning Objectives"
@@ -1000,6 +1002,10 @@ project_name/
     - Avoid `OLD/`, `misc/`, and version-number file names — use git instead.
     - Name files by what they contain, not by their position in a manuscript.
     - Always include a README.
+
+---
+
+--8<-- "course-feedback.md"
 
 ---
 
