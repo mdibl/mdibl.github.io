@@ -5,8 +5,8 @@
   <link rel="apple-touch-icon" href="{{ 'assets/images/mdibl-icon-512.png' | url }}">
 {% endblock %}
 
-{#- Announcement banner. To turn it off, empty the block:
-    {% block announce %}{% endblock %} -#}
-{% block announce %}
-  <b>Upcoming Course:</b> Introduction to Workflows and Nextflow Pipelines, Nov. 16. Open to INBRE network institution members. <a href="https://labcentral.mdibl.org/programs/view/781" target="_blank">Register here</a>.
-{% endblock %}
+{#- Announcement banner: OFF. To turn it off, the block must be completely
+    empty, all on one line with nothing between the tags, not even a line
+    break. Any whitespace inside it makes Material show an empty banner.
+    To turn it on, put the banner text between the tags. -#}
+{% block announce %}{% endblock %}

@@ -1,16 +1,3 @@
-???+ info "Upcoming Workshops"
-
-    **November 16th, 2026: 10 AM - 3 PM**
-
-    **Introduction to Workflows and Nextflow Pipelines**: The course covers the basic principles of computational workflows, introduces Nextflow's DSL2 workflow language, and gives participants hands-on experience launching their own pipelines to analyze real data.
-
-    * **Details**  
-        * **Hybrid:** join in person @ MDI Bio Lab, Bar Harbor, ME, or online via Zoom     
-        * Open to INBRE network institution members. 
-    * **Schedule** 
-        * Morning session (lecture): Introduction to computational workflows, Nextflow resources, and real-world examples of data we have processed using Nextflow
-        * Afternoon session (hands-on): RNA-seq example, pipeline configuration and execution, debugging, and downstream analysis
-    * [Register here](https://labcentral.mdibl.org/programs/view/781)
 
 # Comparative Genomics and Data Science Core
 
